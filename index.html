@@ -1,166 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EXJZHLZJ4C"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-EXJZHLZJ4C');
-    </script>
-
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EXJZHLZJ4C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EXJZHLZJ4C');
+</script>
     <meta charset="UTF-8">
+<link rel="icon" type="image/png" href="/favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-
+   
     <title>Oceanside Hair Salon – Best Haircuts & Color in Oceanside, CA</title>
     <meta name="description" content="Discover the best hair care at Oceanside Hair Salon. We offer expert haircuts, coloring, and styling services in Oceanside, CA. Book your appointment today for a fresh look.">
     <meta name="keywords" content="Oceanside hair salon, best hair salon Oceanside, haircuts, coloring, balayage, men haircut, women haircut, hair styling Oceanside CA">
     <link rel="canonical" href="https://oceansidehairsalon.com/" />
-    
     <meta property="og:title" content="Oceanside Hair Salon – Your Local Hair Care Destination">
     <meta property="og:description" content="Expert styling and hair care services in the heart of Oceanside, CA.">
     <meta property="og:type" content="website">
     <meta name="p:domain_verify" content="07271a48725bb1cf75fa0ab1edf3066a"/>
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-
     <style>
+        /* --- CSS Variables & Reset --- */
         :root {
-            --primary-color: #005f73;
-            --secondary-color: #0a9396;
-            --accent-color: #e9d8a6;
+            --primary-color: #005f73; /* Deep Ocean Blue */
+            --secondary-color: #0a9396; /* Teal */
+            --accent-color: #e9d8a6; /* Sand/Gold */
             --text-dark: #333333;
             --text-light: #ffffff;
             --bg-light: #f4f7f6;
             --font-heading: 'Playfair Display', serif;
             --font-body: 'Lato', sans-serif;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+.blog-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            border-bottom: 2px solid var(--secondary-color);
+            transition: color 0.3s;
+        }
+        .blog-link:hover { color: var(--secondary-color); }
+/* --- Dropdown Menu CSS --- */
+.navbar {
+    display: flex;
+    justify-content: center;
+    background-color: var(--primary-color); /* تأكد أنك معرف هذا المتغير أو استخدم #005f73 */
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.navbar a, .dropbtn {
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    text-align: left;
+    border-top: 3px solid var(--secondary-color);
+}
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+}
+.dropdown-content a:hover {background-color: #f1f1f1; color: var(--primary-color);}
+.dropdown:hover .dropdown-content {display: block;}
+.navbar a:hover, .dropdown:hover .dropbtn {background-color: var(--secondary-color); border-radius: 4px;}
+/* Mobile responsiveness adjustment */
+@media screen and (max-width: 600px) {
+    .navbar { flex-direction: column; }
+    .dropdown-content { position: relative; }
+}
         body {
             font-family: var(--font-body);
             color: var(--text-dark);
             line-height: 1.6;
             background-color: var(--bg-light);
         }
-        h1, h2, h3 { font-family: var(--font-heading); }
-
-        /* Navbar */
-        .navbar {
-            display: flex;
-            justify-content: center;
-            background-color: var(--primary-color);
-            padding: 1rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+        /* --- Typography Imports (Google Fonts) --- */
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap');
+        h1, h2, h3 {
+            font-family: var(--font-heading);
         }
-        .navbar a, .dropbtn {
-            font-family: var(--font-body);
-            font-weight: bold;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            font-size: 17px;
-            border: none;
-            background: none;
-            cursor: pointer;
-        }
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 200px;
-            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-            z-index: 1;
-            text-align: left;
-            border-top: 3px solid var(--secondary-color);
-        }
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            font-size: 15px;
-        }
-        .dropdown-content a:hover {
-            background-color: #f1f1f1;
-            color: var(--primary-color);
-        }
-        .dropdown:hover .dropdown-content,
-        .dropdown.active .dropdown-content {
-            display: block;
-        }
-        .navbar a:hover,
-        .dropdown:hover .dropbtn,
-        .dropdown.active .dropbtn {
-            background-color: var(--secondary-color);
-            border-radius: 4px;
-        }
-
-        /* Hero Header */
+        /* --- Header / Hero Section --- */
         header {
-            background: linear-gradient(rgba(0, 95, 115, 0.8), rgba(10, 147, 150, 0.8)),
-                        url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background: linear-gradient(rgba(0, 95, 115, 0.8), rgba(10, 147, 150, 0.8)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
-            height: 85vh;
-            min-height: 600px;
-            display: flex;
-            flex-direction: column;
-            color: var(--text-light);
-            text-align: center;
-        }
-        .hero-content {
-            flex-grow: 1;
+            height: 80vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 0 20px;
+            text-align: center;
+            color: var(--text-light);
+            padding: 20px;
         }
-        .hero-content h1 {
-            font-size: 3.5rem;
+        header h1 {
+            font-size: 3rem;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
-        .hero-content p {
-            font-size: 1.4rem;
+        header p {
+            font-size: 1.2rem;
             font-weight: 300;
-            margin-bottom: 2rem;
-            max-width: 700px;
+            letter-spacing: 1px;
         }
-
-        /* Sections */
+        /* --- Section Styling --- */
         section {
             padding: 4rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
+        /* --- Why Oceanside Section --- */
         .about-section {
             text-align: center;
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            margin-top: -60px;
+            margin-top: -50px; /* Overlap effect */
             position: relative;
             z-index: 10;
-            padding: 3rem 2rem;
         }
-        .about-section h2 { color: var(--primary-color); margin-bottom: 1.5rem; }
-        .about-text { font-size: 1.1rem; color: #555; max-width: 800px; margin: 0 auto; }
-
+        .about-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        .about-text {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        /* --- Services Section --- */
         .services-section {
             text-align: center;
         }
@@ -171,115 +172,122 @@
         }
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
         }
         .service-card {
             background: white;
             padding: 2rem;
             border-radius: 10px;
-            transition: all 0.3s ease;
-            border-bottom: 4px solid var(--secondary-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-bottom: 3px solid var(--secondary-color);
         }
         .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
         .service-card h3 {
             margin-bottom: 1rem;
             color: var(--primary-color);
         }
-
-        .blog-link {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: bold;
-            border-bottom: 2px solid var(--secondary-color);
-            transition: color 0.3s;
+        /* --- CTA Button --- */
+        .cta-container {
+            text-align: center;
+            margin-top: 3rem;
         }
-        .blog-link:hover { color: var(--secondary-color); }
-
-        .cta-container { margin-top: 3rem; }
         .btn-contact {
             background-color: var(--primary-color);
-            color: white;
-            padding: 16px 44px;
-            font-size: bold 1.1rem var(--font-body);
+            color: var(--text-light);
+            padding: 15px 40px;
+            font-size: 1.1rem;
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
+            font-weight: bold;
         }
-        .btn-contact:hover { background-color: var(--secondary-color); }
-
-        /* Modal */
+        .btn-contact:hover {
+            background-color: var(--secondary-color);
+        }
+        /* --- Modal (Popup) --- */
         .modal {
             display: none;
             position: fixed;
-            z-index: 1000;
-            left: 0; top: 0;
-            width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.6);
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
             animation: fadeIn 0.4s;
         }
         .modal-content {
-            background-color: #fff;
-            margin: 10% auto;
+            background-color: #fefefe;
+            margin: 15% auto;
             padding: 30px;
-            border-radius: 12px;
-            width: 90%;
+            border: 1px solid #888;
+            width: 80%;
             max-width: 500px;
+            border-radius: 10px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
         .close {
             color: #aaa;
             float: right;
-            font-size: 32px;
+            font-size: 28px;
             font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
             cursor: pointer;
         }
-        .close:hover { color: #000; }
-
-        /* Footer */
+        /* --- Footer --- */
         footer {
             background-color: var(--primary-color);
             color: var(--text-light);
             text-align: center;
-            padding: 3rem 1rem;
-            margin-top: 4rem 0 0;
+            padding: 2rem;
+            margin-top: 4rem;
         }
+        footer p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        /* --- Animations --- */
+        @keyframes fadeIn {
+            from {opacity: 0}
+            to {opacity: 1}
+        }
+        /* Mobile Optimization */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            section { padding: 2rem 1rem; }
+        }
+/* Social Media Icons Styling */
         .social-container {
-            margin: 25px 0;
+            margin-top: 20px;
             display: flex;
             justify-content: center;
-            gap: 25px;
+            gap: 20px;
         }
         .social-icon {
-            width: 34px;
-            height: 34px;
-            fill: white;
-            transition: all 0.3s;
+            width: 30px;
+            height: 30px;
+            fill: var(--text-light); /* لون الأيقونة أبيض */
+            transition: all 0.3s ease;
         }
         .social-icon:hover {
-            fill: var(--accent-color);
-            transform: translateY(-4px);
-        }
-
-        @keyframes fadeIn { from {opacity: 0} to {opacity: 1} }
-
-        @media (max-width: 768px) {
-            header h1 { font-size: 2.6rem; }
-            .hero-content p { font-size: 1.2rem; }
-            .navbar { flex-direction: column; }
-            .dropdown-content { position: relative; }
+            fill: var(--accent-color); /* يتغير للون الذهبي عند اللمس */
+            transform: translateY(-3px); /* حركة خفيفة للأعلى */
         }
     </style>
-
-    <!-- Schema.org JSON-LD (تم إضافة رقم الهاتف) -->
-    <script type="application/ld+json">
+<script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "HairSalon",
@@ -287,11 +295,10 @@
       "image": "https://oceansidehairsalon.com/assets/images/logo.png",
       "@id": "https://oceansidehairsalon.com",
       "url": "https://oceansidehairsalon.com",
-      "telephone": "+1 (646) 980-3726",
+      "telephone": "",
       "priceRange": "$$",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "123 Ocean View Drive",
         "addressLocality": "Oceanside",
         "addressRegion": "CA",
         "postalCode": "92054",
@@ -305,7 +312,13 @@
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
           "opens": "09:00",
           "closes": "19:00"
         },
@@ -324,39 +337,29 @@
     </script>
 </head>
 <body>
-
-    <!-- Hero + Navbar
-    <header>
-        <div class="navbar">
-            <a href="/">Home</a>
-            <div class="dropdown">
-                <button class="dropbtn">Services</button>
-                <div class="dropdown-content">
-                    <a href="/services/womens-haircuts/">Women's Haircuts & Styling</a>
-                    <a href="/services/mens-grooming/">Men's Grooming & Fades</a>
-                    <a href="/services/hair-coloring/">Hair Coloring & Balayage</a>
-                    <a href="/services/hair-treatments/">Hair Treatments (Repair)</a>
-                    <a href="/services/bridal-styling/">Bridal & Special Occasions</a>
-                </div>
+<header style="padding: 0; background: none;">
+    <div class="navbar">
+        <a href="/">Home</a>
+        <div class="dropdown">
+            <button class="dropbtn">Services ▾</button>
+            <div class="dropdown-content">
+                <a href="/services/womens-haircuts/">Women's Haircuts & Styling</a>
+                <a href="/services/mens-grooming/">Men's Grooming & Fades</a>
+                <a href="/services/hair-coloring/">Hair Coloring & Balayage</a>
+                <a href="/services/hair-treatments/">Hair Treatments (Repair)</a>
+                <a href="/services/bridal-styling/">Bridal & Special Occasions</a>
             </div>
-            <div class="dropdown">
-                <button class="dropbtn">About Us</button>
-                <div class="dropdown-content">
-                    <a href="/blog/haircut-prices-oceanside/">Price List</a>
-                    <a href="/contact/">Contact Us & Location</a>
-                </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">About Us ▾</button>
+            <div class="dropdown-content">
+                <a href="/blog/haircut-prices-oceanside/">Price List</a>
+                <a href="/contact/">Contact Us & Location</a>
             </div>
-            <a href="/blog/">Blog</a>
         </div>
-
-        <div class="hero-content">
-            <h1>Oceanside Hair Salon</h1>
-            <p>Best Haircuts, Color & Styling in Oceanside, CA</p>
-            <button class="btn-contact" id="contactBtn">Book Appointment</button>
-        </div>
-    </header>
-
-    <!-- Why Choose Us -->
+        <a href="/blog/">Blog</a>
+    </div>
+</header>
     <section class="about-section">
         <h2>Why Oceanside Needs Us</h2>
         <p class="about-text">
@@ -366,8 +369,6 @@
             vibrant and healthy, whether you're at the beach or in the boardroom.
         </p>
     </section>
-
-    <!-- Services -->
     <section class="services-section">
         <h2>Our Services</h2>
         <div class="services-grid">
@@ -389,44 +390,42 @@
             </div>
         </div>
         <div class="cta-container">
-            <button class="btn-contact" id="contactBtn2">Contact Us</button>
+            <button class="btn-contact" id="contactBtn">Contact Us</button>
         </div>
     </section>
-
-    <!-- Blog / Guides -->
-    <section class="services-section" style="background-color: #fff;">
+<section class="services-section" style="background-color: #fff;">
         <h2>Hair Care Guides & Local Tips</h2>
         <div class="services-grid">
-            <div class="service-card">
+           
+<div class="service-card">
                 <h3>Best Hair Salons in Oceanside (2025)</h3>
                 <p>Looking for the top spots? We breakdown what makes a salon truly great in our coastal city.</p>
                 <br>
-                <a href="/blog/best-hair-salons-oceanside-2025/" class="blog-link">Read Guide</a>
+                <a href="blog/best-hair-salons-oceanside-2025/" class="blog-link">Read Guide &rarr;</a>
             </div>
             <div class="service-card">
                 <h3>Haircut Prices in Oceanside</h3>
                 <p>A full guide to understanding pricing for men's and women's cuts in the area.</p>
                 <br>
-                <a href="/blog/haircut-prices-oceanside/" class="blog-link">Check Prices</a>
+                <a href="blog/haircut-prices-oceanside/" class="blog-link">Check Prices &rarr;</a>
             </div>
             <div class="service-card">
                 <h3>Men’s vs Women’s Styles</h3>
                 <p>Explore the trending styles for 2025 and what works best for the Oceanside lifestyle.</p>
                 <br>
-                <a href="/blog/mens-womens-haircut-styles-oceanside/" class="blog-link">See Trends</a>
+                <a href="blog/mens-womens-haircut-styles-oceanside/" class="blog-link">See Trends &rarr;</a>
             </div>
-            <div class="service-card">
+<div class="service-card">
                 <h3>5 Signs You Need a Treatment</h3>
                 <p>Is the salty air ruining your hair? Check these signs to see if you need professional help.</p>
                 <br>
-                <a href="/blog/5-signs-hair-treatment-oceanside/" class="blog-link">Read Signs</a>
+                <a href="blog/5-signs-hair-treatment-oceanside/" class="blog-link">Read Signs &rarr;</a>
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
-    <footer>
+<footer>
         <div style="max-width: 1200px; margin: 0 auto;">
+           
             <div class="opening-hours" style="margin-bottom: 2rem;">
                 <h3 style="color: var(--accent-color); margin-bottom: 10px; font-family: var(--font-heading);">Opening Hours</h3>
                 <ul style="list-style: none; padding: 0; font-size: 0.9rem; opacity: 0.9;">
@@ -435,69 +434,72 @@
                     <li>Sunday: Closed</li>
                 </ul>
             </div>
-
             <div class="social-container">
-                <a href="https://www.facebook.com/profile.php?id=61583963957390" target="_blank" aria-label="Facebook">
-                    <svg class="social-icon" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                <a href="https://www.facebook.com/profile.php?id=61583963957390" target="_blank" aria-label="Visit our Facebook">
+                    <svg class="social-icon" viewBox="0 0 24 24">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
                 </a>
-                <a href="https://www.instagram.com/oceanside_hair_salon" target="_blank" aria-label="Instagram">
-                    <svg class="social-icon" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.36-.2 6.78-2.618 6.98-6.98.058-1.28.072-1.689.072-4.948 0-3.259-.014-3.667-.072-4.947-.2-4.361-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                <a href="https://www.instagram.com/oceanside_hair_salon" target="_blank" aria-label="Visit our Instagram">
+                    <svg class="social-icon" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.36-.2 6.78-2.618 6.98-6.98.058-1.28.072-1.689.072-4.948 0-3.259-.014-3.667-.072-4.947-.2-4.361-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
                 </a>
             </div>
-
-            <p style="margin-top: 2rem;">© 2024 Oceanside Hair Salon. All rights reserved.</p>
+            <p style="margin-top: 2rem;">&copy; 2024 Oceanside Hair Salon. All rights reserved.</p>
             <p style="font-size: 0.8rem;">123 Ocean View Drive, Oceanside, CA 92054</p>
         </div>
     </footer>
-
-    <!-- Contact Modal -->
-    <div id="contactModal" class="modal">
-        <div class="modal-content">
-            <span class="close">×</span>
-            <h2 style="color: var(--primary-color);">Get in Touch</h2>
-            <p>Ready to transform your look? Book your appointment now.</p>
-            <div style="margin-top: 25px; text-align: left; display: inline-block;">
-                <p><strong>Email:</strong><br>
-                    <a href="mailto:Oceansidehairsalon@gmail.com" style="color: var(--primary-color); font-size: 1.2rem; text-decoration: none;">
-                        Oceansidehairsalon@gmail.com
-                    </a>
-                </p>
-                <p><strong>Phone:</strong><br>
-                    <a href="tel:+16469803726" style="color: var(--primary-color); font-size: 1.3rem; font-weight: bold; text-decoration: none;">
-                        +1 (646) 980-3726
-                    </a>
-                </p>
-            </div>
+<div id="contactModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 style="color: var(--primary-color); margin-bottom: 15px;">Get in Touch</h2>
+        <p>Ready to transform your look? Book your appointment now.</p>
+        <div style="margin-top: 20px; text-align: left; display: inline-block;">
+            <p style="margin-bottom: 10px;">
+                <strong>📧 Email:</strong><br>
+                <a href="mailto:Oceansidehairsalon@gmail.com"
+                   style="color: var(--primary-color); text-decoration: none; font-size: 1.1rem;">
+                    Oceansidehairsalon@gmail.com
+                </a>
+            </p>
+            <p>
+                <strong>📞 Phone:</strong><br>
+                <a href="tel:+16469803726"
+                   style="color: var(--primary-color); text-decoration: none; font-size: 1.1rem; font-weight: bold;">
+                    +1 (646) 980-3726
+                </a>
+            </p>
         </div>
     </div>
-
+</div>
     <script>
-        // Modal Script
-        const modal = document.getElementById("contactModal");
-        const btns = [document.getElementById("contactBtn"), document.getElementById("contactBtn2")];
-        const span = document.getElementsByClassName("close")[0];
-
-        btns.forEach(btn => {
-            if (btn) btn.onclick = () => modal.style.display = "block";
-        });
-        span.onclick = () => modal.style.display = "none";
-        window.onclick = (e) => {
-            if (e.target == modal) modal.style.display = "none";
-        };
-
-        // Mobile dropdown toggle
-        document.querySelectorAll('.dropbtn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                if (window.innerWidth <= 600) {
-                    this.parentElement.classList.toggle('active');
-                }
-            });
-        });
-
-        // Clean URL (remove index.html)
-        if (window.location.pathname.endsWith('index.html')) {
-            history.replaceState(null, null, '/');
+        // Get the modal
+        var modal = document.getElementById("contactModal");
+        // Get the button that opens the modal
+        var btn = document.getElementById("contactBtn");
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+        // When the user clicks the button, open the modal
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
         }
     </script>
+<script>
+    if (window.location.pathname.endsWith('index.html')) {
+        var newUrl = window.location.protocol + "//" + window.location.host + "/";
+        window.history.replaceState(null, null, newUrl);
+    }
+</script>
 </body>
 </html>
