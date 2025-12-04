@@ -50,26 +50,48 @@
         }
         .blog-link:hover { color: var(--secondary-color); }
 /* --- Dropdown Menu CSS --- */
+      
 .navbar {
     display: flex;
-    justify-content: center;
-    background-color: var(--primary-color); /* تأكد أنك معرف هذا المتغير أو استخدم #005f73 */
-    padding: 1rem;
-    position: sticky;
+    justify-content: center; /* يبقي الروابط في الوسط */
+    align-items: center;
+    /* جعل الخلفية شبه شفافة داكنة لتبدو أنيقة فوق الصورة */
+    background: rgba(0, 95, 115, 0.4); 
+    /* تأثير الزجاج الضبابي (Blur) */
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px); /* لدعم متصفح سفاري */
+    
+    /* هام جداً: هذا يجعل الشريط يأخذ كامل العرض */
+    width: 100%; 
+    
+    padding: 1.2rem 1rem;
+    position: absolute; /* يثبته في أعلى الصورة تماماً */
     top: 0;
+    left: 0;
     z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* خط خفيف جداً في الأسفل */
 }
+
+/* تحسين شكل الروابط عند تمرير الماوس */
 .navbar a, .dropbtn {
     font-family: 'Lato', sans-serif;
     font-weight: bold;
-    color: white;
+    color: white; /* تأكد أن النص أبيض ليظهر فوق الصورة */
     text-align: center;
-    padding: 14px 16px;
+    padding: 10px 20px;
     text-decoration: none;
-    font-size: 17px;
-    border: none;
-    background: none;
-    cursor: pointer;
+    font-size: 16px;
+    border-radius: 25px; /* حواف دائرية للأزرار عند اللمس */
+    transition: all 0.3s ease;
+    text-transform: uppercase; /* جعل الحروف كبيرة لتبدو أكثر فخامة */
+    letter-spacing: 1px;
+}
+
+/* تأثير عند وضع الماوس على الروابط */
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: rgba(255, 255, 255, 0.2); /* خلفية بيضاء شفافة */
+    color: #fff;
+    transform: translateY(-2px); /* حركة بسيطة للأعلى */
 }
 .dropdown {
     position: relative;
@@ -508,5 +530,6 @@
 </script>
 </body>
 </html>
+
 
 
