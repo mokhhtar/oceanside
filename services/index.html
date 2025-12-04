@@ -17,6 +17,63 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        /* --- Dropdown Menu CSS --- */
+.navbar {
+    display: flex;
+    justify-content: center;
+    background-color: var(--primary-color); /* تأكد أنك معرف هذا المتغير أو استخدم #005f73 */
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar a, .dropbtn {
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    text-align: left;
+    border-top: 3px solid var(--secondary-color);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1; color: var(--primary-color);}
+.dropdown:hover .dropdown-content {display: block;}
+.navbar a:hover, .dropdown:hover .dropbtn {background-color: var(--secondary-color); border-radius: 4px;}
+
+/* Mobile responsiveness adjustment */
+@media screen and (max-width: 600px) {
+    .navbar { flex-direction: column; }
+    .dropdown-content { position: relative; }
+}
         :root { --primary: #005f73; --secondary: #0a9396; --bg: #f4f7f6; --text: #333; }
         body { font-family: 'Lato', sans-serif; margin: 0; background: var(--bg); color: var(--text); }
         h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--primary); }
@@ -39,11 +96,31 @@
 </head>
 <body>
 
-<header>
-    <h1>Our Services & Menu</h1>
-    <p>Expert Hair Care for the Oceanside Lifestyle</p>
-    <br>
-    <a href="/" class="nav-link">Home</a>
+<header style="padding: 0; background: none;">
+    <div class="navbar">
+        <a href="/">Home</a>
+
+        <div class="dropdown">
+            <button class="dropbtn">Services ▾</button>
+            <div class="dropdown-content">
+                <a href="/services/womens-haircuts/">Women's Haircuts & Styling</a>
+                <a href="/services/mens-grooming/">Men's Grooming & Fades</a>
+                <a href="/services/hair-coloring/">Hair Coloring & Balayage</a>
+                <a href="/services/hair-treatments/">Hair Treatments (Repair)</a>
+                <a href="/services/bridal-styling/">Bridal & Special Occasions</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">About Us ▾</button>
+            <div class="dropdown-content">
+                <a href="/blog/haircut-prices-oceanside/">Price List</a>
+                <a href="/contact/">Contact Us & Location</a>
+            </div>
+        </div>
+
+        <a href="/blog/">Blog</a>
+    </div>
 </header>
 
 <div class="container">
