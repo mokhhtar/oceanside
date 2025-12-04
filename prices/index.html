@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EXJZHLZJ4C"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-EXJZHLZJ4C');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Menu & Price List | Oceanside Hair Salon</title>
+    <meta name="description" content="View our full price list for haircuts, coloring, balayage, and treatments in Oceanside, CA. Transparent pricing for men and women.">
+    <link rel="canonical" href="https://oceansidehairsalon.com/prices/" />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS Variables & Reset --- */
+        :root {
+            --primary-color: #005f73;
+            --secondary-color: #0a9396;
+            --accent-color: #e9d8a6;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --bg-light: #f4f7f6;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Lato', sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            line-height: 1.8;
+            background-color: var(--bg-light);
+        }
+        h1, h2, h3 { font-family: var(--font-heading); }
+
+        /* --- Navbar Styles --- */
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 95, 115, 0.85);
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 1rem 0;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+        .navbar a, .navbar .dropbtn {
+            font-family: 'Lato', sans-serif;
+            font-weight: bold;
+            font-size: 17px;
+            color: white !important;
+            background-color: transparent !important;
+            border: none !important;
+            padding: 14px 20px;
+            text-decoration: none !important;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            outline: none;
+        }
+        .navbar a:hover, .navbar .dropdown:hover .dropbtn {
+            color: var(--secondary-color) !important;
+            transform: translateY(-2px);
+        }
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #ffffff;
+            min-width: 220px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-top: 3px solid var(--secondary-color);
+            text-align: left;
+            border-radius: 4px;
+        }
+        .dropdown-content a {
+            color: #333 !important;
+            padding: 12px 16px;
+            display: block;
+            font-weight: normal;
+            font-size: 15px;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1 !important;
+            color: var(--primary-color) !important;
+        }
+        .dropdown:hover .dropdown-content { display: block; }
+
+        /* --- Header / Hero Section --- */
+        header {
+            background: linear-gradient(rgba(0, 95, 115, 0.7), rgba(10, 147, 150, 0.7)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--text-light);
+            padding: 20px;
+            padding-top: 80px;
+        }
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* --- Price Table Styles --- */
+        .price-container {
+            max-width: 900px;
+            margin: -50px auto 50px; /* Overlap effect */
+            padding: 40px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: relative;
+            z-index: 10;
+        }
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px dotted #ccc;
+            padding: 15px 0;
+            transition: background 0.2s;
+        }
+        .price-row:hover { background-color: #fafafa; padding-left: 10px; padding-right: 10px; }
+        .price-row:last-child { border-bottom: none; }
+        
+        .service-info { flex: 1; padding-right: 20px; }
+        .service-name { font-weight: bold; font-size: 1.1rem; color: var(--text-dark); display: block; }
+        .service-desc { font-size: 0.9rem; color: #777; margin-top: 2px; display: block; }
+        .service-price { font-weight: bold; color: var(--primary-color); font-size: 1.2rem; min-width: 80px; text-align: right; }
+        
+        .category-title {
+            background: var(--bg-light);
+            padding: 12px 20px;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            border-left: 5px solid var(--primary-color);
+            border-radius: 0 4px 4px 0;
+            color: var(--primary-color);
+        }
+        
+        .note {
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 30px;
+            font-style: italic;
+            text-align: center;
+        }
+
+        /* --- Buttons --- */
+        .btn-contact {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+            display: inline-block;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+        .btn-contact:hover { background-color: var(--secondary-color); color: white; }
+
+        /* --- Modal & Footer --- */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5); animation: fadeIn 0.4s; }
+        .modal-content { background-color: #fefefe; margin: 15% auto; padding: 30px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 10px; text-align: center; position: relative; }
+        .close { color: #aaa; float: right; font-size: 28px; font-weight: bold; position: absolute; right: 20px; top: 10px; cursor: pointer; }
+        
+        footer { background-color: var(--primary-color); color: var(--text-light); text-align: center; padding: 2rem; margin-top: 4rem; }
+        .social-container { margin-top: 20px; display: flex; justify-content: center; gap: 20px; }
+        .social-icon { width: 30px; height: 30px; fill: var(--text-light); transition: all 0.3s ease; }
+        .social-icon:hover { fill: var(--accent-color); transform: translateY(-3px); }
+
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; position: relative; background-color: var(--primary-color); }
+            header { height: auto; min-height: 40vh; }
+            .price-container { margin: 20px; padding: 20px; }
+        }
+        @keyframes fadeIn { from {opacity: 0} to {opacity: 1} }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="navbar">
+        <a href="/">Home</a>
+        <div class="dropdown">
+            <button class="dropbtn">Services ▾</button>
+            <div class="dropdown-content">
+                <a href="/services/womens-haircuts/">Women's Haircuts & Styling</a>
+                <a href="/services/mens-grooming/">Men's Grooming & Fades</a>
+                <a href="/services/hair-coloring/">Hair Coloring & Balayage</a>
+                <a href="/services/hair-treatments/">Hair Treatments (Repair)</a>
+                <a href="/services/bridal-styling/">Bridal & Special Occasions</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">About Us ▾</button>
+            <div class="dropdown-content">
+                <a href="/blog/haircut-prices-oceanside/">Price List</a>
+                <a href="/contact/">Contact Us & Location</a>
+            </div>
+        </div>
+        <a href="/blog/">Blog</a>
+    </div>
+
+    <h1>Service Menu & Price List</h1>
+    <p>Transparent pricing for premium hair care in Oceanside.</p>
+    <br>
+    <button class="btn-contact" onclick="document.getElementById('contactModal').style.display='block'">Book Appointment</button>
+</header>
+
+<div class="price-container">
+    
+    <h2 class="category-title">✂️ Haircuts & Styling</h2>
+    <div class="price-row">
+        <div class="service-info"><span class="service-name">Women's Haircut & Blow Dry</span><span class="service-desc">Consultation, luxury wash, precision cut, and signature blowout.</span></div>
+        <span class="service-price">$75+</span>
+    </div>
+    <div class="price-row">
+        <div class="service-info"><span class="service-name">Men's Cut / Skin Fade</span><span class="service-desc">Precision clipper or scissor cut, wash, and hot towel finish.</span></div>
+        <span class="service-price">$40+</span>
+    </div>
+    <div class="price-row">
+        <div class="service-info"><span class="service-name">Child's Cut (Under 10)</span><span class="service-desc">Gentle styling for the little ones (no wash included).</span></div>
+        <span class="service-price">$30+</span>
+    </div>
+    <div class="price-row">
+        <div class="service-info"><span class="service-name">Bang Trim / Neck Cleanup</span><span class="service-desc">Quick maintenance between full appointments.</span></div>
+        <span class="service-price">$15</span>
+    </div>
+    <div class="price-row">
+        <div class="service-info"><span class="service-name">Wash & Blowout Only</span><span class="service-desc">Voluminous styling for a night out.</span></div>
+        <span class="service-price">$50+</span>
+    </div>
+
+    <h2 class="category-title">🎨 Color & Balayage</h2>
+    <div class="price-row">
+        <div class="service-info"><span class="service-name">Full Balayage / Ombré</span><span class="service-desc">Hand-painted custom dimensional color. Includes toner.</span></div>
+        <span class="service-price">$220+</span>
+    </div>
+    <div class="price-row">
+        <div class="service-info"><span class="service-name">Partial Balayage</span><span class="service-desc">Face-framing brightness and crown area refresh.</span></div>
+        <span class="service-price">$160+</span>
+    </div>
+    <div class="price-row">
+        <div class="service-info"><span class="service-name">Full Highlights (Foils)</span><span class="service-desc">Traditional highlights for maximum brightness from roots to ends.</span></div>
+        <span class="service-price">$180+</span>
+    </div>
+    <div class="price-row">
+        <div class="service-info"><span class="service-name">Root Touch-Up (Single Process)</span><span class="service-desc">Cover greys or refresh base color (no bleach).</span></div>
+        <span class="service-price">$90+</span>
+    </div>
+    <div class="price-row">
+        <div class="service-info"><span class="service-name">Gloss / Toner Refresh</span><span class="service-desc">Restore shine and correct brassiness between color appointments.</span></div>
+        <span class="service-price">$60+</span>
+    </div>
+
+    <h2 class="category-title">✨ Treatments & Smoothing</h2>
+    <div class="price-row">
+        <div class="service-info"><span class="service-name">Keratin Smoothing Treatment</span><span class="service-desc">Eliminates frizz and cuts styling time in half. Lasts 3-4 months.</span></div>
+        <span class="service-price">$280+</span>
+    </div>
+    <div class="price-row">
+        <div class="service-info"><span class="service-name">Brazilian Blowout</span><span class="service-desc">The original smoothing treatment for sleek, shiny hair.</span></div>
+        <span class="service-price">$300+</span>
+    </div>
+    <div class="price-row">
+        <div class="service-info"><span class="service-name">Olaplex Bonding Service</span><span class="service-desc">Stand-alone treatment to repair broken bonds and damage.</span></div>
+        <span class="service-price">$45+</span>
+    </div>
+    <div class="price-row">
+        <div class="service-info"><span class="service-name">Scalp Detox Therapy</span><span class="service-desc">Exfoliates buildup from salt, sand, and products. Great for itchy scalps.</span></div>
+        <span class="service-price">$40+</span>
+    </div>
+
+    <h2 class="category-title">💍 Wedding & Special Occasions</h2>
+    <div class="price-row">
+        <div class="service-info"><span class="service-name">Bridal Updo / Styling</span><span class="service-desc">Day-of wedding styling. (Does not include trial).</span></div>
+        <span class="service-price">$150+</span>
+    </div>
+    <div class="price-row">
+        <div class="service-info"><span class="service-name">Bridal Trial Run</span><span class="service-desc">90-minute session to perfect your look before the big day.</span></div>
+        <span class="service-price">$100</span>
+    </div>
+    <div class="price-row">
+        <div class="service-info"><span class="service-name">Special Occasion Style</span><span class="service-desc">Curls, waves, or half-up styles for proms or parties.</span></div>
+        <span class="service-price">$85+</span>
+    </div>
+
+    <h2 class="category-title">🧩 Extensions (Consultation Required)</h2>
+    <div class="price-row">
+        <div class="service-info"><span class="service-name">Tape-In Extensions</span><span class="service-desc">Installation or move-up. (Hair cost separate).</span></div>
+        <span class="service-price">$150/hr</span>
+    </div>
+    <div class="price-row">
+        <div class="service-info"><span class="service-name">Hand-Tied Wefts</span><span class="service-desc">Seamless volume and length. (Hair cost separate).</span></div>
+        <span class="service-price">$200/row</span>
+    </div>
+
+    <p class="note">* Prices labeled with "+" are starting prices and may vary based on hair length, density, and stylist level. A precise quote will be provided during your consultation.</p>
+
+    <div style="text-align: center; margin-top: 40px;">
+        <button class="btn-contact" onclick="document.getElementById('contactModal').style.display='block'">Schedule Your Visit</button>
+    </div>
+</div>
+
+<footer>
+    <div style="max-width: 1200px; margin: 0 auto;">
+        <div class="social-container">
+            <a href="https://www.facebook.com/profile.php?id=61583963957390" target="_blank" aria-label="Visit our Facebook">
+                <svg class="social-icon" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+            </a>
+            <a href="https://www.instagram.com/oceanside_hair_salon" target="_blank" aria-label="Visit our Instagram">
+                <svg class="social-icon" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.36-.2 6.78-2.618 6.98-6.98.058-1.28.072-1.689.072-4.948.072 3.259 0 3.668-.014 4.948-.072 4.36-.2 6.78-2.618 6.98-6.98.058-1.28.072-1.689.072-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+            </a>
+        </div>
+        <p style="margin-top: 2rem;">&copy; 2024 Oceanside Hair Salon. All rights reserved.</p>
+        <p style="font-size: 0.8rem;">123 Ocean View Drive, Oceanside, CA 92054</p>
+    </div>
+</footer>
+
+<div id="contactModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 style="color: var(--primary-color); margin-bottom: 15px;">Get in Touch</h2>
+        <p>Ready to transform your look? Book your appointment now.</p>
+        <div style="margin-top: 20px; text-align: left; display: inline-block;">
+            <p style="margin-bottom: 10px;">
+                <strong>📧 Email:</strong><br>
+                <a href="mailto:Oceansidehairsalon@gmail.com" style="color: var(--primary-color); text-decoration: none; font-size: 1.1rem;">
+                    Oceansidehairsalon@gmail.com
+                </a>
+            </p>
+            <p>
+                <strong>📞 Phone:</strong><br>
+                <a href="tel:+16469803726" style="color: var(--primary-color); text-decoration: none; font-size: 1.1rem; font-weight: bold;">
+                    +1 (646) 980-3726
+                </a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Modal Script
+    var modal = document.getElementById("contactModal");
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function() { modal.style.display = "none"; }
+    window.onclick = function(event) {
+        if (event.target == modal) { modal.style.display = "none"; }
+    }
+</script>
+
+</body>
+</html>
