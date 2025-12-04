@@ -374,15 +374,32 @@
 </head>
 <body>
 
-    <header>
-        <h1>Oceanside Hair Salon</h1>
-        <p>Your Local Hair Care Destination</p>
-		<div style="margin-top: 20px;">
-        <a href="/" style="color: white; margin: 0 15px; text-decoration: none; font-weight: bold; border-bottom: 2px solid white;">Home</a>
-        <a href="services/" style="color: white; margin: 0 15px; text-decoration: none; font-weight: bold;">Services & Prices</a>
-        <a href="contact/" id="navContactBtn" style="color: white; margin: 0 15px; text-decoration: none; font-weight: bold;">Contact</a>
+<header style="padding: 0; background: none;">
+    <div class="navbar">
+        <a href="/">Home</a>
+
+        <div class="dropdown">
+            <button class="dropbtn">Services ▾</button>
+            <div class="dropdown-content">
+                <a href="/services/womens-haircuts/">Women's Haircuts & Styling</a>
+                <a href="/services/mens-grooming/">Men's Grooming & Fades</a>
+                <a href="/services/hair-coloring/">Hair Coloring & Balayage</a>
+                <a href="/services/hair-treatments/">Hair Treatments (Repair)</a>
+                <a href="/services/bridal-styling/">Bridal & Special Occasions</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">About Us ▾</button>
+            <div class="dropdown-content">
+                <a href="/blog/haircut-prices-oceanside/">Price List</a>
+                <a href="/contact/">Contact Us & Location</a>
+            </div>
+        </div>
+
+        <a href="/blog/">Blog</a>
     </div>
-    </header>
+</header>
 
     <section class="about-section">
         <h2>Why Oceanside Needs Us</h2>
@@ -547,6 +564,7 @@
 </body>
 
 </html>
+
 
 
 
