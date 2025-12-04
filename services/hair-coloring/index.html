@@ -11,16 +11,178 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Women's Haircuts in Oceanside, CA | Precision Cuts & Styling</title>
-    <meta name="description" content="Best women's haircuts in Oceanside. From layered cuts and bobs to long hair styling. Expert stylists for the coastal lifestyle. Book now.">
-    <link rel="canonical" href="https://oceansidehairsalon.com/services/womens-haircuts/" />
+    <title>Hair Coloring & Balayage in Oceanside, CA | Expert Colorists</title>
+    <meta name="description" content="Best hair coloring in Oceanside. Specializing in Balayage, highlights, and color correction. Get that perfect sun-kissed California glow. Book now.">
+    <link rel="canonical" href="https://oceansidehairsalon.com/services/hair-coloring/" />
     
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
-       <header style="padding: 0; background: none;">
+        /* --- CSS Variables & Reset --- */
+        :root {
+            --primary-color: #005f73;
+            --secondary-color: #0a9396;
+            --accent-color: #e9d8a6;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --bg-light: #f4f7f6;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Lato', sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            line-height: 1.8;
+            background-color: var(--bg-light);
+        }
+        h1, h2, h3 { font-family: var(--font-heading); }
+
+        /* --- Navbar Styles --- */
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 95, 115, 0.85);
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 1rem 0;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+        .navbar a, .navbar .dropbtn {
+            font-family: 'Lato', sans-serif;
+            font-weight: bold;
+            font-size: 17px;
+            color: white !important;
+            background-color: transparent !important;
+            border: none !important;
+            padding: 14px 20px;
+            text-decoration: none !important;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            outline: none;
+        }
+        .navbar a:hover, .navbar .dropdown:hover .dropbtn {
+            color: var(--secondary-color) !important;
+            transform: translateY(-2px);
+        }
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #ffffff;
+            min-width: 220px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-top: 3px solid var(--secondary-color);
+            text-align: left;
+            border-radius: 4px;
+        }
+        .dropdown-content a {
+            color: #333 !important;
+            padding: 12px 16px;
+            display: block;
+            font-weight: normal;
+            font-size: 15px;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1 !important;
+            color: var(--primary-color) !important;
+        }
+        .dropdown:hover .dropdown-content { display: block; }
+
+        /* --- Header / Hero Section --- */
+        header {
+            background: linear-gradient(rgba(0, 95, 115, 0.7), rgba(10, 147, 150, 0.7)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--text-light);
+            padding: 20px;
+            padding-top: 80px;
+        }
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        header p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            max-width: 600px;
+        }
+
+        /* --- Content Container --- */
+        .page-container {
+            max-width: 900px;
+            margin: -50px auto 50px;
+            padding: 40px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: relative;
+            z-index: 10;
+        }
+        .page-container h2 { color: var(--primary-color); margin-top: 0; }
+        .page-container h3 { color: var(--secondary-color); margin-top: 2rem; }
+        .page-container ul { margin-left: 20px; margin-bottom: 20px; }
+        .page-container li { margin-bottom: 10px; }
+        
+        /* Highlighting Strong tags */
+        .page-container strong { color: var(--primary-color); }
+
+        /* --- Buttons --- */
+        .btn-contact {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+            display: inline-block;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+        .btn-contact:hover { background-color: var(--secondary-color); color: white; }
+
+        /* --- Modal & Footer --- */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5); animation: fadeIn 0.4s; }
+        .modal-content { background-color: #fefefe; margin: 15% auto; padding: 30px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 10px; text-align: center; position: relative; }
+        .close { color: #aaa; float: right; font-size: 28px; font-weight: bold; position: absolute; right: 20px; top: 10px; cursor: pointer; }
+        
+        footer { background-color: var(--primary-color); color: var(--text-light); text-align: center; padding: 2rem; margin-top: 4rem; }
+        .social-container { margin-top: 20px; display: flex; justify-content: center; gap: 20px; }
+        .social-icon { width: 30px; height: 30px; fill: var(--text-light); transition: all 0.3s ease; }
+        .social-icon:hover { fill: var(--accent-color); transform: translateY(-3px); }
+
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; position: relative; background-color: var(--primary-color); }
+            header { height: auto; min-height: 50vh; }
+            .page-container { margin: 20px; padding: 20px; }
+        }
+        @keyframes fadeIn { from {opacity: 0} to {opacity: 1} }
+    </style>
+</head>
+<body>
+
+<header>
     <div class="navbar">
         <a href="/">Home</a>
-
         <div class="dropdown">
             <button class="dropbtn">Services ▾</button>
             <div class="dropdown-content">
@@ -31,7 +193,6 @@
                 <a href="/services/bridal-styling/">Bridal & Special Occasions</a>
             </div>
         </div>
-
         <div class="dropdown">
             <button class="dropbtn">About Us ▾</button>
             <div class="dropdown-content">
@@ -39,74 +200,83 @@
                 <a href="/contact/">Contact Us & Location</a>
             </div>
         </div>
-
         <a href="/blog/">Blog</a>
     </div>
+
+    <h1>Hair Coloring & Balayage</h1>
+    <p>Expert Balayage, Highlights & Color Correction in Oceanside.</p>
+    <br>
+    <button class="btn-contact" onclick="document.getElementById('contactModal').style.display='block'">Book Now</button>
 </header>
-        :root { --primary-color: #005f73; --secondary-color: #0a9396; --bg-light: #f4f7f6; --text-dark: #333; }
-        body { font-family: 'Lato', sans-serif; margin: 0; background: var(--bg-light); color: var(--text-dark); line-height: 1.8; }
-        h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--primary-color); }
-        .hero { background: linear-gradient(rgba(0,95,115,0.7), rgba(10,147,150,0.7)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center; padding: 100px 20px; text-align: center; color: white; }
-        .container { max-width: 900px; margin: 40px auto; padding: 0 20px; background: white; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); padding: 40px; }
-        .cta-btn { background: var(--secondary-color); color: white; padding: 15px 30px; text-decoration: none; border-radius: 30px; font-weight: bold; display: inline-block; margin-top: 20px; }
-        /* ألصق كود الـ Navbar CSS هنا */
-        .navbar { display: flex; justify-content: center; background-color: var(--primary-color); padding: 1rem; position: sticky; top: 0; z-index: 1000; }
-        .navbar a, .dropbtn { font-family: 'Lato', sans-serif; font-weight: bold; color: white; padding: 14px 16px; text-decoration: none; font-size: 17px; border: none; background: none; cursor: pointer; }
-        .dropdown { position: relative; display: inline-block; }
-        .dropdown-content { display: none; position: absolute; background-color: #f9f9f9; min-width: 200px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1; border-top: 3px solid var(--secondary-color); }
-        .dropdown-content a { color: black; padding: 12px 16px; display: block; }
-        .dropdown-content a:hover { background-color: #f1f1f1; color: var(--primary-color); }
-        .dropdown:hover .dropdown-content { display: block; }
-        .navbar a:hover, .dropdown:hover .dropbtn { background-color: var(--secondary-color); }
-    </style>
-</head>
-<body>
 
-    <div class="navbar">
-        <a href="/">Home</a>
-        <div class="dropdown">
-            <button class="dropbtn">Services ▾</button>
-            <div class="dropdown-content">
-                <a href="/services/womens-haircuts/">Women's Haircuts</a>
-                <a href="/services/mens-grooming/">Men's Grooming</a>
-                <a href="/services/hair-coloring/">Hair Coloring</a>
-                <a href="/services/hair-treatments/">Hair Treatments</a>
-                <a href="/services/bridal-styling/">Bridal Styling</a>
-            </div>
-        </div>
-        <div class="dropdown">
-            <button class="dropbtn">About Us ▾</button>
-            <div class="dropdown-content">
-                <a href="/blog/haircut-prices-oceanside/">Price List</a>
-                <a href="/contact/">Contact Us</a>
-            </div>
-        </div>
-        <a href="/blog/">Blog</a>
+<div class="page-container">
+    <h2>The Art of Color in Oceanside</h2>
+    <p>Hair color is not one-size-fits-all. It's an art form that requires a deep understanding of chemistry, skin tone, and lifestyle. Being in Oceanside, we specialize in "lived-in" color techniques that mimic the natural effects of the sun, giving you that effortless California glow.</p>
+    
+    <h3>Specialized Techniques</h3>
+    <p><strong>Balayage:</strong> Our most requested service. We hand-paint highlights onto the hair to create a soft, natural gradation of lightness towards the ends. This technique allows for longer time between appointments as there is no harsh root line.</p>
+    
+    <p><strong>Color Correction:</strong> Did a home dye job go wrong? Or did another salon leave you with brassy orange tones? Our master colorists are experts in color correction. We safely remove unwanted pigments and restore your hair to the desired shade while maintaining its integrity.</p>
+    
+    <h3>Protecting Your Color</h3>
+    <p>The Oceanside sun and ocean salt can fade hair color quickly. That's why we use premium color lines enriched with UV filters and conditioning agents. We also provide a customized maintenance plan, recommending the right color-depositing shampoos to keep your tone fresh between visits.</p>
+
+    <div style="text-align: center; margin-top: 40px;">
+        <h3>Ready for a fresh look?</h3>
+        <button class="btn-contact" onclick="document.getElementById('contactModal').style.display='block'">Book Your Appointment</button>
     </div>
+</div>
 
-    <div class="hero">
-        <h1>Women's Haircuts & Styling</h1>
-        <p>Precision cuts tailored to your face shape and the Oceanside lifestyle.</p>
+<footer>
+    <div style="max-width: 1200px; margin: 0 auto;">
+        <div class="social-container">
+            <a href="https://www.facebook.com/profile.php?id=61583963957390" target="_blank" aria-label="Visit our Facebook">
+                <svg class="social-icon" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+            </a>
+            <a href="https://www.instagram.com/oceanside_hair_salon" target="_blank" aria-label="Visit our Instagram">
+                <svg class="social-icon" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.36-.2 6.78-2.618 6.98-6.98.058-1.28.072-1.689.072-4.948 0-3.259-.014-3.667-.072-4.947-.2-4.361-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+            </a>
+        </div>
+        <p style="margin-top: 2rem;">&copy; 2024 Oceanside Hair Salon. All rights reserved.</p>
+        <p style="font-size: 0.8rem;">123 Ocean View Drive, Oceanside, CA 92054</p>
     </div>
+</footer>
 
-    <div class="container">
-<h2>The Art of Color in Oceanside</h2>
-<p>Hair color is not one-size-fits-all. It's an art form that requires a deep understanding of chemistry, skin tone, and lifestyle. Being in Oceanside, we specialize in "lived-in" color techniques that mimic the natural effects of the sun, giving you that effortless California glow.</p>
-<h3>Specialized Techniques</h3>
-<p><strong>Balayage:</strong> Our most requested service. We hand-paint highlights onto the hair to create a soft, natural gradation of lightness towards the ends. This technique allows for longer time between appointments as there is no harsh root line.</p>
-<p><strong>Color Correction:</strong> Did a home dye job go wrong? Or did another salon leave you with brassy orange tones? Our master colorists are experts in color correction. We safely remove unwanted pigments and restore your hair to the desired shade while maintaining its integrity.</p>
-<h3>Protecting Your Color</h3>
-<p>The Oceanside sun and ocean salt can fade hair color quickly. That's why we use premium color lines enriched with UV filters and conditioning agents. We also provide a customized maintenance plan, recommending the right color-depositing shampoos to keep your tone fresh between visits.</p>
-        <div style="text-align: center;">
-            <h3>Ready for a fresh look?</h3>
-            <a href="/contact/" class="cta-btn">Book Your Appointment</a>
+<div id="contactModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 style="color: var(--primary-color); margin-bottom: 15px;">Get in Touch</h2>
+        <p>Ready to transform your look? Book your appointment now.</p>
+        <div style="margin-top: 20px; text-align: left; display: inline-block;">
+            <p style="margin-bottom: 10px;">
+                <strong>📧 Email:</strong><br>
+                <a href="mailto:Oceansidehairsalon@gmail.com" style="color: var(--primary-color); text-decoration: none; font-size: 1.1rem;">
+                    Oceansidehairsalon@gmail.com
+                </a>
+            </p>
+            <p>
+                <strong>📞 Phone:</strong><br>
+                <a href="tel:+16469803726" style="color: var(--primary-color); text-decoration: none; font-size: 1.1rem; font-weight: bold;">
+                    +1 (646) 980-3726
+                </a>
+            </p>
         </div>
     </div>
+</div>
 
-    <footer style="background: var(--primary-color); color: white; text-align: center; padding: 20px; margin-top: 50px;">
-        <p>&copy; 2024 Oceanside Hair Salon. All rights reserved.</p>
-        <p>123 Ocean View Drive, Oceanside, CA 92054</p>
-    </footer>
+<script>
+    // Modal Script
+    var modal = document.getElementById("contactModal");
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function() { modal.style.display = "none"; }
+    window.onclick = function(event) {
+        if (event.target == modal) { modal.style.display = "none"; }
+    }
+</script>
 
 </body>
 </html>
