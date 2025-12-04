@@ -16,92 +16,158 @@
     <link rel="canonical" href="https://oceansidehairsalon.com/contact/" />
     
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* --- Dropdown Menu CSS --- */
-.navbar {
-    display: flex;
-    justify-content: center;
-    background-color: var(--primary-color); /* تأكد أنك معرف هذا المتغير أو استخدم #005f73 */
-    padding: 1rem;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.navbar a, .dropbtn {
-    font-family: 'Lato', sans-serif;
-    font-weight: bold;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-    border: none;
-    background: none;
-    cursor: pointer;
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 200px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    text-align: left;
-    border-top: 3px solid var(--secondary-color);
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    font-size: 15px;
-}
-
-.dropdown-content a:hover {background-color: #f1f1f1; color: var(--primary-color);}
-.dropdown:hover .dropdown-content {display: block;}
-.navbar a:hover, .dropdown:hover .dropbtn {background-color: var(--secondary-color); border-radius: 4px;}
-
-/* Mobile responsiveness adjustment */
-@media screen and (max-width: 600px) {
-    .navbar { flex-direction: column; }
-    .dropdown-content { position: relative; }
-}
-        :root { --primary: #005f73; --secondary: #0a9396; --bg: #f4f7f6; --text: #333; }
-        body { font-family: 'Lato', sans-serif; margin: 0; background: var(--bg); color: var(--text); }
-        h1, h2 { font-family: 'Playfair Display', serif; color: var(--primary); }
-        
-        header { 
-            background: var(--primary); color: white; padding: 3rem 1rem; text-align: center; 
+        /* --- CSS Variables & Reset --- */
+        :root {
+            --primary-color: #005f73;
+            --secondary-color: #0a9396;
+            --accent-color: #e9d8a6;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --bg-light: #f4f7f6;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Lato', sans-serif;
         }
-        
-        .container { max-width: 900px; margin: 2rem auto; padding: 0 1rem; display: flex; flex-wrap: wrap; gap: 2rem; }
-        .info-box { flex: 1; min-width: 300px; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        
-        .map-container { flex: 1; min-width: 300px; height: 400px; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            line-height: 1.8;
+            background-color: var(--bg-light);
+        }
+        h1, h2, h3 { font-family: var(--font-heading); }
+
+        /* --- Navbar Styles --- */
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 95, 115, 0.85);
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 1rem 0;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+        .navbar a, .navbar .dropbtn {
+            font-family: 'Lato', sans-serif;
+            font-weight: bold;
+            font-size: 17px;
+            color: white !important;
+            background-color: transparent !important;
+            border: none !important;
+            padding: 14px 20px;
+            text-decoration: none !important;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            outline: none;
+        }
+        .navbar a:hover, .navbar .dropdown:hover .dropbtn {
+            color: var(--secondary-color) !important;
+            transform: translateY(-2px);
+        }
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #ffffff;
+            min-width: 220px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-top: 3px solid var(--secondary-color);
+            text-align: left;
+            border-radius: 4px;
+        }
+        .dropdown-content a {
+            color: #333 !important;
+            padding: 12px 16px;
+            display: block;
+            font-weight: normal;
+            font-size: 15px;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1 !important;
+            color: var(--primary-color) !important;
+        }
+        .dropdown:hover .dropdown-content { display: block; }
+
+        /* --- Header / Hero Section --- */
+        header {
+            background: linear-gradient(rgba(0, 95, 115, 0.7), rgba(10, 147, 150, 0.7)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 50vh; /* Slightly smaller for contact page */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--text-light);
+            padding: 20px;
+            padding-top: 80px;
+        }
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* --- Contact Page Specifics --- */
+        .container { 
+            max-width: 1000px; 
+            margin: -50px auto 50px; /* Overlap effect */
+            padding: 0 20px; 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 30px; 
+            position: relative; 
+            z-index: 10;
+        }
+        .info-box { 
+            flex: 1; 
+            min-width: 300px; 
+            background: white; 
+            padding: 40px; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+        }
+        .map-container { 
+            flex: 1; 
+            min-width: 300px; 
+            height: 450px; 
+            border-radius: 8px; 
+            overflow: hidden; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+        }
         iframe { width: 100%; height: 100%; border: 0; }
         
-        .contact-item { margin-bottom: 1.5rem; }
-        .contact-label { font-weight: bold; color: var(--secondary); display: block; margin-bottom: 5px; }
-        
-        .nav-link { text-decoration: none; color: white; font-weight: bold; border: 1px solid white; padding: 10px 20px; border-radius: 20px; transition: 0.3s; }
-        .nav-link:hover { background: white; color: var(--primary); }
-        .back-link { display: block; margin: 20px auto; text-align: center; color: var(--secondary); text-decoration: none; font-weight: bold; }
+        .contact-item { margin-bottom: 2rem; border-bottom: 1px solid #eee; padding-bottom: 1rem; }
+        .contact-item:last-child { border-bottom: none; }
+        .contact-label { font-weight: bold; color: var(--primary-color); display: block; margin-bottom: 5px; font-size: 1.1rem; }
+        .contact-item p { margin: 0; color: #555; }
+
+        /* --- Footer --- */
+        footer { background-color: var(--primary-color); color: var(--text-light); text-align: center; padding: 2rem; margin-top: 4rem; }
+        .social-container { margin-top: 20px; display: flex; justify-content: center; gap: 20px; }
+        .social-icon { width: 30px; height: 30px; fill: var(--text-light); transition: all 0.3s ease; }
+        .social-icon:hover { fill: var(--accent-color); transform: translateY(-3px); }
+
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; position: relative; background-color: var(--primary-color); }
+            header { height: auto; min-height: 40vh; }
+            .container { margin-top: 20px; flex-direction: column; }
+        }
     </style>
 </head>
 <body>
 
-<header style="padding: 0; background: none;">
+<header>
     <div class="navbar">
         <a href="/">Home</a>
-
         <div class="dropdown">
             <button class="dropbtn">Services ▾</button>
             <div class="dropdown-content">
@@ -112,7 +178,6 @@
                 <a href="/services/bridal-styling/">Bridal & Special Occasions</a>
             </div>
         </div>
-
         <div class="dropdown">
             <button class="dropbtn">About Us ▾</button>
             <div class="dropdown-content">
@@ -120,19 +185,21 @@
                 <a href="/contact/">Contact Us & Location</a>
             </div>
         </div>
-
         <a href="/blog/">Blog</a>
     </div>
+
+    <h1>Contact Us</h1>
+    <p>We'd love to hear from you. Stop by or give us a call.</p>
 </header>
 
 <div class="container">
     
     <div class="info-box">
-        <h2>Contact Information</h2>
+        <h2 style="color: var(--primary-color); margin-bottom: 30px;">Get in Touch</h2>
         
         <div class="contact-item">
-            <span class="contact-label">📍 Service Area</span>
-            <p>Oceanside, CA 92054<br>(Serving Oceanside & North County)</p>
+            <span class="contact-label">📍 Location</span>
+            <p>401 Mission Ave<br>Oceanside, CA 92054</p>
         </div>
 
         <div class="contact-item">
@@ -144,28 +211,41 @@
 
         <div class="contact-item">
             <span class="contact-label">📧 Email</span>
-            <p>oceansidehairsalon@gmail.com</p>
+            <p><a href="mailto:oceansidehairsalon@gmail.com" style="color: var(--secondary-color); text-decoration: none;">oceansidehairsalon@gmail.com</a></p>
         </div>
 
         <div class="contact-item">
             <span class="contact-label">📱 Phone</span>
-            <p><em>+1(646)980-3726</em></p>
+            <p><a href="tel:+16469803726" style="color: var(--secondary-color); text-decoration: none; font-weight: bold; font-size: 1.1rem;">+1 (646) 980-3726</a></p>
         </div>
     </div>
 
     <div class="map-container">
         <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d53454.43714697223!2d-117.3794762!3d33.1958696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dc655b3823725b%3A0x6295772643574765!2sOceanside%2C%20CA!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" 
-            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d107193.91684704085!2d-117.3794833!3d33.1958696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dc655e69455555%3A0x6f332030f242030!2sOceanside%2C%20CA!5e0!3m2!1sen!2sus!4v1625680000000!5m2!1sen!2sus" 
+            allowfullscreen="" loading="lazy">
         </iframe>
     </div>
 
 </div>
 
-<a href="/" class="back-link">← Back to Home Page</a>
-
-<footer style="text-align: center; padding: 2rem; background: var(--primary); color: white;">
-    <p>&copy; 2024 Oceanside Hair Salon</p>
+<footer>
+    <div style="max-width: 1200px; margin: 0 auto;">
+        <div class="social-container">
+            <a href="https://www.facebook.com/profile.php?id=61583963957390" target="_blank" aria-label="Visit our Facebook">
+                <svg class="social-icon" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+            </a>
+            <a href="https://www.instagram.com/oceanside_hair_salon" target="_blank" aria-label="Visit our Instagram">
+                <svg class="social-icon" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.36-.2 6.78-2.618 6.98-6.98.058-1.28.072-1.689.072-4.948 0-3.259-.014-3.667-.072-4.947-.2-4.361-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+            </a>
+        </div>
+        <p style="margin-top: 2rem;">&copy; 2024 Oceanside Hair Salon. All rights reserved.</p>
+        <p style="font-size: 0.8rem;">123 Ocean View Drive, Oceanside, CA 92054</p>
+    </div>
 </footer>
 
 </body>
