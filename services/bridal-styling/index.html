@@ -11,21 +11,50 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bridal & Wedding Hair in Oceanside, CA | Special Occasions</title>
-    <meta name="description" content="Expert wedding hair styling in Oceanside. From bridal updos to beach waves. On-site and in-salon services for your special day. Book a trial now.">
+    <title>Bridal & Wedding Hair in Oceanside, CA | On-Site Styling & Updos</title>
+    <meta name="description" content="Expert bridal hair styling in Oceanside. From bohemian beach waves to classic updos. On-site services available for your wedding day. Book your trial today.">
+    <meta name="keywords" content="Oceanside wedding hair, bridal stylist, wedding updo, beach wedding hair, bridal hair trial, Oceanside CA">
     <link rel="canonical" href="https://oceansidehairsalon.com/services/bridal-styling/" />
     
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
     
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Bridal Hair Styling",
+      "provider": {
+        "@type": "HairSalon",
+        "name": "Oceanside Hair Salon",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "401 Mission Ave",
+          "addressLocality": "Oceanside",
+          "addressRegion": "CA",
+          "postalCode": "92054",
+          "addressCountry": "US"
+        },
+        "telephone": "+1-646-980-3726"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Oceanside"
+      },
+      "description": "Professional wedding hair styling, updos, and bridal party services."
+    }
+    </script>
+
     <style>
-        /* --- CSS Variables & Reset --- */
+        /* --- CSS Reset & Variables --- */
         :root {
             --primary-color: #005f73;
             --secondary-color: #0a9396;
             --accent-color: #e9d8a6;
             --text-dark: #333333;
             --text-light: #ffffff;
-            --bg-light: #f4f7f6;
+            --bg-light: #f8f9fa;
             --font-heading: 'Playfair Display', serif;
             --font-body: 'Lato', sans-serif;
         }
@@ -36,71 +65,69 @@
             line-height: 1.8;
             background-color: var(--bg-light);
         }
-        h1, h2, h3 { font-family: var(--font-heading); }
-
-        /* --- Navbar Styles --- */
+        h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--primary-color); }
+        p { margin-bottom: 20px; font-size: 1.05rem; }
+        
+        /* --- Navbar --- */
         .navbar {
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: rgba(0, 95, 115, 0.85);
+            background-color: rgba(0, 95, 115, 0.95);
             width: 100%;
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             padding: 1rem 0;
             z-index: 1000;
             backdrop-filter: blur(5px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         .navbar a, .navbar .dropbtn {
             font-family: 'Lato', sans-serif;
             font-weight: bold;
-            font-size: 17px;
+            font-size: 16px;
             color: white !important;
             background-color: transparent !important;
             border: none !important;
-            padding: 14px 20px;
+            padding: 10px 20px;
             text-decoration: none !important;
             cursor: pointer;
             transition: all 0.3s ease;
-            display: inline-block;
-            outline: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        .navbar a:hover, .navbar .dropdown:hover .dropbtn {
-            color: var(--secondary-color) !important;
-            transform: translateY(-2px);
-        }
+        .navbar a:hover, .navbar .dropdown:hover .dropbtn { color: var(--accent-color) !important; }
         .dropdown { position: relative; display: inline-block; }
         .dropdown-content {
             display: none;
             position: absolute;
             background-color: #ffffff;
             min-width: 220px;
-            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.15);
             z-index: 1;
-            border-top: 3px solid var(--secondary-color);
-            text-align: left;
-            border-radius: 4px;
+            border-top: 4px solid var(--secondary-color);
         }
         .dropdown-content a {
             color: #333 !important;
-            padding: 12px 16px;
+            padding: 14px 16px;
             display: block;
             font-weight: normal;
-            font-size: 15px;
+            font-size: 14px;
+            text-transform: none;
+            border-bottom: 1px solid #eee;
         }
-        .dropdown-content a:hover {
-            background-color: #f1f1f1 !important;
-            color: var(--primary-color) !important;
-        }
+        .dropdown-content a:last-child { border-bottom: none; }
+        .dropdown-content a:hover { background-color: #f1f1f1 !important; color: var(--primary-color) !important; }
         .dropdown:hover .dropdown-content { display: block; }
 
-        /* --- Header / Hero Section --- */
+        /* --- Hero Section --- */
         header {
-            background: linear-gradient(rgba(0, 95, 115, 0.7), rgba(10, 147, 150, 0.7)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            /* استخدام صورة العروس من المجلد */
+            background: linear-gradient(rgba(0, 95, 115, 0.5), rgba(10, 147, 150, 0.5)), url('/images/bridal-styling/bridal-wedding-hair-stylist-oceanside.jpg');
             background-size: cover;
             background-position: center;
-            height: 60vh;
+            height: 75vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -108,134 +135,296 @@
             text-align: center;
             color: var(--text-light);
             padding: 20px;
-            padding-top: 80px;
+            margin-top: 0;
         }
         header h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+            letter-spacing: 2px;
         }
         header p {
-            font-size: 1.2rem;
-            font-weight: 300;
-            letter-spacing: 1px;
-            max-width: 600px;
+            font-size: 1.4rem;
+            font-weight: 400;
+            max-width: 800px;
+            margin-bottom: 2.5rem;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
         }
 
-        /* --- Content Container --- */
-        .page-container {
-            max-width: 900px;
-            margin: -50px auto 50px;
-            padding: 40px;
+        /* --- Layout --- */
+        .container {
+            max-width: 1100px;
+            margin: -80px auto 50px;
+            padding: 60px;
             background: white;
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
             position: relative;
             z-index: 10;
         }
-        .page-container h2 { color: var(--primary-color); margin-top: 0; }
-        .page-container h3 { color: var(--secondary-color); margin-top: 2rem; }
-        .page-container ul { margin-left: 20px; margin-bottom: 20px; }
-        .page-container li { margin-bottom: 10px; }
+
+        /* --- Sections --- */
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { font-size: 2.5rem; position: relative; display: inline-block; padding-bottom: 15px; }
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: var(--secondary-color);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
         
-        /* Highlighting Strong tags */
-        .page-container strong { color: var(--primary-color); }
+        .feature-row { display: flex; gap: 50px; margin-bottom: 60px; align-items: center; }
+        .feature-text { flex: 1; }
+        .feature-img { flex: 1; height: 400px; }
+        .feature-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+
+        /* --- Service List --- */
+        .service-list { list-style: none; padding: 0; }
+        .service-list li {
+            background: #fff;
+            margin-bottom: 25px;
+            padding: 30px;
+            border-left: 5px solid var(--secondary-color);
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            transition: all 0.3s;
+        }
+        .service-list li:hover { transform: translateX(10px); box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
+        .service-list h3 { margin-bottom: 12px; font-size: 1.5rem; }
+
+        /* --- Timeline Steps --- */
+        .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; text-align: center; margin: 60px 0; }
+        .process-step { padding: 25px; background: #f8f9fa; border-radius: 10px; transition: 0.3s; }
+        .process-step:hover { background: #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transform: translateY(-5px); }
+        .step-number { font-size: 1.5rem; color: var(--accent-color); font-weight: bold; display: block; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- Gallery Grid --- */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px; }
+        .gallery-item img { width: 100%; height: 350px; object-fit: cover; border-radius: 8px; transition: transform 0.4s; }
+        .gallery-item img:hover { transform: scale(1.02); }
+
+        /* --- FAQ Accordion --- */
+        .faq-container { margin-top: 40px; }
+        .faq-item { border-bottom: 1px solid #ddd; }
+        .faq-question {
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: left;
+            padding: 25px 0;
+            font-size: 1.15rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-answer { display: none; padding-bottom: 25px; color: #555; line-height: 1.7; }
+        .faq-item.active .faq-answer { display: block; }
+        .faq-item.active .faq-question { color: var(--secondary-color); }
 
         /* --- Buttons --- */
-        .btn-contact {
+        .btn-primary {
             background-color: var(--primary-color);
-            color: var(--text-light);
-            padding: 15px 40px;
-            font-size: 1.1rem;
+            color: white;
+            padding: 18px 50px;
+            font-size: 1.2rem;
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: bold;
             display: inline-block;
-            text-decoration: none;
-            margin-top: 20px;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,95,115,0.3);
         }
-        .btn-contact:hover { background-color: var(--secondary-color); color: white; }
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(10,147,150,0.4);
+        }
 
-        /* --- Modal & Footer --- */
-        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5); animation: fadeIn 0.4s; }
-        .modal-content { background-color: #fefefe; margin: 15% auto; padding: 30px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 10px; text-align: center; position: relative; }
-        .close { color: #aaa; float: right; font-size: 28px; font-weight: bold; position: absolute; right: 20px; top: 10px; cursor: pointer; }
-        
-        footer { background-color: var(--primary-color); color: var(--text-light); text-align: center; padding: 2rem; margin-top: 4rem; }
-        .social-container { margin-top: 20px; display: flex; justify-content: center; gap: 20px; }
-        .social-icon { width: 30px; height: 30px; fill: var(--text-light); transition: all 0.3s ease; }
-        .social-icon:hover { fill: var(--accent-color); transform: translateY(-3px); }
+        /* --- Footer & Socials (As Requested) --- */
+        .social-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .social-icon {
+            width: 30px;
+            height: 30px;
+            fill: white; /* تأكد أن الأيقونات بيضاء لتظهر على الخلفية الداكنة */
+            transition: all 0.3s ease;
+        }
+        .social-icon:hover {
+            fill: var(--accent-color);
+            transform: translateY(-3px);
+        }
 
+        /* --- Responsive --- */
         @media (max-width: 768px) {
             .navbar { flex-direction: column; position: relative; background-color: var(--primary-color); }
-            header { height: auto; min-height: 50vh; }
-            .page-container { margin: 20px; padding: 20px; }
+            header { height: auto; min-height: 50vh; padding-top: 40px; }
+            .container { margin: 0; padding: 30px 20px; width: 100%; border-radius: 0; }
+            .feature-row { flex-direction: column; }
+            .feature-img { height: 250px; }
+            header h1 { font-size: 2.5rem; }
         }
-        @keyframes fadeIn { from {opacity: 0} to {opacity: 1} }
+
+        /* --- Modal --- */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); backdrop-filter: blur(4px); }
+        .modal-content { background-color: #fff; margin: 10% auto; padding: 50px; border-radius: 8px; width: 90%; max-width: 600px; text-align: center; position: relative; box-shadow: 0 15px 35px rgba(0,0,0,0.3); }
+        .close { color: #aaa; float: right; font-size: 32px; font-weight: bold; position: absolute; right: 20px; top: 15px; cursor: pointer; transition: 0.3s; }
+        .close:hover { color: var(--primary-color); }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="navbar">
-        <a href="/">Home</a>
-        <div class="dropdown">
-            <button class="dropbtn">Services ▾</button>
-            <div class="dropdown-content">
-                <a href="/services/womens-haircuts/">Women's Haircuts & Styling</a>
-                <a href="/services/mens-grooming/">Men's Grooming & Fades</a>
-                <a href="/services/hair-coloring/">Hair Coloring & Balayage</a>
-                <a href="/services/hair-treatments/">Hair Treatments (Repair)</a>
-                <a href="/services/bridal-styling/">Bridal & Special Occasions</a>
-            </div>
+<nav class="navbar">
+    <a href="/">Home</a>
+    <div class="dropdown">
+        <button class="dropbtn">Services ▾</button>
+        <div class="dropdown-content">
+            <a href="/services/womens-haircuts/">Women's Haircuts & Styling</a>
+            <a href="/services/mens-grooming/">Men's Grooming & Fades</a>
+            <a href="/services/hair-coloring/">Hair Coloring & Balayage</a>
+            <a href="/services/hair-treatments/">Hair Treatments</a>
+            <a href="/services/bridal-styling/">Bridal & Special Occasions</a>
         </div>
-        <div class="dropdown">
-            <button class="dropbtn">About Us ▾</button>
-            <div class="dropdown-content">
-               <a href="/prices/">Price List</a>
-                <a href="/contact/">Contact Us & Location</a>
-            </div>
-        </div>
-        <a href="/blog/">Blog</a>
     </div>
+    <div class="dropdown">
+        <button class="dropbtn">About Us ▾</button>
+        <div class="dropdown-content">
+            <a href="/prices/">Price List</a>
+            <a href="/contact/">Contact Us & Location</a>
+        </div>
+    </div>
+    <a href="/blog/">Blog</a>
+</nav>
 
+<header>
     <h1>Bridal & Special Occasions</h1>
-    <p>Your dream wedding hair starts here. On-site and in-salon services.</p>
-    <br>
-    <button class="btn-contact" onclick="document.getElementById('contactModal').style.display='block'">Book Consultation</button>
+    <p>Say "I Do" to perfect hair. Elegant styling for your most memorable moments in Oceanside.</p>
+    <button class="btn-primary" onclick="openModal()">Reserve Your Date</button>
 </header>
 
-<div class="page-container">
-    <h2>Your Dream Wedding Hair</h2>
-    <p>Oceanside is a premier wedding destination, with its beautiful beaches and resorts. If you are getting married here, you need a style that holds up against the ocean breeze and lasts from the first photo to the last dance. Our bridal team specializes in long-lasting, photogenic styling.</p>
-
-    <h3>Services for the Bride & Party</h3>
-    <p>We offer on-site styling (we come to your venue) or in-salon parties. Our services include:</p>
-    <ul>
-        <li><strong>Bridal Trials:</strong> We recommend a trial run 4-6 weeks before the wedding. We test different looks to find the perfect match for your dress and veil.</li>
-        <li><strong>Updos & Chignons:</strong> Classic, elegant styles that keep hair off your neck and secure against the wind.</li>
-        <li><strong>Boho Waves & Braids:</strong> Soft, romantic styles that fit the relaxed beach wedding vibe perfectly.</li>
-        <li><strong>Bridesmaids & Flower Girls:</strong> Cohesive looks for your entire bridal party.</li>
-    </ul>
-    <p>We recommend booking your wedding date at least 3-6 months in advance as our weekends fill up quickly during the wedding season.</p>
-
-    <h3>The "Oceanside Finish" Blowout</h3>
-    <p>No haircut is complete without a professional finish. Our signature blowout includes the use of humidity-resistant products that seal the cuticle and provide shine that lasts for days. Whether you want volume, stick-straight sleekness, or bouncy curls, you'll leave our salon feeling runway-ready.</p>
-
-    <h3>Why Choose Us?</h3>
-    <p>Our team undergoes continuous training to stay updated with the latest trends from Los Angeles and New York, bringing high-end styling to our local Oceanside community. We use only premium, sulfate-free shampoos and conditioners during your wash to protect your hair's health.</p>
-
-    <div style="text-align: center; margin-top: 40px;">
-        <h3>Planning your big day?</h3>
-        <button class="btn-contact" onclick="document.getElementById('contactModal').style.display='block'">Book Your Appointment</button>
+<div class="container">
+    
+    <div class="section-header">
+        <h2>Your Dream Wedding Hair</h2>
     </div>
+    <div class="feature-row">
+        <div class="feature-text">
+            <p>Oceanside is a premier wedding destination, known for its stunning beaches, luxury resorts like the Seabird and Mission Pacific, and breathtaking sunsets. If you are getting married here, you need a hairstyle that not only looks breathtaking in photos but also holds up against the coastal breeze and lasts from the first look to the last dance.</p>
+            <p>Our specialized bridal team understands the nuances of beach wedding styling. We don't just pin your hair up; we sculpt it to complement your dress, your veil, and your unique personality. We specialize in long-lasting, photogenic styles that withstand humidity and wind, ensuring you look flawless all day long.</p>
+            <p>Whether you are a local bride or planning a destination wedding in Oceanside, we offer a stress-free, luxurious experience to kick off your big day.</p>
+        </div>
+        <div class="feature-img">
+            <img src="/images/bridal-styling/wedding-hair-styling-curls.jpg" alt="Romantic Wedding Curls">
+        </div>
+    </div>
+
+    <div class="section-header">
+        <h2>Services for the Bride & Party</h2>
+    </div>
+    <ul class="service-list">
+        <li>
+            <h3>The Bridal Trial Run</h3>
+            <p>We strongly recommend a trial run 4-6 weeks before the wedding. This 90-minute session is crucial. We test different looks, adjust hair accessories, and find the perfect match for your veil. It gives us a chance to get to know your hair's texture and ensures there are no surprises on the big day.</p>
+        </li>
+        <li>
+            <h3>Classic Updos & Chignons</h3>
+            <p>Timeless, elegant, and secure. A classic low bun or sophisticated chignon keeps hair off your neck and secure against the ocean wind. Perfect for formal or black-tie beach weddings where you want a polished, red-carpet look.</p>
+        </li>
+        <li>
+            <h3>Boho Waves & Braids</h3>
+            <p>Soft, romantic, and perfectly imperfect. These styles fit the relaxed California vibe perfectly. We specialize in voluminous braids, fishtails, and loose "mermaid" waves that look effortless but are structurally sound to last all night. We love incorporating flowers, vines, and clips.</p>
+        </li>
+        <li>
+            <h3>Bridesmaids & Flower Girls</h3>
+            <p>We create cohesive looks for your entire bridal party that complement your style while allowing their individual personalities to shine. We ensure the timing flows smoothly so everyone is ready for photos on schedule.</p>
+        </li>
+        <li>
+            <h3>On-Site vs. In-Salon Styling</h3>
+            <p>We offer flexible options to suit your needs. We can bring our team to your hotel suite or wedding venue for ultimate convenience (travel fees apply), or you can host your bridal party in our salon, complete with mimosas and plenty of space to get ready.</p>
+        </li>
+    </ul>
+
+    <div class="section-header">
+        <h2>Bridal Hair Timeline</h2>
+    </div>
+    <p style="text-align: center; max-width: 700px; margin: 0 auto; margin-bottom: 40px;">Planning a wedding is stressful; your hair shouldn't be. Here is our recommended schedule for the perfect bridal look.</p>
+    <div class="process-grid">
+        <div class="process-step">
+            <span class="step-number">6-12 Months Out</span>
+            <h4>Book Your Date</h4>
+            <p>Secure your wedding date with us. Popular weekends fill up fast!</p>
+        </div>
+        <div class="process-step">
+            <span class="step-number">3-4 Months Out</span>
+            <h4>The Consultation</h4>
+            <p>Gather your inspiration photos (Pinterest/Instagram) and schedule your trial.</p>
+        </div>
+        <div class="process-step">
+            <span class="step-number">1-2 Weeks Out</span>
+            <h4>Prep & Color</h4>
+            <p>Get your final color touch-up and a trim to ensure ends are healthy and fresh.</p>
+        </div>
+        <div class="process-step">
+            <span class="step-number">The Big Day</span>
+            <h4>Relax & Glow</h4>
+            <p>Arrive with dry hair, wear a button-down shirt, and let us work our magic.</p>
+        </div>
+    </div>
+
+    <div class="section-header">
+        <h2>Wedding Inspiration</h2>
+    </div>
+    <div class="feature-row" style="gap: 15px; margin-bottom: 0;">
+        <div style="flex: 1;"><img src="/images/bridal-styling/boho-braided-wedding-hair-oceanside.jpg" alt="Boho Braided Hair" style="width:100%; height:300px; object-fit:cover; border-radius:4px;"></div>
+        <div style="flex: 1;"><img src="/images/bridal-styling/bridal-hair-updo-with-veil.jpg" alt="Classic Bridal Updo" style="width:100%; height:300px; object-fit:cover; border-radius:4px;"></div>
+        <div style="flex: 1;"><img src="/images/bridal-styling/wedding-hair-styling-curls.jpg" alt="Wedding Curls" style="width:100%; height:300px; object-fit:cover; border-radius:4px;"></div>
+    </div>
+
+    <div class="section-header" style="margin-top: 60px;">
+        <h2>Bridal FAQ</h2>
+    </div>
+    <div class="faq-container">
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">How should I prep my hair for the wedding day? <span>+</span></button>
+            <div class="faq-answer">Please arrive with clean, dry hair. Washing it the night before is usually best, as day-old hair holds curls and pins better than freshly washed hair. Avoid flat irons before your appointment.</div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">Do you provide hair extensions? <span>+</span></button>
+            <div class="faq-answer">We can install clip-in extensions if you provide them (we can recommend brands!). For semi-permanent extensions (tape-ins or wefts), please book a consultation at least 2 weeks prior.</div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">Is there a travel fee for on-site styling? <span>+</span></button>
+            <div class="faq-answer">Yes, for on-site services at hotels or venues in Oceanside/Carlsbad, there is a standard travel fee. Locations further afield may require an additional mileage charge.</div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">How long does bridal hair take? <span>+</span></button>
+            <div class="faq-answer">We typically allocate 60-90 minutes for the bride and 45 minutes for each bridesmaid or mother of the bride to ensure no one is rushed.</div>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 80px; margin-bottom: 20px;">
+        <h3 style="font-size: 2rem;">Let's Make Your Day Beautiful</h3>
+        <p>Dates for the wedding season are limited. Contact our bridal coordinator today.</p>
+        <button class="btn-primary" onclick="openModal()">Inquire About Your Date</button>
+    </div>
+
 </div>
 
-<footer>
+<footer style="background-color: var(--primary-color); color: white; text-align: center; padding: 2rem; margin-top: 4rem;">
     <div style="max-width: 1200px; margin: 0 auto;">
         <div class="social-container">
             <a href="https://www.facebook.com/profile.php?id=61583963957390" target="_blank" aria-label="Visit our Facebook">
@@ -250,39 +439,40 @@
             </a>
         </div>
         <p style="margin-top: 2rem;">&copy; 2024 Oceanside Hair Salon. All rights reserved.</p>
-        <p style="font-size: 0.8rem;">123 Ocean View Drive, Oceanside, CA 92054</p>
+        <p style="font-size: 0.8rem;">401 Mission Ave, Oceanside, CA 92054</p>
     </div>
 </footer>
 
 <div id="contactModal" class="modal">
     <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2 style="color: var(--primary-color); margin-bottom: 15px;">Get in Touch</h2>
-        <p>Ready to transform your look? Book your appointment now.</p>
-        <div style="margin-top: 20px; text-align: left; display: inline-block;">
-            <p style="margin-bottom: 10px;">
-                <strong>📧 Email:</strong><br>
-                <a href="mailto:Oceansidehairsalon@gmail.com" style="color: var(--primary-color); text-decoration: none; font-size: 1.1rem;">
-                    Oceansidehairsalon@gmail.com
-                </a>
-            </p>
-            <p>
-                <strong>📞 Phone:</strong><br>
-                <a href="tel:+16469803726" style="color: var(--primary-color); text-decoration: none; font-size: 1.1rem; font-weight: bold;">
-                    +1 (646) 980-3726
-                </a>
-            </p>
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2 style="color: var(--primary-color); margin-bottom: 15px;">Book Your Visit</h2>
+        <p>Ready for a fresh look? We'd love to see you.</p>
+        <div style="margin-top: 25px; text-align: left; background: #f9f9f9; padding: 20px; border-radius: 8px;">
+            <p><strong>📞 Phone:</strong> <a href="tel:+16469803726" style="color: var(--primary-color); font-weight: bold; text-decoration: none;">+1 (646) 980-3726</a></p>
+            <p><strong>📧 Email:</strong> <a href="mailto:oceansidehairsalon@gmail.com" style="color: var(--primary-color); text-decoration: none;">oceansidehairsalon@gmail.com</a></p>
+            <p><strong>📍 Address:</strong> 401 Mission Ave, Oceanside, CA 92054</p>
         </div>
+        <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">Please call or email us with your preferred date and time.</p>
     </div>
 </div>
 
 <script>
-    // Modal Script
+    // Modal Logic
     var modal = document.getElementById("contactModal");
-    var span = document.getElementsByClassName("close")[0];
-    span.onclick = function() { modal.style.display = "none"; }
-    window.onclick = function(event) {
-        if (event.target == modal) { modal.style.display = "none"; }
+    function openModal() { modal.style.display = "block"; }
+    function closeModal() { modal.style.display = "none"; }
+    window.onclick = function(event) { if (event.target == modal) { closeModal(); } }
+
+    // FAQ Accordion Logic
+    function toggleFaq(element) {
+        element.parentElement.classList.toggle('active');
+        var span = element.querySelector('span');
+        if (element.parentElement.classList.contains('active')) {
+            span.textContent = '-';
+        } else {
+            span.textContent = '+';
+        }
     }
 </script>
 
