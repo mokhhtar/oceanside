@@ -1,38 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- الصفحة الرئيسية -->
   <url>
     <loc>https://oceansidehairsalon.com/</loc>
-    <lastmod>2025-11-20</lastmod>
+    <lastmod>2025-12-06</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+
+  <!-- صفحة الخدمات الرئيسية -->
+  <url>
+    <loc>https://oceansidehairsalon.com/services/</loc>
+    <lastmod>2025-12-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- خدمات فرعية (أهم صفحات الموقع) -->
+  <url>
+    <loc>https://oceansidehairsalon.com/services/womens-haircuts/</loc>
+    <lastmod>2025-12-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://oceansidehairsalon.com/services/mens-grooming/</loc>
+    <lastmod>2025-12-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://oceansidehairsalon.com/services/hair-coloring/</loc>
+    <lastmod>2025-12-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://oceansidehairsalon.com/services/hair-treatments/</loc>
+    <lastmod>2025-12-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://oceansidehairsalon.com/services/bridal-styling/</loc>
+    <lastmod>2025-12-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- صفحات مهمة أخرى -->
+  <url>
+    <loc>https://oceansidehairsalon.com/prices/</loc>
+    <lastmod>2025-12-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://oceansidehairsalon.com/contact/</loc>
+    <lastmod>2025-12-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://oceansidehairsalon.com/testimonials/</loc>
+    <lastmod>2025-12-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://oceansidehairsalon.com/privacy-policy/</loc>
+    <lastmod>2025-12-06</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- مدونة (Blog) -->
+  <url>
+    <loc>https://oceansidehairsalon.com/blog/</loc>
+    <lastmod>2025-12-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://oceansidehairsalon.com/blog/best-hair-salons-oceanside-2025/</loc>
     <lastmod>2025-11-20</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://oceansidehairsalon.com/blog/haircut-prices-oceanside/</loc>
     <lastmod>2025-11-20</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://oceansidehairsalon.com/blog/mens-womens-haircut-styles-oceanside/</loc>
     <lastmod>2025-11-20</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://oceansidehairsalon.com/blog/5-signs-hair-treatment-oceanside/</loc>
     <lastmod>2025-11-27</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://oceansidehairsalon.com/services/</loc>
-    <lastmod>2025-11-27</lastmod>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://oceansidehairsalon.com/contact/</loc>
-    <lastmod>2025-11-27</lastmod>
-    <priority>0.8</priority>
-  </url>
+
 </urlset>
