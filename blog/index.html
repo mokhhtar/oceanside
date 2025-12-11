@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EXJZHLZJ4C"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-EXJZHLZJ4C');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog & Hair Tips | Oceanside Hair Salon</title>
+    <meta name="description" content="Expert hair care tips, styling trends, and local Oceanside salon insights from your trusted coastal hair experts.">
+    <link rel="canonical" href="https://oceansidehairsalon.com/blog/" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HairSalon",
+      "name": "Oceanside Hair Salon",
+      "image": "https://oceansidehairsalon.com/images/best-hair-salon-oceanside-interior.jpg",
+      "url": "https://oceansidehairsalon.com",
+      "telephone": "+16469803726",
+      "email": "oceansidehairsalon@gmail.com",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "401 Mission Ave",
+        "addressLocality": "Oceanside",
+        "addressRegion": "CA",
+        "postalCode": "92054",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 33.195087,
+        "longitude": -117.370918
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "09:00",
+          "closes": "19:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/profile.php?id=61583963957390",
+        "https://www.instagram.com/oceanside_hair_salon"
+      ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --primary-color: #005f73;
+            --secondary-color: #0a9396;
+            --accent-color: #e9d8a6;
+            --bg-light: #f4f7f6;
+            --text-dark: #333;
+            --text-light: #fff;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Lato', sans-serif;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:var(--font-body); color:var(--text-dark); line-height:1.6; background:var(--bg-light); }
+        h1,h2,h3 { font-family:var(--font-heading); }
+
+        /* Navbar موحد */
+        .navbar {
+            display:flex; justify-content:center; align-items:center;
+            background:rgba(0,95,115,0.95); width:100%; position:fixed; top:0; left:0;
+            padding:1rem 0; z-index:1000; backdrop-filter:blur(5px);
+            box-shadow:0 2px 10px rgba(0,0,0,0.1);
+        }
+        .navbar a, .navbar .dropbtn {
+            font-weight:bold; font-size:17px; color:white !important;
+            padding:14px 20px; text-decoration:none; background:transparent; border:none; cursor:pointer;
+        }
+        .navbar a:hover, .dropdown:hover .dropbtn { color:var(--secondary-color) !important; }
+        .dropdown { position:relative; display:inline-block; }
+        .dropdown-content {
+            display:none; position:absolute; background:#fff; min-width:240px;
+            box-shadow:0 8px 16px rgba(0,0,0,0.2); border-top:3px solid var(--secondary-color); z-index:1;
+        }
+        .dropdown-content a { color:#333 !important; padding:12px 16px; display:block; font-size:15px; }
+        .dropdown-content a:hover { background:#f1f1f1; color:var(--primary-color) !important; }
+        .dropdown:hover .dropdown-content { display:block; }
+
+        /* Hero Header */
+        header {
+            background:linear-gradient(rgba(0,95,115,0.7),rgba(10,147,150,0.7)), url('/images/blog/blog-hero.jpg');
+            background-size:cover; background-position:center; height:60vh;
+            display:flex; flex-direction:column; justify-content:center; align-items:center;
+            text-align:center; color:white; padding:20px; padding-top:100px;
+        }
+        header h1 { font-size:3.5rem; text-shadow:2px 2px 8px rgba(0,0,0,0.5); margin-bottom:0.5rem; }
+        header p { font-size:1.4rem; margin-bottom:2rem; }
+
+        .btn-contact {
+            background:var(--primary-color); color:white; padding:16px 44px;
+            border:none-comments; border-radius:50px; font-weight:bold; font-size:1.2rem;
+            cursor:pointer; transition:0.3s; text-decoration:none; display:inline-block;
+        }
+        .btn-contact:hover { background:var(--secondary-color); transform:scale(1.05); }
+
+        /* Blog Grid */
+        .container { max-width:1100px; margin:-80px auto 100px; padding:60px; background:white; border-radius:12px; box-shadow:0 10px 40px rgba(0,0,0,0.08); position:relative; z-index:10; }
+        .blog-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:40px; margin-top:40px; }
+        .blog-card { background:white; border-radius:12px; overflow:hidden; box-shadow:0 6px 20px rgba(0,0,0,0.07); transition:0.3s; }
+        .blog-card:hover { transform:translateY(-10px); box-shadow:0 15px 35px rgba(0,0,0,0.12); }
+        .blog-img { height:220px; overflow:hidden; }
+        .blog-img img { width:100%; height:100%; object-fit:cover; transition:0.4s; }
+        .blog-card:hover .blog-img img { transform:scale(1.08); }
+        .blog-content { padding:30px; }
+        .blog-content h3 { font-size:1.7rem; margin-bottom:12px; color:var(--primary-color); line-height:1.3; }
+        .blog-meta { color:#777; font-size:0.95rem; margin-bottom:15px; display:flex; gap:15px; flex-wrap:wrap; }
+        .blog-meta span { color:var(--secondary-color); font-weight:bold; }
+        .blog-excerpt { color:#555; margin:15px 0; line-height:1.7; }
+        .read-more { color:var(--primary-color); font-weight:bold; text-decoration:none; border-bottom:2px solid transparent; transition:0.3s; }
+        .read-more:hover { color:var(--secondary-color); border-bottom:2px solid var(--secondary-color); }
+
+        @media (max-width:768px) {
+            header { height:50vh; padding-top:120px; }
+            header h1 { font-size:2.8rem; }
+            .container { margin:-60px 15px 0; padding:40px 20px; }
+        }
+
+        /* Footer موحد */
+        footer { background-color:var(--primary-color); color:white; padding-top:4rem; font-family:'Lato',sans-serif; font-size:0.95rem; margin-top:5rem; }
+        .footer-container { max-width:1200px; margin:0 auto; padding:0 2rem; display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:3rem; text-align:left; }
+        .footer-col h3 { color:var(--accent-color); font-family:'Playfair Display',serif; font-size:1.8rem; margin-bottom:1rem; }
+        .footer-col h4 { color:white; margin-bottom:1.3rem; font-size:1.15rem; text-transform:uppercase; letter-spacing:1.2px; }
+        .footer-col p { color:rgba(255,255,255,0.85); line-height:1.7; margin-bottom:1rem; }
+        .footer-links { list-style:none; }
+        .footer-links li { margin-bottom:12px; }
+        .footer-links a { color:rgba(255,255,255,0.8); text-decoration:none; transition:all .3s ease; }
+        .footer-links a:hover { color:var(--accent-color); padding-left:8px; }
+        .contact-row { display:flex; align-items:flex-start; gap:12px; margin-bottom:18px; color:rgba(255,255,255,0.9); line-height:1.5; }
+        .contact-row a { color:rgba(255,255,255,0.9); text-decoration:none; }
+        .contact-row a:hover { color:var(--accent-color); }
+        .social-icons { display:flex; gap:18px; margin-top:20px; }
+        .social-icons a svg { width:26px; height:26px; fill:white; transition:all .3s ease; }
+        .social-icons a:hover svg { fill:var(--accent-color); transform:translateY(-4px); }
+        .footer-bottom { border-top:1px solid rgba(255,255,255,0.12); margin-top:3.5rem; padding:1.8rem 2rem; text-align:center; font-size:0.85rem; color:rgba(255,255,255,0.6); }
+        .footer-bottom a { color:rgba(255,255,255,0.6); text-decoration:none; }
+        .footer-bottom a:hover { color:var(--accent-color); }
+        @media (max-width:768px) { .footer-container { text-align:center; grid-template-columns:1fr; } .contact-row,.social-icons { justify-content:center; } }
+    </style>
+</head>
+<body>
+
+<!-- Navbar موحد -->
+<div class="navbar">
+    <a href="/">Home</a>
+    
+    <div class="dropdown">
+        <button class="dropbtn">Services</button>
+        <div class="dropdown-content">
+            <a href="/services/womens-haircuts/">Women's Haircuts</a>
+            <a href="/services/mens-grooming/">Men's Grooming</a>
+            <a href="/services/hair-coloring/">Hair Coloring</a>
+            <a href="/services/hair-treatments/">Treatments</a>
+            <a href="/services/bridal-styling/">Bridal Styling</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn">About Us</button>
+        <div class="dropdown-content">
+            <a href="/prices/">Price List</a>
+            <a href="/testimonials/">Client Reviews</a>
+            <a href="/contact/">Contact Us & Location</a>
+        </div>
+    </div>
+
+    <a href="/blog/">Blog</a>
+</div>
+
+<header>
+    <h1>Blog & Hair Tips</h1>
+    <p>Expert advice, styling trends, and behind-the-scenes from Oceanside Hair Salon</p>
+    <a href="https://booksy.com/en-us/1652685_oceanside-hair-salon_hair-salon_103753_oceanside" target="_blank" class="btn-contact">Book Appointment</a>
+</header>
+
+<div class="container">
+    <div class="blog-grid">
+
+        <!-- مقالة 1 -->
+        <div class="blog-card">
+            <a href="/blog/best-hair-salons-oceanside-2025/" class="blog-img">
+                <img src="/images/blog/best-salons-oceanside-2025.jpg" alt="Best Hair Salons in Oceanside 2025">
+            </a>
+            <div class="blog-content">
+                <h3>Top 5 Hair Salons in Oceanside for 2025</h3>
+                <div class="blog-meta">
+                    <span>November 20, 2025</span> • <span>8 min read</span>
+                </div>
+                <p class="blog-excerpt">
+                    Discover the best hair salons in Oceanside this year — from beachy balayage experts to precision haircut masters...
+                </p>
+                <a href="/blog/best-hair-salons-oceanside-2025/" class="read-more">Read More →</a>
+            </div>
+        </div>
+
+        <!-- مقالة 2 -->
+        <div class="blog-card">
+            <a href="/blog/haircut-prices-oceanside/" class="blog-img">
+                <img src="/images/blog/haircut-prices-oceanside.jpg" alt="Haircut Prices in Oceanside">
+            </a>
+            <div class="blog-content">
+                <h3>How Much Does a Haircut Cost in Oceanside? (2025 Prices)</h3>
+                <div class="blog-meta">
+                    <span>November 20, 2025</span> • <span>6 min read</span>
+                </div>
+                <p class="blog-excerpt">
+                    Complete price guide for women's and men's haircuts, coloring, treatments, and bridal services in Oceanside, CA...
+                </p>
+                <a href="/blog/haircut-prices-oceanside/" class="read-more">Read More →</a>
+            </div>
+        </div>
+
+        <!-- مقالة 3 -->
+        <div class="blog-card">
+            <a href="/blog/mens-womens-haircut-styles-oceanside/" class="blog-img">
+                <img src="/images/blog/mens-womens-styles-oceanside.jpg" alt="Best Haircut Styles 2025">
+            </a>
+            <div class="blog-content">
+                <h3>15 Hottest Men’s & Women’s Haircut Styles in Oceanside 2025</h3>
+                <div class="blog-meta">
+                    <span>November 20, 2025</span> • <span>10 min read</span>
+                </div>
+                <p class="blog-excerpt">
+                    From skin fades and curtain bangs to wolf cuts and textured bobs — see what everyone in Oceanside is wearing this year...
+                </p>
+                <a href="/blog/mens-womens-haircut-styles-oceanside/" class="read-more">Read More →</a>
+            </div>
+        </div>
+
+        <!-- مقالة 4 -->
+        <div class="blog-card">
+            <a href="/blog/5-signs-hair-treatment-oceanside/" class="blog-img">
+                <img src="/images/blog/hair-treatment-signs.jpg" alt="Signs You Need Hair Treatment">
+            </a>
+            <div class="blog-content">
+                <h3>5 Signs Your Hair Needs a Professional Treatment in Oceanside</h3>
+                <div class="blog-meta">
+                    <span>November 27, 2025</span> • <span>7 min read</span>
+                </div>
+                <p class="blog-excerpt">
+                    Living by the beach is hard on your hair. Here are the top signs it's time for Olaplex, Keratin, or a scalp detox...
+                </p>
+                <a href="/blog/5-signs-hair-treatment-oceanside/" class="read-more">Read More →</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Footer موحد -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-col">
+            <h3>Oceanside Hair Salon</h3>
+            <p>Experience precision styling and luxury care in the heart of Oceanside. We bring out the best version of you.</p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/profile.php?id=61583963957390" target="_blank" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/oceanside_hair_salon" target="_blank" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.36-.2 6.78-2.618 6.98-6.98.058-1.28.072-1.689.072-4.948 0-3.259-.014-3.667-.072-4.947-.2-4.361-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul class="footer-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/services/">All Services</a></li>
+                <li><a href="/prices/">Price List</a></li>
+                <li><a href="/testimonials/">Client Reviews</a></li>
+                <li><a href="/blog/">Blog & Tips</a></li>
+                <li><a href="/contact/" target="_blank">Book Appointment</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Find Us</h4>
+            <div class="contact-row"><span>Address</span><span>401 Mission Ave, Oceanside, CA 92054</span></div>
+            <div class="contact-row"><span>Phone</span><a href="tel:+16469803726">+1 (646) 980-3726</a></div>
+            <div class="contact-row"><span>Email</span><a href="mailto:oceansidehairsalon@gmail.com">oceansidehairsalon@gmail.com</a></div>
+            <div class="contact-row" style="align-items:flex-start;">
+                <span style="margin-top:5px;">Hours</span>
+                <div>
+                    <div>Mon - Fri: 9:00 AM - 7:00 PM</div>
+                    <div>Saturday: 9:00 AM - 5:00 PM</div>
+                    <div style="color:var(--accent-color);">Sunday: Closed</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        © 2025 Oceanside Hair Salon. All Rights Reserved. 
+        | <a href="/privacy-policy/">Privacy Policy</a>
+    </div>
+</footer>
+
+</body>
+</html>
