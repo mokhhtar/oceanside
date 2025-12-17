@@ -23,53 +23,245 @@
    <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "HairSalon",
-  "@id": "https://oceansidehairsalon.com/#hair-salon",
-  "name": "Oceanside Hair Salon",
-  "url": "https://oceansidehairsalon.com/",
-  "logo": "https://oceansidehairsalon.com/favicon.png",
-  "image": "https://oceansidehairsalon.com/favicon.png",
-  "priceRange": "$$",
-  "email": "oceansidehairsalon@gmail.com",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Oceanside",
-    "addressRegion": "CA",
-    "postalCode": "92054",
-    "addressCountry": "US"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 33.195087,
-    "longitude": -117.370918
-  },
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-      "opens": "09:00",
-      "closes": "19:00"
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": "Saturday",
-      "opens": "09:00",
-      "closes": "17:00"
-    }
-  ],
-  "sameAs": [
-    "https://www.facebook.com/profile.php?id=61583963957390",
-    "https://www.instagram.com/oceanside_hair_salon"
-  ]
-  "@context": "https://schema.org",
-  "@type": "PriceSpecification",
-  "name": "Hair Salon Prices",
-  "url": "https://oceansidehairsalon.com/prices/",
+  "@type": "Service",
+  "name": "Hair Salon Service Menu & Prices",
   "provider": {
+    "@type": "HairSalon",
     "@id": "https://oceansidehairsalon.com/#hair-salon"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Oceanside Hair Salon Price List",
+    "itemListElement": [
+
+      {
+        "@type": "OfferCatalog",
+        "name": "Haircuts & Styling",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "price": "75",
+            "priceCurrency": "USD",
+            "description": "Starting price. Women's haircut & blow dry.",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Women's Haircut & Blow Dry"
+            }
+          },
+          {
+            "@type": "Offer",
+            "price": "40",
+            "priceCurrency": "USD",
+            "description": "Starting price. Men's cut or skin fade.",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Men's Cut / Skin Fade"
+            }
+          },
+          {
+            "@type": "Offer",
+            "price": "30",
+            "priceCurrency": "USD",
+            "description": "Starting price. Child's cut (under 10).",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Child's Cut (Under 10)"
+            }
+          },
+          {
+            "@type": "Offer",
+            "price": "15",
+            "priceCurrency": "USD",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Bang Trim / Neck Cleanup"
+            }
+          },
+          {
+            "@type": "Offer",
+            "price": "50",
+            "priceCurrency": "USD",
+            "description": "Starting price. Wash & blowout only.",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Wash & Blowout Only"
+            }
+          }
+        ]
+      },
+
+      {
+        "@type": "OfferCatalog",
+        "name": "Color & Balayage",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "price": "220",
+            "priceCurrency": "USD",
+            "description": "Starting price. Full balayage or ombré.",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Full Balayage / Ombré"
+            }
+          },
+          {
+            "@type": "Offer",
+            "price": "160",
+            "priceCurrency": "USD",
+            "description": "Starting price. Partial balayage.",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Partial Balayage"
+            }
+          },
+          {
+            "@type": "Offer",
+            "price": "180",
+            "priceCurrency": "USD",
+            "description": "Starting price. Full highlights with foils.",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Full Highlights (Foils)"
+            }
+          },
+          {
+            "@type": "Offer",
+            "price": "90",
+            "priceCurrency": "USD",
+            "description": "Starting price. Root touch-up.",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Root Touch-Up"
+            }
+          },
+          {
+            "@type": "Offer",
+            "price": "60",
+            "priceCurrency": "USD",
+            "description": "Starting price. Gloss or toner.",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Gloss / Toner"
+            }
+          }
+        ]
+      },
+
+      {
+        "@type": "OfferCatalog",
+        "name": "Treatments & Smoothing",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "price": "280",
+            "priceCurrency": "USD",
+            "description": "Starting price. Keratin smoothing treatment.",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Keratin Smoothing Treatment"
+            }
+          },
+          {
+            "@type": "Offer",
+            "price": "300",
+            "priceCurrency": "USD",
+            "description": "Starting price. Brazilian blowout.",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Brazilian Blowout"
+            }
+          },
+          {
+            "@type": "Offer",
+            "price": "45",
+            "priceCurrency": "USD",
+            "description": "Starting price. Olaplex stand-alone treatment.",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Olaplex Stand-Alone"
+            }
+          },
+          {
+            "@type": "Offer",
+            "price": "40",
+            "priceCurrency": "USD",
+            "description": "Starting price. Scalp detox therapy.",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Scalp Detox Therapy"
+            }
+          }
+        ]
+      },
+
+      {
+        "@type": "OfferCatalog",
+        "name": "Wedding & Special Occasions",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "price": "150",
+            "priceCurrency": "USD",
+            "description": "Starting price. Bridal updo (day-of).",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Bridal Updo (Day-of)"
+            }
+          },
+          {
+            "@type": "Offer",
+            "price": "100",
+            "priceCurrency": "USD",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Bridal Trial"
+            }
+          },
+          {
+            "@type": "Offer",
+            "price": "85",
+            "priceCurrency": "USD",
+            "description": "Starting price. Special occasion styling.",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Special Occasion Style"
+            }
+          }
+        ]
+      },
+
+      {
+        "@type": "OfferCatalog",
+        "name": "Extensions (Consultation Required)",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "price": "150",
+            "priceCurrency": "USD",
+            "description": "Hourly rate. Tape-in extensions. Hair sold separately.",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Tape-In Extensions (per hour)"
+            }
+          },
+          {
+            "@type": "Offer",
+            "price": "200",
+            "priceCurrency": "USD",
+            "description": "Per row. Hand-tied wefts. Hair sold separately.",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Hand-Tied Wefts (per row)"
+            }
+          }
+        ]
+      }
+
+    ]
   }
-       }
+}
 </script>
+
 
     <style>
         :root{
