@@ -19,55 +19,61 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
 
     <!-- Schema موحد -->
-    <script type="application/ld+json">
+   script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HairSalon",
+  "@id": "https://oceansidehairsalon.com/#hair-salon",
+  "name": "Oceanside Hair Salon",
+  "url": "https://oceansidehairsalon.com/",
+  "logo": "https://oceansidehairsalon.com/favicon.png",
+  "image": "https://oceansidehairsalon.com/favicon.png",
+  "priceRange": "$$",
+  "email": "oceansidehairsalon@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Oceanside",
+    "addressRegion": "CA",
+    "postalCode": "92054",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 33.195087,
+    "longitude": -117.370918
+  },
+  "openingHoursSpecification": [
     {
-      "@context": "https://schema.org",
-      "@type": "HairSalon",
-      "name": "Oceanside Hair Salon",
-      "image": "https://oceansidehairsalon.com/images/best-hair-salon-oceanside-interior.jpg",
-      "url": "https://oceansidehairsalon.com",
-      "telephone": "+16469803726",
-      "email": "oceansidehairsalon@gmail.com",
-      "priceRange": "$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "401 Mission Ave",
-        "addressLocality": "Oceanside",
-        "addressRegion": "CA",
-        "postalCode": "92054",
-        "addressCountry": "US"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 33.195087,
-        "longitude": -117.370918
-      },
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": [
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday"
-          ],
-          "opens": "09:00",
-          "closes": "19:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Saturday",
-          "opens": "09:00",
-          "closes": "17:00"
-        }
-      ],
-      "sameAs": [
-        "https://www.facebook.com/profile.php?id=61583963957390",
-        "https://www.instagram.com/oceanside_hair_salon"
-      ]
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "09:00",
+      "closes": "19:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "09:00",
+      "closes": "17:00"
     }
-    </script>
+  ],
+  "sameAs": [
+    "https://www.facebook.com/profile.php?id=61583963957390",
+    "https://www.instagram.com/oceanside_hair_salon"
+  ]
+}
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Women's Haircuts in Oceanside",
+  "url": "https://oceansidehairsalon.com/services/womens-haircuts/",
+  "provider": {
+    "@id": "https://oceansidehairsalon.com/#hair-salon"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Oceanside"
+  }     
+</script>
+
     <style>
         :root{
             --primary-color:#005f73;--secondary-color:#0a9396;--accent-color:#e9d8a6;
@@ -260,7 +266,8 @@
     <div style="text-align: center; margin-top: 80px; margin-bottom: 20px;">
         <h3 style="font-size: 2rem;">Ready to fall in love with your hair again?</h3>
         <p>Appointments fill up fast. Secure your spot today.</p>
-        <button class="btn-primary" onclick="document.getElementById('contactModal').style.display='block'">Schedule Your Transformation</button>
+            <a href="/contact/" class="btn-contact">Schedule Your Transformation</a>
+
     </div>
 </div>
 
@@ -311,8 +318,7 @@
 
         <div class="footer-col">
             <h4>Visit Us</h4>
-            <div class="contact-row"><span>Address</span><div>401 Mission Ave<br>Oceanside, CA 92054</div></div>
-            <div class="contact-row"><span>Phone</span><a href="tel:+16469803726">+1 (646) 980-3726</a></div>
+            <div class="contact-row"><span>Address</span><div>Oceanside, CA 92054</div></div>
             <div class="contact-row"><span>Email</span><a href="mailto:oceansidehairsalon@gmail.com">oceansidehairsalon@gmail.com</a></div>
             <div class="contact-row" style="align-items:flex-start;">
                 <span style="margin-top:5px;">Hours</span>
@@ -332,16 +338,7 @@
 </footer>
 
 <!-- Modal -->
-<div id="contactModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="document.getElementById('contactModal').style.display='none'">×</span>
-        <h2 style="color:var(--primary-color);">Book Your Appointment</h2>
-        <p style="font-size:1.2rem;margin:25px 0;">
-            Call <strong>+1 (646) 980-3726</strong><br>
-            or email <a href="mailto:oceansidehairsalon@gmail.com" style="color:var(--secondary-color);">email us</a>
-        </p>
-    </div>
-</div>
+>
 
 <script>
     window.onclick = function(e){
