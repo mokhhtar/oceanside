@@ -87,7 +87,13 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oceanside Hair Salon – Best Haircuts & Color in Oceanside, CA</title>
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=3">
+
+    <title>5 Signs You Need a Hair Treatment (Oceanside Edition) - Oceanside Hair Salon</title>
+    <meta name="description" content="Is the coastal air ruining your hair? Here are 5 signs you need a professional deep conditioning treatment in Oceanside, CA.">
+    <link rel="canonical" href="https://oceansidehairsalon.com/blog/5-signs-hair-treatment-oceanside/" />
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -114,13 +120,7 @@
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
-          "dayOfWeek": [
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday"
-          ],
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
           "opens": "09:00",
           "closes": "19:00"
         },
@@ -138,14 +138,8 @@
     }
     </script>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>5 Signs You Need a Hair Treatment (Oceanside Edition) - Oceanside Hair Salon</title>
-    <meta name="description" content="Is the coastal air ruining your hair? Here are 5 signs you need a professional deep conditioning treatment in Oceanside, CA.">
-    <link rel="canonical" href="https://oceansidehairsalon.com/blog/5-signs-hair-treatment-oceanside/" />
-    
     <style>
-        :root { --primary: #005f73; --secondary: #0a9396; --text: #333; --bg: #f4f7f6; }
+        :root { --primary: #005f73; --secondary: #0a9396; --text: #333; --bg: #f4f7f6; --primary-color: #005f73; --secondary-color: #0a9396; }
         body { font-family: 'Lato', sans-serif; margin: 0; background: var(--bg); color: var(--text); line-height: 1.8; }
         h1, h2 { font-family: 'Playfair Display', serif; color: var(--primary); }
         header { background: linear-gradient(rgba(0,95,115,0.9), rgba(10,147,150,0.9)); color: white; padding: 3rem 1rem; text-align: center; }
@@ -155,6 +149,27 @@
         .cta-box { background: #e9f5f5; padding: 20px; border-left: 5px solid var(--secondary); margin-top: 30px; }
         ul { margin-bottom: 1.5rem; }
         li { margin-bottom: 0.5rem; }
+        
+        /* Navbar Styles */
+        .navbar { display: flex; justify-content: center; background-color: var(--primary-color); padding: 1rem; position: sticky; top: 0; z-index: 1000; }
+        .navbar a, .dropbtn { font-family: 'Lato', sans-serif; font-weight: bold; color: white; text-align: center; padding: 14px 16px; text-decoration: none; font-size: 17px; border: none; background: none; cursor: pointer; }
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content { display: none; position: absolute; background-color: #f9f9f9; min-width: 200px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1; text-align: left; border-top: 3px solid var(--secondary-color); }
+        .dropdown-content a { color: black; padding: 12px 16px; text-decoration: none; display: block; font-size: 15px; }
+        .dropdown-content a:hover {background-color: #f1f1f1; color: var(--primary-color);}
+        .dropdown:hover .dropdown-content {display: block;}
+        .navbar a:hover, .dropdown:hover .dropbtn {background-color: var(--secondary-color); border-radius: 4px;}
+        
+        /* Social Icons */
+        .social-container { margin-top: 20px; display: flex; justify-content: center; gap: 20px; }
+        .social-icon { width: 30px; height: 30px; fill: #333; transition: all 0.3s ease; }
+        .social-icon:hover { fill: var(--secondary); transform: translateY(-3px); }
+
+        /* Mobile */
+        @media screen and (max-width: 600px) {
+            .navbar { flex-direction: column; }
+            .dropdown-content { position: relative; }
+        }
     </style>
 </head>
 <body>
