@@ -1,148 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
-  <style>
-        /* --- GLOBAL STYLES --- */
-        :root {
-            --primary-color: #005f73;
-            --secondary-color: #0a9396;
-            --accent-color: #e9d8a6;
-            --bg-light: #f4f7f6;
-            --text-dark: #333;
-            --amazon-orange: #ff9900;
-            --font-heading: 'Playfair Display', serif;
-            --font-body: 'Lato', sans-serif;
-            --success-green: #2ecc71;
-        }
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body { font-family:var(--font-body); color:var(--text-dark); line-height:1.6; background:var(--bg-light); }
-        h1,h2,h3,h4 { font-family:var(--font-heading); color: var(--primary-color); margin-bottom: 1rem; }
-        p { margin-bottom: 1.2rem; font-size: 1.05rem; }
-        a { text-decoration: none; color: inherit; }
-
-        /* Navbar */
-        .navbar {
-            display:flex; justify-content:center; align-items:center;
-            background:rgba(0,95,115,0.98); width:100%; position:fixed; top:0; left:0;
-            padding:1rem 0; z-index:1000; backdrop-filter:blur(5px); box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .navbar a, .navbar .dropbtn {
-            font-weight:bold; font-size:17px; color:white !important;
-            padding:14px 20px; text-decoration:none; background:transparent; border:none; cursor:pointer;
-        }
-        .navbar a:hover, .dropdown:hover .dropbtn { color:var(--accent-color) !important; }
-        .dropdown { position:relative; display:inline-block; }
-        .dropdown-content {
-            display:none; position:absolute; background:#fff; min-width:240px;
-            box-shadow:0 8px 16px rgba(0,0,0,0.2); border-top:3px solid var(--secondary-color); z-index:1;
-        }
-        .dropdown-content a { color:#333 !important; padding:12px 16px; display:block; font-size:15px; }
-        .dropdown-content a:hover { background:#f1f1f1; color:var(--primary-color) !important; }
-        .dropdown:hover .dropdown-content { display:block; }
-
-        /* Header */
-        header {
-            background: linear-gradient(rgba(0,40,50,0.7), rgba(0,95,115,0.7)), url('/images/blog/anti-frizz/header-hero.jpg');
-            background-size:cover; background-position:center; height:65vh;
-            display:flex; flex-direction:column; justify-content:center; align-items:center;
-            text-align:center; color:white; padding:20px; padding-top:100px;
-        }
-        header h1 { font-size:3.2rem; text-shadow:2px 2px 8px rgba(0,0,0,0.5); margin-bottom:1rem; color: #fff; max-width: 900px;}
-        header p { font-size:1.4rem; margin-bottom:2rem; max-width: 700px; color: #eee; }
-
-        .btn-header {
-            background:var(--primary-color); color:white; padding:16px 44px;
-            border:2px solid var(--accent-color); border-radius:50px; font-weight:bold; font-size:1.2rem;
-            cursor:pointer; transition:0.3s;
-            
-        }
-        .btn-header:hover { background:var(--secondary-color); transform:scale(1.05); }
-                .btn-contact {
-            background:var(--primary-color); color:white; padding:16px 44px;
-            border:none; border-radius:50px; font-weight:bold; font-size:1.2rem;
-            padding: 12px 25px;
-            cursor:pointer; transition:0.3s; text-decoration:none; display:inline-block;
-        }
-        .btn-contact:hover { background:var(--secondary-color); transform:scale(1.05); color: #fff; }
-
-        /* Content Layout */
-        .content-wrapper { max-width: 1000px; margin: -80px auto 4rem; position: relative; z-index: 10; padding: 0 15px; }
-        .blog-post { background: white; padding: 3rem; border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); }
-        .intro-text { font-size: 1.2rem; color: #444; margin-bottom: 2.5rem; border-bottom: 1px solid #eee; padding-bottom: 2rem; }
-        .intro-text strong { color: var(--primary-color); }
-        .content-link { color: var(--primary-color); text-decoration: underline; font-weight: 700; }
-
-
-
-        /* Footer */
-    footer{background:var(--primary-color);color:white;padding-top:4rem;font-family:'Lato',sans-serif;font-size:0.95rem;margin-top:5rem;}
-    .footer-container{max-width:1200px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:3rem;text-align:left;}
-    .footer-col h3{color:var(--accent-color);font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:1rem;}
-    .footer-col h4{color:white;margin-bottom:1.3rem;font-size:1.15rem;text-transform:uppercase;letter-spacing:1.2px;}
-    .footer-col p{color:rgba(255,255,255,0.85);line-height:1.7;margin-bottom:1rem;}
-    .footer-links li{margin-bottom:12px;}
-    .footer-links a{color:rgba(255,255,255,0.8);text-decoration:none;transition:all .3s ease;}
-    .footer-links a:hover{color:var(--accent-color);padding-left:8px;}
-    .contact-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:18px;color:rgba(255,255,255,0.9);line-height:1.5;}
-    .contact-row a{color:rgba(255,255,255,0.9);text-decoration:none;}
-    .contact-row a:hover{color:var(--accent-color);}
-    .social-icons{display:flex;gap:18px;margin-top:20px;}
-    .social-icons a svg{width:26px;height:26px;fill:white;transition:all .3s ease;}
-    .social-icons a:hover svg{fill:var(--accent-color);transform:translateY(-4px);}
-    .footer-bottom{border-top:1px solid rgba(255,255,255,0.12);margin-top:3.5rem;padding:1.8rem 2rem;text-align:center;font-size:0.85rem;color:rgba(255,255,255,0.6);}
-    .footer-bottom a{color:rgba(255,255,255,0.6);text-decoration:none;}
-    .footer-bottom a:hover{color:var(--accent-color);}
-   
-        @media (max-width: 768px) {
-
-  .footer-container {
-    text-align: center;
-    grid-template-columns: 1fr; /* عمود واحد فقط */
-    gap: 2rem;
-  }
-
-  .footer-col {
-    align-items: center;
-    text-align: center;
-  }
-
-  .footer-links {
-    padding: 0;
-  }
-
-  .footer-links li {
-    list-style: none;
-  }
-
-  .contact-row {
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-
-  .social-icons {
-    justify-content: center;
-  }
-.product-card { grid-template-columns: 1fr; }
-            .product-image-col { padding: 40px; }
-            header h1 { font-size: 2.2rem; }
-            .blog-post { padding: 1.5rem; }
-            .price-area { flex-direction: column; gap: 1rem; align-items: stretch; text-align: center; }
-            
-            /* FIX FOR MOBILE OVERLAP */
-            header { height: auto; min-height: 70vh; padding-bottom: 60px; }
-            .content-wrapper { margin-top: -30px; }
-            .contact-row{align-items:flex-start;}
-        }
-    </style>
-<head><!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-MD7SGPZP');</script>
-<!-- End Google Tag Manager -->
+<head>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MD7SGPZP');</script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-EXJZHLZJ4C"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -151,101 +14,154 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       gtag('config', 'G-EXJZHLZJ4C'); gtag('config', 'G-8Q5FN0FDJY');
     </script>
 
-       <meta charset="UTF-8"><link rel="icon" type="image/png" href="https://oceansidehairsalon.com/myfavicon/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="/myfavicon/favicon.svg" />
-<link rel="shortcut icon" href="/myfavicon/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="/myfavicon/apple-touch-icon.png" />
-<link rel="manifest" href="/myfavicon/site.webmanifest" />
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="https://oceansidehairsalon.com/myfavicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/myfavicon/favicon.svg" />
+    <link rel="shortcut icon" href="/myfavicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/myfavicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/myfavicon/site.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
- 
 
-    <title>5 Signs You Need a Hair Treatment in Oceanside</title>
-    <meta name="description" content="Is the coastal air ruining your hair? Here are 5 signs you need a professional deep conditioning treatment in Oceanside, CA.">
+    <title>5 Signs You Need a Hair Treatment in Oceanside (2026 Guide)</title>
+    <meta name="description" content="Is the coastal air ruining your hair? Here are 5 signs you need a professional deep conditioning treatment in Oceanside, CA to fight frizz and hard water damage.">
     <link rel="canonical" href="https://oceansidehairsalon.com/blog/5-signs-hair-treatment-oceanside/" />
 
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "logo": https://oceansidehairsalon.com/myfavicon/favicon-96x96.png",
-      "@type": "HairSalon",
-      "name": "Oceanside Hair Salon",
-      "image": "https://oceansidehairsalon.com/images/best-hair-salon-oceanside-interior.jpg",
-      "url": "https://oceansidehairsalon.com",
-      "email": "hello@oceansidehairsalon.com",
-      "priceRange": "$$",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Oceanside",
-        "addressRegion": "CA",
-        "postalCode": "92054",
-        "addressCountry": "US"
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://oceansidehairsalon.com/blog/5-signs-hair-treatment-oceanside/"
       },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 33.195087,
-        "longitude": -117.370918
+      "headline": "5 Signs You Need a Hair Treatment in Oceanside (2026 Guide)",
+      "description": "Is the coastal air ruining your hair? Here are 5 signs you need a professional deep conditioning treatment in Oceanside, CA.",
+      "image": "https://oceansidehairsalon.com/images/blog/hair-treatment-oceanside/hero.jpg",
+      "author": {
+        "@type": "Organization",
+        "name": "Oceanside Hair Salon"
       },
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-          "opens": "09:00",
-          "closes": "19:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Saturday",
-          "opens": "09:00",
-          "closes": "17:00"
+      "publisher": {
+        "@type": "Organization",
+        "name": "Oceanside Hair Salon",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://oceansidehairsalon.com/myfavicon/favicon-96x96.png"
         }
-      ],
-      "sameAs": [
-        "https://www.facebook.com/profile.php?id=61583963957390",
-        "https://www.instagram.com/oceanside_hair_salon"
-      ]
+      },
+      "datePublished": "2025-11-27",
+      "dateModified": "2026-01-29"
     }
     </script>
 
-    <style>
-        :root { --primary: #005f73; --secondary: #0a9396; --text: #333; --bg: #f4f7f6; --primary-color: #005f73; --secondary-color: #0a9396; }
-        body { font-family: 'Lato', sans-serif; margin: 0; background: var(--bg); color: var(--text); line-height: 1.8; }
-        h1, h2 { font-family: 'Playfair Display', serif; color: var(--primary); }
-        header { background: linear-gradient(rgba(0,95,115,0.9), rgba(10,147,150,0.9)); color: white; padding: 3rem 1rem; text-align: center; }
-        .container { max-width: 800px; margin: -30px auto 50px; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: relative; }
-        a { color: var(--secondary); text-decoration: none; font-weight: bold; }
-        .nav-link { display: inline-block; margin-bottom: 20px; color: #555; font-size: 0.9rem; }
-        .cta-box { background: #e9f5f5; padding: 20px; border-left: 5px solid var(--secondary); margin-top: 30px; }
-        ul { margin-bottom: 1.5rem; }
-        li { margin-bottom: 0.5rem; }
-        
-        /* Navbar Styles */
-        .navbar { display: flex; justify-content: center; background-color: var(--primary-color); padding: 1rem; position: sticky; top: 0; z-index: 1000; }
-        .navbar a, .dropbtn { font-family: 'Lato', sans-serif; font-weight: bold; color: white; text-align: center; padding: 14px 16px; text-decoration: none; font-size: 17px; border: none; background: none; cursor: pointer; }
-        .dropdown { position: relative; display: inline-block; }
-        .dropdown-content { display: none; position: absolute; background-color: #f9f9f9; min-width: 200px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1; text-align: left; border-top: 3px solid var(--secondary-color); }
-        .dropdown-content a { color: black; padding: 12px 16px; text-decoration: none; display: block; font-size: 15px; }
-        .dropdown-content a:hover {background-color: #f1f1f1; color: var(--primary-color);}
-        .dropdown:hover .dropdown-content {display: block;}
-        .navbar a:hover, .dropdown:hover .dropbtn {background-color: var(--secondary-color); border-radius: 4px;}
-        
-        /* Social Icons */
-        .social-container { margin-top: 20px; display: flex; justify-content: center; gap: 20px; }
-        .social-icon { width: 30px; height: 30px; fill: #333; transition: all 0.3s ease; }
-        .social-icon:hover { fill: var(--secondary); transform: translateY(-3px); }
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 
-        /* Mobile */
-        @media screen and (max-width: 600px) {
-            .navbar { flex-direction: column; }
-            .dropdown-content { position: relative; }
+    <style>
+        /* --- Unified Design Pattern --- */
+        :root {
+            --primary-color: #005f73;
+            --secondary-color: #0a9396;
+            --accent-color: #e9d8a6;
+            --bg-light: #f4f7f6;
+            --text-dark: #333;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Lato', sans-serif;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-body); color: var(--text-dark); line-height: 1.6; background: var(--bg-light); }
+        h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--primary-color); margin-bottom: 1rem; line-height: 1.3; }
+        
+        h2 { font-size: 1.8rem; margin-top: 3rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--accent-color); }
+        p { margin-bottom: 1.2rem; font-size: 1.05rem; }
+        a { text-decoration: none; color: inherit; }
+        
+        /* Navbar */
+        .navbar {
+            display: flex; justify-content: center; align-items: center;
+            background: rgba(0,95,115,0.98); width: 100%; position: fixed; top: 0; left: 0;
+            padding: 1rem 0; z-index: 1000; backdrop-filter: blur(5px); box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .navbar a, .navbar .dropbtn {
+            font-weight: bold; font-size: 17px; color: white !important;
+            padding: 14px 20px; text-decoration: none; background: transparent; border: none; cursor: pointer;
+        }
+        .navbar a:hover, .dropdown:hover .dropbtn { color: var(--accent-color) !important; }
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content {
+            display: none; position: absolute; background: #fff; min-width: 240px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2); border-top: 3px solid var(--secondary-color); z-index: 1;
+        }
+        .dropdown-content a { color: #333 !important; padding: 12px 16px; display: block; font-size: 15px; }
+        .dropdown-content a:hover { background: #f1f1f1; color: var(--primary-color) !important; }
+        .dropdown:hover .dropdown-content { display: block; }
+
+        /* Article Header */
+        .article-header {
+            background: linear-gradient(rgba(0,40,50,0.7), rgba(0,95,115,0.7)), url('/images/blog/hair-treatment-oceanside/hero.jpg');
+            background-size: cover; background-position: center; min-height: 50vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; color: white; padding: 120px 20px 40px;
+        }
+        .article-header h1 { font-size: 2.8rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.5); margin-bottom: 1rem; color: #fff; max-width: 900px; }
+        .article-header p { font-size: 1.3rem; margin-bottom: 2rem; max-width: 700px; color: #eee; }
+
+        .btn-contact {
+            background: var(--primary-color); color: white !important; padding: 12px 30px;
+            border: none; border-radius: 50px; font-weight: bold; font-size: 1.1rem;
+            cursor: pointer; transition: all 0.3s; display: inline-block;
+        }
+        .btn-contact:hover { background: var(--secondary-color); transform: scale(1.05); }
+
+        /* Content Container */
+        .content-container {
+            max-width: 800px; margin: -40px auto 4rem; position: relative; z-index: 10;
+            background: white; padding: 4rem; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        /* ✅ Related Content Box */
+        .related-box {
+            background-color: #f0f8f8;
+            border-left: 5px solid var(--secondary-color);
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .related-box h4 { margin-top: 0; color: var(--primary-color); font-size: 1.3rem; }
+        .content-link { color: var(--secondary-color); text-decoration: underline; font-weight: bold; }
+        .content-link:hover { color: var(--primary-color); }
+
+        /* Footer */
+        footer { background: var(--primary-color); color: white; padding-top: 4rem; font-family: 'Lato', sans-serif; font-size: 0.95rem; margin-top: 5rem; }
+        .footer-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 3rem; text-align: left; }
+        .footer-col h3 { color: var(--accent-color); font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 1rem; }
+        .footer-col h4 { color: white; margin-bottom: 1.3rem; font-size: 1.15rem; text-transform: uppercase; letter-spacing: 1.2px; }
+        .footer-col p { color: rgba(255,255,255,0.85); line-height: 1.7; margin-bottom: 1rem; }
+        .footer-links { list-style: none; padding: 0; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: rgba(255,255,255,0.8); text-decoration: none; transition: all 0.3s ease; }
+        .footer-links a:hover { color: var(--accent-color); padding-left: 8px; }
+        .contact-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 18px; color: rgba(255,255,255,0.9); line-height: 1.5; }
+        .contact-row a { color: rgba(255,255,255,0.9); text-decoration: none; }
+        .contact-row a:hover { color: var(--accent-color); }
+        .social-icons { display: flex; gap: 18px; margin-top: 20px; }
+        .social-icons a svg { width: 26px; height: 26px; fill: white; transition: all 0.3s ease; }
+        .social-icons a:hover svg { fill: var(--accent-color); transform: translateY(-4px); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.12); margin-top: 3.5rem; padding: 1.8rem 2rem; text-align: center; font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+        .footer-bottom a { color: rgba(255,255,255,0.6); text-decoration: none; }
+        .footer-bottom a:hover { color: var(--accent-color); }
+
+        @media (max-width: 768px) {
+            .navbar { flex-wrap: wrap; justify-content: space-around; }
+            .article-header h1 { font-size: 2rem; }
+            .content-container { margin: -30px 15px 2rem; padding: 2rem 1.5rem; }
+            .footer-container { text-align: center; grid-template-columns: 1fr; }
+            .contact-row, .social-icons { justify-content: center; }
         }
     </style>
 </head>
-<body><!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MD7SGPZP"
+<body><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MD7SGPZP"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
 <div class="navbar">
     <a href="/">Home</a>
     <div class="dropdown">
@@ -269,37 +185,51 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="/blog/">Blog</a>
 </div>
 
-<header>
+<header class="article-header">
     <h1>5 Signs You Need a Hair Treatment in Oceanside</h1>
-    <a href="#guide" class="btn-contact" style="text-decoration: none; color: white;">Jump to Article</a>
+    <p>Is the coastal air ruining your hair? Here's how to spot the damage.</p>
+    <a href="#article" class="btn-contact">Read Guide</a>
 </header>
 
-<div class="container">
+<main id="article" class="content-container">
 
-    <p>Living in Oceanside comes with perks: the beach, the breeze, and the endless sun. But let's be honest, the "coastal lifestyle" can be brutal on your hair. The combination of salt air, hard water, and UV rays often leaves hair feeling more like straw than silk.</p>
+    <p>Living in Oceanside comes with perks: the beach, the breeze, and the endless sun. But let's be honest, the "coastal lifestyle" can be brutal on your hair. The combination of salt air (Marine Layer), hard water, and UV rays often leaves hair feeling more like straw than silk.</p>
     
-    <p>How do you know if your hair is just having a bad day or if it's crying out for professional help? Here are the 5 unmistakable signs.</p>
+    <p>How do you know if your hair is just having a bad day or if it's crying out for professional help? Here are the 5 unmistakable signs that your hair needs immediate attention.</p>
 
     <h2>1. The "Frizz Halo" Won't Go Away</h2>
-    <p>If you step outside and your hair immediately expands due to humidity, your cuticles are likely raised and dry. A simple conditioner isn't enough here; you need a keratin smoothing treatment to seal the moisture in.</p>
+    <p>If you step outside and your hair immediately expands due to the morning marine layer humidity, your cuticles are likely raised and dry. This allows moisture from the air to penetrate the shaft, causing frizz. A simple conditioner isn't enough here; you need a professional smoothing treatment to seal the moisture in.</p>
+
+    <div class="related-box">
+        <h4>Need Professional Help?</h4>
+        <p>Not all treatments are created equal. We've listed the top spots for Keratin and conditioning treatments in our guide to the <a href="/blog/best-hair-salons-oceanside-2025/" class="content-link">10 Best Hair Salons in Oceanside</a>.</p>
+    </div>
 
     <h2>2. Your Hair Tangels Instantly</h2>
-    <p>Does the ocean breeze turn your hair into a bird's nest? Healthy hair has a smooth surface that slides against itself. Damaged hair catches and knots. This is a classic sign of protein deficiency caused by sun exposure.</p>
+    <p>Does the ocean breeze turn your hair into a bird's nest? Healthy hair has a smooth surface that slides against itself. Damaged hair catches and knots easily. This is a classic sign of protein deficiency caused by sun exposure and salt water stripping.</p>
 
     <h2>3. Color Fading Too Fast</h2>
-    <p>If that expensive balayage you got two weeks ago already looks brassy or dull, the culprit is likely oxidation from the sun and salt. A gloss treatment can restore vibrancy and add a protective UV shield.</p>
+    <p>If that expensive balayage you got two weeks ago already looks brassy or dull, the culprit is likely oxidation from the sun and mineral buildup from Oceanside's water. A gloss treatment can restore vibrancy and add a protective UV shield.</p>
 
-    <h2>4. Brittle Ends</h2>
-    <p>Take a look at the ends of your hair. Do they split or snap off easily? Saltwater is dehydrating. Without regular deep hydration masks, your ends will keep breaking, making it impossible to grow your length.</p>
+    <h2>4. Brittle Ends & Breakage</h2>
+    <p>Take a look at the ends of your hair. Do they split or snap off easily? Saltwater is dehydrating. Without regular deep hydration masks, your ends will keep breaking, making it impossible to grow your length. Sometimes, a treatment isn't enough and a trim is required.</p>
 
-    <h2>5. Lack of Shine</h2>
-    <p>Healthy hair reflects light. Damaged hair absorbs it. If your hair looks matte and dull even after washing, it's time for a professional shine treatment to restore its natural luster.</p>
-
-    <div class="cta-box">
-        <h3>Save your hair from the salt air!</h3>
-        <p>We offer specialized restorative treatments for coastal hair. <a href="/">Book your session at Oceanside Hair Salon today</a>.</p>
+    <div class="related-box">
+        <h4>Time for a Trim?</h4>
+        <p>If treatments aren't working, you might need a fresh cut. Check the average cost for a maintenance trim in our <a href="/prices/" class="content-link">2026 Haircut Price Guide</a>.</p>
     </div>
-</div>
+
+    <h2>5. Lack of Shine (Hard Water Buildup)</h2>
+    <p>Healthy hair reflects light. Damaged hair absorbs it. If your hair looks matte and dull even after washing, it's often due to <strong>hard water mineral buildup</strong> (calcium and magnesium) common in North County. It coats the hair, blocking shine.</p>
+
+    <div style="background-color: var(--primary-color); color: white; padding: 2.5rem; border-radius: 12px; margin-top: 3rem; text-align: center;">
+        <h3 style="color: var(--accent-color); margin-top: 0;">Don't Let the Salt Air Win</h3>
+        <p style="color: rgba(255,255,255,0.9); margin-bottom: 2rem;">Protect your investment. Explore our expert guides to find the right products and salons for your hair type.</p>
+        <a href="/blog/" class="btn-contact" style="background: white; color: var(--primary-color) !important;">Explore All Hair Tips</a>
+    </div>
+
+</main>
+
 <footer>
     <div class="footer-container">
         <div class="footer-col">
