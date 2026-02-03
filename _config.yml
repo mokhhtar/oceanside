@@ -1,9 +1,0 @@
-title: Oceanside Hair Salon
-description: Your guide to healthy hair and professional styling.
-url: "https://oceansidehairsalon.com"
-baseurl: ""
-
-# إعدادات الروابط لتكون نظيفة (SEO Friendly)
-permalink: /blog/:title/
-markdown: kramdown
-highlighter: rouge
