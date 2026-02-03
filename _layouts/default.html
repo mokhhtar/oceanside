@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager / Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '{{ site.google_analytics }}'); 
+      gtag('config', '{{ site.google_analytics_secondary }}');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="https://oceansidehairsalon.com/myfavicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/myfavicon/favicon.svg" />
+    <link rel="shortcut icon" href="/myfavicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://oceansidehairsalon.com/myfavicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/myfavicon/site.webmanifest" />
+    
+    <!-- SEO Meta Tags -->
+    {% if page.title %}
+    <title>{{ page.title }} | {{ site.title }}</title>
+    {% else %}
+    <title>{{ site.title }} - {{ site.description }}</title>
+    {% endif %}
+    
+    {% if page.description %}
+    <meta name="description" content="{{ page.description }}">
+    {% else %}
+    <meta name="description" content="{{ site.description }}">
+    {% endif %}
+    
+    {% if page.url %}
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
+    {% endif %}
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    
+    {% if page.schema %}
+    <!-- Schema Markup -->
+    {{ page.schema }}
+    {% endif %}
+</head>
+<body>
+    {% include header.html %}
+    
+    <main>
+        {{ content }}
+    </main>
+    
+    {% include footer.html %}
+    
+    {% include scripts.html %}
+</body>
+</html>
