@@ -1,26 +1,24 @@
 import os
 import re
+import traceback
 from amazon_creatorsapi import AmazonCreatorsApi
 from amazon_creatorsapi import Country
 
-# 1. إعداد المفاتيح (استخدم المفاتيح الجديدة من صفحة Creators API)
-# Credential ID: المفتاح الطويل الذي يبدأ بأرقام وحروف (ليس AKIA)
-ACCESS_KEY = os.environ.get('AMAZON_ACCESS_KEY') 
+# إعداد المفاتيح
+ACCESS_KEY = os.environ.get('AMAZON_ACCESS_KEY')
 SECRET_KEY = os.environ.get('AMAZON_SECRET_KEY')
 PARTNER_TAG = 'oceansidehair-20'
 
-# 2. مسار الملف
 file_path = 'blog/best-electric-shavers-sensitive-skin-2025/index.html'
 
 try:
     print("🔌 Connecting to Amazon Creators API...")
     
-    # استخدام الكلاس الصحيح للمنصة الجديدة
-    # تقوم المكتبة تلقائياً بطلب التوكن (Token) باستخدام مفاتيحك
+    # --- التصحيح: استخدام tag بدلاً من partner_tag أو associate_tag ---
     amazon = AmazonCreatorsApi(
         credential_id=ACCESS_KEY, 
         credential_secret=SECRET_KEY, 
-        partner_tag=PARTNER_TAG, 
+        tag=PARTNER_TAG, 
         country=Country.US
     )
     
@@ -33,7 +31,6 @@ try:
         'B01539X5TA': 'upsell-item'
     }
     
-    # قراءة الملف
     with open(file_path, 'r', encoding='utf-8') as f:
         html_content = f.read()
     
@@ -46,8 +43,6 @@ try:
     updated_count = 0
     
     for item in items:
-        # ملاحظة: في Creators API قد تختلف طريقة الوصول للبيانات قليلاً
-        # المكتبة تحاول توحيدها، لكن تأكد من السجلات إذا ظهر خطأ
         asin = item.asin
         base_id = product_map.get(asin)
         
@@ -93,7 +88,5 @@ try:
 
 except Exception as e:
     print(f"\n❌ ERROR: {e}")
-    # طباعة تفاصيل الخطأ للمساعدة
-    import traceback
     traceback.print_exc()
     exit(1)
