@@ -1,0 +1,30 @@
+name: Update Amazon Prices
+on:
+  schedule:
+    - cron: '0 0 * * *' # يعمل تلقائياً كل يوم في منتصف الليل
+  workflow_dispatch: # يسمح لك بتشغيله يدوياً للتجربة
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: pip install python-amazon-paapi 
+      - name: Run Update Script
+        run: python update_prices.py
+        env:
+          AMAZON_ACCESS_KEY: ${{ secrets.AMAZON_ACCESS_KEY }}
+          AMAZON_SECRET_KEY: ${{ secrets.AMAZON_SECRET_KEY }}
+          AMAZON_PARTNER_TAG: oceansidehair-20
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add test.html
+          git commit -m "Update prices from Amazon API" || exit 0
+          git push
