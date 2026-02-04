@@ -1,0 +1,75 @@
+# Site Settings
+title: "Oceanside Hair Salon"
+description: "Experience precision styling and luxury care in the heart of Oceanside. We bring out the best version of you."
+url: "https://oceansidehairsalon.com"
+baseurl: ""
+
+# Blog Settings
+permalink: /blog/:title/
+paginate: 10
+paginate_path: "/blog/page:num/"
+
+# Build Settings
+markdown: kramdown
+highlighter: rouge
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /blog/:title/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Oceanside Hair Salon"
+      
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-paginate
+
+# SEO
+twitter:
+  username: OceansideHair
+  card: summary_large_image
+
+facebook:
+  app_id: 61583963957390
+
+social:
+  name: Oceanside Hair Salon
+  links:
+    - https://www.facebook.com/profile.php?id=61583963957390
+    - https://www.instagram.com/oceanside_hair_salon
+    - https://x.com/OceansideHair
+    - https://www.pinterest.com/OceansideHairSalon/
+
+# Google Analytics
+#google_analytics: G-EXJZHLZJ4C
+#google_analytics_secondary: G-8Q5FN0FDJY
+
+# Contact Information
+email: info@oceansidehairsalon.com
+location: "Oceanside, CA 92054"
+hours:
+  weekdays: "Mon - Fri: 9:00 AM - 7:00 PM"
+  saturday: "Saturday: 9:00 AM - 5:00 PM"
+  sunday: "Sunday: Closed"
