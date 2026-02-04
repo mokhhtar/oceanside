@@ -1,17 +1,28 @@
 import os
 import re
 from amazon_creatorsapi import AmazonCreatorsApi
+from amazon_creatorsapi import Country
 
-ACCESS_KEY = os.environ.get('AMAZON_ACCESS_KEY')
+# 1. إعداد المفاتيح (استخدم المفاتيح الجديدة من صفحة Creators API)
+# Credential ID: المفتاح الطويل الذي يبدأ بأرقام وحروف (ليس AKIA)
+ACCESS_KEY = os.environ.get('AMAZON_ACCESS_KEY') 
 SECRET_KEY = os.environ.get('AMAZON_SECRET_KEY')
 PARTNER_TAG = 'oceansidehair-20'
-COUNTRY = 'US'
 
+# 2. مسار الملف
 file_path = 'blog/best-electric-shavers-sensitive-skin-2025/index.html'
 
 try:
-    # لاحظ المسافة البادئة هنا (Indentation) ضرورية جداً
-    amazon = AmazonCreatorsApi(ACCESS_KEY, SECRET_KEY, PARTNER_TAG, country=COUNTRY)
+    print("🔌 Connecting to Amazon Creators API...")
+    
+    # استخدام الكلاس الصحيح للمنصة الجديدة
+    # تقوم المكتبة تلقائياً بطلب التوكن (Token) باستخدام مفاتيحك
+    amazon = AmazonCreatorsApi(
+        credential_id=ACCESS_KEY, 
+        credential_secret=SECRET_KEY, 
+        partner_tag=PARTNER_TAG, 
+        country=Country.US
+    )
     
     product_map = {
         'B0FGQQ9X2R': 'item-1', 
@@ -22,25 +33,30 @@ try:
         'B01539X5TA': 'upsell-item'
     }
     
+    # قراءة الملف
     with open(file_path, 'r', encoding='utf-8') as f:
         html_content = f.read()
     
     print(f"📄 Reading file: {file_path}")
     asins = list(product_map.keys())
     
-    print(f"🔌 Connecting to Amazon Creators API...")
+    # طلب البيانات
     items = amazon.get_items(asins)
     
     updated_count = 0
     
     for item in items:
+        # ملاحظة: في Creators API قد تختلف طريقة الوصول للبيانات قليلاً
+        # المكتبة تحاول توحيدها، لكن تأكد من السجلات إذا ظهر خطأ
         asin = item.asin
         base_id = product_map.get(asin)
+        
         if not base_id: continue
         
         new_price = None
         new_url = item.detail_page_url
         
+        # محاولة استخراج السعر
         if item.offers and item.offers.listings:
             new_price = item.offers.listings[0].price.formatted_amount
         
@@ -50,6 +66,7 @@ try:
             
         print(f"✅ Found {asin}: {new_price}")
         
+        # --- تحديث السعر ---
         if "upsell" in base_id:
             price_pattern = rf'(<span\s+id="{base_id}-price"[^>]*>)([^<]+)(</span>)'
         else:
@@ -58,6 +75,7 @@ try:
         before_update = html_content
         html_content = re.sub(price_pattern, rf'\1{new_price}\3', html_content, flags=re.DOTALL)
         
+        # --- تحديث الرابط ---
         link_id = f"{base_id}-link" if "upsell" in base_id else f"link-{base_id}"
         link_pattern = rf'(<a\s+[^>]*id="{link_id}"[^>]*href=")([^"]+)(")'
         
@@ -75,4 +93,7 @@ try:
 
 except Exception as e:
     print(f"\n❌ ERROR: {e}")
+    # طباعة تفاصيل الخطأ للمساعدة
+    import traceback
+    traceback.print_exc()
     exit(1)
