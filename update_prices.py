@@ -33,7 +33,7 @@ try:
     asins = list(product_map.keys())
     items = amazon.get_items(item_ids=asins)
 
-    for item in items:
+for item in items:
         asin = item.asin
         base_id = product_map[asin]
         
@@ -41,14 +41,14 @@ try:
             new_price = item.offers.listings[0].price.formatted_amount
             new_url = item.detail_page_url
             
-            print(f"Updated {asin}: {new_price}")
+            print(f"تم جلب بيانات {asin}: السعر {new_price}")
 
-            # تحديث السعر
-            price_id = f"price-{base_id}" if "upsell" not in base_id else f"{base_id}-price"
+            # 1. تحديث السعر (استخدام base_id مباشرة كما هو في ملفك)
+            price_id = base_id if "upsell" not in base_id else f"{base_id}-price"
             price_pattern = rf'(id="{price_id}"[^>]*>)(.*?)(</)'
             html_content = re.sub(price_pattern, f'\\1{new_price}\\3', html_content)
 
-            # تحديث الرابط
+            # 2. تحديث الرابط (استخدام link- قبل base_id كما هو في ملفك)
             link_id = f"link-{base_id}" if "upsell" not in base_id else f"{base_id}-link"
             link_pattern = rf'(id="{link_id}"[^>]*href=")(.*?)(")'
             html_content = re.sub(link_pattern, f'\\1{new_url}\\3', html_content)
