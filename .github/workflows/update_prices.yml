@@ -25,6 +25,6 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add test.html
+          git add blog/best-electric-shavers-sensitive-skin-2025/index.html
           git commit -m "Update prices from Amazon API" || exit 0
           git push
