@@ -9,7 +9,7 @@ PARTNER_TAG = 'oceansidehair-20'
 HOST = 'webservices.amazon.com'
 REGION = 'us-east-1'
 
-# 2. مسار الملف الجديد الخاص بك
+# 2. مسار الملف (تأكد من صحة المسار في مستودعك)
 file_path = 'blog/best-electric-shavers-sensitive-skin-2025/index.html'
 
 try:
@@ -33,7 +33,7 @@ try:
     asins = list(product_map.keys())
     items = amazon.get_items(item_ids=asins)
 
-for item in items:
+    for item in items:
         asin = item.asin
         base_id = product_map[asin]
         
@@ -41,23 +41,24 @@ for item in items:
             new_price = item.offers.listings[0].price.formatted_amount
             new_url = item.detail_page_url
             
-            print(f"تم جلب بيانات {asin}: السعر {new_price}")
+            print(f"Updated {asin}: {new_price}")
 
-            # 1. تحديث السعر (استخدام base_id مباشرة كما هو في ملفك)
+            # تحديث السعر (استخدام base_id مباشرة ليتطابق مع id='item-1')
             price_id = base_id if "upsell" not in base_id else f"{base_id}-price"
             price_pattern = rf'(id="{price_id}"[^>]*>)(.*?)(</)'
             html_content = re.sub(price_pattern, f'\\1{new_price}\\3', html_content)
 
-            # 2. تحديث الرابط (استخدام link- قبل base_id كما هو في ملفك)
+            # تحديث الرابط (استخدام link- قبل base_id ليتطابق مع id='link-item-1')
             link_id = f"link-{base_id}" if "upsell" not in base_id else f"{base_id}-link"
             link_pattern = rf'(id="{link_id}"[^>]*href=")(.*?)(")'
             html_content = re.sub(link_pattern, f'\\1{new_url}\\3', html_content)
 
-    # حفظ التعديلات في نفس المسار
+    # حفظ التعديلات
     with open(file_path, 'w', encoding='utf-8') as f:
         f.write(html_content)
     
     print("✅ Success! File updated successfully.")
 
 except Exception as e:
+    # هذا البلوك هو ما كان ينقص الكود السابق وتسبب في الخطأ
     print(f"❌ Error occurred: {e}")
