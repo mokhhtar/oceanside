@@ -14,8 +14,7 @@ file_path = 'blog/best-electric-shavers-sensitive-skin-2025/index.html'
 
 try:
     # 2. استخدام الكلاس الجديد AmazonCreatorsApi
-    amazon = AmazonCreatorsApi(ACCESS_KEY, SECRET_KEY, PARTNER_TAG, COUNTRY)
-    
+amazon = AmazonCreatorsApi(ACCESS_KEY, SECRET_KEY, PARTNER_TAG, country=COUNTRY)    
     product_map = {
         'B0FGQQ9X2R': 'item-1', 
         'B0F1P5JXCD': 'item-2',
