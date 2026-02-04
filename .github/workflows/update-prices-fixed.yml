@@ -34,7 +34,7 @@ jobs:
           fi
           
       - name: Run Update Script
-        run: python update_prices.py
+        run: python update_prices_fixed.py
         env:
           AMAZON_ACCESS_KEY: ${{ secrets.AMAZON_ACCESS_KEY }}
           AMAZON_SECRET_KEY: ${{ secrets.AMAZON_SECRET_KEY }}
