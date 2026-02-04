@@ -1,4 +1,4 @@
-name: Update Amazon Prices
+name: Update Amazon Prices (Direct API)
 
 on:
   schedule:
@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install python-amazon-paapi
+          pip install requests
           
       - name: Verify file exists
         run: |
@@ -38,7 +38,6 @@ jobs:
         env:
           AMAZON_ACCESS_KEY: ${{ secrets.AMAZON_ACCESS_KEY }}
           AMAZON_SECRET_KEY: ${{ secrets.AMAZON_SECRET_KEY }}
-          AMAZON_PARTNER_TAG: oceansidehair-20
           
       - name: Check for changes
         id: check_changes
@@ -48,7 +47,8 @@ jobs:
             echo "changed=false" >> $GITHUB_OUTPUT
           else
             echo "Changes detected!"
-            git diff blog/best-electric-shavers-sensitive-skin-2025/index.html
+            echo "Showing first 50 lines of diff:"
+            git diff blog/best-electric-shavers-sensitive-skin-2025/index.html | head -50
             echo "changed=true" >> $GITHUB_OUTPUT
           fi
           
