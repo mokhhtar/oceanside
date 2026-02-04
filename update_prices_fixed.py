@@ -34,7 +34,7 @@ try:
     
     # طلب البيانات
     print(f"🔌 Connecting to Amazon API (US)...")
-    items = amazon.get_items(item_ids=asins)
+    items = amazon.get_items(items=asins)
     
     updated_count = 0
     
