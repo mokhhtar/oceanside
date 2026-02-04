@@ -20,7 +20,7 @@ try:
         credential_secret=CREDENTIAL_SECRET, 
         tag=PARTNER_TAG, 
         country=Country.US,
-        version="2.2"  # تمت إضافة الإصدار كما في النص الذي أرسلته
+        version="2.1"  # تمت إضافة الإصدار كما في النص الذي أرسلته
     )
     
     product_map = {
