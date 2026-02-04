@@ -4,9 +4,9 @@ import traceback
 from amazon_creatorsapi import AmazonCreatorsApi
 from amazon_creatorsapi import Country
 
-# إعداد المفاتيح
-ACCESS_KEY = os.environ.get('AMAZON_ACCESS_KEY')
-SECRET_KEY = os.environ.get('AMAZON_SECRET_KEY')
+# إعداد المفاتيح (من بيئة GitHub)
+CREDENTIAL_ID = os.environ.get('AMAZON_ACCESS_KEY') # المفتاح الطويل من Creators API
+CREDENTIAL_SECRET = os.environ.get('AMAZON_SECRET_KEY')
 PARTNER_TAG = 'oceansidehair-20'
 
 file_path = 'blog/best-electric-shavers-sensitive-skin-2025/index.html'
@@ -14,12 +14,13 @@ file_path = 'blog/best-electric-shavers-sensitive-skin-2025/index.html'
 try:
     print("🔌 Connecting to Amazon Creators API...")
     
-    # --- التصحيح: استخدام tag بدلاً من partner_tag أو associate_tag ---
+    # --- التحديث للمطابقة 100% مع الوثيقة ---
     amazon = AmazonCreatorsApi(
-        credential_id=ACCESS_KEY, 
-        credential_secret=SECRET_KEY, 
+        credential_id=CREDENTIAL_ID, 
+        credential_secret=CREDENTIAL_SECRET, 
         tag=PARTNER_TAG, 
-        country=Country.US
+        country=Country.US,
+        version="2.2"  # تمت إضافة الإصدار كما في النص الذي أرسلته
     )
     
     product_map = {
