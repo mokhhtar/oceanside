@@ -22,8 +22,8 @@ try:
         'B01539X5TA': 'upsell-item'
     }
 
-    file_path = '/blog/best-electric-shavers-sensitive-skin-2025/'
-    with open(file_path, 'r', encoding='utf-8') as f:
+file_path = 'blog/best-electric-shavers-sensitive-skin-2025/index.html'
+with open(file_path, 'r', encoding='utf-8') as f:
         html_content = f.read()
 
     print("Fetching data from Amazon Creators API...")
