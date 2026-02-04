@@ -1,20 +1,20 @@
 import os
 import re
-import time
-from amazon_paapi import AmazonApi
+# 1. تغيير الاستيراد للمكتبة الجديدة
+from amazon_creatorsapi import AmazonCreatorsApi
 
-# 1. إعداد الاتصال (المكتبة تحتاج الدولة فقط، لا تحتاج Host ولا Region)
+# إعداد الاتصال
 ACCESS_KEY = os.environ.get('AMAZON_ACCESS_KEY')
 SECRET_KEY = os.environ.get('AMAZON_SECRET_KEY')
 PARTNER_TAG = 'oceansidehair-20'
-COUNTRY = 'US' # هذا هو التغيير المهم
+COUNTRY = 'US'
 
-# 2. مسار الملف
+# مسار الملف
 file_path = 'blog/best-electric-shavers-sensitive-skin-2025/index.html'
 
 try:
-    # التصحيح: إرسال 4 معاملات فقط وبالترتيب الصحيح
-    amazon = AmazonApi(ACCESS_KEY, SECRET_KEY, PARTNER_TAG, COUNTRY)
+    # 2. استخدام الكلاس الجديد AmazonCreatorsApi
+    amazon = AmazonCreatorsApi(ACCESS_KEY, SECRET_KEY, PARTNER_TAG, COUNTRY)
     
     product_map = {
         'B0FGQQ9X2R': 'item-1', 
@@ -32,9 +32,9 @@ try:
     print(f"📄 Reading file: {file_path}")
     asins = list(product_map.keys())
     
-    # طلب البيانات
-    print(f"🔌 Connecting to Amazon API (US)...")
-    items = amazon.get_items(items=asins)
+    # طلب البيانات (بنفس الطريقة القديمة)
+    print(f"🔌 Connecting to Amazon Creators API...")
+    items = amazon.get_items(asins)
     
     updated_count = 0
     
@@ -47,12 +47,12 @@ try:
         new_price = None
         new_url = item.detail_page_url
         
-        # محاولة استخراج السعر بأمان
+        # استخراج السعر
         if item.offers and item.offers.listings:
             new_price = item.offers.listings[0].price.formatted_amount
         
         if not new_price:
-            print(f"⚠️  No price found for {asin} (skipping)")
+            print(f"⚠️  No price found for {asin}")
             continue
             
         print(f"✅ Found {asin}: {new_price}")
@@ -81,11 +81,8 @@ try:
             f.write(html_content)
         print(f"\n🎉 SUCCESS! Updated {updated_count} products.")
     else:
-        print("\nℹ️  No changes needed or prices not found.")
+        print("\nℹ️  No changes needed.")
 
 except Exception as e:
     print(f"\n❌ ERROR: {e}")
-    # طباعة الخطأ كاملاً للمساعدة في التشخيص
-    import traceback
-    traceback.print_exc()
     exit(1)
