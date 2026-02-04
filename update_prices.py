@@ -22,7 +22,7 @@ try:
         'B01539X5TA': 'upsell-item'
     }
 
-    file_path = 'test.html'
+    file_path = '/blog/best-electric-shavers-sensitive-skin-2025/'
     with open(file_path, 'r', encoding='utf-8') as f:
         html_content = f.read()
 
