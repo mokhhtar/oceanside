@@ -5,7 +5,9 @@
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-
+       gtag('js', new Date());
+      gtag('config', 'G-EXJZHLZJ4C'); 
+      gtag('config', 'G-8Q5FN0FDJY');
     </script>
 
     <meta charset="UTF-8">
@@ -16,12 +18,47 @@
     <link rel="icon" type="image/svg+xml" href="/myfavicon/favicon.svg" />
     <link rel="shortcut icon" href="/myfavicon/favicon.ico" />
     
-    <title>AI Shaver Finder - Oceanside Hair Salon</title>
-    <meta name="description" content="Find the perfect electric shaver for your hair type and skin concerns using our AI-powered tool.">
-
+<title>AI Shaver Finder: Best Electric Razor Recommendation Tool (Free)</title>
+    <meta name="description" content="Not sure which shaver to buy? Use our free AI Shaver Finder to get a personalized electric razor recommendation based on your hair type, skin sensitivity, and budget.">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "AI Shaver Finder",
+      "url": "https://oceansidehairsalon.com/tools/ai-shaver-finder",
+      "description": "An AI-powered tool to recommend the best electric shaver based on hair type and skin needs.",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "How does the AI Shaver Finder work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our tool uses a dermatological dataset to match your specific hair type (curly, straight, coarse) and skin concerns (sensitive, ingrown hairs) with the electric shaver engineered to handle those specific conditions."
+        }
+      }, {
+        "@type": "Question",
+        "name": "What is the best shaver for sensitive skin?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Generally, foil shavers like the Braun Series or Panasonic Arc are best for sensitive skin as the foil protects the skin from the blades. Our tool will recommend specific models based on your budget."
+        }
+      }]
+    }
+    </script>
     <style>
         /* ================= INHERITED SITE STYLES ================= */
         :root {
@@ -404,7 +441,53 @@
     margin: 0;
     line-height: 1.4;
 }
+/* ================= SEO CONTENT STYLES ================= */
+        .seo-section {
+            max-width: 850px;
+            margin: 0 auto 3rem;
+            padding: 0 1.5rem;
+        }
+        
+        /* Related Article Box */
+        .related-box {
+            background: linear-gradient(to right, #f0f9fa, #e0f2f1);
+            border: 2px solid var(--secondary-color);
+            border-radius: 12px;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .related-content h3 { margin-bottom: 0.5rem; font-size: 1.4rem; }
+        .related-content p { margin-bottom: 0; color: #555; }
+        .related-btn {
+            background: var(--primary-color); color: white; padding: 12px 20px;
+            border-radius: 8px; font-weight: bold; white-space: nowrap; transition: 0.3s;
+        }
+        .related-btn:hover { background: var(--secondary-color); transform: translateY(-2px); }
 
+        /* FAQ Section */
+        .faq-container { background: white; padding: 2rem; border-radius: 12px; }
+        .faq-item { border-bottom: 1px solid #eee; padding: 1.5rem 0; }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-question {
+            font-weight: 700; font-size: 1.1rem; color: var(--primary-color);
+            cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+        }
+        .faq-answer {
+            margin-top: 10px; color: #555; line-height: 1.6; display: none; /* Hidden by default */
+        }
+        .faq-item.active .faq-answer { display: block; animation: fadeIn 0.3s; }
+        .faq-icon { transition: 0.3s; }
+        .faq-item.active .faq-icon { transform: rotate(180deg); }
+
+        @media (max-width: 768px) {
+            .related-box { flex-direction: column; text-align: center; }
+            .related-btn { width: 100%; display: block; text-align: center; }
+        }
 /* ================= RESPONSIVE (MOBILE) ================= */
 
         /* Responsive */
@@ -657,7 +740,58 @@
     </div>
 
 </main>
+<section class="seo-section">
+    
+    <div class="related-box">
+        <div class="related-content">
+            <h3>Prefer to read a detailed guide?</h3>
+            <p>Check out our expert breakdown of the top rated shavers for sensitive skin types.</p>
+        </div>
+        <a href="/blog/best-electric-shavers-sensitive-skin-2025/" class="related-btn">
+            Read Top 5 Guide <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+    </div>
 
+    <div class="faq-container">
+        <h2 style="text-align: center; margin-bottom: 2rem;">Frequently Asked Questions</h2>
+        
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">
+                How accurate is this AI Shaver Finder?
+                <i class="fas fa-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+                Our tool uses a logic model based on dermatological guidelines. It filters shavers based on their cutting mechanism (Foil vs. Rotary) to match your specific hair texture and skin sensitivity, ensuring a scientifically sound recommendation.
+            </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">
+                Should I choose a Foil or Rotary shaver?
+                <i class="fas fa-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+                If you have <b>sensitive skin</b> or need a very close shave on straight hair, a <b>Foil Shaver</b> (like Braun) is usually better. If you have <b>curly hair</b> or shave irregular contours (like a head), a <b>Rotary Shaver</b> (like Philips) might be preferable. Our tool decides this for you.
+            </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">
+                Does expensive mean better for shavers?
+                <i class="fas fa-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+                Not always. High-end shavers often have "cleaning stations" and digital displays which add cost but don't change the shave quality. However, very cheap models often lack powerful motors needed for thick hair. Our "Value" option finds the sweet spot.
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function toggleFaq(element) {
+        element.classList.toggle('active');
+    }
+</script>
 <footer>
     <div class="footer-container">
         <div class="footer-col">
