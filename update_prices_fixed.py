@@ -1,13 +1,14 @@
 import os
 import re
 import traceback
-from amazon_paapi import AmazonApi
 
-# 1. إعداد المفاتيح (من بيئة GitHub)
+# التحديث بناءً على تحذير المكتبة لتعمل مع Creators API
+from amazon_creatorsapi import AmazonCreatorsApi
+from amazon_creatorsapi import Country
+
 CREDENTIAL_ID = os.environ.get('AMAZON_ACCESS_KEY')
 CREDENTIAL_SECRET = os.environ.get('AMAZON_SECRET_KEY')
 PARTNER_TAG = 'oceansidehair-20'
-COUNTRY = 'US'
 
 file_path = 'blog/best-electric-shavers-sensitive-skin-2025/index.html'
 
@@ -21,14 +22,19 @@ product_map = {
 }
 
 try:
-    print("🔌 Connecting to Amazon API with SigV4 Encryption...")
+    print("🔌 Connecting to Amazon Creators API...")
     
-    # 2. إنشاء الاتصال المشفر
-    amazon = AmazonApi(CREDENTIAL_ID, CREDENTIAL_SECRET, PARTNER_TAG, COUNTRY)
+    # استخدام كلاس Creators API مع إضافة النسخة كما يتطلب التحديث
+    amazon = AmazonCreatorsApi(
+        credential_id=CREDENTIAL_ID, 
+        credential_secret=CREDENTIAL_SECRET, 
+        tag=PARTNER_TAG, 
+        country=Country.US,
+        version="2.1"
+    )
     
     asins = list(product_map.keys())
     
-    # 3. جلب البيانات
     print("📦 Fetching product data...")
     items = amazon.get_items(asins)
     
@@ -38,7 +44,6 @@ try:
         
     updated_count = 0
     
-    # 4. معالجة الاستجابة وتحديث الملف
     for item in items:
         asin = item.asin
         base_id = product_map.get(asin)
@@ -48,7 +53,7 @@ try:
         new_price = None
         new_url = item.detail_page_url
         
-        # استخراج السعر بأمان باستخدام خصائص المكتبة
+        # استخراج السعر باستخدام هيكلية المكتبة المحدثة
         if item.offers and item.offers.listings:
             new_price = item.offers.listings[0].price.display_amount
             
@@ -65,7 +70,6 @@ try:
             price_pattern = rf'(<div\s+class="price-tag"\s+id="{base_id}"[^>]*>)([^<]+)(</div>)'
         
         before_update = html_content
-        # استخدام \g<1> لتفادي مشاكل الأرقام في الريجيكس
         html_content = re.sub(price_pattern, rf'\g<1>{new_price}\g<3>', html_content, flags=re.DOTALL)
         
         # --- تحديث الرابط ---
