@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install git+https://github.com/sergioteula/python-amazon-paapi.git
+          pip install python-amazon-paapi
           
       - name: Verify file exists
         run: |
