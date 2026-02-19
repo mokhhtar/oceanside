@@ -196,4 +196,11 @@
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+    <!-- electric shavers Blog Articles -->
+    <url>
+    <loc>https://oceansidehairsalon.com/blog/electric-shavers/electric-shaving-sensitive-skin/</loc>
+    <lastmod>2026-02-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
 </urlset>
