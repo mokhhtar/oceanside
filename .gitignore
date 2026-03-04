@@ -1,0 +1,27 @@
+# Jekyll build output
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+
+# Ruby / Bundler
+Gemfile.lock
+vendor/
+.bundle/
+
+# macOS
+.DS_Store
+
+# Node (if ever added)
+node_modules/
+npm-debug.log
+
+# Editor directories
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Environment / secrets — NEVER commit API keys
+.env
+.env.local

@@ -1,0 +1,21 @@
+{% comment %}
+  _includes/image-figure.html
+  Usage:
+    {% include image-figure.html
+       src="/images/blog/my-image.jpg"
+       alt="Descriptive alt text"
+       caption="Optional caption text"
+       loading="lazy"
+    %}
+{% endcomment %}
+
+<figure>
+  <img
+    src="{{ include.src | relative_url }}"
+    alt="{{ include.alt }}"
+    loading="{{ include.loading | default: 'lazy' }}"
+  >
+  {% if include.caption %}
+    <figcaption>{{ include.caption }}</figcaption>
+  {% endif %}
+</figure>

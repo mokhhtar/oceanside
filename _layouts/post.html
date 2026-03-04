@@ -1,35 +1,34 @@
 ---
 layout: default
 ---
+{% comment %}
+  _layouts/post.html
+  Wraps every blog post. Inherits default.html.
+  Front matter it consumes:
+    hero_image        - path to the hero background image
+    hero_title        - override displayed H1 (defaults to page.title)
+    hero_subtitle     - subtitle shown beneath H1
+    hero_cta_label    - button text (default: "Start Reading")
+    hero_cta_anchor   - anchor the button scrolls to (default: #introduction)
+{% endcomment %}
 
-<article class="blog-post">
-    <header class="post-header">
-        <h1>{{ page.title }}</h1>
-        {% if page.subtitle %}
-        <p class="subtitle">{{ page.subtitle }}</p>
-        {% endif %}
-        <div class="post-meta">
-            <time datetime="{{ page.date | date_to_xmlschema }}">
-                {{ page.date | date: "%B %d, %Y" }}
-            </time>
-            {% if page.author %}
-            <span class="author">by {{ page.author }}</span>
-            {% endif %}
-        </div>
-    </header>
+<!-- ── Hero Header ── -->
+<header
+  class="article-header"
+  {% if page.hero_image %}
+  style="background-image: linear-gradient(rgba(0,40,50,0.7), rgba(0,95,115,0.7)), url('{{ page.hero_image | relative_url }}');"
+  {% endif %}
+>
+  <h1>{{ page.hero_title | default: page.title }}</h1>
+  {% if page.hero_subtitle %}
+    <p>{{ page.hero_subtitle }}</p>
+  {% endif %}
+  <a href="{{ page.hero_cta_anchor | default: '#introduction' }}" class="btn-contact">
+    {{ page.hero_cta_label | default: "Start Reading" }}
+  </a>
+</header>
 
-    <div class="post-content">
-        {{ content }}
-    </div>
-
-    {% if page.related_articles %}
-    <div class="related-articles">
-        <h3>Related Articles</h3>
-        <ul>
-            {% for article in page.related_articles %}
-            <li><a href="{{ article.url }}">{{ article.title }}</a></li>
-            {% endfor %}
-        </ul>
-    </div>
-    {% endif %}
-</article>
+<!-- ── Main Content ── -->
+<main class="content-container" id="main-content">
+  {{ content }}
+</main>

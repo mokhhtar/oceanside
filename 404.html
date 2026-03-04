@@ -1,0 +1,42 @@
+---
+layout: default
+title: "Page Not Found — Oceanside Hair Salon"
+description: "The page you're looking for doesn't exist. Browse our hair and grooming guides to find what you need."
+permalink: /404.html
+sitemap: false
+---
+
+<div class="article-header" style="background: linear-gradient(rgba(0,40,50,0.8), rgba(0,95,115,0.8)); min-height: 40vh;">
+  <h1 style="font-size: 5rem; margin-bottom: 0.5rem;">404</h1>
+  <p>This page doesn't exist — but your hair questions do.</p>
+  <a href="/" class="btn-contact">Back to Homepage</a>
+</div>
+
+<main class="content-container" id="main-content">
+
+  <h2>Looking for something?</h2>
+  <p>The page you were looking for has either moved or never existed. Here are some useful places to start:</p>
+
+  <ul>
+    {% for item in site.data.navigation %}
+      {% if item.url %}
+        <li><a href="{{ item.url }}" style="color: var(--primary-color); font-weight: bold;">{{ item.label }}</a></li>
+      {% endif %}
+      {% if item.children %}
+        {% for child in item.children %}
+          <li><a href="{{ child.url }}" style="color: var(--primary-color);">{{ child.label }}</a></li>
+        {% endfor %}
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+  <div class="related-articles" style="margin-top: 2rem;">
+    <h3>Popular Articles</h3>
+    <ul>
+      <li><a href="/blog/shampoos-that-work-hard-water-hair/">Best Shampoos for Hard Water & Mineral Buildup</a></li>
+      <li><a href="/blog/hard-water-complete-guide/">Hard Water Is Ruining Your Hair: The Complete Guide</a></li>
+      <li><a href="/blog/electric-shaving-sensitive-skin/">Electric Shaving for Sensitive Skin</a></li>
+    </ul>
+  </div>
+
+</main>

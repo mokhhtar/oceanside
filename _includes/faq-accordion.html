@@ -1,0 +1,36 @@
+{% comment %}
+  _includes/faq-accordion.html
+  Usage:
+    {% include faq-accordion.html faq_key="shampoos_hard_water" %}
+
+  Renders an accessible accordion from _data/faqs.yml[faq_key].
+  JS lives in assets/js/main.js.
+{% endcomment %}
+
+{% assign faq_list = site.data.faqs[include.faq_key] %}
+
+{% if faq_list %}
+<section class="faq-section" aria-label="Frequently Asked Questions">
+  {% for faq in faq_list %}
+  <div class="faq-item">
+    <button
+      class="faq-question"
+      aria-expanded="false"
+      aria-controls="faq-answer-{{ forloop.index }}"
+      id="faq-btn-{{ forloop.index }}"
+    >
+      {{ faq.question }}
+      <span aria-hidden="true">+</span>
+    </button>
+    <div
+      class="faq-answer"
+      id="faq-answer-{{ forloop.index }}"
+      role="region"
+      aria-labelledby="faq-btn-{{ forloop.index }}"
+    >
+      <p>{{ faq.answer | strip }}</p>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+{% endif %}

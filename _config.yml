@@ -1,0 +1,108 @@
+# =============================================================
+#  OCEANSIDE HAIR SALON — Jekyll Configuration
+#  https://oceansidehairsalon.com
+# =============================================================
+
+# --- Core Site Settings ---
+title: "Oceanside Hair Salon"
+tagline: "Your local guide to haircuts, grooming, and hair care in Oceanside."
+description: "Independent hair & grooming guides built to help you make smarter style decisions in a coastal climate."
+url: "https://oceansidehairsalon.com"
+baseurl: ""
+lang: "en"
+timezone: "America/Los_Angeles"
+
+# --- Author / Organization ---
+author:
+  name: "Oceanside Hair Salon"
+  url: "https://oceansidehairsalon.com"
+
+# --- Analytics ---
+google_analytics:
+  measurement_id_1: "G-EXJZHLZJ4C"
+  measurement_id_2: "G-8Q5FN0FDJY"
+
+# --- Branding & Design Tokens (used in SCSS via Jekyll config) ---
+brand:
+  primary_color:   "#005f73"
+  secondary_color: "#0a9396"
+  accent_color:    "#e9d8a6"
+  bg_light:        "#f4f7f6"
+  text_dark:       "#333333"
+  amazon_orange:   "#ff9900"
+  success_green:   "#2ecc71"
+  font_heading:    "'Playfair Display', serif"
+  font_body:       "'Lato', sans-serif"
+
+# --- Favicons ---
+favicon:
+  png_96:         "https://oceansidehairsalon.com/myfavicon/favicon-96x96.png"
+  svg:            "/myfavicon/favicon.svg"
+  ico:            "/myfavicon/favicon.ico"
+  apple_touch:    "https://oceansidehairsalon.com/myfavicon/apple-touch-icon.png"
+  webmanifest:    "/myfavicon/site.webmanifest"
+
+# --- Social Media ---
+social:
+  facebook:  "https://www.facebook.com/profile.php?id=61583963957390"
+  instagram: "https://www.instagram.com/oceanside_hair_salon"
+  twitter_x: "https://x.com/OceansideHair"
+  pinterest: "https://www.pinterest.com/OceansideHairSalon/"
+
+# --- Amazon Affiliate ---
+amazon:
+  store_id: "oceansidehair-20"
+  disclaimer: "As an Amazon Associate, we earn from qualifying purchases."
+
+# --- Collections & Build ---
+permalink: /blog/:slug/
+
+collections:
+  posts:
+    output: true
+    permalink: /blog/:slug/
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Oceanside Hair Salon"
+
+# --- Markdown & Plugins ---
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  input: GFM
+  auto_ids: true
+  hard_wrap: false
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-redirect-from
+
+# --- jekyll-seo-tag configuration ---
+twitter:
+  username: OceansideHair
+  card: summary_large_image
+
+logo: "https://oceansidehairsalon.com/myfavicon/favicon-96x96.png"
+
+# --- Exclusions ---
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - README.md
+  - .sass-cache
+  - .jekyll-cache
+
+# --- SASS ---
+sass:
+  sass_dir: assets/css
+  style: compressed

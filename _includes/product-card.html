@@ -1,0 +1,85 @@
+{% comment %}
+  _includes/product-card.html
+  Usage:
+    {% include product-card.html product=product %}
+    {% raw %}{% include product-card.html product=site.data.products[0] %}{% endraw %}
+
+  Accepts a `product` object from _data/products.yml.
+  The Amazon disclaimer must be rendered once above the product loop in the post.
+{% endcomment %}
+
+{% assign p = include.product %}
+
+<div class="product-card" id="{{ p.id }}">
+
+  <!-- Left: Image column -->
+  <div class="product-image-col">
+    {% if p.badge %}
+      <span class="badge">{{ p.badge }}</span>
+    {% endif %}
+    <img
+      src="{{ p.image | relative_url }}"
+      alt="{{ p.image_alt }}"
+      loading="lazy"
+      width="220"
+      height="220"
+    >
+  </div>
+
+  <!-- Right: Details column -->
+  <div class="product-details-col">
+    <div class="product-brand">{{ p.brand }}</div>
+    <h3 class="product-title">{{ p.name }}</h3>
+
+    <!-- Ratings -->
+    <div class="rating-container">
+      <span class="stars">{{ p.rating_value }} {{ p.rating_stars }}</span>
+      <a href="{{ p.amazon_url }}" target="_blank" rel="nofollow noopener"
+         class="rating-count">{{ p.rating_count }} ratings</a>
+      {% if p.buyers_label and p.buyers_label != "" %}
+        <span class="buyers-count">{{ p.buyers_label }}</span>
+      {% endif %}
+    </div>
+
+    <!-- Description -->
+    <p class="product-description">{{ p.description | strip }}</p>
+
+    <!-- Info grid -->
+    <div class="product-info-grid">
+      <div class="info-item">
+        <b>Best For</b>
+        <span>{{ p.best_for }}</span>
+      </div>
+      <div class="info-item">
+        <b>Frequency</b>
+        <span>{{ p.frequency }}</span>
+      </div>
+      <div class="info-item" style="grid-column: span 2;">
+        <b>Key Ingredients</b>
+        <span>{{ p.key_ingredients }}</span>
+      </div>
+    </div>
+
+    <!-- Price + CTA -->
+    <div class="price-cta-area">
+      <div class="price-tag"><small>$</small>{{ p.price }}</div>
+      <a href="{{ p.amazon_url }}"
+         target="_blank"
+         rel="nofollow noopener"
+         class="amazon-btn"
+         aria-label="Check {{ p.full_name }} on Amazon">
+        Check on Amazon
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round"
+             aria-hidden="true">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+          <polyline points="15 3 21 3 21 9"/>
+          <line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+      </a>
+    </div>
+
+  </div><!-- /.product-details-col -->
+
+</div><!-- /.product-card -->

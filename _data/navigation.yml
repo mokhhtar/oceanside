@@ -1,0 +1,35 @@
+# _data/navigation.yml
+# All navbar items. Use `children` for dropdown menus.
+
+- label: "Home"
+  url: "/"
+
+- label: "Hair Guides"
+  children:
+    - label: "Women's Haircut Guide"
+      url: "/services/womens-haircuts/"
+    - label: "Men's Grooming Guide"
+      url: "/services/mens-grooming/"
+    - label: "Hair Coloring Guide"
+      url: "/services/hair-coloring/"
+    - label: "Hair Treatment Guide"
+      url: "/services/hair-treatments/"
+    - label: "Bridal Hair Guide"
+      url: "/services/bridal-styling/"
+
+- label: "Tools"
+  children:
+    - label: "AI Shaver Finder"
+      url: "/tools/ai-shaver-finder/"
+
+- label: "About This Site"
+  children:
+    - label: "Local Price Averages"
+      url: "/prices/"
+    - label: "Community Reviews"
+      url: "/testimonials/"
+    - label: "Contact & Editorial Info"
+      url: "/contact/"
+
+- label: "Blog"
+  url: "/blog/"

@@ -1,0 +1,61 @@
+# _data/faqs.yml
+# Used by _includes/faq-accordion.html and the JSON-LD FAQPage schema.
+# Each post can define `faq_key` in front matter to pull a named subset,
+# or include all FAQs from site.data.faqs directly.
+
+shampoos_hard_water:
+  - question: "Is chelating shampoo safe for color-treated hair?"
+    answer: >
+      Yes, most chelating shampoos are safe for color-treated hair when used as directed.
+      In fact, hard water minerals can cause color to fade faster and appear dull, so removing
+      this buildup can actually help maintain your color's vibrancy. However, because chelating
+      shampoos are stronger than regular formulas, use them only as frequently as recommended
+      (typically once or twice weekly) and always follow with a color-safe conditioner. Some
+      formulas like Malibu C are specifically designed for color-treated hair and include
+      protective ingredients.
+
+  - question: "How often should I use chelating shampoo to avoid damaging my hair?"
+    answer: >
+      For most people living in hard water areas, using a chelating shampoo one to three times
+      per week provides optimal results without over-stripping the hair. The exact frequency
+      depends on your water's mineral content, hair type, and styling routine. Fine or damaged
+      hair may benefit from once-weekly use, while thick, coarse, or oily hair might tolerate
+      more frequent application. Listen to your hair — if it feels dry or brittle, reduce
+      frequency. If buildup returns quickly, increase usage or extend the dwell time.
+
+  - question: "Can natural or herbal shampoos remove hard water buildup?"
+    answer: >
+      While some natural ingredients like apple cider vinegar, lemon juice, and certain plant
+      extracts have mild chelating properties, they're generally not powerful enough to remove
+      significant hard water buildup on their own. Natural shampoos can be excellent for
+      maintenance once you've addressed existing damage with a stronger chelating formula, but
+      they typically lack the concentrated chelating agents needed to break ionic bonds between
+      minerals and hair proteins. If you prefer natural products, look for formulas containing
+      citric acid or phytic acid, which offer gentler but still effective chelating action.
+
+  - question: "How can I prevent hard water damage before it happens?"
+    answer: >
+      Prevention combines using the right products with smart practices. Install a shower filter
+      to reduce mineral content at the source, use a chelating shampoo proactively once weekly
+      even before damage becomes visible, and apply protective leave-in products that create a
+      barrier against mineral deposition. Avoid washing your hair in extremely hot water, which
+      opens the cuticle and allows more mineral penetration. If you're moving to a hard water
+      area, start your prevention routine immediately rather than waiting for damage to accumulate.
+
+  - question: "Will chelating shampoo help with hair that's already severely damaged?"
+    answer: >
+      Chelating shampoo can remove mineral buildup from severely damaged hair, which often reveals
+      the true extent of underlying damage hidden beneath the mineral coating. While it can't
+      reverse structural damage like split ends or broken protein bonds, removing the buildup allows
+      conditioning treatments, protein treatments, and repair products to actually penetrate and work
+      effectively. For severely damaged hair, combine chelating shampoo with professional treatments,
+      regular deep conditioning, and protective styling to support recovery.
+
+  - question: "How do I know if my shampoo contains chelating agents?"
+    answer: >
+      Check the ingredient list for EDTA (often listed as Disodium EDTA, Tetrasodium EDTA, or
+      Calcium Disodium EDTA), citric acid, phytic acid, gluconic acid, or sodium citrate. These are
+      the most common chelating agents in hair care products. Some products also explicitly market
+      themselves as "hard water shampoo," "chelating shampoo," or "mineral-removing shampoo." If the
+      ingredients aren't listed online, contact the manufacturer directly or ask a salon professional
+      for recommendations based on proven formulations.

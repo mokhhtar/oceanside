@@ -1,0 +1,17 @@
+{% comment %}
+  _includes/alert-box.html
+  Renders the yellow bordered highlight/alert box.
+
+  Usage:
+    {% capture alert_content %}
+      **The Solution:** This guide reveals which shampoos truly work for hard water hair.
+    {% endcapture %}
+    {% include alert-box.html content=alert_content %}
+
+  Optional parameter:
+    type: "warning" | "info" | "success"  (default: standard orange-left-border)
+{% endcomment %}
+
+<div class="highlight-box highlight-box--{{ include.type | default: 'default' }}" role="note">
+  {{ include.content | markdownify }}
+</div>

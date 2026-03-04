@@ -1,0 +1,162 @@
+# _data/products.yml
+# Each product is rendered by _includes/product-card.html
+# amazon_url uses the store affiliate tag from _config.yml
+
+- id: "malibu-c-shampoo"
+  badge: "TOP PICK"
+  brand: "Malibu C"
+  name: "Hard Water Wellness Shampoo"
+  full_name: "Malibu C Hard Water Wellness Shampoo"
+  image: "/images/blog/shampoos-hard-water/malibu-c-hard-water.jpg"
+  image_alt: "Malibu C Hard Water Wellness Shampoo bottle"
+  rating_value: "4.4"
+  rating_stars: "★★★★★"
+  rating_count: "6,026"
+  buyers_label: "4K+ bought in past month"
+  price: "17.98"
+  amazon_url: "https://www.amazon.com/dp/B01N23J5C1?tag=oceansidehair-20"
+  description: >
+    Specifically formulated to remove hard water minerals, chlorine, and other impurities
+    that regular shampoos leave behind. The vitamin C-infused formula gently lifts deposits
+    without stripping natural oils, making it safe for color-treated hair.
+  best_for: "All hair types with severe buildup"
+  frequency: "2-3 times per week"
+  key_ingredients: "Chelating complex, Vitamin C, Aloe Vera"
+  schema_position: 1
+  schema_id: "https://oceansidehairsalon.com/blog/shampoos-that-work-hard-water-hair/#malibu-c-shampoo"
+
+- id: "ion-shampoo"
+  badge: "BUDGET CHOICE"
+  brand: "Ion"
+  name: "Hard Water Shampoo"
+  full_name: "Ion Hard Water Shampoo"
+  image: "/images/blog/shampoos-hard-water/ion-hard-water.jpg"
+  image_alt: "Ion Hard Water Shampoo bottle"
+  rating_value: "4.4"
+  rating_stars: "★★★★☆"
+  rating_count: "2,911"
+  buyers_label: "300+ bought in past month"
+  price: "11.87"
+  amazon_url: "https://amzn.to/49LqXR3"
+  description: >
+    Provides effective chelating action for everyday use. The formula is gentle enough for
+    frequent washing while still powerful enough to combat mineral accumulation in extremely
+    hard water areas.
+  best_for: "Fine to medium hair types"
+  frequency: "Daily or every other day"
+  key_ingredients: "EDTA, Gentle Surfactants"
+  schema_position: 2
+  schema_id: "https://oceansidehairsalon.com/blog/shampoos-that-work-hard-water-hair/#ion-shampoo"
+
+- id: "kenra-clarifying"
+  badge: "PROFESSIONAL RESET"
+  brand: "Kenra"
+  name: "Clarifying Shampoo"
+  full_name: "Kenra Clarifying Shampoo"
+  image: "/images/blog/shampoos-hard-water/kenra-clarifying.jpg"
+  image_alt: "Kenra Clarifying Shampoo bottle"
+  rating_value: "4.6"
+  rating_stars: "★★★★★"
+  rating_count: "1,042"
+  buyers_label: "1K+ bought in past month"
+  price: "21.00"
+  amazon_url: "https://amzn.to/4sPuG8L"
+  description: >
+    Kenra offers a more intensive approach, combining chelating ingredients with clarifying
+    agents to remove stubborn buildup. Ideal for people who've been dealing with hard water
+    damage for months or years and need a reset.
+  best_for: "Thick, coarse, or heavily coated hair"
+  frequency: "Once weekly"
+  key_ingredients: "Chelating agents, clarifying surfactants"
+  schema_position: 3
+  schema_id: "https://oceansidehairsalon.com/blog/shampoos-that-work-hard-water-hair/#kenra-clarifying"
+
+- id: "rco-oblivion"
+  badge: "PREMIUM CHOICE"
+  brand: "R+Co"
+  name: "Oblivion Clarifying Shampoo"
+  full_name: "R+Co Oblivion Clarifying Shampoo"
+  image: "/images/blog/shampoos-hard-water/rco-oblivion.jpg"
+  image_alt: "R+Co Oblivion Clarifying Shampoo bottle"
+  rating_value: "4.7"
+  rating_stars: "★★★★★"
+  rating_count: "174"
+  buyers_label: ""
+  price: "34.00"
+  amazon_url: "https://amzn.to/4pT2jEb"
+  description: >
+    This premium option combines traditional chelators with natural ingredients like apple
+    cider vinegar that help balance pH and remove buildup. The witch hazel provides additional
+    scalp benefits, reducing inflammation and controlling oil production.
+  best_for: "All hair types seeking luxury formulations"
+  frequency: "Weekly or bi-weekly"
+  key_ingredients: "Chelating agents, apple cider vinegar, witch hazel"
+  schema_position: 4
+  schema_id: "https://oceansidehairsalon.com/blog/shampoos-that-work-hard-water-hair/#rco-oblivion"
+
+- id: "ouidad-clarifying"
+  badge: "CURL SPECIALIST"
+  brand: "Ouidad"
+  name: "Water Works Clarifying Shampoo"
+  full_name: "Ouidad Water Works Clarifying Shampoo"
+  image: "/images/blog/shampoos-hard-water/ouidad-water-works.jpg"
+  image_alt: "Ouidad Water Works Clarifying Shampoo bottle"
+  rating_value: "4.7"
+  rating_stars: "★★★★★"
+  rating_count: "781"
+  buyers_label: "900+ bought in past month"
+  price: "24.00"
+  amazon_url: "https://amzn.to/4r885Tm"
+  description: >
+    Curly hair requires special attention; this formula removes deposits while maintaining
+    the moisture balance that curls need. The gentle chelating action preserves natural oils
+    essential for curl definition.
+  best_for: "Curly and textured hair"
+  frequency: "Weekly"
+  key_ingredients: "Chelating complex, fruit extracts"
+  schema_position: 5
+  schema_id: "https://oceansidehairsalon.com/blog/shampoos-that-work-hard-water-hair/#ouidad-clarifying"
+
+- id: "kristin-ess-micellar"
+  badge: "MICELLAR TECH"
+  brand: "Kristin Ess"
+  name: "Scalp Purifying Micellar Shampoo"
+  full_name: "Kristin Ess Scalp Purifying Micellar Shampoo"
+  image: "/images/blog/shampoos-hard-water/kristin-ess-micellar.jpg"
+  image_alt: "Kristin Ess Scalp Purifying Micellar Shampoo bottle"
+  rating_value: "4.3"
+  rating_stars: "★★★★☆"
+  rating_count: "1,038"
+  buyers_label: "600+ bought in past month"
+  price: "8.24"
+  amazon_url: "https://amzn.to/461Gx9S"
+  description: >
+    This innovative formula uses micellar technology to lift oil and mineral deposits from
+    the scalp without over-drying the lengths. Perfect for the classic greasy-roots-and-dry-ends paradox.
+  best_for: "Oily scalp with dry ends"
+  frequency: "2-3 times per week"
+  key_ingredients: "Micellar water, chelating agents"
+  schema_position: 6
+  schema_id: "https://oceansidehairsalon.com/blog/shampoos-that-work-hard-water-hair/#Scalp-Purifying"
+
+- id: "paul-mitchell-three"
+  badge: "SALON FAVORITE"
+  brand: "Paul Mitchell"
+  name: "Shampoo Three"
+  full_name: "Paul Mitchell Shampoo Three"
+  image: "/images/blog/shampoos-hard-water/paul-mitchell-three.jpg"
+  image_alt: "Paul Mitchell Shampoo Three bottle"
+  rating_value: "4.6"
+  rating_stars: "★★★★★"
+  rating_count: "9,563"
+  buyers_label: "2K+ bought in past month"
+  price: "15.50"
+  amazon_url: "https://amzn.to/4qVLQzG"
+  description: >
+    A salon favorite for removing chlorine, iron, and hard water minerals. Paul Mitchell
+    Shampoo Three provides deep cleansing action to effectively remove surface buildup.
+  best_for: "Normal to oily hair with moderate buildup"
+  frequency: "Once or twice weekly"
+  key_ingredients: "Strong cleansing agents, clarifying formula"
+  schema_position: 7
+  schema_id: "https://oceansidehairsalon.com/blog/shampoos-that-work-hard-water-hair/#Shampoo-Three"
