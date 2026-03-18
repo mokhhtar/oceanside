@@ -77,14 +77,7 @@
         "text": "For optimal performance and hygiene, manufacturers recommend replacing the foil or rotary heads every 12 to 18 months. Dull blades are the #1 cause of pulling and irritation."
       }
     },
-    {
-      "@type": "Question",
-      "name": "Will an electric shaver prevent ingrown hairs?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Generally, yes. Electric shavers don't cut as deep beneath the skin surface as manual razors, which prevents the hair from curling back into the skin. This makes them a superior choice for men prone to razor bumps."
-      }
-    },
+
     {
       "@type": "Question",
       "name": "Is there a 'transition period' for my skin?",
@@ -358,23 +351,29 @@
 
         /* Navbar */
         .navbar {
-            display:flex; justify-content:center; align-items:center;
-            background:rgba(0,95,115,0.98); width:100%; position:fixed; top:0; left:0;
-            padding:1rem 0; z-index:1000; backdrop-filter:blur(5px); box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex; justify-content: center; align-items: center;
+            background: rgba(0,95,115,0.98); width: 100%;
+            position: fixed; top: 0; left: 0;
+            padding: 1rem 0; z-index: 1000;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            flex-wrap: wrap;
         }
         .navbar a, .navbar .dropbtn {
-            font-weight:bold; font-size:17px; color:white !important;
-            padding:14px 20px; text-decoration:none; background:transparent; border:none; cursor:pointer;
+            font-weight: bold; font-size: 17px; color: white !important;
+            padding: 14px 20px; text-decoration: none; background: transparent;
+            border: none; cursor: pointer; white-space: nowrap; font-family: var(--font-body);
         }
-        .navbar a:hover, .dropdown:hover .dropbtn { color:var(--accent-color) !important; }
-        .dropdown { position:relative; display:inline-block; }
+        .navbar a:hover, .dropdown:hover .dropbtn { color: var(--accent-color) !important; }
+        .dropdown { position: relative; display: inline-block; }
         .dropdown-content {
-            display:none; position:absolute; background:#fff; min-width:240px;
-            box-shadow:0 8px 16px rgba(0,0,0,0.2); border-top:3px solid var(--secondary-color); z-index:1;
+            display: none; position: absolute; background: #fff;
+            min-width: 240px; box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            border-top: 3px solid var(--secondary-color); z-index: 1;
         }
-        .dropdown-content a { color:#333 !important; padding:12px 16px; display:block; font-size:15px; }
-        .dropdown-content a:hover { background:#f1f1f1; color:var(--primary-color) !important; }
-        .dropdown:hover .dropdown-content { display:block; }
+        .dropdown-content a { color: #333 !important; padding: 12px 16px; display: block; font-size: 15px; }
+        .dropdown-content a:hover { background: #f1f1f1; color: var(--primary-color) !important; }
+        .dropdown:hover .dropdown-content { display: block; }
 
         /* Hero Header */
         header {
@@ -627,7 +626,8 @@
 
   /* ===== Navbar ===== */
 
-
+            .navbar { padding: 0.8rem 0.5rem; justify-content: space-around; }
+            .navbar a, .navbar .dropbtn { font-size: 14px; padding: 10px 8px; }
   /* ===== Header ===== */
             header { height: auto; min-height: 70vh; padding-bottom: 60px; }
             .content-wrapper { margin-top: -30px; }
@@ -1120,11 +1120,7 @@ Try the Free AI Shaver Finder →
         <p><strong>Wet and Dry Shave Capabilities:</strong> While a quick <strong>dry shave</strong> is convenient for busy mornings, having a waterproof shaver allows you to use soothing shaving gels in the shower, dramatically increasing your chances of a truly <strong>comfortable shave</strong>.</p>
     
 </section>
-<section style="margin-top:40px;">
-    <h3 >Best Electric Shaver for Acne-Prone Skin and Razor Bumps</h3>
-    <p>Manual razors scrape away the top layer of your skin, which can pop pimples and spread bacteria, leading to more breakouts. Electric shavers, particularly <strong>hypoallergenic electric shavers</strong> with foil heads, glide over the skin without making direct contact with the epidermis.</p>
-    <p>If you have <strong>acne-prone skin</strong>, clean your shaver head with an antibacterial spray after every use. For preventing <strong>ingrown hairs</strong> and <strong>razor bumps</strong>, the golden rule is to avoid pressing too hard. Let the machine do the work. Models like the Panasonic ARC5 are exceptional at cutting cleanly without digging into the pores, <strong>reducing irritation</strong> significantly.</p>
-</section>
+
 <section style="margin-top:40px;">
 <h2 id="Foil-vs-Rotary">Why a Foil Shaver is Best for Sensitive Skin (Foil vs. Rotary)</h2>
 
@@ -1171,15 +1167,7 @@ Try the Free AI Shaver Finder →
                     For optimal performance and hygiene, manufacturers recommend replacing the foil or rotary heads every 12 to 18 months. Dull blades are the #1 cause of pulling and irritation.
                 </div>
             </div>
-            <!-- Q4 (New) -->
-            <div class="faq-item">
-                <button class="faq-question" onclick="toggleFaq(this)">
-                    Will an electric shaver prevent ingrown hairs? <span>+</span>
-                </button>
-                <div class="faq-answer">
-                    Generally, yes. Electric shavers don't cut as deep beneath the skin surface as manual razors, which prevents the hair from curling back into the skin. This makes them a superior choice for men prone to razor bumps.
-                </div>
-            </div>
+
             <!-- Q5 (New) -->
             <div class="faq-item">
                 <button class="faq-question" onclick="toggleFaq(this)">
