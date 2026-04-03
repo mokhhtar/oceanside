@@ -26,8 +26,8 @@ from amazon_creatorsapi import AmazonCreatorsApi, Country
 #  ⚙️  إعدادات عامة
 # ════════════════════════════════════════════════════════════════
 
-CREDENTIAL_ID     = os.environ.get("AMAZON_ACCESS_KEY", "amzn1.application-oa2-client.91c3a2f55ca4432895dce277ba9f83ac")
-CREDENTIAL_SECRET = os.environ.get("AMAZON_SECRET_KEY", "amzn1.oa2-cs.v1.621284ab79d7d3f528c03c2f23b8b0d0a9efaee6cd4277a7e86bb51236bd24df")
+CREDENTIAL_ID     = os.environ.get("AMAZON_ACCESS_KEY")
+CREDENTIAL_SECRET = os.environ.get("AMAZON_SECRET_KEY")
 PARTNER_TAG       = "oceansidehair-20"
 API_VERSION       = "3.1"
 
@@ -39,7 +39,7 @@ SITE_ROOT = Path(".")
 
 PAGES = {
     "blog/best-electric-shavers-sensitive-skin-2025/index.html": [
-        ("B0FGQQ9X2R", "https://amzn.to/3YhLpDJ"),
+        ("B07PW4MTHV", "https://amzn.to/3YhLpDJ"),
         ("B0F1P5JXCD", "https://amzn.to/3MNumXN"),
         ("B0D4B2T8SR", "https://amzn.to/4pXKkxa"),
         ("B0CQ3TMHPM", "https://amzn.to/3MV9I8c"),
@@ -143,84 +143,84 @@ def _cast_price(numeric_str: str, original_value) -> float | str:
     return numeric_str
 
 # ════════════════════════════════════════════════════════════════
-#  🛠️  تحديث HTML — Pure Regex (مخصص لتنسيق <small>$</small>)
+#  🛠️  تحديث HTML — حماية ضد التداخل (Anti-Cascade)
 # ════════════════════════════════════════════════════════════════
 
 def update_html(html_content: str, affiliate_url: str, new_price: str) -> str:
-    # 🟢 التعديل هنا: استخدام الدالة الموجودة في كودك
     numeric = _price_to_numeric_str(new_price)
+    slug = affiliate_url.rstrip("/").split("/")[-1]
     changed = False
 
-    # 1. تحديث السعر العادي (Price Tag)
-    normal_pattern = re.compile(
-        r'(<div\s+class="price-tag"[^>]*>\s*<small>\$</small>\s*)([\d.,]+)(\s*</div>(?:(?!<div\s+class="price-tag").)*?href="https://amzn\.to/' + re.escape(affiliate_url) + r'")',
+    # --- الخطة أ: السعر موجود "داخل" الرابط (مثل Nivea Upsell) ---
+    # يبحث عن href، ثم يبحث داخله عن price-tag
+    pattern_inside = re.compile(
+        r'(href="https://amzn\.to/' + re.escape(slug) + r'"[^>]*>.*?(?:id|class)="price-tag"[^>]*>.*?(?:</small>|\$)\s*)([\d.,]+)',
         re.DOTALL | re.IGNORECASE
     )
-
-    def normal_replacer(m: re.Match) -> str:
+    
+    def replacer_inside(m: re.Match) -> str:
         nonlocal changed
         if m.group(2) != numeric:
             changed = True
-            print(f"      📝 HTML [Regular]: {numeric}")
-        return m.group(1) + numeric + m.group(3)
+            print(f"      📝 HTML [Upsell]: {m.group(2)} → {numeric}")
+        return m.group(1) + numeric
 
-    html_content = normal_pattern.sub(normal_replacer, html_content)
+    new_html = pattern_inside.sub(replacer_inside, html_content)
+    
+    # إذا تم التحديث بنجاح، نخرج من الدالة (لا حاجة للخطة ب)
+    if changed:
+        return new_html
 
-    # 2. تحديث سعر الـ Upsell (Nivea Balm)
-    upsell_pattern = re.compile(
-        r'(href="https://amzn\.to/' + re.escape(affiliate_url) + r'"[^>]*>.*?<span\s+id="upsell-item-price"[^>]*>\s*\$\s*)([\d.,]+)(\s*</span>)',
+    # --- الخطة ب: السعر موجود "قبل" الرابط (المنتجات العادية) ---
+    # الحاجز السحري: (?:(?!(?:class|id)="price-tag").)*?
+    # هذا الحاجز يمنع الكود من القفز من منتج إلى آخر مهما حدث!
+    pattern_before = re.compile(
+        r'((?:class|id)="price-tag"[^>]*>.*?(?:</small>|\$)\s*)([\d.,]+)((?:(?!(?:class|id)="price-tag").)*?href="https://amzn\.to/' + re.escape(slug) + r'")',
         re.DOTALL | re.IGNORECASE
     )
 
-    def upsell_replacer(m: re.Match) -> str:
+    def replacer_before(m: re.Match) -> str:
         nonlocal changed
         if m.group(2) != numeric:
             changed = True
-            print(f"      📝 HTML [Upsell]: {numeric}")
+            print(f"      📝 HTML [Regular]: {m.group(2)} → {numeric}")
         return m.group(1) + numeric + m.group(3)
 
-    html_content = upsell_pattern.sub(upsell_replacer, html_content)
-
-    return html_content
+    new_html = pattern_before.sub(replacer_before, html_content)
+    return new_html
 
 
 # ════════════════════════════════════════════════════════════════
-#  🛠️  تحديث Schema (JSON-LD) — Pure Regex الآمن
+#  🛠️  تحديث Schema (JSON-LD)
 # ════════════════════════════════════════════════════════════════
 
 def update_schema(html_content: str, affiliate_url: str, new_price: str) -> str:
-    # 🟢 التعديل هنا أيضاً
     numeric = _price_to_numeric_str(new_price)
-    changed = False
+    slug = affiliate_url.rstrip("/").split("/")[-1]
     
     _SCRIPT_RE = re.compile(
-        r'(<script\s+type="application/ld\+json"[^>]*>)'
-        r'([\s\S]*?)'
-        r'(</script>)',
-        re.DOTALL
+        r'(<script\s+type="application/ld\+json"[^>]*>)(.*?)(</script>)',
+        re.DOTALL | re.IGNORECASE
     )
 
     def script_replacer(m: re.Match) -> str:
-        nonlocal changed
         content = m.group(2)
-
+        
+        # الحاجز: (?:(?!"url").)*? يمنع الكود من تغيير سعر منتج آخر في الشرح
         offer_re = re.compile(
-            r'("url":\s*"https://amzn\.to/' + re.escape(affiliate_url) + r'"(?:(?!"url").)*?"price":\s*")([^"]+)(")',
-            re.DOTALL
+            r'("url":\s*"https://amzn\.to/' + re.escape(slug) + r'/?(?:(?!"url").)*?"price":\s*")([^"]+)(")',
+            re.DOTALL | re.IGNORECASE
         )
 
         def price_replacer(pm: re.Match) -> str:
-            nonlocal changed
             if pm.group(2) != numeric:
-                changed = True
-                print(f"      📝 Schema [{affiliate_url}]: {numeric}")
+                print(f"      📝 Schema: {pm.group(2)} → {numeric}")
             return pm.group(1) + numeric + pm.group(3)
 
         updated = offer_re.sub(price_replacer, content)
         return m.group(1) + updated + m.group(3)
 
-    result = _SCRIPT_RE.sub(script_replacer, html_content)
-    return result
+    return _SCRIPT_RE.sub(script_replacer, html_content)
 
 def _walk_schema(obj, affiliate_url: str, numeric_str: str):
     modified = False
