@@ -143,53 +143,84 @@ def _cast_price(numeric_str: str, original_value) -> float | str:
     return numeric_str
 
 # ════════════════════════════════════════════════════════════════
-#  🛠️  تحديث HTML و Schema (الطريقة الجراحية)
+#  🛠️  تحديث HTML — Pure Regex (مخصص لتنسيق <small>$</small>)
 # ════════════════════════════════════════════════════════════════
 
 def update_html(html_content: str, affiliate_url: str, new_price: str) -> str:
+    # 🟢 التعديل هنا: استخدام الدالة الموجودة في كودك
+    numeric = _price_to_numeric_str(new_price)
     changed = False
 
-    # تحديث المنتجات العادية
-    pattern_normal = rf'(<div\s+class="price-tag"[^>]*>)(.*?)(</div>.*?href="{re.escape(affiliate_url)}")'
-    def replacer(match):
-        old_content = match.group(2)
-        if '<small>' in old_content:
-            new_val = f'<small>$</small>{_price_to_numeric_str(new_price)}'
-        else:
-            new_val = new_price
-        return f"{match.group(1)}{new_val}{match.group(3)}"
+    # 1. تحديث السعر العادي (Price Tag)
+    normal_pattern = re.compile(
+        r'(<div\s+class="price-tag"[^>]*>\s*<small>\$</small>\s*)([\d.,]+)(\s*</div>(?:(?!<div\s+class="price-tag").)*?href="https://amzn\.to/' + re.escape(affiliate_url) + r'")',
+        re.DOTALL | re.IGNORECASE
+    )
 
-    new_html = re.sub(pattern_normal, replacer, html_content, flags=re.DOTALL)
-    if new_html != html_content:
-        html_content = new_html
-        print(f"      📝 HTML: price-tag → {new_price}")
+    def normal_replacer(m: re.Match) -> str:
+        nonlocal changed
+        if m.group(2) != numeric:
+            changed = True
+            print(f"      📝 HTML [Regular]: {numeric}")
+        return m.group(1) + numeric + m.group(3)
 
-    # تحديث منطقة Upsell
-    pattern_upsell = rf'(id="upsell-item-price"[^>]*>)([^<]+)(</span>.*?href="{re.escape(affiliate_url)}")'
-    new_html_upsell = re.sub(pattern_upsell, rf'\g<1>{new_price}\g<3>', html_content, flags=re.DOTALL)
-    if new_html_upsell != html_content:
-        html_content = new_html_upsell
-        print(f"      📝 HTML: upsell-price → {new_price}")
+    html_content = normal_pattern.sub(normal_replacer, html_content)
+
+    # 2. تحديث سعر الـ Upsell (Nivea Balm)
+    upsell_pattern = re.compile(
+        r'(href="https://amzn\.to/' + re.escape(affiliate_url) + r'"[^>]*>.*?<span\s+id="upsell-item-price"[^>]*>\s*\$\s*)([\d.,]+)(\s*</span>)',
+        re.DOTALL | re.IGNORECASE
+    )
+
+    def upsell_replacer(m: re.Match) -> str:
+        nonlocal changed
+        if m.group(2) != numeric:
+            changed = True
+            print(f"      📝 HTML [Upsell]: {numeric}")
+        return m.group(1) + numeric + m.group(3)
+
+    html_content = upsell_pattern.sub(upsell_replacer, html_content)
 
     return html_content
+
+
+# ════════════════════════════════════════════════════════════════
+#  🛠️  تحديث Schema (JSON-LD) — Pure Regex الآمن
+# ════════════════════════════════════════════════════════════════
 
 def update_schema(html_content: str, affiliate_url: str, new_price: str) -> str:
-    numeric_str = _price_to_numeric_str(new_price)
-    scripts = re.findall(r'(<script type="application/ld\+json">)(.*?)(</script>)', html_content, flags=re.DOTALL)
+    # 🟢 التعديل هنا أيضاً
+    numeric = _price_to_numeric_str(new_price)
+    changed = False
+    
+    _SCRIPT_RE = re.compile(
+        r'(<script\s+type="application/ld\+json"[^>]*>)'
+        r'([\s\S]*?)'
+        r'(</script>)',
+        re.DOTALL
+    )
 
-    for open_tag, content, close_tag in scripts:
-        try:
-            data = json.loads(content)
-            modified, new_data = _walk_schema(data, affiliate_url, numeric_str)
-            if modified:
-                new_content = json.dumps(new_data, indent=2, ensure_ascii=False)
-                old_script = f"{open_tag}{content}{close_tag}"
-                new_script = f"{open_tag}\n{new_content}\n{close_tag}"
-                html_content = html_content.replace(old_script, new_script)
-                print(f"      📝 Schema: price → {numeric_str}")
-        except json.JSONDecodeError:
-            continue
-    return html_content
+    def script_replacer(m: re.Match) -> str:
+        nonlocal changed
+        content = m.group(2)
+
+        offer_re = re.compile(
+            r'("url":\s*"https://amzn\.to/' + re.escape(affiliate_url) + r'"(?:(?!"url").)*?"price":\s*")([^"]+)(")',
+            re.DOTALL
+        )
+
+        def price_replacer(pm: re.Match) -> str:
+            nonlocal changed
+            if pm.group(2) != numeric:
+                changed = True
+                print(f"      📝 Schema [{affiliate_url}]: {numeric}")
+            return pm.group(1) + numeric + pm.group(3)
+
+        updated = offer_re.sub(price_replacer, content)
+        return m.group(1) + updated + m.group(3)
+
+    result = _SCRIPT_RE.sub(script_replacer, html_content)
+    return result
 
 def _walk_schema(obj, affiliate_url: str, numeric_str: str):
     modified = False
