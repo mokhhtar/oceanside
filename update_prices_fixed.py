@@ -22,7 +22,6 @@ product_map = {
 try:
     print("🔌 Connecting to Amazon Creators API (Version 3.1)...")
     
-    # 1. تحديث الإصدار إلى 3.1
     amazon = AmazonCreatorsApi(
         credential_id=CREDENTIAL_ID, 
         credential_secret=CREDENTIAL_SECRET, 
@@ -33,10 +32,17 @@ try:
     
     asins = list(product_map.keys())
     
-    print("📦 Fetching product data...")
-    items = amazon.get_items(asins)
+    # 🟢 السر هنا: يجب أن نحدد بدقة البيانات التي نحتاجها من سيرفرات أمازون
+    request_resources = [
+        "ItemInfo.Title",
+        "Offers.Listings.Price",
+        "Images.Primary.Large"
+    ]
     
-    # التأكد من وجود رد صحيح
+    print("📦 Fetching product data...")
+    # تمرير الموارد (resources) مع الطلب
+    items = amazon.get_items(asins, resources=request_resources)
+    
     if not items:
         print("⚠️ No items returned from API.")
         exit(0)
@@ -48,7 +54,6 @@ try:
     updated_count = 0
     
     for item in items:
-        # 2. استخراج ASIN بشكل آمن
         if not hasattr(item, 'asin'):
             continue
             
@@ -61,7 +66,6 @@ try:
         new_price = None
         new_url = None
         
-        # 3. استخراج الرابط والسعر باستخدام فحوصات الأمان لتجنب أي توقف (AttributeError)
         if hasattr(item, 'detail_page_url'):
             new_url = item.detail_page_url
             
