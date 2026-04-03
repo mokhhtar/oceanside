@@ -2,9 +2,7 @@ import os
 import re
 import traceback
 
-# التحديث بناءً على تحذير المكتبة لتعمل مع Creators API
-from amazon_creatorsapi import AmazonCreatorsApi
-from amazon_creatorsapi import Country
+from amazon_creatorsapi import AmazonCreatorsApi, Country
 
 CREDENTIAL_ID = os.environ.get('AMAZON_ACCESS_KEY')
 CREDENTIAL_SECRET = os.environ.get('AMAZON_SECRET_KEY')
@@ -22,15 +20,15 @@ product_map = {
 }
 
 try:
-    print("🔌 Connecting to Amazon Creators API...")
+    print("🔌 Connecting to Amazon Creators API (Version 3.1)...")
     
-    # استخدام كلاس Creators API مع إضافة النسخة كما يتطلب التحديث
+    # 1. تحديث الإصدار إلى 3.1
     amazon = AmazonCreatorsApi(
         credential_id=CREDENTIAL_ID, 
         credential_secret=CREDENTIAL_SECRET, 
         tag=PARTNER_TAG, 
         country=Country.US,
-        version="2.1"
+        version="3.1"
     )
     
     asins = list(product_map.keys())
@@ -38,6 +36,11 @@ try:
     print("📦 Fetching product data...")
     items = amazon.get_items(asins)
     
+    # التأكد من وجود رد صحيح
+    if not items:
+        print("⚠️ No items returned from API.")
+        exit(0)
+        
     print(f"📄 Reading file: {file_path}")
     with open(file_path, 'r', encoding='utf-8') as f:
         html_content = f.read()
@@ -45,20 +48,28 @@ try:
     updated_count = 0
     
     for item in items:
+        # 2. استخراج ASIN بشكل آمن
+        if not hasattr(item, 'asin'):
+            continue
+            
         asin = item.asin
         base_id = product_map.get(asin)
         
-        if not base_id: continue
+        if not base_id: 
+            continue
         
         new_price = None
-        new_url = item.detail_page_url
+        new_url = None
         
-        # استخراج السعر باستخدام هيكلية المكتبة المحدثة
-        if item.offers and item.offers.listings:
-            new_price = item.offers.listings[0].price.display_amount
+        # 3. استخراج الرابط والسعر باستخدام فحوصات الأمان لتجنب أي توقف (AttributeError)
+        if hasattr(item, 'detail_page_url'):
+            new_url = item.detail_page_url
             
-        if not new_price:
-            print(f"⚠️  No price found for {asin}")
+        if hasattr(item, 'offers') and item.offers and hasattr(item.offers, 'listings') and item.offers.listings:
+            new_price = item.offers.listings.price.display_amount
+            
+        if not new_price or not new_url:
+            print(f"⚠️  Missing price or URL for {asin} (Product might be out of stock)")
             continue
             
         print(f"✅ Found {asin}: {new_price}")

@@ -1,9 +1,9 @@
 name: Update Amazon Prices
 
-#on:
-#  schedule:
-#    - cron: '0 0 * * *' # يعمل تلقائياً كل يوم في منتصف الليل
-#  workflow_dispatch: # يسمح لك بتشغيله يدوياً للتجربة
+on:
+ schedule:
+   - cron: '0 0 * * *' # يعمل تلقائياً كل يوم في منتصف الليل
+ workflow_dispatch: # يسمح لك بتشغيله يدوياً للتجربة
 
 jobs:
   update:
