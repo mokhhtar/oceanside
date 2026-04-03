@@ -66,12 +66,20 @@ try:
         new_price = None
         new_url = None
         
-        if hasattr(item, 'detail_page_url'):
+        # جلب الرابط
+        if hasattr(item, 'detail_page_url') and item.detail_page_url:
             new_url = item.detail_page_url
             
-        if hasattr(item, 'offers') and item.offers and hasattr(item.offers, 'listings') and item.offers.listings:
-            new_price = item.offers.listings.price.display_amount
+        # 🟢 التعديل السحري هنا: استخدام offers_v2 بدلاً من offers
+        if hasattr(item, 'offers_v2') and item.offers_v2 and hasattr(item.offers_v2, 'listings') and item.offers_v2.listings:
+            listing = item.offers_v2.listings
             
+            # حسب التحديث الجديد للمكتبة، السعر قد يكون مخزناً هنا
+            if hasattr(listing.price, 'display_amount') and listing.price.display_amount:
+                new_price = listing.price.display_amount
+            elif hasattr(listing.price, 'money') and hasattr(listing.price.money, 'amount'):
+                new_price = f"${listing.price.money.amount}" # إضافة رمز العملة في حال رجع كرقم فقط
+                
         if not new_price or not new_url:
             print(f"⚠️  Missing price or URL for {asin} (Product might be out of stock)")
             continue
