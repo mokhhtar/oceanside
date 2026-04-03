@@ -33,8 +33,8 @@ from amazon_creatorsapi import AmazonCreatorsApi, Country
 #  ⚙️  إعدادات عامة
 # ════════════════════════════════════════════════════════════════
 
-CREDENTIAL_ID     = os.environ.get("AMAZON_ACCESS_KEY", "amzn1.application-oa2-client.91c3a2f55ca4432895dce277ba9f83ac")
-CREDENTIAL_SECRET = os.environ.get("AMAZON_SECRET_KEY", "amzn1.oa2-cs.v1.621284ab79d7d3f528c03c2f23b8b0d0a9efaee6cd4277a7e86bb51236bd24df")
+CREDENTIAL_ID     = os.environ.get('AMAZON_ACCESS_KEY')
+CREDENTIAL_SECRET = os.environ.get('AMAZON_SECRET_KEY')
 PARTNER_TAG       = "oceansidehair-20"
 API_VERSION       = "3.1"
 
