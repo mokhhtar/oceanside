@@ -32,7 +32,6 @@ try:
     
     asins = list(product_map.keys())
     
-    # 🟢 السر هنا: يجب أن نحدد بدقة البيانات التي نحتاجها من سيرفرات أمازون
     request_resources = [
         "itemInfo.title",
         "offersV2.listings.price",
@@ -40,10 +39,12 @@ try:
     ]
     
     print("📦 Fetching product data...")
-    # تمرير الموارد (resources) مع الطلب
-    items = amazon.get_items(asins, resources=request_resources)
+    response = amazon.get_items(asins, resources=request_resources)
     
-    if not items:
+    # 🟢 السر هنا: استخراج قائمة المنتجات الحقيقية من داخل الرد (لأن الرد عبارة عن قائمة داخلها قوائم)
+    products_list = response if isinstance(response, (list, tuple)) and len(response) > 0 and isinstance(response, list) else response
+    
+    if not products_list:
         print("⚠️ No items returned from API.")
         exit(0)
         
@@ -53,7 +54,8 @@ try:
         
     updated_count = 0
     
-    for item in items:
+    # المرور على المنتجات الحقيقية الآن
+    for item in products_list: 
         if not hasattr(item, 'asin'):
             continue
             
@@ -66,19 +68,19 @@ try:
         new_price = None
         new_url = None
         
-        # جلب الرابط
+        # استخراج الرابط
         if hasattr(item, 'detail_page_url') and item.detail_page_url:
             new_url = item.detail_page_url
             
-        # 🟢 التعديل السحري هنا: استخدام offers_v2 بدلاً من offers
-        if hasattr(item, 'offers_v2') and item.offers_v2 and hasattr(item.offers_v2, 'listings') and item.offers_v2.listings:
-            listing = item.offers_v2.listings
-            
-            # حسب التحديث الجديد للمكتبة، السعر قد يكون مخزناً هنا
+        # استخراج السعر (التعامل مع كل من offers أو offers_v2 تحسباً لأي تحديث)
+        offers_obj = getattr(item, 'offers_v2', None) or getattr(item, 'offers', None)
+        
+        if offers_obj and hasattr(offers_obj, 'listings') and offers_obj.listings:
+            listing = offers_obj.listings
             if hasattr(listing.price, 'display_amount') and listing.price.display_amount:
                 new_price = listing.price.display_amount
             elif hasattr(listing.price, 'money') and hasattr(listing.price.money, 'amount'):
-                new_price = f"${listing.price.money.amount}" # إضافة رمز العملة في حال رجع كرقم فقط
+                new_price = f"${listing.price.money.amount}"
                 
         if not new_price or not new_url:
             print(f"⚠️  Missing price or URL for {asin} (Product might be out of stock)")
