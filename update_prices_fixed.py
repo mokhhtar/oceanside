@@ -34,9 +34,9 @@ try:
     
     # 🟢 السر هنا: يجب أن نحدد بدقة البيانات التي نحتاجها من سيرفرات أمازون
     request_resources = [
-        "ItemInfo.Title",
-        "Offers.Listings.Price",
-        "Images.Primary.Large"
+        "itemInfo.title",
+        "offersV2.listings.price",
+        "images.primary.large"
     ]
     
     print("📦 Fetching product data...")
