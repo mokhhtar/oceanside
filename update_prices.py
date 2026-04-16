@@ -23,6 +23,7 @@ import time
 import argparse
 import traceback
 from pathlib import Path
+import datetime
 from amazon_creatorsapi import AmazonCreatorsApi, Country
 
 # ════════════════════════════════════════════════════════════════
@@ -281,7 +282,27 @@ def _walk_and_update(obj: object, asin: str, new_price: str) -> tuple[bool, obje
 
     return modified, obj
 
+def update_timestamp(html_content: str) -> tuple[str, bool]:
+    # تنسيق الوقت ليناسب توقيت كاليفورنيا (Pacific Time) بما أن جمهورك في Oceanside
+    # مثال: "February 20, 2025 at 10:30 AM PT"
+    now_str = datetime.datetime.now().strftime("%B %d, %Y at %I:%M %p PT")
+    changed = False
+    
+    # البحث عن السبان الخاص بالتاريخ وتحديثه
+    pattern = re.compile(
+        r'(<span\s+id="price-timestamp"[^>]*>)(.*?)(</span>)',
+        re.IGNORECASE | re.DOTALL
+    )
+    
+    def replacer(m: re.Match) -> str:
+        nonlocal changed
+        if m.group(2) != now_str:
+            print(f"      🕒 Timestamp updated to: {now_str}")
+            changed = True
+        return m.group(1) + now_str + m.group(3)
 
+    updated_html = pattern.sub(replacer, html_content)
+    return updated_html, changed
 # ════════════════════════════════════════════════════════════════
 #  🚀  الدالة الرئيسية
 # ════════════════════════════════════════════════════════════════
@@ -332,8 +353,18 @@ def run(dry_run: bool = False, page_filter: str | None = None) -> None:
         for asin in unique_asins:
             new_price = prices.get(asin)
             if not new_price:
-                # Price unavailable (out of stock, API error, etc.) — skip safely
-                print(f"\n   ⏭️  {asin}: تخطي — لا يوجد سعر")
+                # ⚠️ هنا يتدخل نظام الحماية
+                print(f"\n   ⚠️  API Failed for {asin} → Applying Fallback (Removing Price)")
+                
+                # 1. تحديث HTML ليضع كلمة Check Price بدل الرقم السعري القديم
+                html, html_changed = update_html(html, asin, "Check Price")
+                
+                # 2. خطوة هامة للـ SEO: تحديث Schema لكي لا ترسل سعراً قديماً لجوجل
+                html, schema_changed = update_schema(html, asin, "Out of Stock / Check Link") 
+                
+                if html_changed or schema_changed:
+                    page_changed = True
+                    
                 continue
 
             print(f"\n   🏷️  {asin} → ${new_price}")
@@ -348,7 +379,11 @@ def run(dry_run: bool = False, page_filter: str | None = None) -> None:
                 page_changed = True
             elif prices.get(asin):
                 print(f"      ℹ️  {asin}: السعر لم يتغير")
-
+                
+        html, time_changed = update_timestamp(html)
+        if time_changed:
+            page_changed = True
+            
         # ── Save the file (or report in dry-run mode) ────────────────────────
         if page_changed:
             if dry_run:
