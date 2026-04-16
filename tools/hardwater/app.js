@@ -437,18 +437,23 @@
   }
 
   /**
-   * STEP 3 — USGS site search: find nearest water quality station (15-mile radius).
-   * Handles both WaterML2 timeSeries format and a sites-array format.
+   * STEP 3 — USGS site search: find nearby water quality station using Bounding Box (bBox)
    */
   async function fetchUSGSSite(lat, lon) {
-    // 💡 السر هنا: تقليم الإحداثيات لتجنب رفض USGS (400 Bad Request)
-    const cleanLat = lat.toFixed(4);
-    const cleanLon = lon.toFixed(4);
+    // 💡 السر هنا: API الخاص بـ USGS لا يدعم البحث بالدائرة (Radius)
+    // بل يطلب "صندوقاً جغرافياً" (bBox = West, South, East, North)
+    // 15 ميلاً تعادل تقريباً 0.22 درجة جغرافية. سنقوم برسم الصندوق:
 
-    // الرابط بعد التنظيف (تم إزالة hasDataTypeCd لتجنب التعارض)
-    const targetUrl = `${API.USGS_SITE}?format=json&lat=${cleanLat}&longitude=${cleanLon}&radius=15&parameterCd=00900`;
+    const offset = 0.22;
+    const west = (lon - offset).toFixed(4);
+    const south = (lat - offset).toFixed(4);
+    const east = (lon + offset).toFixed(4);
+    const north = (lat + offset).toFixed(4);
 
-    // إرسال الطلب عبر الوسيط
+    // بناء الرابط بالصيغة الصحيحة التي تفهمها USGS
+    const targetUrl = `${API.USGS_SITE}?format=json&bBox=${west},${south},${east},${north}&parameterCd=00900`;
+
+    // إرسال الطلب عبر الـ Worker الخاص بك
     const res = await fetch(PROXY_URL + encodeURIComponent(targetUrl));
 
     if (!res.ok) throw new Error(`USGS site search HTTP ${res.status}`);
@@ -471,7 +476,7 @@
       if (code) return { siteCode: code, siteName: name };
     }
 
-    throw new Error('No USGS water quality stations found within 15 miles of this location');
+    throw new Error('No USGS water quality stations found within this bounding box');
   }
 
   /**
