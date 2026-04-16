@@ -437,55 +437,64 @@
   }
 
   /**
-   * STEP 3 — USGS site search: find nearby water quality station using Bounding Box (bBox)
-   */
+     * STEP 3 — USGS site search: find nearby water quality station using Bounding Box (bBox)
+     */
   async function fetchUSGSSite(lat, lon) {
-    // 💡 السر هنا: API الخاص بـ USGS لا يدعم البحث بالدائرة (Radius)
-    // بل يطلب "صندوقاً جغرافياً" (bBox = West, South, East, North)
-    // 15 ميلاً تعادل تقريباً 0.22 درجة جغرافية. سنقوم برسم الصندوق:
-
     const offset = 0.22;
     const west = (lon - offset).toFixed(4);
     const south = (lat - offset).toFixed(4);
     const east = (lon + offset).toFixed(4);
     const north = (lat + offset).toFixed(4);
 
-    // بناء الرابط بالصيغة الصحيحة التي تفهمها USGS
-    const targetUrl = `${API.USGS_SITE}?format=json&bBox=${west},${south},${east},${north}&parameterCd=00900`;
+    // 💡 التغيير الأول: استخدام format=rdb لأن خدمة site لا تدعم json!
+    // أضفنا أيضاً hasDataTypeCd=qw لضمان أن المحطة تقيس جودة المياه فعلياً
+    const targetUrl = `${API.USGS_SITE}?format=rdb&bBox=${west},${south},${east},${north}&parameterCd=00900&hasDataTypeCd=qw`;
 
-    // إرسال الطلب عبر الـ Worker الخاص بك
     const res = await fetch(PROXY_URL + encodeURIComponent(targetUrl));
-
     if (!res.ok) throw new Error(`USGS site search HTTP ${res.status}`);
-    const body = await res.json();
 
-    // Format A: WaterML2 timeSeries wrapper
-    const ts = body?.value?.timeSeries;
-    if (Array.isArray(ts) && ts.length > 0) {
-      const code = ts[0]?.sourceInfo?.siteCode?.[0]?.value;
-      const name = ts[0]?.sourceInfo?.siteName || 'USGS Station';
-      if (code) return { siteCode: code, siteName: name };
+    // قراءة البيانات كنص (Text) بدلاً من JSON
+    const text = await res.text();
+
+    // تحليل صيغة RDB (نص مفصول بمسافات جدولة - Tab-Separated)
+    const lines = text.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+
+    // البحث عن الترويسة (أول سطر لا يبدأ بعلامة #)
+    let headerLineIndex = -1;
+    for (let i = 0; i < lines.length; i++) {
+      if (!lines[i].startsWith('#')) {
+        headerLineIndex = i;
+        break;
+      }
     }
 
-    // Format B: value.sites or root-level sites array
-    const sites = body?.value?.sites || body?.sites;
-    if (Array.isArray(sites) && sites.length > 0) {
-      const s = sites[0];
-      const code = s?.siteCode?.[0]?.value || s?.siteNumber || s?.sourceInfo?.siteCode?.[0]?.value;
-      const name = s?.stationName || s?.siteName || s?.sourceInfo?.siteName || 'USGS Station';
-      if (code) return { siteCode: code, siteName: name };
+    // إذا لم نجد الترويسة، أو لم يكن هناك صفوف بيانات (البيانات تبدأ بعد الترويسة بصفين)
+    if (headerLineIndex === -1 || headerLineIndex + 2 >= lines.length) {
+      throw new Error('No USGS water quality stations found within this bounding box');
     }
 
-    throw new Error('No USGS water quality stations found within this bounding box');
+    const headers = lines[headerLineIndex].split('\t');
+    const siteNoIndex = headers.indexOf('site_no');
+    const stationNmIndex = headers.indexOf('station_nm');
+
+    if (siteNoIndex === -1) throw new Error('Invalid RDB format: missing site_no');
+
+    // جلب أول محطة متوفرة في القائمة
+    const firstDataRow = lines[headerLineIndex + 2].split('\t');
+    const siteCode = firstDataRow[siteNoIndex];
+    const siteName = stationNmIndex !== -1 ? firstDataRow[stationNmIndex] : 'USGS Station';
+
+    if (siteCode) return { siteCode, siteName };
+
+    throw new Error('No valid site code found in RDB response');
   }
 
   /**
    * STEP 4 — USGS daily values: read the most recent hardness measurement.
-   * parameterCd=00900: Hardness, water — reported in mg/L as CaCO₃ (= ppm).
    */
   async function fetchUSGSData(siteCode) {
-    const targetUrl = `${API.USGS_DV}?format=json&sites=${encodeURIComponent(siteCode)}&parameterCd=00900`;
-    // نغلف الرابط الأصلي داخل رابط الوسيط
+    // 💡 التغيير الثاني: استخدام format=json,1.1 لضمان التوافق التام مع سيرفرات البيانات
+    const targetUrl = `${API.USGS_DV}?format=json,1.1&sites=${encodeURIComponent(siteCode)}&parameterCd=00900`;
     const res = await fetch(PROXY_URL + encodeURIComponent(targetUrl));
 
     if (!res.ok) throw new Error(`USGS DV HTTP ${res.status}`);
@@ -501,13 +510,14 @@
       throw new Error(`Empty value array from USGS station ${siteCode}`);
     }
 
-    // Filter out USGS sentinel values (-999999), empty strings, and NaN
+    // تنظيف البيانات من القيم المفقودة الخاصة بـ USGS مثل -999999
     const valid = values.filter(v => {
       const n = parseFloat(v?.value);
       return v?.value !== '' && v?.value !== '-999999' && v?.value !== 'NaN' && !isNaN(n);
     });
     if (!valid.length) throw new Error(`No valid hardness readings at station ${siteCode}`);
 
+    // سحب أحدث قراءة
     const latest = valid[valid.length - 1];
     return {
       ppm: parseFloat(latest.value),
