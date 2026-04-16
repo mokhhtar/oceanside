@@ -490,40 +490,60 @@
   }
 
   /**
-   * STEP 4 — USGS daily values: read the most recent hardness measurement.
+   * STEP 4 — USGS Water Quality Samples (qwdata)
+   * قراءة أحدث عينة مختبرية لعسر الماء بدلاً من القراءات اليومية المستمرة
    */
   async function fetchUSGSData(siteCode) {
-    // 💡 التغيير الثاني: استخدام format=json,1.1 لضمان التوافق التام مع سيرفرات البيانات
-    const targetUrl = `${API.USGS_DV}?format=json,1.1&sites=${encodeURIComponent(siteCode)}&parameterCd=00900`;
+    // توجيه الطلب إلى سيرفر العينات (qwdata) بصيغة rdb عبر الوسيط
+    const targetUrl = `https://nwis.waterdata.usgs.gov/nwis/qwdata?site_no=${siteCode}&parameterCd=00900&format=rdb`;
     const res = await fetch(PROXY_URL + encodeURIComponent(targetUrl));
 
-    if (!res.ok) throw new Error(`USGS DV HTTP ${res.status}`);
-    const body = await res.json();
+    if (!res.ok) throw new Error(`USGS QW HTTP ${res.status}`);
+    const text = await res.text();
 
-    const ts = body?.value?.timeSeries;
-    if (!Array.isArray(ts) || ts.length === 0) {
-      throw new Error(`No hardness time series returned for station ${siteCode}`);
+    // تحليل صيغة RDB لفصل الأسطر
+    const lines = text.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+
+    // البحث عن سطر الترويسة (أول سطر لا يحتوي على #)
+    let headerLineIndex = -1;
+    for (let i = 0; i < lines.length; i++) {
+      if (!lines[i].startsWith('#')) {
+        headerLineIndex = i;
+        break;
+      }
     }
 
-    const values = ts[0]?.values?.[0]?.value;
-    if (!Array.isArray(values) || values.length === 0) {
-      throw new Error(`Empty value array from USGS station ${siteCode}`);
+    if (headerLineIndex === -1 || headerLineIndex + 2 >= lines.length) {
+      throw new Error(`No laboratory sample data found for station ${siteCode}`);
     }
 
-    // تنظيف البيانات من القيم المفقودة الخاصة بـ USGS مثل -999999
-    const valid = values.filter(v => {
-      const n = parseFloat(v?.value);
-      return v?.value !== '' && v?.value !== '-999999' && v?.value !== 'NaN' && !isNaN(n);
+    // استخراج أسماء الأعمدة لتحديد مكان النتيجة والتاريخ
+    const headers = lines[headerLineIndex].split('\t');
+    const resultIndex = headers.indexOf('result_va'); // العمود الذي يحمل رقم نسبة العسر
+    const dateIndex = headers.indexOf('sample_dt');   // العمود الذي يحمل تاريخ أخذ العينة
+
+    if (resultIndex === -1) throw new Error('Invalid RDB format: missing result_va (value column)');
+
+    // تصفية البيانات لضمان وجود قيم رقمية صحيحة فقط
+    const validDataLines = lines.slice(headerLineIndex + 2).filter(line => {
+      const cols = line.split('\t');
+      return cols[resultIndex] && !isNaN(parseFloat(cols[resultIndex]));
     });
-    if (!valid.length) throw new Error(`No valid hardness readings at station ${siteCode}`);
 
-    // سحب أحدث قراءة
-    const latest = valid[valid.length - 1];
+    if (validDataLines.length === 0) {
+      throw new Error(`No valid hardness sample readings at station ${siteCode}`);
+    }
+
+    // العينات في USGS مرتبة زمنياً، لذا نأخذ السطر الأخير (أحدث قراءة)
+    const lastRow = validDataLines[validDataLines.length - 1].split('\t');
+    const latestValue = parseFloat(lastRow[resultIndex]);
+    const latestDate = dateIndex !== -1 ? lastRow[dateIndex] : '';
+
     return {
-      ppm: parseFloat(latest.value),
-      dateTime: latest.dateTime || '',
-      siteName: ts[0]?.sourceInfo?.siteName || 'USGS Station',
-      siteCode,
+      ppm: latestValue,
+      dateTime: latestDate,
+      siteName: 'USGS Monitoring Station',
+      siteCode: siteCode,
     };
   }
 
