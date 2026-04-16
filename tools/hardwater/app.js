@@ -23,20 +23,20 @@
   // CONSTANTS
   // ═══════════════════════════════════════════════════════════════════════════
 
-  const CACHE_PREFIX    = 'water_data_';
+  const CACHE_PREFIX = 'water_data_';
   const CACHE_EXPIRY_MS = 7 * 24 * 60 * 60 * 1000; // 7-day TTL
-const PROXY_URL = 'https://usgs-water-proxy.mok243643.workers.dev/?url=';
+  const PROXY_URL = 'https://water-api-helper.mok243643.workers.dev/?url=';
   const API = {
-    NOMINATIM : 'https://nominatim.openstreetmap.org/search',
-    USGS_SITE : 'https://waterservices.usgs.gov/nwis/site/',
-    USGS_DV   : 'https://waterservices.usgs.gov/nwis/dv/',
+    NOMINATIM: 'https://nominatim.openstreetmap.org/search',
+    USGS_SITE: 'https://waterservices.usgs.gov/nwis/site/',
+    USGS_DV: 'https://waterservices.usgs.gov/nwis/dv/',
   };
 
   // Loading step labels (shown during API chain execution)
   const LOAD_STEPS = [
-    { icon: '📍', text: 'Resolving ZIP code location…'              },
-    { icon: '🔬', text: 'Locating nearby water quality stations…'   },
-    { icon: '💧', text: 'Reading hardness measurements (USGS)…'     },
+    { icon: '📍', text: 'Resolving ZIP code location…' },
+    { icon: '🔬', text: 'Locating nearby water quality stations…' },
+    { icon: '💧', text: 'Reading hardness measurements (USGS)…' },
   ];
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -145,110 +145,110 @@ const PROXY_URL = 'https://usgs-water-proxy.mok243643.workers.dev/?url=';
 
     // ── All 50 state averages ──────────────────────────────────────────────
     stateAverages: {
-      AL:{ avg_ppm: 74,  classification:'Moderately Hard' },
-      AK:{ avg_ppm: 45,  classification:'Soft'            },
-      AZ:{ avg_ppm: 290, classification:'Very Hard'       },
-      AR:{ avg_ppm: 64,  classification:'Moderately Hard' },
-      CA:{ avg_ppm: 249, classification:'Very Hard'       },
-      CO:{ avg_ppm: 127, classification:'Hard'            },
-      CT:{ avg_ppm: 50,  classification:'Soft'            },
-      DE:{ avg_ppm: 117, classification:'Moderately Hard' },
-      FL:{ avg_ppm: 216, classification:'Very Hard'       },
-      GA:{ avg_ppm: 56,  classification:'Soft'            },
-      HI:{ avg_ppm: 90,  classification:'Moderately Hard' },
-      ID:{ avg_ppm: 230, classification:'Very Hard'       },
-      IL:{ avg_ppm: 347, classification:'Very Hard'       },
-      IN:{ avg_ppm: 363, classification:'Very Hard'       },
-      IA:{ avg_ppm: 299, classification:'Very Hard'       },
-      KS:{ avg_ppm: 266, classification:'Very Hard'       },
-      KY:{ avg_ppm: 153, classification:'Hard'            },
-      LA:{ avg_ppm: 97,  classification:'Moderately Hard' },
-      ME:{ avg_ppm: 21,  classification:'Soft'            },
-      MD:{ avg_ppm: 106, classification:'Moderately Hard' },
-      MA:{ avg_ppm: 34,  classification:'Soft'            },
-      MI:{ avg_ppm: 306, classification:'Very Hard'       },
-      MN:{ avg_ppm: 270, classification:'Very Hard'       },
-      MS:{ avg_ppm: 53,  classification:'Soft'            },
-      MO:{ avg_ppm: 270, classification:'Very Hard'       },
-      MT:{ avg_ppm: 211, classification:'Very Hard'       },
-      NE:{ avg_ppm: 253, classification:'Very Hard'       },
-      NV:{ avg_ppm: 273, classification:'Very Hard'       },
-      NH:{ avg_ppm: 19,  classification:'Soft'            },
-      NJ:{ avg_ppm: 117, classification:'Moderately Hard' },
-      NM:{ avg_ppm: 223, classification:'Very Hard'       },
-      NY:{ avg_ppm: 127, classification:'Hard'            },
-      NC:{ avg_ppm: 66,  classification:'Moderately Hard' },
-      ND:{ avg_ppm: 270, classification:'Very Hard'       },
-      OH:{ avg_ppm: 299, classification:'Very Hard'       },
-      OK:{ avg_ppm: 199, classification:'Very Hard'       },
-      OR:{ avg_ppm: 46,  classification:'Soft'            },
-      PA:{ avg_ppm: 153, classification:'Hard'            },
-      RI:{ avg_ppm: 29,  classification:'Soft'            },
-      SC:{ avg_ppm: 25,  classification:'Soft'            },
-      SD:{ avg_ppm: 269, classification:'Very Hard'       },
-      TN:{ avg_ppm: 106, classification:'Moderately Hard' },
-      TX:{ avg_ppm: 199, classification:'Very Hard'       },
-      UT:{ avg_ppm: 298, classification:'Very Hard'       },
-      VT:{ avg_ppm: 26,  classification:'Soft'            },
-      VA:{ avg_ppm: 73,  classification:'Moderately Hard' },
-      WA:{ avg_ppm: 57,  classification:'Soft'            },
-      WV:{ avg_ppm: 89,  classification:'Moderately Hard' },
-      WI:{ avg_ppm: 290, classification:'Very Hard'       },
-      WY:{ avg_ppm: 178, classification:'Hard'            },
+      AL: { avg_ppm: 74, classification: 'Moderately Hard' },
+      AK: { avg_ppm: 45, classification: 'Soft' },
+      AZ: { avg_ppm: 290, classification: 'Very Hard' },
+      AR: { avg_ppm: 64, classification: 'Moderately Hard' },
+      CA: { avg_ppm: 249, classification: 'Very Hard' },
+      CO: { avg_ppm: 127, classification: 'Hard' },
+      CT: { avg_ppm: 50, classification: 'Soft' },
+      DE: { avg_ppm: 117, classification: 'Moderately Hard' },
+      FL: { avg_ppm: 216, classification: 'Very Hard' },
+      GA: { avg_ppm: 56, classification: 'Soft' },
+      HI: { avg_ppm: 90, classification: 'Moderately Hard' },
+      ID: { avg_ppm: 230, classification: 'Very Hard' },
+      IL: { avg_ppm: 347, classification: 'Very Hard' },
+      IN: { avg_ppm: 363, classification: 'Very Hard' },
+      IA: { avg_ppm: 299, classification: 'Very Hard' },
+      KS: { avg_ppm: 266, classification: 'Very Hard' },
+      KY: { avg_ppm: 153, classification: 'Hard' },
+      LA: { avg_ppm: 97, classification: 'Moderately Hard' },
+      ME: { avg_ppm: 21, classification: 'Soft' },
+      MD: { avg_ppm: 106, classification: 'Moderately Hard' },
+      MA: { avg_ppm: 34, classification: 'Soft' },
+      MI: { avg_ppm: 306, classification: 'Very Hard' },
+      MN: { avg_ppm: 270, classification: 'Very Hard' },
+      MS: { avg_ppm: 53, classification: 'Soft' },
+      MO: { avg_ppm: 270, classification: 'Very Hard' },
+      MT: { avg_ppm: 211, classification: 'Very Hard' },
+      NE: { avg_ppm: 253, classification: 'Very Hard' },
+      NV: { avg_ppm: 273, classification: 'Very Hard' },
+      NH: { avg_ppm: 19, classification: 'Soft' },
+      NJ: { avg_ppm: 117, classification: 'Moderately Hard' },
+      NM: { avg_ppm: 223, classification: 'Very Hard' },
+      NY: { avg_ppm: 127, classification: 'Hard' },
+      NC: { avg_ppm: 66, classification: 'Moderately Hard' },
+      ND: { avg_ppm: 270, classification: 'Very Hard' },
+      OH: { avg_ppm: 299, classification: 'Very Hard' },
+      OK: { avg_ppm: 199, classification: 'Very Hard' },
+      OR: { avg_ppm: 46, classification: 'Soft' },
+      PA: { avg_ppm: 153, classification: 'Hard' },
+      RI: { avg_ppm: 29, classification: 'Soft' },
+      SC: { avg_ppm: 25, classification: 'Soft' },
+      SD: { avg_ppm: 269, classification: 'Very Hard' },
+      TN: { avg_ppm: 106, classification: 'Moderately Hard' },
+      TX: { avg_ppm: 199, classification: 'Very Hard' },
+      UT: { avg_ppm: 298, classification: 'Very Hard' },
+      VT: { avg_ppm: 26, classification: 'Soft' },
+      VA: { avg_ppm: 73, classification: 'Moderately Hard' },
+      WA: { avg_ppm: 57, classification: 'Soft' },
+      WV: { avg_ppm: 89, classification: 'Moderately Hard' },
+      WI: { avg_ppm: 290, classification: 'Very Hard' },
+      WY: { avg_ppm: 178, classification: 'Hard' },
     },
 
     // ── Representative city entries ────────────────────────────────────────
     // Extend this array by pasting additional entries from date.json.
     cities: [
       // West Coast / Pacific
-      { city:'Anchorage',      state:'AK', lat:61.2880,  lng:-149.4870, ppm:63,  gpg:4,  zips:['99501','99502','99503','99504','99507','99508','99510'] },
-      { city:'Honolulu',       state:'HI', lat:21.3069,  lng:-157.8583, ppm:90,  gpg:5,  zips:['96801','96802','96813','96814','96815','96816','96817'] },
-      { city:'Seattle',        state:'WA', lat:47.6062,  lng:-122.3321, ppm:23,  gpg:1,  zips:['98101','98102','98103','98104','98105','98115','98121'] },
-      { city:'Portland',       state:'OR', lat:45.5051,  lng:-122.6750, ppm:44,  gpg:3,  zips:['97201','97202','97203','97204','97205','97206','97209'] },
-      { city:'San Francisco',  state:'CA', lat:37.7749,  lng:-122.4194, ppm:53,  gpg:3,  zips:['94102','94103','94104','94105','94107','94110','94111'] },
-      { city:'Los Angeles',    state:'CA', lat:34.0522,  lng:-118.2437, ppm:312, gpg:18, zips:['90001','90002','90003','90004','90005','90010','90012'] },
-      { city:'San Diego',      state:'CA', lat:32.7157,  lng:-117.1611, ppm:249, gpg:15, zips:['92101','92102','92103','92104','92105','92108','92115'] },
-      { city:'Oceanside',      state:'CA', lat:33.1959,  lng:-117.3795, ppm:249, gpg:15, zips:['92054','92056','92057','92058'] },
-      { city:'Las Vegas',      state:'NV', lat:36.1699,  lng:-115.1398, ppm:309, gpg:18, zips:['89101','89102','89103','89104','89109','89119','89146'] },
-      { city:'Phoenix',        state:'AZ', lat:33.4484,  lng:-112.0740, ppm:395, gpg:23, zips:['85001','85002','85003','85004','85006','85012','85013'] },
-      { city:'Tucson',         state:'AZ', lat:32.2226,  lng:-110.9747, ppm:312, gpg:18, zips:['85701','85702','85703','85704','85705','85711','85716'] },
+      { city: 'Anchorage', state: 'AK', lat: 61.2880, lng: -149.4870, ppm: 63, gpg: 4, zips: ['99501', '99502', '99503', '99504', '99507', '99508', '99510'] },
+      { city: 'Honolulu', state: 'HI', lat: 21.3069, lng: -157.8583, ppm: 90, gpg: 5, zips: ['96801', '96802', '96813', '96814', '96815', '96816', '96817'] },
+      { city: 'Seattle', state: 'WA', lat: 47.6062, lng: -122.3321, ppm: 23, gpg: 1, zips: ['98101', '98102', '98103', '98104', '98105', '98115', '98121'] },
+      { city: 'Portland', state: 'OR', lat: 45.5051, lng: -122.6750, ppm: 44, gpg: 3, zips: ['97201', '97202', '97203', '97204', '97205', '97206', '97209'] },
+      { city: 'San Francisco', state: 'CA', lat: 37.7749, lng: -122.4194, ppm: 53, gpg: 3, zips: ['94102', '94103', '94104', '94105', '94107', '94110', '94111'] },
+      { city: 'Los Angeles', state: 'CA', lat: 34.0522, lng: -118.2437, ppm: 312, gpg: 18, zips: ['90001', '90002', '90003', '90004', '90005', '90010', '90012'] },
+      { city: 'San Diego', state: 'CA', lat: 32.7157, lng: -117.1611, ppm: 249, gpg: 15, zips: ['92101', '92102', '92103', '92104', '92105', '92108', '92115'] },
+      { city: 'Oceanside', state: 'CA', lat: 33.1959, lng: -117.3795, ppm: 249, gpg: 15, zips: ['92054', '92056', '92057', '92058'] },
+      { city: 'Las Vegas', state: 'NV', lat: 36.1699, lng: -115.1398, ppm: 309, gpg: 18, zips: ['89101', '89102', '89103', '89104', '89109', '89119', '89146'] },
+      { city: 'Phoenix', state: 'AZ', lat: 33.4484, lng: -112.0740, ppm: 395, gpg: 23, zips: ['85001', '85002', '85003', '85004', '85006', '85012', '85013'] },
+      { city: 'Tucson', state: 'AZ', lat: 32.2226, lng: -110.9747, ppm: 312, gpg: 18, zips: ['85701', '85702', '85703', '85704', '85705', '85711', '85716'] },
       // Mountain / Intermountain
-      { city:'Denver',         state:'CO', lat:39.7392,  lng:-104.9903, ppm:127, gpg:7,  zips:['80201','80202','80203','80204','80205','80210','80218'] },
-      { city:'Salt Lake City', state:'UT', lat:40.7608,  lng:-111.8910, ppm:298, gpg:17, zips:['84101','84102','84103','84104','84105','84111','84115'] },
-      { city:'Albuquerque',    state:'NM', lat:35.0844,  lng:-106.6504, ppm:223, gpg:13, zips:['87101','87102','87103','87104','87105','87110','87111'] },
-      { city:'Boise',          state:'ID', lat:43.6150,  lng:-116.2023, ppm:230, gpg:13, zips:['83701','83702','83703','83704','83705','83709','83712'] },
-      { city:'Billings',       state:'MT', lat:45.7833,  lng:-108.5007, ppm:211, gpg:12, zips:['59101','59102','59105','59106'] },
+      { city: 'Denver', state: 'CO', lat: 39.7392, lng: -104.9903, ppm: 127, gpg: 7, zips: ['80201', '80202', '80203', '80204', '80205', '80210', '80218'] },
+      { city: 'Salt Lake City', state: 'UT', lat: 40.7608, lng: -111.8910, ppm: 298, gpg: 17, zips: ['84101', '84102', '84103', '84104', '84105', '84111', '84115'] },
+      { city: 'Albuquerque', state: 'NM', lat: 35.0844, lng: -106.6504, ppm: 223, gpg: 13, zips: ['87101', '87102', '87103', '87104', '87105', '87110', '87111'] },
+      { city: 'Boise', state: 'ID', lat: 43.6150, lng: -116.2023, ppm: 230, gpg: 13, zips: ['83701', '83702', '83703', '83704', '83705', '83709', '83712'] },
+      { city: 'Billings', state: 'MT', lat: 45.7833, lng: -108.5007, ppm: 211, gpg: 12, zips: ['59101', '59102', '59105', '59106'] },
       // Texas / South-Central
-      { city:'Dallas',         state:'TX', lat:32.7767,  lng:-96.7970,  ppm:256, gpg:15, zips:['75201','75202','75203','75204','75205','75206','75209'] },
-      { city:'Houston',        state:'TX', lat:29.7604,  lng:-95.3698,  ppm:188, gpg:11, zips:['77001','77002','77003','77004','77005','77006','77008'] },
-      { city:'San Antonio',    state:'TX', lat:29.4241,  lng:-98.4936,  ppm:224, gpg:13, zips:['78201','78202','78203','78204','78205','78207','78209'] },
-      { city:'Oklahoma City',  state:'OK', lat:35.4676,  lng:-97.5164,  ppm:199, gpg:12, zips:['73101','73102','73103','73104','73105','73107','73111'] },
+      { city: 'Dallas', state: 'TX', lat: 32.7767, lng: -96.7970, ppm: 256, gpg: 15, zips: ['75201', '75202', '75203', '75204', '75205', '75206', '75209'] },
+      { city: 'Houston', state: 'TX', lat: 29.7604, lng: -95.3698, ppm: 188, gpg: 11, zips: ['77001', '77002', '77003', '77004', '77005', '77006', '77008'] },
+      { city: 'San Antonio', state: 'TX', lat: 29.4241, lng: -98.4936, ppm: 224, gpg: 13, zips: ['78201', '78202', '78203', '78204', '78205', '78207', '78209'] },
+      { city: 'Oklahoma City', state: 'OK', lat: 35.4676, lng: -97.5164, ppm: 199, gpg: 12, zips: ['73101', '73102', '73103', '73104', '73105', '73107', '73111'] },
       // Midwest / Plains
-      { city:'Chicago',        state:'IL', lat:41.8781,  lng:-87.6298,  ppm:147, gpg:9,  zips:['60601','60602','60603','60604','60605','60606','60610'] },
-      { city:'Minneapolis',    state:'MN', lat:44.9778,  lng:-93.2650,  ppm:270, gpg:16, zips:['55401','55402','55403','55404','55405','55414','55454'] },
-      { city:'Kansas City',    state:'MO', lat:39.0997,  lng:-94.5786,  ppm:270, gpg:16, zips:['64101','64102','64105','64108','64109','64111','64112'] },
-      { city:'Indianapolis',   state:'IN', lat:39.7684,  lng:-86.1581,  ppm:363, gpg:21, zips:['46201','46202','46203','46204','46205','46208','46219'] },
-      { city:'Columbus',       state:'OH', lat:39.9612,  lng:-82.9988,  ppm:299, gpg:17, zips:['43201','43202','43203','43204','43205','43206','43215'] },
-      { city:'Milwaukee',      state:'WI', lat:43.0389,  lng:-87.9065,  ppm:136, gpg:8,  zips:['53201','53202','53203','53204','53205','53207','53209'] },
-      { city:'Omaha',          state:'NE', lat:41.2565,  lng:-95.9345,  ppm:253, gpg:15, zips:['68101','68102','68104','68105','68106','68107','68108'] },
-      { city:'Wichita',        state:'KS', lat:37.6872,  lng:-97.3301,  ppm:266, gpg:16, zips:['67201','67202','67203','67204','67205','67206','67207'] },
+      { city: 'Chicago', state: 'IL', lat: 41.8781, lng: -87.6298, ppm: 147, gpg: 9, zips: ['60601', '60602', '60603', '60604', '60605', '60606', '60610'] },
+      { city: 'Minneapolis', state: 'MN', lat: 44.9778, lng: -93.2650, ppm: 270, gpg: 16, zips: ['55401', '55402', '55403', '55404', '55405', '55414', '55454'] },
+      { city: 'Kansas City', state: 'MO', lat: 39.0997, lng: -94.5786, ppm: 270, gpg: 16, zips: ['64101', '64102', '64105', '64108', '64109', '64111', '64112'] },
+      { city: 'Indianapolis', state: 'IN', lat: 39.7684, lng: -86.1581, ppm: 363, gpg: 21, zips: ['46201', '46202', '46203', '46204', '46205', '46208', '46219'] },
+      { city: 'Columbus', state: 'OH', lat: 39.9612, lng: -82.9988, ppm: 299, gpg: 17, zips: ['43201', '43202', '43203', '43204', '43205', '43206', '43215'] },
+      { city: 'Milwaukee', state: 'WI', lat: 43.0389, lng: -87.9065, ppm: 136, gpg: 8, zips: ['53201', '53202', '53203', '53204', '53205', '53207', '53209'] },
+      { city: 'Omaha', state: 'NE', lat: 41.2565, lng: -95.9345, ppm: 253, gpg: 15, zips: ['68101', '68102', '68104', '68105', '68106', '68107', '68108'] },
+      { city: 'Wichita', state: 'KS', lat: 37.6872, lng: -97.3301, ppm: 266, gpg: 16, zips: ['67201', '67202', '67203', '67204', '67205', '67206', '67207'] },
       // South / Southeast
-      { city:'Miami',          state:'FL', lat:25.7617,  lng:-80.1918,  ppm:216, gpg:13, zips:['33101','33102','33109','33125','33126','33127','33128'] },
-      { city:'Orlando',        state:'FL', lat:28.5383,  lng:-81.3792,  ppm:216, gpg:13, zips:['32801','32802','32803','32804','32805','32806','32808'] },
-      { city:'Atlanta',        state:'GA', lat:33.7490,  lng:-84.3880,  ppm:38,  gpg:2,  zips:['30301','30303','30305','30306','30307','30309','30310'] },
-      { city:'Nashville',      state:'TN', lat:36.1627,  lng:-86.7816,  ppm:106, gpg:6,  zips:['37201','37202','37203','37204','37205','37206','37207'] },
-      { city:'Charlotte',      state:'NC', lat:35.2271,  lng:-80.8431,  ppm:66,  gpg:4,  zips:['28201','28202','28203','28204','28205','28206','28207'] },
-      { city:'New Orleans',    state:'LA', lat:29.9511,  lng:-90.0715,  ppm:97,  gpg:6,  zips:['70112','70113','70114','70115','70116','70117','70118'] },
+      { city: 'Miami', state: 'FL', lat: 25.7617, lng: -80.1918, ppm: 216, gpg: 13, zips: ['33101', '33102', '33109', '33125', '33126', '33127', '33128'] },
+      { city: 'Orlando', state: 'FL', lat: 28.5383, lng: -81.3792, ppm: 216, gpg: 13, zips: ['32801', '32802', '32803', '32804', '32805', '32806', '32808'] },
+      { city: 'Atlanta', state: 'GA', lat: 33.7490, lng: -84.3880, ppm: 38, gpg: 2, zips: ['30301', '30303', '30305', '30306', '30307', '30309', '30310'] },
+      { city: 'Nashville', state: 'TN', lat: 36.1627, lng: -86.7816, ppm: 106, gpg: 6, zips: ['37201', '37202', '37203', '37204', '37205', '37206', '37207'] },
+      { city: 'Charlotte', state: 'NC', lat: 35.2271, lng: -80.8431, ppm: 66, gpg: 4, zips: ['28201', '28202', '28203', '28204', '28205', '28206', '28207'] },
+      { city: 'New Orleans', state: 'LA', lat: 29.9511, lng: -90.0715, ppm: 97, gpg: 6, zips: ['70112', '70113', '70114', '70115', '70116', '70117', '70118'] },
       // Northeast
-      { city:'New York',       state:'NY', lat:40.7128,  lng:-74.0060,  ppm:44,  gpg:3,  zips:['10001','10002','10003','10004','10005','10006','10007'] },
-      { city:'Philadelphia',   state:'PA', lat:39.9526,  lng:-75.1652,  ppm:153, gpg:9,  zips:['19101','19102','19103','19104','19106','19107','19109'] },
-      { city:'Boston',         state:'MA', lat:42.3601,  lng:-71.0589,  ppm:34,  gpg:2,  zips:['02101','02102','02103','02108','02109','02110','02111'] },
-      { city:'Washington',     state:'DC', lat:38.9072,  lng:-77.0369,  ppm:106, gpg:6,  zips:['20001','20002','20003','20004','20005','20006','20007'] },
-      { city:'Baltimore',      state:'MD', lat:39.2904,  lng:-76.6122,  ppm:106, gpg:6,  zips:['21201','21202','21203','21204','21205','21206','21210'] },
-      { city:'Pittsburgh',     state:'PA', lat:40.4406,  lng:-79.9959,  ppm:153, gpg:9,  zips:['15201','15202','15203','15204','15205','15206','15210'] },
+      { city: 'New York', state: 'NY', lat: 40.7128, lng: -74.0060, ppm: 44, gpg: 3, zips: ['10001', '10002', '10003', '10004', '10005', '10006', '10007'] },
+      { city: 'Philadelphia', state: 'PA', lat: 39.9526, lng: -75.1652, ppm: 153, gpg: 9, zips: ['19101', '19102', '19103', '19104', '19106', '19107', '19109'] },
+      { city: 'Boston', state: 'MA', lat: 42.3601, lng: -71.0589, ppm: 34, gpg: 2, zips: ['02101', '02102', '02103', '02108', '02109', '02110', '02111'] },
+      { city: 'Washington', state: 'DC', lat: 38.9072, lng: -77.0369, ppm: 106, gpg: 6, zips: ['20001', '20002', '20003', '20004', '20005', '20006', '20007'] },
+      { city: 'Baltimore', state: 'MD', lat: 39.2904, lng: -76.6122, ppm: 106, gpg: 6, zips: ['21201', '21202', '21203', '21204', '21205', '21206', '21210'] },
+      { city: 'Pittsburgh', state: 'PA', lat: 40.4406, lng: -79.9959, ppm: 153, gpg: 9, zips: ['15201', '15202', '15203', '15204', '15205', '15206', '15210'] },
       // Louisville / Appalachian
-      { city:'Louisville',     state:'KY', lat:38.2527,  lng:-85.7585,  ppm:153, gpg:9,  zips:['40201','40202','40203','40204','40205','40206','40207'] },
-      { city:'Charleston',     state:'WV', lat:38.3498,  lng:-81.6326,  ppm:62,  gpg:4,  zips:['25301','25302','25304','25305','25311','25312','25314'] },
+      { city: 'Louisville', state: 'KY', lat: 38.2527, lng: -85.7585, ppm: 153, gpg: 9, zips: ['40201', '40202', '40203', '40204', '40205', '40206', '40207'] },
+      { city: 'Charleston', state: 'WV', lat: 38.3498, lng: -81.6326, ppm: 62, gpg: 4, zips: ['25301', '25302', '25304', '25305', '25311', '25312', '25314'] },
     ],
 
     // ──────────────────────────────────────────────────────────────────────
@@ -258,48 +258,48 @@ const PROXY_URL = 'https://usgs-water-proxy.mok243643.workers.dev/?url=';
     getClassification: function (ppm) {
       if (ppm <= 60) {
         return {
-          level         : 'Soft',
-          color         : '#4CAF50',
-          bgColor       : '#f0fdf4',
-          borderColor   : '#bbf7d0',
-          urgency       : 'low',
-          description   : 'Excellent for hair. Little to no mineral buildup on scalp.',
-          hairImpact    : 'Hair retains its natural moisture and protein structure. Shampoo lathers freely and rinses cleanly. Color treatments last longer, and scalp sebum levels stay balanced. Your water is unlikely to be a source of hair damage.',
+          level: 'Soft',
+          color: '#4CAF50',
+          bgColor: '#f0fdf4',
+          borderColor: '#bbf7d0',
+          urgency: 'low',
+          description: 'Excellent for hair. Little to no mineral buildup on scalp.',
+          hairImpact: 'Hair retains its natural moisture and protein structure. Shampoo lathers freely and rinses cleanly. Color treatments last longer, and scalp sebum levels stay balanced. Your water is unlikely to be a source of hair damage.',
           actionRequired: 'Standard hair care is sufficient. Maintain with a gentle daily shampoo and quality conditioner. A shower filter is optional but provides a useful buffer against trace chlorine from treatment.',
         };
       }
       if (ppm <= 120) {
         return {
-          level         : 'Moderately Hard',
-          color         : '#8BC34A',
-          bgColor       : '#f7fef0',
-          borderColor   : '#d9f99d',
-          urgency       : 'moderate',
-          description   : 'Minor mineral buildup. May cause slight hair dryness over time.',
-          hairImpact    : 'Gradual calcium and magnesium scale forms on hair shafts with repeated exposure, causing mild dullness, frizz, and reduced shine. Color-treated hair may fade 15–20% faster. Scalp buildup begins accumulating, potentially causing flakiness.',
+          level: 'Moderately Hard',
+          color: '#8BC34A',
+          bgColor: '#f7fef0',
+          borderColor: '#d9f99d',
+          urgency: 'moderate',
+          description: 'Minor mineral buildup. May cause slight hair dryness over time.',
+          hairImpact: 'Gradual calcium and magnesium scale forms on hair shafts with repeated exposure, causing mild dullness, frizz, and reduced shine. Color-treated hair may fade 15–20% faster. Scalp buildup begins accumulating, potentially causing flakiness.',
           actionRequired: 'Introduce a chelating shampoo once per week to clear mineral deposits before they compound. A shower filter is recommended to reduce the mineral load at the source.',
         };
       }
       if (ppm <= 180) {
         return {
-          level         : 'Hard',
-          color         : '#FFC107',
-          bgColor       : '#fffbeb',
-          borderColor   : '#fde68a',
-          urgency       : 'high',
-          description   : 'Noticeable mineral buildup. Hair feels brittle and scalp is dry.',
-          hairImpact    : 'Calcium scale actively coats each strand, blocking moisture and making hair feel rough, straw-like, and prone to breakage. Conditioners cannot penetrate the mineral barrier. Scalp may become chronically flaky or itchy. Hair color fades 30–40% faster — highlights and toner wash out in days.',
+          level: 'Hard',
+          color: '#FFC107',
+          bgColor: '#fffbeb',
+          borderColor: '#fde68a',
+          urgency: 'high',
+          description: 'Noticeable mineral buildup. Hair feels brittle and scalp is dry.',
+          hairImpact: 'Calcium scale actively coats each strand, blocking moisture and making hair feel rough, straw-like, and prone to breakage. Conditioners cannot penetrate the mineral barrier. Scalp may become chronically flaky or itchy. Hair color fades 30–40% faster — highlights and toner wash out in days.',
           actionRequired: 'Use a chelating shampoo 2–3 times per week. A shower filter is strongly recommended. Consider a monthly scalp detox treatment to remove existing scale buildup.',
         };
       }
       return {
-        level         : 'Very Hard',
-        color         : '#F44336',
-        bgColor       : '#fff5f5',
-        borderColor   : '#fecaca',
-        urgency       : 'critical',
-        description   : 'Severe hard water. High risk of hair damage, color fading, and scalp calcification.',
-        hairImpact    : 'Extreme mineral concentration causes chronic dryness, brittleness, and breakage. Scalp calcification can partially block follicles, contributing to visible thinning over time. Color oxidises within days. Some users notice white mineral residue on darker hair after drying. This is the leading overlooked cause of unexplained hair damage in the US.',
+        level: 'Very Hard',
+        color: '#F44336',
+        bgColor: '#fff5f5',
+        borderColor: '#fecaca',
+        urgency: 'critical',
+        description: 'Severe hard water. High risk of hair damage, color fading, and scalp calcification.',
+        hairImpact: 'Extreme mineral concentration causes chronic dryness, brittleness, and breakage. Scalp calcification can partially block follicles, contributing to visible thinning over time. Color oxidises within days. Some users notice white mineral residue on darker hair after drying. This is the leading overlooked cause of unexplained hair damage in the US.',
         actionRequired: 'Use a chelating shampoo every single wash. Install a vitamin C or KDF shower filter — this is non-negotiable at this hardness level. Add a monthly deep scalp detox and weekly bond-repair treatment (e.g., Olaplex No. 3) to your routine.',
       };
     },
@@ -347,8 +347,8 @@ const PROXY_URL = 'https://usgs-water-proxy.mok243643.workers.dev/?url=';
   const ZIP3_TO_STATE = (function () {
     // [fromPrefix, toPrefix, stateCode]  — compact range format
     const ranges = [
-      [10,  27,  'MA'], [28,  29,  'RI'], [30,  38,  'NH'], [39,  49,  'ME'],
-      [50,  59,  'VT'], [60,  69,  'CT'], [70,  89,  'NJ'], [100, 149, 'NY'],
+      [10, 27, 'MA'], [28, 29, 'RI'], [30, 38, 'NH'], [39, 49, 'ME'],
+      [50, 59, 'VT'], [60, 69, 'CT'], [70, 89, 'NJ'], [100, 149, 'NY'],
       [150, 196, 'PA'], [197, 199, 'DE'], [200, 205, 'DC'], [206, 219, 'MD'],
       [220, 246, 'VA'], [247, 268, 'WV'], [269, 289, 'NC'], [290, 299, 'SC'],
       [300, 319, 'GA'], [320, 349, 'FL'], [350, 369, 'AL'], [370, 385, 'TN'],
@@ -412,7 +412,7 @@ const PROXY_URL = 'https://usgs-water-proxy.mok243643.workers.dev/?url=';
       if (!raw) return null;
       const { timestamp } = JSON.parse(raw);
       const ms = Date.now() - timestamp;
-      if (ms < 3600000)  return `${Math.round(ms / 60000)}m ago`;
+      if (ms < 3600000) return `${Math.round(ms / 60000)}m ago`;
       if (ms < 86400000) return `${Math.round(ms / 3600000)}h ago`;
       return `${Math.round(ms / 86400000)}d ago`;
     } catch (_) { return null; }
@@ -441,10 +441,10 @@ const PROXY_URL = 'https://usgs-water-proxy.mok243643.workers.dev/?url=';
    * Handles both WaterML2 timeSeries format and a sites-array format.
    */
   async function fetchUSGSSite(lat, lon) {
-const targetUrl = `${API.USGS_SITE}?format=json&lat=${lat}&longitude=${lon}&radius=15&parameterCd=00900&hasDataTypeCd=qw`;
+    const targetUrl = `${API.USGS_SITE}?format=json&lat=${lat}&longitude=${lon}&radius=15&parameterCd=00900&hasDataTypeCd=qw`;
     // نغلف الرابط الأصلي داخل رابط الوسيط
     const res = await fetch(PROXY_URL + encodeURIComponent(targetUrl));
-    
+
     if (!res.ok) throw new Error(`USGS site search HTTP ${res.status}`);
     const body = await res.json();
 
@@ -459,7 +459,7 @@ const targetUrl = `${API.USGS_SITE}?format=json&lat=${lat}&longitude=${lon}&radi
     // Format B: value.sites or root-level sites array
     const sites = body?.value?.sites || body?.sites;
     if (Array.isArray(sites) && sites.length > 0) {
-      const s    = sites[0];
+      const s = sites[0];
       const code = s?.siteCode?.[0]?.value || s?.siteNumber || s?.sourceInfo?.siteCode?.[0]?.value;
       const name = s?.stationName || s?.siteName || s?.sourceInfo?.siteName || 'USGS Station';
       if (code) return { siteCode: code, siteName: name };
@@ -473,10 +473,10 @@ const targetUrl = `${API.USGS_SITE}?format=json&lat=${lat}&longitude=${lon}&radi
    * parameterCd=00900: Hardness, water — reported in mg/L as CaCO₃ (= ppm).
    */
   async function fetchUSGSData(siteCode) {
-  const targetUrl = `${API.USGS_DV}?format=json&sites=${encodeURIComponent(siteCode)}&parameterCd=00900`;
+    const targetUrl = `${API.USGS_DV}?format=json&sites=${encodeURIComponent(siteCode)}&parameterCd=00900`;
     // نغلف الرابط الأصلي داخل رابط الوسيط
     const res = await fetch(PROXY_URL + encodeURIComponent(targetUrl));
-    
+
     if (!res.ok) throw new Error(`USGS DV HTTP ${res.status}`);
     const body = await res.json();
 
@@ -499,9 +499,9 @@ const targetUrl = `${API.USGS_SITE}?format=json&lat=${lat}&longitude=${lon}&radi
 
     const latest = valid[valid.length - 1];
     return {
-      ppm      : parseFloat(latest.value),
-      dateTime : latest.dateTime || '',
-      siteName : ts[0]?.sourceInfo?.siteName || 'USGS Station',
+      ppm: parseFloat(latest.value),
+      dateTime: latest.dateTime || '',
+      siteName: ts[0]?.sourceInfo?.siteName || 'USGS Station',
       siteCode,
     };
   }
@@ -536,30 +536,30 @@ const targetUrl = `${API.USGS_SITE}?format=json&lat=${lat}&longitude=${lon}&radi
       setLoadingStep(2);
       const usgs = await fetchUSGSData(siteCode);
 
-      const cls      = waterHardnessData.getClassification(usgs.ppm);
-      const state    = getStateFromZip(zip);
+      const cls = waterHardnessData.getClassification(usgs.ppm);
+      const state = getStateFromZip(zip);
       const stateAvg = state ? waterHardnessData.stateAverages[state] : null;
 
       result = {
         zip,
-        ppm           : usgs.ppm,
-        gpg           : +(usgs.ppm / 17.12).toFixed(1),
+        ppm: usgs.ppm,
+        gpg: +(usgs.ppm / 17.12).toFixed(1),
         classification: cls.level,
-        color         : cls.color,
-        bgColor       : cls.bgColor,
-        borderColor   : cls.borderColor,
-        urgency       : cls.urgency,
-        description   : cls.description,
-        hairImpact    : cls.hairImpact,
+        color: cls.color,
+        bgColor: cls.bgColor,
+        borderColor: cls.borderColor,
+        urgency: cls.urgency,
+        description: cls.description,
+        hairImpact: cls.hairImpact,
         actionRequired: cls.actionRequired,
-        source        : 'usgs-live',
-        isLive        : true,
-        isEstimate    : false,
-        station       : usgs.siteName,
-        siteCode      : usgs.siteCode,
-        dataDate      : usgs.dateTime,
+        source: 'usgs-live',
+        isLive: true,
+        isEstimate: false,
+        station: usgs.siteName,
+        siteCode: usgs.siteCode,
+        dataDate: usgs.dateTime,
         lat, lon, state,
-        stateAvgPpm   : stateAvg?.avg_ppm ?? null,
+        stateAvgPpm: stateAvg?.avg_ppm ?? null,
       };
 
     } catch (usgsErr) {
@@ -586,34 +586,34 @@ const targetUrl = `${API.USGS_SITE}?format=json&lat=${lat}&longitude=${lon}&radi
 
         // Last resort: derive state from ZIP prefix → state average
         if (!cityData) {
-          const st  = getStateFromZip(zip);
+          const st = getStateFromZip(zip);
           const avg = st ? waterHardnessData.stateAverages[st] : null;
           if (!avg) throw new Error('No fallback data found for this region');
           cityData = { city: `${st} (State Average)`, state: st, ppm: avg.avg_ppm };
         }
 
-        const cls      = waterHardnessData.getClassification(cityData.ppm);
+        const cls = waterHardnessData.getClassification(cityData.ppm);
         const stateAvg = waterHardnessData.stateAverages[cityData.state];
 
         result = {
           zip,
-          ppm           : cityData.ppm,
-          gpg           : +(cityData.ppm / 17.12).toFixed(1),
+          ppm: cityData.ppm,
+          gpg: +(cityData.ppm / 17.12).toFixed(1),
           classification: cls.level,
-          color         : cls.color,
-          bgColor       : cls.bgColor,
-          borderColor   : cls.borderColor,
-          urgency       : cls.urgency,
-          description   : cls.description,
-          hairImpact    : cls.hairImpact,
+          color: cls.color,
+          bgColor: cls.bgColor,
+          borderColor: cls.borderColor,
+          urgency: cls.urgency,
+          description: cls.description,
+          hairImpact: cls.hairImpact,
           actionRequired: cls.actionRequired,
-          source        : fbSource,
-          isLive        : false,
-          isEstimate    : true,
-          nearestCity   : cityData.city,
-          state         : cityData.state,
+          source: fbSource,
+          isLive: false,
+          isEstimate: true,
+          nearestCity: cityData.city,
+          state: cityData.state,
           lat, lon,
-          stateAvgPpm   : stateAvg?.avg_ppm ?? null,
+          stateAvgPpm: stateAvg?.avg_ppm ?? null,
         };
 
       } catch (fbErr) {
@@ -638,10 +638,10 @@ const targetUrl = `${API.USGS_SITE}?format=json&lat=${lat}&longitude=${lon}&radi
   // ═══════════════════════════════════════════════════════════════════════════
 
   const $ = sel => document.querySelector(sel);
-  const esc = s  => String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-  function rc()         { return $('#resultsContainer'); }
-  function setHTML(h)   { const el = rc(); if (el) el.innerHTML = h; }
+  function rc() { return $('#resultsContainer'); }
+  function setHTML(h) { const el = rc(); if (el) el.innerHTML = h; }
 
   // ── Multi-step loading indicator ─────────────────────────────────────────
 
@@ -666,10 +666,10 @@ const targetUrl = `${API.USGS_SITE}?format=json&lat=${lat}&longitude=${lon}&radi
   function setLoadingStep(i) {
     for (let j = 0; j < i; j++) {
       const el = $(`#ls${j}`);
-      if (el) { el.classList.add('done'); const d = el.querySelector('.whc-step-dot'); if (d) { d.textContent='✓'; d.className='whc-step-dot done'; } }
+      if (el) { el.classList.add('done'); const d = el.querySelector('.whc-step-dot'); if (d) { d.textContent = '✓'; d.className = 'whc-step-dot done'; } }
     }
     const cur = $(`#ls${i}`);
-    if (cur) { cur.classList.add('active'); const d = cur.querySelector('.whc-step-dot'); if (d) { d.textContent='◉'; d.className='whc-step-dot active'; } }
+    if (cur) { cur.classList.add('active'); const d = cur.querySelector('.whc-step-dot'); if (d) { d.textContent = '◉'; d.className = 'whc-step-dot active'; } }
   }
 
   // ── Error state ───────────────────────────────────────────────────────────
@@ -696,8 +696,8 @@ const targetUrl = `${API.USGS_SITE}?format=json&lat=${lat}&longitude=${lon}&radi
       nearestCity, state, stateAvgPpm,
     } = data;
 
-    const prods      = PRODUCTS[urgency] || PRODUCTS.low;
-    const barPct     = Math.min(100, Math.round((ppm / 450) * 100));
+    const prods = PRODUCTS[urgency] || PRODUCTS.low;
+    const barPct = Math.min(100, Math.round((ppm / 450) * 100));
 
     // ── Source / cache badge ─────────────────────────────────────────────
     let badge = '';
@@ -730,7 +730,7 @@ const targetUrl = `${API.USGS_SITE}?format=json&lat=${lat}&longitude=${lon}&radi
         <div>
           <span class="whc-station-lbl">USGS Station</span>
           <span class="whc-station-val">${esc(station)}</span>
-          <span class="whc-station-sub">Site #${esc(siteCode)}${dataDate ? ' · ' + esc(dataDate.substring(0,10)) : ''}</span>
+          <span class="whc-station-sub">Site #${esc(siteCode)}${dataDate ? ' · ' + esc(dataDate.substring(0, 10)) : ''}</span>
         </div>
       </div>` : '';
 
@@ -745,14 +745,14 @@ const targetUrl = `${API.USGS_SITE}?format=json&lat=${lat}&longitude=${lon}&radi
 
     // ── Hardness scale ticks ─────────────────────────────────────────────
     const TICKS = [
-      { lbl:'Soft', col:'#4CAF50', match: c => c==='Soft' },
-      { lbl:'Mod. Hard', col:'#8BC34A', match: c => c==='Moderately Hard' },
-      { lbl:'Hard', col:'#FFC107', match: c => c==='Hard' },
-      { lbl:'Very Hard', col:'#F44336', match: c => c==='Very Hard' },
+      { lbl: 'Soft', col: '#4CAF50', match: c => c === 'Soft' },
+      { lbl: 'Mod. Hard', col: '#8BC34A', match: c => c === 'Moderately Hard' },
+      { lbl: 'Hard', col: '#FFC107', match: c => c === 'Hard' },
+      { lbl: 'Very Hard', col: '#F44336', match: c => c === 'Very Hard' },
     ];
     const scaleTicks = TICKS.map(t => {
       const on = t.match(classification);
-      return `<span class="whc-tick${on?' whc-tick--on':''}" style="${on?`color:${t.col};font-weight:800`:'color:#aab'}">${on?'▶ ':''}${t.lbl}</span>`;
+      return `<span class="whc-tick${on ? ' whc-tick--on' : ''}" style="${on ? `color:${t.col};font-weight:800` : 'color:#aab'}">${on ? '▶ ' : ''}${t.lbl}</span>`;
     }).join('<span class="whc-tick-sep">›</span>');
 
     // ── Product cards ────────────────────────────────────────────────────
@@ -888,7 +888,7 @@ const targetUrl = `${API.USGS_SITE}?format=json&lat=${lat}&longitude=${lon}&radi
   // ═══════════════════════════════════════════════════════════════════════════
 
   function showInputError(msg) {
-    const inp  = $('#zipInput');
+    const inp = $('#zipInput');
     const hint = $('#zipHint');
     if (inp) { inp.classList.add('whc-inp-err'); setTimeout(() => inp.classList.remove('whc-inp-err'), 2400); }
     if (hint) {
