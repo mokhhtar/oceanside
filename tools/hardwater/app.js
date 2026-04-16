@@ -441,8 +441,14 @@
    * Handles both WaterML2 timeSeries format and a sites-array format.
    */
   async function fetchUSGSSite(lat, lon) {
-    const targetUrl = `${API.USGS_SITE}?format=json&lat=${lat}&longitude=${lon}&radius=15&parameterCd=00900&hasDataTypeCd=qw`;
-    // نغلف الرابط الأصلي داخل رابط الوسيط
+    // 💡 السر هنا: تقليم الإحداثيات لتجنب رفض USGS (400 Bad Request)
+    const cleanLat = lat.toFixed(4);
+    const cleanLon = lon.toFixed(4);
+
+    // الرابط بعد التنظيف (تم إزالة hasDataTypeCd لتجنب التعارض)
+    const targetUrl = `${API.USGS_SITE}?format=json&lat=${cleanLat}&longitude=${cleanLon}&radius=15&parameterCd=00900`;
+
+    // إرسال الطلب عبر الوسيط
     const res = await fetch(PROXY_URL + encodeURIComponent(targetUrl));
 
     if (!res.ok) throw new Error(`USGS site search HTTP ${res.status}`);
