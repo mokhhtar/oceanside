@@ -314,8 +314,8 @@ def run(dry_run: bool = False, page_filter: str | None = None) -> None:
 
     print("\n🔌 Connecting to Amazon Creators API...")
     api = AmazonCreatorsApi(
-        credential_id=CREDENTIAL_ID,
-        credential_secret=CREDENTIAL_SECRET,
+        credential_id="amzn1.application-oa2-client.91c3a2f55ca4432895dce277ba9f83ac",
+        credential_secret="amzn1.oa2-cs.v1.621284ab79d7d3f528c03c2f23b8b0d0a9efaee6cd4277a7e86bb51236bd24df",
         version=API_VERSION,
         tag=PARTNER_TAG,
         country=Country.US,
