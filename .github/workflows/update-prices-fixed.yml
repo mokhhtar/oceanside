@@ -1,55 +1,49 @@
 name: Amazon Price Updater
 
-# متى يتم تشغيل هذا السكريبت؟
 #on:
 #  schedule:
-    # يعمل يومياً في الساعة 8:00 صباحاً بتوقيت UTC (حوالي #12:00 صباحاً بتوقيت المحيط الهادئ PT)
- #   - cron: '0 8 * * *'
-  
-  # يتيح لك تشغيل السكريبت يدوياً في أي وقت من واجهة GitHub
+#    - cron: '0 8 * * *'
   workflow_dispatch:
 
-# إعطاء صلاحية للأكشن لتعديل الملفات ورفعها (Push)
+# إضافة صلاحية إنشاء طلبات المراجعة للبوت
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   update-prices:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. سحب كود الموقع الخاص بك
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      # 2. إعداد بيئة بايثون
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
-      # 3. تثبيت المكتبات المطلوبة
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
           pip install python-amazon-paapi
 
-      # 4. تشغيل سكريبت البايثون لتحديث الأسعار
       - name: Run Price Updater Script
         env:
-          # سحب المفاتيح السرية من إعدادات GitHub بأمان
           AMAZON_ACCESS_KEY: ${{ secrets.AMAZON_ACCESS_KEY }}
           AMAZON_SECRET_KEY: ${{ secrets.AMAZON_SECRET_KEY }}
         run: python update_prices.py
 
-      # 5. حفظ التعديلات ورفعها إلى المستودع (إذا كان هناك تغيير في الأسعار)
-      - name: Commit and Push Changes
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          
-          # إضافة كل الملفات التي تم تعديلها (HTML)
-          git add .
-          
-          # التحقق مما إذا كانت هناك تغييرات فعلية. إذا نعم، احفظها وارفعها
-          git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Auto-update Amazon prices & timestamp" && git push)
+      # 🟢 التعديل الجذري هنا: إنشاء Pull Request بدل الرفع المباشر
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "🤖 Auto-update Amazon prices & timestamp"
+          title: "📦 التحديث الآلي لأسعار أمازون"
+          body: |
+            قام البوت بتشغيل سكريبت `update_prices.py` ووجد أسعاراً جديدة.
+            يرجى مراجعة التغييرات (Files changed) للتأكد من صحتها قبل ضغط **Merge**.
+          branch: "auto-price-update"
+          delete-branch: true
+          labels: "automated, price-update"
