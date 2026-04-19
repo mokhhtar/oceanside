@@ -1,67 +1,55 @@
-name: Update Amazon Prices
+name: Amazon Price Updater
 
+# متى يتم تشغيل هذا السكريبت؟
 #on:
-# schedule:
-#   - cron: '0 0 * * *' # يعمل تلقائياً كل يوم في منتصف الليل
-# workflow_dispatch: # يسمح لك بتشغيله يدوياً للتجربة
+#  schedule:
+    # يعمل يومياً في الساعة 8:00 صباحاً بتوقيت UTC (حوالي #12:00 صباحاً بتوقيت المحيط الهادئ PT)
+ #   - cron: '0 8 * * *'
+  
+  # يتيح لك تشغيل السكريبت يدوياً في أي وقت من واجهة GitHub
+  workflow_dispatch:
+
+# إعطاء صلاحية للأكشن لتعديل الملفات ورفعها (Push)
+permissions:
+  contents: write
 
 jobs:
-  update:
+  update-prices:
     runs-on: ubuntu-latest
-    
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        
+      # 1. سحب كود الموقع الخاص بك
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # 2. إعداد بيئة بايثون
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.10'
-          
-      # --- التعديل تم هنا: تثبيت requests بدلاً من المكتبة القديمة ---
-      - name: Install dependencies
+
+      # 3. تثبيت المكتبات المطلوبة
+      - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
           pip install python-amazon-paapi
-          
-      - name: Verify file exists
-        run: |
-          if [ -f "blog/best-electric-shavers-sensitive-skin-2025/index.html" ]; then
-            echo "✅ File found"
-            ls -lh blog/best-electric-shavers-sensitive-skin-2025/index.html
-          else
-            echo "❌ File not found!"
-            exit 1
-          fi
-          
-      - name: Run Update Script
-        run: python update_prices_fixed.py
+
+      # 4. تشغيل سكريبت البايثون لتحديث الأسعار
+      - name: Run Price Updater Script
         env:
+          # سحب المفاتيح السرية من إعدادات GitHub بأمان
           AMAZON_ACCESS_KEY: ${{ secrets.AMAZON_ACCESS_KEY }}
           AMAZON_SECRET_KEY: ${{ secrets.AMAZON_SECRET_KEY }}
-          
-      - name: Check for changes
-        id: check_changes
+        run: python update_prices.py
+
+      # 5. حفظ التعديلات ورفعها إلى المستودع (إذا كان هناك تغيير في الأسعار)
+      - name: Commit and Push Changes
         run: |
-          if git diff --quiet; then
-            echo "No changes detected"
-            echo "changed=false" >> $GITHUB_OUTPUT
-          else
-            echo "Changes detected!"
-            echo "Showing first 50 lines of diff:"
-            git diff blog/best-electric-shavers-sensitive-skin-2025/index.html | head -50
-            echo "changed=true" >> $GITHUB_OUTPUT
-          fi
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
           
-      - name: Commit and push changes
-        if: steps.check_changes.outputs.changed == 'true'
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action Bot"
-          git add blog/best-electric-shavers-sensitive-skin-2025/index.html
-          git commit -m "🤖 Auto-update Amazon prices [$(date +'%Y-%m-%d %H:%M')]"
-          git push
+          # إضافة كل الملفات التي تم تعديلها (HTML)
+          git add .
           
-      - name: No changes notification
-        if: steps.check_changes.outputs.changed == 'false'
-        run: echo "ℹ️  No price changes - skipping commit"
+          # التحقق مما إذا كانت هناك تغييرات فعلية. إذا نعم، احفظها وارفعها
+          git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Auto-update Amazon prices & timestamp" && git push)
