@@ -12,13 +12,46 @@
 </script>
 <script>
   document.addEventListener('click', function (event) {
+    // تحديد ما إذا كان العنصر المنقور هو رابط أو داخل رابط
     var targetLink = event.target.closest('a');
+
+    // التحقق مما إذا كان الرابط يخص أمازون
     if (targetLink && (targetLink.href.includes('amazon.com') || targetLink.href.includes('amzn.to'))) {
+
+      // إعداد المتغيرات الافتراضية في حال كانت النقرة خارج بطاقة المنتج
+      var productName = 'منتج غير محدد';
+      var productId = 'بدون ID';
+      var productAsin = 'بدون ASIN';
+
+      // الصعود في شجرة الـ DOM للعثور على أقرب بطاقة منتج للزر المنقور
+      var productCard = targetLink.closest('.product-card');
+
+      if (productCard) {
+        // سحب الـ ID الخاص بالبطاقة (مثل: malibu-c-shampoo)
+        productId = productCard.id || productId;
+
+        // سحب عنوان المنتج من الـ h3
+        var titleElement = productCard.querySelector('.product-title');
+        if (titleElement) {
+          productName = titleElement.innerText.trim();
+        }
+
+        // سحب الـ ASIN إذا كان موجوداً
+        var asinElement = productCard.querySelector('[data-asin]');
+        if (asinElement) {
+          productAsin = asinElement.getAttribute('data-asin');
+        }
+      }
+
+      // إرسال البيانات الدقيقة إلى Google Tag Manager
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
         'event': 'amazon_click_exact',
         'clicked_url': targetLink.href,
-        'clicked_text': targetLink.innerText.trim() || 'صورة أو زر'
+        'clicked_text': targetLink.innerText.trim() || 'صورة أو زر',
+        'product_name': productName,
+        'product_id': productId,
+        'product_asin': productAsin
       });
     }
   });
