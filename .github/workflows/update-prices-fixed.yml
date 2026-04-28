@@ -4,6 +4,16 @@ on:
   # schedule:
   #   - cron: '0 8 * * *'
   workflow_dispatch:
+    # 🟢 الإضافة الجديدة: إنشاء قائمة منسدلة للاختيار اليدوي
+    inputs:
+      script_choice:
+        description: 'اختر السكريبت الذي تريد تشغيله'
+        required: true
+        type: choice
+        options:
+          - 'amazon'
+          - 'apify'
+        default: 'amazon'
 
 # إضافة صلاحية إنشاء طلبات المراجعة للبوت
 permissions:
@@ -23,26 +33,38 @@ jobs:
         with:
           python-version: '3.10'
 
+      # 🟢 تعديل التثبيت: أضفنا مكتبة apify-client
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install python-amazon-paapi
+          pip install python-amazon-paapi apify-client
 
-      - name: Run Price Updater Script
+      # 🟢 تشغيل سكريبت أمازون (إذا تم اختياره أو إذا كان التشغيل آلياً عبر cron)
+      - name: Run Amazon Script
+        if: ${{ github.event.inputs.script_choice == 'amazon' || github.event_name == 'schedule' }}
         env:
           AMAZON_ACCESS_KEY: ${{ secrets.AMAZON_ACCESS_KEY }}
           AMAZON_SECRET_KEY: ${{ secrets.AMAZON_SECRET_KEY }}
         run: python update_prices.py
 
-      # 🟢 التعديل الجذري هنا: إنشاء Pull Request بدل الرفع المباشر
+      # 🟢 تشغيل سكريبت Apify (فقط إذا تم اختياره يدوياً)
+      - name: Run Apify Script
+        if: ${{ github.event.inputs.script_choice == 'apify' }}
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        run: python update_prices_apify.py
+
+      # إنشاء Pull Request
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "🤖 Auto-update Amazon prices & timestamp"
-          title: "📦 التحديث الآلي لأسعار أمازون"
+          commit-message: "🤖 Auto-update prices & timestamp"
+          title: "📦 التحديث الآلي للأسعار"
           body: |
-            قام البوت بتشغيل سكريبت `update_prices.py` ووجد أسعاراً جديدة.
+            قام البوت بتشغيل سكريبت تحديث الأسعار ووجد تغييرات جديدة.
+            السكريبت المستخدم في هذا التحديث: **${{ github.event.inputs.script_choice || 'amazon' }}**
+            
             يرجى مراجعة التغييرات (Files changed) للتأكد من صحتها قبل ضغط **Merge**.
           branch: "auto-price-update"
           delete-branch: true
