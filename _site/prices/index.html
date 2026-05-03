@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-PSX8DCHR');
+  }
+</script>
+<script>
+  document.addEventListener('click', function (event) {
+    // تحديد ما إذا كان العنصر المنقور هو رابط أو داخل رابط
+    var targetLink = event.target.closest('a');
+
+    // التحقق مما إذا كان الرابط يخص أمازون
+    if (targetLink && (targetLink.href.includes('amazon.com') || targetLink.href.includes('amzn.to'))) {
+
+      // إعداد المتغيرات الافتراضية في حال كانت النقرة خارج بطاقة المنتج
+      var productName = 'منتج غير محدد';
+      var productId = 'بدون ID';
+      var productAsin = 'بدون ASIN';
+
+      // الصعود في شجرة الـ DOM للعثور على أقرب بطاقة منتج للزر المنقور
+      var productCard = targetLink.closest('.product-card');
+
+      if (productCard) {
+        // سحب الـ ID الخاص بالبطاقة (مثل: malibu-c-shampoo)
+        productId = productCard.id || productId;
+
+        // سحب عنوان المنتج من الـ h3
+        var titleElement = productCard.querySelector('.product-title');
+        if (titleElement) {
+          productName = titleElement.innerText.trim();
+        }
+
+        // سحب الـ ASIN إذا كان موجوداً
+        var asinElement = productCard.querySelector('[data-asin]');
+        if (asinElement) {
+          productAsin = asinElement.getAttribute('data-asin');
+        }
+      }
+
+      // إرسال البيانات الدقيقة إلى Google Tag Manager
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        'event': 'amazon_click_exact',
+        'clicked_url': targetLink.href,
+        'clicked_text': targetLink.innerText.trim() || 'صورة أو زر',
+        'product_name': productName,
+        'product_id': productId,
+        'product_asin': productAsin
+      });
+    }
+  });
+</script>
+    <!-- Google Tag Manager / Analytics -->
+    
+    
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="https://oceansidehairsalon.com/myfavicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/myfavicon/favicon.svg" />
+    <link rel="shortcut icon" href="/myfavicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/myfavicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/myfavicon/site.webmanifest" />
+    
+    <!-- SEO Meta Tags -->
+    <title>Haircut Prices in Oceanside, CA (2026 Guide): How Much Should You Pay?</title>
+    <meta name="description" content="Discover 2026 haircut prices in Oceanside, CA. From budget barbershops to luxury salons, learn average costs for men's, women's, kids' cuts, and more.">
+    <link rel="canonical" href="https://oceansidehairsalon.com/prices/" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Schema Markup with FAQ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Haircut Prices in Oceanside, CA (2026 Guide): How Much Should You Pay?",
+      "description": "Discover 2026 haircut prices in Oceanside, CA. From budget barbershops to luxury salons, learn average costs for men's, women's, kids' cuts, and more.",
+      "image": "https://oceansidehairsalon.com/images/blog/haircut-prices/header-hero.jpg",
+      "author": {
+        "@type": "Organization",
+        "name": "Oceanside Hair Salon"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Oceanside Hair Salon",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://oceansidehairsalon.com/myfavicon/favicon-96x96.png"
+        }
+      },
+      "dateModified": "2026-01-29",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://oceansidehairsalon.com/prices/"
+      }
+    }
+    </script>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much does a women's haircut cost in Oceanside?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Women's haircuts in Oceanside range from $30-45 for budget options, $45-85 for mid-range salons, and $80-150+ for luxury establishments. Length and texture affect pricing—short cuts start lower while long hair commands higher rates."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the average men's haircut price in Oceanside?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Men's haircuts average $20-30 at traditional barbershops, $35-50 at modern establishments, and $55-75 at high-end salons."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are there affordable haircut options near Camp Pendleton?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, Oceanside has numerous military-friendly barbershops offering discounted services. Red Clipper Barber Shop and similar establishments near Camp Pendleton provide cuts starting at $15-24 with military ID."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much should I tip my stylist in Oceanside?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Standard tipping in Oceanside follows industry norms: 15-20% for satisfactory service, 20-25% for excellent results. On a $60 haircut, tip $12-15."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do Oceanside salons charge more for thick or curly hair?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Many Oceanside salons charge additional fees for thick, curly, or textured hair requiring extra time and specialized techniques. Surcharges typically range $10-30 depending on complexity."
+          }
+        }
+      ]
+    }
+    </script>
+
+     <style>
+        :root {
+            --primary-color: #005f73;
+            --secondary-color: #0a9396;
+            --accent-color: #e9d8a6;
+            --bg-light: #f4f7f6;
+            --text-dark: #333;
+            --amazon-orange: #ff9900;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Lato', sans-serif;
+            --success-green: #2ecc71;
+        }
+        
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        body { 
+            font-family: var(--font-body); 
+            color: var(--text-dark); 
+            line-height: 1.6; 
+            background: var(--bg-light); 
+        }
+        
+        h1, h2, h3, h4 { 
+            font-family: var(--font-heading); 
+            color: var(--primary-color); 
+            margin-bottom: 1rem; 
+            line-height: 1.3;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-top: 3rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            color: var(--secondary-color);
+        }
+
+        h4 {
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+        }
+        
+        p { 
+            margin-bottom: 1.2rem; 
+            font-size: 1.05rem; 
+        }
+        
+        a { 
+            text-decoration: none; 
+            color: inherit; 
+        }
+
+        ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        strong {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            background: rgba(0,95,115,0.98); 
+            width: 100%; 
+            position: fixed; 
+            top: 0; 
+            left: 0;
+            padding: 1rem 0; 
+            z-index: 1000; 
+            backdrop-filter: blur(5px); 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            flex-wrap: wrap;
+        }
+        
+        .navbar a, .navbar .dropbtn {
+            font-weight: bold; 
+            font-size: 17px; 
+            color: white !important;
+            padding: 14px 20px; 
+            text-decoration: none; 
+            background: transparent; 
+            border: none; 
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        
+        .navbar a:hover, .dropdown:hover .dropbtn { 
+            color: var(--accent-color) !important; 
+        }
+        
+        .dropdown { 
+            position: relative; 
+            display: inline-block; 
+        }
+        
+        .dropdown-content {
+            display: none; 
+            position: absolute; 
+            background: #fff; 
+            min-width: 240px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2); 
+            border-top: 3px solid var(--secondary-color); 
+            z-index: 1;
+        }
+        
+        .dropdown-content a { 
+            color: #333 !important; 
+            padding: 12px 16px; 
+            display: block;
+            font-size: 15px; 
+        }
+        
+        .dropdown-content a:hover { 
+            background: #f1f1f1; 
+            color: var(--primary-color) !important; 
+        }
+        
+        .dropdown:hover .dropdown-content { 
+            display: block; 
+        }
+
+        /* Article Header */
+        .article-header {
+            background: linear-gradient(rgba(0,40,50,0.7), rgba(0,95,115,0.7)), url('/images/blog/hard-water/header-hero.jpg');
+            background-size: cover; 
+            background-position: center; 
+            min-height: 65vh;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center;
+            text-align: center; 
+            color: white; 
+            padding: 120px 20px 40px;
+        }
+        
+        .article-header h1 {
+            font-size: 3.2rem; 
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5); 
+            margin-bottom: 1rem; 
+            color: #fff; 
+            max-width: 900px;
+        }
+        
+        .article-header p {
+            font-size: 1.4rem; 
+            margin-bottom: 2rem; 
+            max-width: 700px; 
+            color: #eee; 
+        }
+
+        .btn-contact {
+            background: var(--primary-color); 
+            color: white !important;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px; 
+            font-weight: bold; 
+            font-size: 1.2rem;
+            cursor: pointer; 
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .btn-contact:hover { 
+            background: var(--secondary-color); 
+            transform: scale(1.05); 
+        }
+
+        /* Content Container */
+        .content-container {
+            max-width: 850px; 
+            margin: -80px auto 4rem; 
+            position: relative; 
+            z-index: 10;
+            background: white; 
+            padding: 4rem; 
+            border-radius: 12px; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        /* Table of Contents */
+        .toc-box {
+            background: #f8f9fa; 
+            border: 1px solid #e9ecef; 
+            border-radius: 8px; 
+            padding: 2rem; 
+            margin-bottom: 3rem;
+        }
+        
+        .toc-box h3 { 
+            font-size: 1.2rem; 
+            margin-bottom: 1rem; 
+            color: var(--secondary-color); 
+        }
+        
+        .toc-list { 
+            list-style: none; 
+            margin: 0; 
+            padding: 0; 
+        }
+        
+        .toc-list li { 
+            margin-bottom: 8px; 
+            font-size: 0.95rem; 
+        }
+        
+        .toc-list a { 
+            color: var(--primary-color); 
+            text-decoration: underline; 
+            text-decoration-color: #ddd; 
+        }
+        
+        .toc-list a:hover { 
+            color: var(--secondary-color); 
+            text-decoration-color: var(--secondary-color); 
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            border-left: 4px solid var(--amazon-orange); 
+            background: #fff8f0;
+            padding: 1.5rem; 
+            margin: 2rem 0; 
+            font-style: italic; 
+            color: #444;
+        }
+
+
+
+
+
+        /* Product Callout */
+        .product-callout {
+            background: #fff; 
+            border: 2px solid var(--secondary-color); 
+            border-radius: 10px;
+            padding: 2rem; 
+            margin: 3rem 0; 
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background: var(--primary-color); 
+            color: white !important;
+            padding: 12px 30px; 
+            border-radius: 50px;
+            font-weight: bold; 
+            display: inline-block; 
+            margin-top: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover { 
+            background: var(--secondary-color); 
+            transform: scale(1.05);
+        }
+
+        .faq-item { border-bottom: 1px solid #eee; }
+        .faq-question {
+            width: 100%; text-align: left; background: none; border: none; padding: 20px 0;
+            font-size: 1.1rem; font-weight: 700; cursor: pointer; display: flex;
+            justify-content: space-between; align-items: center; color: var(--primary-color);
+        }
+        .faq-answer { max-height: 0; overflow: hidden; transition: 0.3s ease-out; color: #555; padding-right: 20px; }
+        .faq-item.active .faq-answer { max-height: 200px; padding-bottom: 20px; }
+        .faq-item.active .faq-question { color: var(--secondary-color); }
+        .faq-question span { font-size: 1.5rem; transition: 0.3s; }
+        .faq-item.active span { transform: rotate(45deg); }
+        /* Related Articles */
+        .related-articles {
+            background: #f0f7f8;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 3rem;
+        }
+
+        .related-articles h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .related-articles ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .related-articles li {
+            margin-bottom: 1rem;
+        }
+
+        .related-articles a {
+            color: var(--primary-color);
+            text-decoration: underline;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .related-articles a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: white;
+            padding-top: 4rem;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.95rem;
+            margin-top: 5rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 3rem;
+            text-align: left;
+        }
+        
+        .footer-col h3 {
+            color: var(--accent-color);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 1.3rem;
+            font-size: 1.15rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+        }
+        
+        .footer-col p {
+            color: rgba(255,255,255,0.85);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+            padding-left: 8px;
+        }
+        
+        .contact-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 18px;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.5;
+        }
+        
+        .contact-row a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+        }
+        
+        .contact-row a:hover {
+            color: var(--accent-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 18px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a svg {
+            width: 26px;
+            height: 26px;
+            fill: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover svg {
+            fill: var(--accent-color);
+            transform: translateY(-4px);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.12);
+            margin-top: 3.5rem;
+            padding: 1.8rem 2rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .footer-bottom a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+        }
+        
+        .footer-bottom a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Images */
+        figure {
+            margin: 2.5rem 0;
+        }
+
+        figure img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        figcaption {
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+    table {
+        display: block;          
+        width: 100%;             
+        overflow-x: auto;      
+        -webkit-overflow-scrolling: touch; 
+        border: 1px solid #eee;  
+    }
+
+    th, td {
+        padding: 10px 15px;     
+        min-width: 140px;        
+        white-space: normal;    
+        font-size: 0.9rem;
+    }
+    
+    th {
+        background-color: var(--primary-color); 
+        color: white;
+    }
+
+
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+/* ========== MOBILE RESPONSIVE ========== */
+@media (max-width: 768px) {
+    /* Navbar adjustments */
+    .navbar {
+        padding: 0.8rem 0.5rem;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+    
+    .navbar a, .navbar .dropbtn {
+        font-size: 14px;
+        padding: 10px 8px;
+    }
+
+    /* Article Header */
+    .article-header {
+        min-height: auto;
+        padding: 100px 15px 60px;
+    }
+    
+    .article-header h1 {
+        font-size: 1.8rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .article-header p {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Buttons */
+    .btn-contact {
+        padding: 12px 28px;
+        font-size: 1rem;
+    }
+
+    /* Main Content */
+    .content-container {
+        margin: -40px 15px 2rem;
+        padding: 2rem 1.5rem;
+        border-radius: 8px;
+    }
+
+    /* Typography */
+    h2 {
+        font-size: 1.6rem;
+        margin-top: 2rem;
+    }
+
+    h3 {
+        font-size: 1.3rem;
+        margin-top: 1.5rem;
+    }
+
+    h4 {
+        font-size: 1.1rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    ul {
+        margin-left: 1.2rem;
+    }
+
+    /* Table of Contents */
+    .toc-box {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .toc-box h3 {
+        font-size: 1.1rem;
+    }
+
+    .toc-list li {
+        font-size: 0.9rem;
+    }
+
+    /* Product Cards (consolidated & fixed) */
+    .product-card {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+    }
+
+    .product-image-col {
+        border-right: none;
+        border-bottom: 1px solid #f0f0f0;
+        padding: 30px 15px;
+    }
+
+    .product-meta,
+    .product-info-grid,
+    .price-cta-area {
+        grid-template-columns: 1fr;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+        text-align: center;
+    }
+
+    /* Footer */
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .footer-col {
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-links {
+        padding: 0;
+    }
+
+    .footer-links li {
+        list-style: none;
+    }
+
+    .contact-row {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+
+    /* General fixes for overlap & spacing */
+    header {
+        height: auto;
+        min-height: 60vh;
+        padding-bottom: 60px;
+    }
+
+    /* Optional: improve table readability on mobile */
+    table {
+        font-size: 0.9rem;
+    }
+
+    th, td {
+        padding: 10px 8px;
+    }
+
+    /* Hide horizontal scroll if any */
+    body, html {
+        overflow-x: hidden;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="/">Home</a>
+    <div class="dropdown">
+        <button class="dropbtn">Hair Guides</button>
+        <div class="dropdown-content">
+            <a href="/services/womens-haircuts/">Women’s Haircut Guide</a>
+            <a href="/services/mens-grooming/">Men’s Grooming Guide</a>
+            <a href="/services/hair-coloring/">Hair Coloring Guide</a>
+            <a href="/services/hair-treatments/">Hair Treatment Guide</a>
+            <a href="/services/bridal-styling/">Bridal Hair Guide</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Tools</button>
+        <div class="dropdown-content">
+            <a href="/tools/ai-shaver-finder/">Ai Shaver Finder</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">About This Site</button>
+        <div class="dropdown-content">
+            <a href="/prices/">Local Price Averages</a>
+            <a href="/testimonials/">Community Reviews</a>
+            <a href="/contact/">Contact & Editorial Info</a>
+        </div>
+    </div>
+    <a href="/blog/">Blog</a>
+</div>
+
+
+<header class="article-header">
+    <h1>Haircut Prices in Oceanside, CA (2026 Guide): How Much Should You Pay?</h1>
+    <p>Discover 2026 haircut prices in Oceanside, CA. From budget barbershops to luxury salons, learn average costs for men's, women's, kids' cuts, and more.</p>
+        <a href="#introduction" class="btn-contact">Start Reading</a>
+</header>
+
+<main class="content-container">
+    <h2 id="introduction">Introduction</h2>
+    <p>If you're searching for "how much is a haircut in Oceanside," you've probably noticed the prices vary dramatically—from $20 military cuts at budget barbershops to $150+ styling sessions at beachside luxury salons. The range is confusing, especially if you're new to the area or trying to budget for regular hair maintenance.</p>
+    <p>Oceanside's hair salon prices reflect its diverse community: military families seeking affordable options, beachside professionals wanting premium experiences, and everyone in between looking for quality at fair rates. Location matters too—salons near the coast typically charge more than those inland, and specialty services for textured hair or color treatments add significant costs.</p>
+    <p>This guide breaks down real 2026 pricing from actual Oceanside salons and barbershops, explains what affects costs, and helps you find the right service for your budget. We've researched current pricing from establishments like June Hair Co, Knuckleheads Barbershop, Red Clipper Barber Shop, and Impres Salon to give you accurate expectations.</p>
+    <p>Transparency note: We're an information platform providing realistic pricing guidance based on market research. Prices listed are estimates from publicly available information and may vary. Always confirm current rates directly with salons before booking.</p>
+
+    <div class="toc-box">
+        <h3>Table of Contents</h3>
+        <ul class="toc-list">
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#the-quick-answer">The Quick Answer: Average Haircut Costs in Oceanside</a></li>
+            <li><a href="#womens-haircut-costs">Women's Haircut Costs in Oceanside</a></li>
+            <li><a href="#mens-haircut-and-barber-prices">Men's Haircut and Barber Prices</a></li>
+            <li><a href="#factors-that-influence-haircut-prices">Factors That Influence Haircut Prices in Oceanside</a></li>
+            <li><a href="#budget-tips">Budget Tips for Oceanside Haircuts</a></li>
+            <li><a href="#faq">Frequently Asked Questions</a></li>
+            <li><a href="#conclusion">Conclusion</a></li>
+        </ul>
+    </div>
+
+
+    <h2 id="the-quick-answer">The Quick Answer: Average Haircut Costs in Oceanside</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Service</th>
+                <th>Budget Range</th>
+                <th>Mid-Range</th>
+                <th>High-End/Luxury</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Men's Haircut</td>
+                <td>$20-30</td>
+                <td>$35-50</td>
+                <td>$55-75</td>
+            </tr>
+            <tr>
+                <td>Women's Cut (Short)</td>
+                <td>$30-45</td>
+                <td>$45-70</td>
+                <td>$80-120+</td>
+            </tr>
+            <tr>
+                <td>Women's Cut (Long)</td>
+                <td>$40-55</td>
+                <td>$60-85</td>
+                <td>$90-150+</td>
+            </tr>
+            <tr>
+                <td>Kids Cut</td>
+                <td>$15-25</td>
+                <td>$25-35</td>
+                <td>$40-50</td>
+            </tr>
+            <tr>
+                <td>Balayage/Highlights</td>
+                <td>$150-200</td>
+                <td>$200-280</td>
+                <td>$300-450+</td>
+            </tr>
+            <tr>
+                <td>Full Color</td>
+                <td>$80-120</td>
+                <td>$120-180</td>
+                <td>$200-300+</td>
+            </tr>
+            <tr>
+                <td>Beard Trim</td>
+                <td>$15-20</td>
+                <td>$25-30</td>
+                <td>$35-45</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>These ranges reflect Oceanside's 2026 market across different salon categories. Your actual cost depends on stylist experience, hair length and texture, and specific services requested.</p>
+
+    <h2 id="womens-haircut-costs">Women's Haircut Costs in Oceanside</h2>
+    <p>Women's haircut pricing in Oceanside varies more than men's cuts due to factors like length, texture, styling complexity, and salon positioning.</p>
+
+    <h3>Budget Options ($30-45)</h3>
+    <p>Who this works for: Basic cuts, maintaining existing style, students, or anyone prioritizing affordability over luxury experience.</p>
+    <p>What to expect: Chain salons and family-owned shops offering standard cuts without extensive consultation, premium products, or elaborate styling. Service is efficient and functional.</p>
+    <p>Typical locations: Inland Oceanside, strip malls, areas away from the coastal premium zone.</p>
+    <p>Services included: Shampoo, cut, basic blow-dry. Minimal styling products or finishing touches.</p>
+
+    <h3>Mid-Range Salons ($45-85)</h3>
+    <p>Example: Impres Salon</p>
+    <ul>
+        <li>Basic cut starting around $33-40</li>
+        <li>Transformation cut (includes styling consultation) from $55-70</li>
+        <li>Represents solid middle ground for most Oceanside residents</li>
+    </ul>
+    <p>Who this works for: Most people seeking quality cuts with some personalization, decent product quality, and stylists with several years' experience.</p>
+    <p>What to expect: Consultation about your hair goals, recommendations for style based on face shape and lifestyle, quality shampoo and conditioning (important in Oceanside's hard water—more on that below), precision cutting, and professional blow-dry or styling.</p>
+    <p>Typical locations: Throughout Oceanside, both coastal and inland areas. These salons balance quality with accessibility.</p>
+    <p>Services included: Consultation, shampoo with quality products, cut, blow-dry and basic styling. Some locations include complimentary beverages or scalp massage.</p>
+    <p>Hair texture considerations: If you have textured, curly, or coily hair requiring specialized techniques, expect to pay toward the higher end of this range. Textured hair specialists in Oceanside typically charge $65-85 for cuts due to the skill and time required.</p>
+
+    <h3>High-End/Luxury Salons ($80-150+)</h3>
+    <p>Example: June Hair Co</p>
+    <ul>
+        <li>Women's cut (long hair): Starting at $61-75</li>
+        <li>Women's cut (short hair): Starting at $41-50</li>
+        <li>Balayage services: $210-350+</li>
+        <li>Represents premium Oceanside salon experience</li>
+    </ul>
+    <p>Who this works for: Those wanting expert stylists with advanced training, luxury products, extended consultation, and a high-end salon atmosphere. Often worth it for major style changes, complex color work, or special occasions.</p>
+    <p>What to expect: Master stylists with 10+ years experience and ongoing education, extensive consultation (15-20 minutes before cutting), premium product lines, detailed styling instruction for home care, and refined salon environment. Many high-end Oceanside salons also address local hair challenges like hard water damage with specialized treatments.</p>
+    <p>Typical locations: Downtown Oceanside, coastal areas, upscale neighborhoods. Ambiance and location contribute to pricing.</p>
+    <p>Services included: Thorough consultation, premium shampoo and conditioning treatments (often customized to your hair needs), precision cutting, professional styling, product recommendations, and sometimes complimentary treatments between services.</p>
+    <p>Color services at this tier: Balayage starts around $210-280 and can exceed $350-450 for long hair or complex color corrections. Full highlights range $200-300+. These prices reflect the hours of work and expertise required for quality color that grows out gracefully.</p>
+    <p>For comprehensive reviews and recommendations of Oceanside's top salons across all price ranges, see our guide to the <a href="/blog/best-hair-salons-oceanside-2025/" style="text-decoration: underline; font-weight: bold; color: var(--primary-color);">Best Hair Salons in Oceanside, CA</a>.</p>
+
+    <h2 id="mens-haircut-and-barber-prices">Men's Haircut and Barber Prices</h2>
+    <p>Men's cuts and barbershop services in Oceanside show clearer price tiers based on style, speed, and barbershop positioning.</p>
+
+    <h3>Classic/Military Barbershops ($20-30)</h3>
+    <p>Example: Red Clipper Barber Shop</p>
+    <ul>
+        <li>Standard haircut: $20-26</li>
+        <li>Military/Senior discount: $15-24</li>
+        <li>Represents traditional, no-frills barbering focused on efficiency</li>
+    </ul>
+    <p>Who this works for: Military personnel (Camp Pendleton proximity makes this huge in Oceanside), seniors, or anyone wanting a straightforward cut without extensive styling.</p>
+    <p>What to expect: Quick, efficient service from experienced barbers who've done thousands of military regulation cuts. Clean, traditional barbershop atmosphere. In and out in 20-30 minutes.</p>
+    <p>Services included: Clipper or scissor cut, basic neck cleanup, no elaborate styling. Some locations include hot towel treatment.</p>
+    <p>Why the military discount matters: With Camp Pendleton nearby, many Oceanside barbershops offer 10-25% military discounts. Always ask and bring ID.</p>
+
+    <h3>Modern/Trendy Barbershops ($35-50)</h3>
+    <p>Example: Knuckleheads Barbershop</p>
+    <ul>
+        <li>Classic cut: $50</li>
+        <li>Quick tune-up: $30</li>
+        <li>Beard trim: $25</li>
+        <li>Represents contemporary barbershop experience with attention to detail</li>
+    </ul>
+    <p>Who this works for: Men wanting precise fades, modern styles, beard grooming, and a more refined barbershop experience than budget options provide.</p>
+    <p>What to expect: Barbers trained in contemporary techniques (skin fades, textured crops, beard shaping), consultation about style preferences, attention to detail in blending and finishing, and often a more curated shop atmosphere with music, art, and community vibe.</p>
+    <p>Services included: Consultation, precision cutting (often 45+ minutes for complex fades), hot towel treatment, neck cleanup, styling product application, and style advice for maintenance.</p>
+    <p>Beard services: Many modern barbershops excel at beard trimming and shaping ($20-30 standalone, often discounted when combined with haircut). This is increasingly popular as beard culture continues strong.</p>
+    <p>Textured hair expertise: Modern barbershops often specialize in fades and textured styles popular in Black and Latino communities. If you need a barber who understands curly, coily, or textured hair patterns, these shops typically deliver better results than classic barbershops.</p>
+    <p>For ranked recommendations and detailed reviews of Oceanside's best barbershops for different styles and budgets, check our guide to the <a href="/blog/best-barbers-oceanside-2025/" style="text-decoration: underline; font-weight: bold; color: var(--primary-color);"></a>>Best Barbers in Oceanside </strong>.</p>
+
+    <h2 id="factors-that-influence-haircut-prices">Factors That Influence Haircut Prices in Oceanside</h2>
+    <p>Understanding why prices vary helps you make informed decisions and avoid overpaying or getting disappointing results from choosing purely on price.</p>
+
+    <h3>Stylist/Barber Experience Level</h3>
+    <p>Most salons price services by stylist tier:</p>
+    <p>Junior stylists: Recently licensed or 1-3 years experience. Usually 20-30% less than senior stylist rates. Good for maintenance cuts on established styles, but less ideal for major changes or corrections.</p>
+    <p>Senior/Master stylists: 5-10+ years experience, advanced training, proven track record. Command premium rates but deliver consistent, expert results. Worth it for complex cuts, color work, or when you need confidence in the outcome.</p>
+    <p>Salon owners/celebrity stylists: Top tier pricing (often 30-50% above standard rates) for stylists with significant reputation, specialized expertise, or celebrity clientele. Generally only necessary for very specific needs or when you want the absolute best available.</p>
+
+    <h3>Hair Length, Texture, and Condition</h3>
+    <p>Length matters significantly: Long hair requires more time, product, and skill. A pixie cut versus waist-length hair can differ by $30-60 in the same salon.</p>
+    <p>Texture complexity: Curly, coily, and textured hair requires specialized knowledge and techniques. Finding a textured hair specialist in Oceanside CA is worth the typically higher cost ($15-30 more than straight hair cuts) because improper cutting damages curl pattern and creates frustration for months.</p>
+    <p>Damaged or chemically treated hair: If your hair is severely damaged—often from Oceanside's hard water combined with chemical treatments—stylists may need extra time for consultations, gentler techniques, or recommend corrective treatments before cutting. This extends service time and cost.</p>
+    <p>Hard water damage is real in Oceanside: Many residents don't realize Oceanside has moderately hard to hard water (depending on specific area) that deposits minerals on hair, creating buildup, dullness, and texture changes. This affects how your hair responds to cutting and styling. Some salons address this with specialized shampoos and treatments, while others don't account for it—which is why two identical cuts can look different months later.</p>
+    <p>If you're dealing with hair that feels coated, looks dull despite washing, or doesn't hold style well, mineral buildup from hard water might be the issue. Using the best shampoo for hard water at home between salon visits helps maintain your cut's intended appearance and reduces how often you need corrective services.</p>
+
+    <h3>Location Within Oceanside</h3>
+    <p>Coastal/downtown premium: Salons within walking distance of the beach or in downtown Oceanside's revitalized areas typically charge 15-25% more than comparable inland salons. You're paying for location, ambiance, and often higher rent that gets passed to customers.</p>
+    <p>Inland value: Moving just a few blocks inland can significantly reduce prices while maintaining quality. Many excellent stylists work in less trendy areas because lower overhead allows them to charge fairly while earning well.</p>
+    <p>Strip mall vs. standalone boutique: Independent salons in strip malls often provide excellent service at lower prices than standalone boutique locations with higher operating costs.</p>
+
+    <h3>Products and Treatments Used</h3>
+    <p>Basic shampoo vs. treatment-grade products: Budget salons use functional but basic products. Mid-range and high-end salons often include treatment-grade shampoos, conditioners with keratin or bond-building ingredients, and finishing products that make noticeable difference in results.</p>
+    <p>Specialized treatments for local conditions: Some Oceanside salons have developed protocols specifically for hard water damage, sun exposure from beach lifestyle, and salt water effects. These add value through local expertise.</p>
+    <p>Organic/natural product focus: Salons emphasizing organic, sulfate-free, or naturally-derived products typically charge 10-20% more. Whether this matters depends on your hair needs and values.</p>
+
+    <h2 id="budget-tips">Budget Tips for Oceanside Haircuts</h2>
+    <p>Quality haircuts don't always require premium prices. These strategies help you save while maintaining good results.</p>
+
+    <h3>Look for Model Calls and Training Programs</h3>
+    <p>Many upscale Oceanside salons offer discounted services when stylists need models for:</p>
+    <ul>
+        <li>Advanced training courses (balayage, cutting techniques, etc.)</li>
+        <li>Certification programs requiring documented work</li>
+        <li>New stylist portfolio building</li>
+    </ul>
+    <p>Savings: Often 40-60% off regular prices, sometimes free for major color corrections or transformative cuts.</p>
+    <p>Where to find: Follow Oceanside salons on Instagram and Facebook where they announce model calls. June Hair Co, Impres Salon, and other training-focused salons periodically need models.</p>
+    <p>What to know: You're trusting someone learning advanced techniques under expert supervision. There's some risk, but with master stylist oversight, results are usually good. Sessions take longer than standard appointments.</p>
+
+    <h3>Maintain Hair Health to Reduce Corrective Service Needs</h3>
+    <p>The hard water connection: Oceanside residents who don't address hard water damage end up needing more frequent cuts to remove damaged ends, more color corrections as minerals interfere with dye, and more treatments to restore moisture and shine. These corrective services add up.</p>
+    <p>Prevention saves money: Using chelating shampoos monthly to remove mineral buildup, conditioning properly after mineral-removing treatments, and protecting hair from further damage means:</p>
+    <ul>
+        <li>Your cuts last longer with intended shape</li>
+        <li>Color stays true longer without going brassy</li>
+        <li>You need fewer expensive corrective treatments</li>
+        <li>Overall salon spending decreases 20-30% annually</li>
+    </ul>
+    <p>For a complete routine managing hard water effects, see our guide on <a href="/blog/best-hard-water-hair-routine/" style="text-decoration: underline; font-weight: bold; color: var(--primary-color);">hair care for hard water areas</a>.</p>
+
+    <h3>Join Salon Loyalty Programs</h3>
+    <p>Many Oceanside salons offer:</p>
+    <ul>
+        <li>Every 10th service free or heavily discounted</li>
+        <li>Birthday month discounts (15-25% off)</li>
+        <li>Referral credits ($10-20 off for each new client you refer)</li>
+        <li>Package deals (buy 5 cuts, get 6th free)</li>
+    </ul>
+    <p>Maximize value: If you found a stylist you love, commit to them and use their loyalty program. The savings compound significantly over a year.</p>
+
+    <h3>Consider Grooming at Home Between Professional Cuts</h3>
+    <p>For men especially: Quality electric shavers extend time between barbershop visits without looking unkempt. Trimming neck cleanup and maintaining fades yourself adds 2-3 weeks between cuts.</p>
+    <p>Best electric shaver for sensitive skin: If you're prone to razor burn or irritation, investing in a quality shaver for home maintenance ($80-150) pays for itself in skipped barber visits within 3-4 months while keeping you looking sharp.</p>
+    <p>For women: Learning to trim your own bangs or maintain layers between cuts (YouTube tutorials are surprisingly good) can extend time from 6 weeks to 10 weeks between salon visits.</p>
+
+    <h3>Time Your Appointments Strategically</h3>
+    <p>Avoid peak times: Weekend appointments, especially Saturdays, often carry premium pricing (10-15% more) or require booking weeks in advance with top stylists. Weekday mornings and early afternoons offer better availability and sometimes lower rates.</p>
+    <p>End of month specials: Some salons run promotions to meet monthly targets. Following salons on social media catches these deals.</p>
+    <p>Post-holiday lulls: January and September (after summer rush) sometimes feature discounts to attract clients during traditionally slow periods.</p>
+
+    <h2 id="faq">Frequently Asked Questions</h2>
+
+    <div class="faq-section">
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">How much does a women's haircut cost in Oceanside? <span>+</span></button>
+            <div class="faq-answer">
+                Women's haircuts in Oceanside range from $30-45 for budget options, $45-85 for mid-range salons, and $80-150+ for luxury establishments. Length and texture affect pricing—short cuts start lower while long hair commands higher rates. For example, Impres Salon charges $33-40 for basic cuts and $55-70 for transformation cuts with styling consultation. June Hair Co, representing luxury tier, starts at $41 for short cuts and $61+ for long hair. Curly or textured hair requiring specialized techniques typically costs $65-85 due to skill and time needed.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">What's the average men's haircut price in Oceanside?<span>+</span></button>
+            <div class="faq-answer">
+                Men's haircuts average $20-30 at traditional barbershops, $35-50 at modern establishments, and $55-75 at high-end salons. Red Clipper Barber Shop offers military cuts around $20-26 (with military/senior discounts dropping to $15-24). Knuckleheads Barbershop charges $50 for classic cuts and $30 for quick tune-ups. Modern barbershops charging higher rates typically include precision fades, beard grooming expertise, and longer appointment times (45+ minutes versus 20-30 minutes at budget shops).
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">Are there affordable haircut options near Camp Pendleton?<span>+</span></button>
+            <div class="faq-answer">
+                Yes, Oceanside has numerous military-friendly barbershops offering discounted services. Red Clipper Barber Shop and similar establishments near Camp Pendleton provide cuts starting at $15-24 with military ID. These shops specialize in regulation cuts and efficient service. Even mid-range barbershops like Knuckleheads often offer 10-15% military discounts, bringing their $50 cuts down to $40-45. Always ask about military pricing and bring valid ID—many Oceanside businesses recognize the military community's importance.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">How much should I tip my stylist in Oceanside?<span>+</span></button>
+            <div class="faq-answer">
+                Standard tipping in Oceanside follows industry norms: 15-20% for satisfactory service, 20-25% for excellent results. On a $60 haircut, tip $12-15. For exceptional service, major transformations, or when a stylist fixes another salon's mistakes, 25-30% shows appropriate appreciation. If you receive services from both a stylist and assistant (shampoo person, color assistant), tip each separately—typically $5-10 to assistants plus 20% to your main stylist. Holiday appointments often warrant higher tips (25-30%) as acknowledgment of working during busy seasons.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">Do Oceanside salons charge more for thick or curly hair?<span>+</span></button>
+            <div class="faq-answer">
+                Many Oceanside salons charge additional fees for thick, curly, or textured hair requiring extra time and specialized techniques. Surcharges typically range $10-30 depending on complexity. Some salons build this into tiered pricing (short/medium/long becomes short/medium/long/extra-long or thick). Others charge flat rates regardless of texture but appointments run longer. When booking, specify your hair type so salons can quote accurate pricing and allocate appropriate time. Finding a textured hair specialist in Oceanside CA who prices fairly for your specific needs often provides better value than general salons adding last-minute surcharges.
+            </div>
+        </div>
+    </div>
+
+    <hr style="margin: 3rem 0; border: 0; border-top: 1px solid #eee;">
+
+    <h2 id="conclusion">Conclusion</h2>
+    <p>Haircut prices in Oceanside range dramatically based on salon positioning, stylist experience, your hair's needs, and location within the city. Budget options exist starting around $15-20 for basic military cuts, while luxury experiences can exceed $150 for women's cuts and complex styling.</p>
+    <p>The sweet spot for most Oceanside residents: Mid-range salons ($45-85 for women, $35-50 for men) provide quality results, experienced stylists, and good products without luxury premium pricing. Establishments like Impres Salon represent this balanced tier well.</p>
+    <p>When to invest in premium services: Major style changes, complex color work, textured hair requiring specialists, or special occasions justify higher-end pricing. The expertise difference becomes worth the cost when results matter significantly.</p>
+    <p>When budget options work well: Maintaining established styles, military regulation cuts, simple trims, and kids' cuts generally don't require premium pricing. Save your budget for services where expertise truly impacts outcomes.</p>
+    <p>Remember: Price indicates positioning and overhead, not always quality. Some of Oceanside's best stylists work in modest locations charging fair rates. Conversely, expensive doesn't guarantee satisfaction if the stylist doesn't understand your hair or communicate well.</p>
+    <p>Before booking:</p>
+    <ul>
+        <li>Confirm current pricing directly with salons (prices change)</li>
+        <li>Ask about fees for your specific hair type/length</li>
+        <li>Check for military, student, or first-time client discounts</li>
+        <li>Read recent reviews to ensure quality matches pricing</li>
+        <li>Consider hard water's impact on your hair and whether specialized products/treatments add value</li>
+    </ul>
+    <p>For detailed reviews and recommendations across all price ranges and specialties, visit our comprehensive guides to Oceanside's best hair salons and top barbershops.</p>
+
+    <div class="related-articles">
+        <h3>Related Resources</h3>
+        <ul>
+            <li><a href="/blog/best-hair-salons-oceanside-2025/">Best Hair Salons in Oceanside, CA </a></li>
+            <li><a href="/blog/best-barbers-oceanside-2025/">Best Barbers in Oceanside, CA </a></li>
+            <li><a href="/blog/best-hard-water-hair-routine/">Hair Care Routine for Hard Water Areas</a></li>
+            <li><a href="/blog/shampoos-that-work-hard-water-hair/">Best Shampoo for Hard Water</a></li>
+        </ul>
+    </div>
+
+</main>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-col">
+            <h3>Oceanside Hair Salon</h3>
+            <p>Your local guide to haircuts, grooming, and hair care in Oceanside — built to help you make smarter style decisions in a coastal climate.</p>
+
+            <div class="social-icons">
+                <a href="https://www.facebook.com/profile.php?id=61583963957390" target="_blank" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/oceanside_hair_salon" target="_blank" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.36-.2 6.78-2.618 6.98-6.98.058-1.28.072-1.689.072-4.948 0-3.259-.014-3.667-.072-4.947-.2-4.361-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <a href="https://x.com/OceansideHair" target="_blank" aria-label="X Twitter">
+        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+
+    <a href="https://www.pinterest.com/OceansideHairSalon/" target="_blank" aria-label="Pinterest">
+        <svg viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.399.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.951-7.252 4.173 0 7.41 2.967 7.41 6.93 0 4.136-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.367 18.62 0 12.017 0z"/></svg>
+    </a>
+            </div>
+        </div>
+
+<div class="footer-col">
+    <h4>Quick Links</h4>
+    <ul class="footer-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/services/">Hair Guides</a></li>
+        <li><a href="/prices/">Local Price Insights</a></li>
+        <li><a href="/testimonials/">Community Feedback</a></li>
+        <li><a href="/blog/">Articles & Guides</a></li>
+        <li><a href="/contact/">Contact & Info</a></li>
+    </ul>
+</div>
+
+
+        <div class="footer-col">
+            <h4>Find Us</h4>
+            <div class="contact-row"><span>Address</span><span>Oceanside, CA 92054</span></div>
+           
+            <div class="contact-row"><span>Email</span><a href="mailto:hello@oceansidehairsalon.com">hello@oceansidehairsalon.com</a></div>
+            <div class="contact-row">
+        <span>Purpose</span>
+        <div>
+            <div>Independent hair & grooming guides</div>
+            <div>Local research & style insights</div>
+            <div style="color:var(--accent-color);">No appointments or services offered</div>
+        </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 Oceanside Hair Salon. All Rights Reserved. 
+        | <a href="/privacy-policy/">Privacy Policy</a>
+    </div>
+</footer>
+<script>
+    function toggleFaq(element) {
+        const item = element.parentElement;
+        item.classList.toggle('active');
+        // Optional: Close others
+        // const allItems = document.querySelectorAll('.faq-item');
+        // allItems.forEach(i => { if(i !== item) i.classList.remove('active'); });
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-PSX8DCHR');
+  }
+</script>
+<script>
+  document.addEventListener('click', function (event) {
+    // تحديد ما إذا كان العنصر المنقور هو رابط أو داخل رابط
+    var targetLink = event.target.closest('a');
+
+    // التحقق مما إذا كان الرابط يخص أمازون
+    if (targetLink && (targetLink.href.includes('amazon.com') || targetLink.href.includes('amzn.to'))) {
+
+      // إعداد المتغيرات الافتراضية في حال كانت النقرة خارج بطاقة المنتج
+      var productName = 'منتج غير محدد';
+      var productId = 'بدون ID';
+      var productAsin = 'بدون ASIN';
+
+      // الصعود في شجرة الـ DOM للعثور على أقرب بطاقة منتج للزر المنقور
+      var productCard = targetLink.closest('.product-card');
+
+      if (productCard) {
+        // سحب الـ ID الخاص بالبطاقة (مثل: malibu-c-shampoo)
+        productId = productCard.id || productId;
+
+        // سحب عنوان المنتج من الـ h3
+        var titleElement = productCard.querySelector('.product-title');
+        if (titleElement) {
+          productName = titleElement.innerText.trim();
+        }
+
+        // سحب الـ ASIN إذا كان موجوداً
+        var asinElement = productCard.querySelector('[data-asin]');
+        if (asinElement) {
+          productAsin = asinElement.getAttribute('data-asin');
+        }
+      }
+
+      // إرسال البيانات الدقيقة إلى Google Tag Manager
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        'event': 'amazon_click_exact',
+        'clicked_url': targetLink.href,
+        'clicked_text': targetLink.innerText.trim() || 'صورة أو زر',
+        'product_name': productName,
+        'product_id': productId,
+        'product_asin': productAsin
+      });
+    }
+  });
+</script>
+    
+    
+
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="https://oceansidehairsalon.com/myfavicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/myfavicon/favicon.svg" />
+    <link rel="shortcut icon" href="/myfavicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/myfavicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/myfavicon/site.webmanifest" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Hair Treatment Guide in Oceanside, CA | Repairing Coastal Damage</title>
+    <meta name="description" content="A complete guide to hair treatments in Oceanside, CA. Learn how to fix hard water damage, reduce marine layer frizz, and choose the right keratin or bonding service.">
+    <link rel="canonical" href="https://oceansidehairsalon.com/services/hair-treatments/" />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://oceansidehairsalon.com/services/hair-treatments/"
+          },
+          "headline": "Hair Treatment Guide in Oceanside, CA",
+          "description": "Everything you need to know about repairing, protecting, and maintaining hair in the coastal climate of Oceanside, CA.",
+          "image": "https://oceansidehairsalon.com/images/hair-treatments/keratin-hair-treatment-wash-oceanside.jpg",
+          "author": {
+            "@type": "Organization",
+            "name": "Oceanside Hair Salon"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Oceanside Hair Salon",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://oceansidehairsalon.com/myfavicon/favicon-96x96.png"
+            }
+          },
+          "datePublished": "2025-11-25",
+          "dateModified": "2026-02-06"
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Does hard water cause frizzy hair in Oceanside?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Oceanside has moderately hard water, which contains minerals like calcium and magnesium. These minerals build up on the hair shaft, lifting the cuticle and causing dryness, frizz, and lack of shine."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How often should I get a Keratin treatment?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Most professionals recommend scheduling Keratin smoothing treatments every 3 to 5 months, depending on your hair type and how frequently you wash your hair."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the best treatment for sun-damaged hair?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "For sun-damaged hair (common in coastal areas), bond-building treatments like Olaplex or deep hydration masks are highly recommended to restore elasticity and moisture."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --primary-color: #005f73;
+            --secondary-color: #0a9396;
+            --accent-color: #e9d8a6;
+            --bg-light: #f4f7f6;
+            --text-dark: #333;
+            --amazon-orange: #ff9900;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Lato', sans-serif;
+            --success-green: #2ecc71;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: var(--font-body); 
+            color: var(--text-dark); 
+            line-height: 1.6; 
+            background: var(--bg-light); 
+        }
+        
+        h1, h2, h3, h4 { 
+            font-family: var(--font-heading); 
+            color: var(--primary-color); 
+            margin-bottom: 1rem; 
+            line-height: 1.3;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-top: 3rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            color: var(--secondary-color);
+        }
+
+        h4 {
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+        }
+        
+        p { margin-bottom: 1.2rem; font-size: 1.05rem; }
+        a { text-decoration: none; color: inherit; }
+        ul { margin-left: 1.5rem; margin-bottom: 1.2rem; }
+        ul li { margin-bottom: 0.8rem; }
+        strong { color: var(--primary-color); font-weight: 700; }
+
+        /* Navbar */
+        .navbar {
+            display: flex; justify-content: center; align-items: center;
+            background: rgba(0,95,115,0.98); width: 100%; position: fixed; top: 0; left: 0;
+            padding: 1rem 0; z-index: 1000; backdrop-filter: blur(5px); box-shadow: 0 2px 10px rgba(0,0,0,0.1); flex-wrap: wrap;
+        }
+        .navbar a, .navbar .dropbtn {
+            font-weight: bold; font-size: 17px; color: white !important; padding: 14px 20px;
+            text-decoration: none; background: transparent; border: none; cursor: pointer; white-space: nowrap;
+        }
+        .navbar a:hover, .dropdown:hover .dropbtn { color: var(--accent-color) !important; }
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content {
+            display: none; position: absolute; background: #fff; min-width: 240px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2); border-top: 3px solid var(--secondary-color); z-index: 1;
+        }
+        .dropdown-content a { color: #333 !important; padding: 12px 16px; display: block; font-size: 15px; }
+        .dropdown-content a:hover { background: #f1f1f1; color: var(--primary-color) !important; }
+        .dropdown:hover .dropdown-content { display: block; }
+
+        /* Article Header */
+        .article-header {
+            background: linear-gradient(rgba(0,40,50,0.7), rgba(0,95,115,0.7)), url('/images/hair-treatments/keratin-hair-treatment-wash-oceanside.jpg');
+            background-size: cover; background-position: center; min-height: 65vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; color: white; padding: 120px 20px 40px;
+        }
+        .article-header h1 { font-size: 3.2rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.5); margin-bottom: 1rem; color: #fff; max-width: 900px; }
+        .article-header p { font-size: 1.4rem; margin-bottom: 2rem; max-width: 700px; color: #eee; }
+
+        .btn-contact {
+            background: var(--primary-color); color: white !important; padding: 12px 25px;
+            border: none; border-radius: 50px; font-weight: bold; font-size: 1.2rem;
+            cursor: pointer; transition: all 0.3s; display: inline-block;
+        }
+        .btn-contact:hover { background: var(--secondary-color); transform: scale(1.05); }
+
+        /* Content Container */
+        .content-container {
+            max-width: 850px; margin: -35px auto 4rem; position: relative; z-index: 10;
+            background: white; padding: 4rem; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        /* List Styles */
+        .service-list { list-style: none; padding: 0; }
+        .service-list li {
+            background: #fff; margin-bottom: 25px; padding: 30px;
+            border-left: 5px solid var(--secondary-color);
+            border-radius: 0 8px 8px 0; box-shadow: 0 4px 10px rgba(0,0,0,0.03); transition: all .3s;
+        }
+        .service-list li:hover { transform: translateX(10px); box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
+        .service-list h3 { margin-bottom: 12px; font-size: 1.5rem; }
+
+        /* Process Steps */
+        .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; text-align: center; margin: 40px 0; }
+        .process-step { padding: 25px; background: #f8f9fa; border-radius: 10px; transition: 0.3s; }
+        .process-step:hover { background: #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transform: translateY(-5px); }
+        .step-number { font-size: 3.5rem; color: var(--accent-color); font-family: var(--font-heading); font-weight: bold; display: block; margin-bottom: 10px; line-height: 1; }
+
+        /* Tips Box */
+        .tips-box { background: #f0f7f8; padding: 40px; border-radius: 8px; margin-bottom: 60px; border-left: 5px solid var(--primary-color); }
+        .tips-box h3 { color: var(--primary-color); text-align: center; margin-bottom: 25px; }
+        .tips-box ul { list-style-type: circle; margin-left: 20px; font-size: 1.1rem; }
+
+        /* Gallery */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px; }
+        .gallery-item img { width: 100%; height: 350px; object-fit: cover; border-radius: 8px; transition: transform .4s; }
+        .gallery-item img:hover { transform: scale(1.02); }
+
+        /* FAQ */
+        .faq-container { margin-top: 40px; }
+        .faq-item { border-bottom: 1px solid #ddd; }
+        .faq-question {
+            width: 100%; text-align: left; background: none; border: none; padding: 25px 0;
+            font-size: 1.15rem; font-weight: bold; color: var(--primary-color); cursor: pointer;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .faq-answer { display: none; padding-bottom: 25px; color: #555; line-height: 1.7; }
+        .faq-item.active .faq-answer { display: block; }
+        .faq-item.active .faq-question { color: var(--secondary-color); }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: white;
+            padding-top: 4rem;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.95rem;
+            margin-top: 5rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 3rem;
+            text-align: left;
+        }
+        
+        .footer-col h3 {
+            color: var(--accent-color);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 1.3rem;
+            font-size: 1.15rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+        }
+        
+        .footer-col p {
+            color: rgba(255,255,255,0.85);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+            padding-left: 8px;
+        }
+        
+        .contact-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 18px;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.5;
+        }
+        
+        .contact-row a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+        }
+        
+        .contact-row a:hover {
+            color: var(--accent-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 18px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a svg {
+            width: 26px;
+            height: 26px;
+            fill: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover svg {
+            fill: var(--accent-color);
+            transform: translateY(-4px);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.12);
+            margin-top: 3.5rem;
+            padding: 1.8rem 2rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .footer-bottom a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+        }
+        
+        .footer-bottom a:hover {
+            color: var(--accent-color);
+        }
+
+
+        @media (max-width: 768px) {
+            .navbar { padding: 0.8rem 0.5rem; justify-content: space-around; }
+            .navbar a, .navbar .dropbtn { font-size: 14px; padding: 10px 8px; }
+            .article-header { min-height: auto; padding: 100px 15px 60px; }
+            .article-header h1 { font-size: 1.8rem; margin-bottom: 0.8rem; }
+            .content-container { margin: -40px 15px 2rem; padding: 2rem 1.5rem; border-radius: 8px; }
+ .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2.5rem;
+                padding: 0 1.5rem;
+            }
+
+            .footer-col {
+                align-items: center;
+            }
+
+            .footer-col h3 {
+                font-size: 1.5rem;
+            }
+
+            .footer-col h4 {
+                font-size: 1.05rem;
+            }
+
+            .footer-links {
+                padding: 0;
+            }
+
+            .contact-row {
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 5px;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+
+            .footer-bottom {
+                padding: 1.5rem 1rem;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="/">Home</a>
+    <div class="dropdown">
+        <button class="dropbtn">Hair Guides</button>
+        <div class="dropdown-content">
+            <a href="/services/womens-haircuts/">Women’s Haircut Guide</a>
+            <a href="/services/mens-grooming/">Men’s Grooming Guide</a>
+            <a href="/services/hair-coloring/">Hair Coloring Guide</a>
+            <a href="/services/hair-treatments/">Hair Treatment Guide</a>
+            <a href="/services/bridal-styling/">Bridal Hair Guide</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Tools</button>
+        <div class="dropdown-content">
+            <a href="/tools/ai-shaver-finder/">Ai Shaver Finder</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">About This Site</button>
+        <div class="dropdown-content">
+            <a href="/prices/">Local Price Averages</a>
+            <a href="/testimonials/">Community Reviews</a>
+            <a href="/contact/">Contact & Editorial Info</a>
+        </div>
+    </div>
+    <a href="/blog/">Blog</a>
+</div>
+
+<header class="article-header">
+    <h1>Hair Treatment Guide in Oceanside, CA</h1>
+    <p>Everything you need to know about repairing, protecting, and maintaining hair in a coastal climate.</p>
+    <a href="#types" class="btn-contact">Explore Treatment Types</a>
+</header>
+
+<main class="content-container">
+
+    <div class="section-header" style="text-align: center; margin-bottom: 50px;">
+        <h2>Saving Your Hair from the Coast</h2>
+    </div>
+    <div class="feature-row" style="display:flex; gap:50px; margin-bottom:60px; align-items:center;">
+        <div class="feature-text" style="flex:1;">
+            <p>Living near the ocean in Oceanside affects hair differently than inland areas. The combination of salt air, UV exposure, and hard water can strip moisture, leaving locks brittle, frizzy, and prone to breakage.</p>
+            <p>This guide explains how these environmental factors impact hair health and details the clinical-grade treatments commonly recommended by professionals in Southern California to reverse damage on a molecular level.</p>
+            <p>Whether you are battling the famous "marine layer frizz" or recovering from over-processing, understanding these treatments is the first step to restoring integrity, elasticity, and shine.</p>
+        </div>
+        <div class="feature-img" style="flex:1; height:400px;">
+            <img src="/images/keratin-hair-treatment-wash-oceanside.jpg" alt="Healthy Shiny Hair Result" style="width:100%; height:100%; object-fit:cover; border-radius:8px; box-shadow:0 10px 25px rgba(0,0,0,0.15);">
+        </div>
+    </div>
+
+    <div class="section-header" id="types" style="text-align: center; margin-bottom: 50px;">
+        <h2>Common Hair Treatments Explained</h2>
+    </div>
+    <ul class="service-list">
+        <li>
+            <h3>Keratin Smoothing Treatment</h3>
+            <p><strong>Best for:</strong> Frizz control and humidity protection.</p>
+            <p>This treatment infuses keratin protein deep into the hair cuticle, sealing it shut and creating a shield against moisture. It is not a straightener, but a smoother. It significantly reduces blow-dry time and leaves hair silky for up to 4 months.</p>
+        </li>
+        <li>
+            <h3>Bonding Services (like Olaplex)</h3>
+            <p><strong>Best for:</strong> Bleached or chemically damaged hair.</p>
+            <p>Essential for highlighted hair. Bonding treatments work on a molecular level to find and rebuild broken disulfide bonds. This makes hair stronger from the inside out, preventing breakage before it starts.</p>
+        </li>
+        <li>
+            <h3>Deep Hydration Steam Masque</h3>
+            <p><strong>Best for:</strong> Dry, thirsty hair needing instant softness.</p>
+            <p>Professional steam therapy is often used to gently open the hair cuticle, allowing nutrient-rich botanical masques (shea butter, argan oil) to penetrate deeply into the hair shaft.</p>
+        </li>
+        <li>
+            <h3>Scalp Detox & Exfoliation</h3>
+            <p><strong>Best for:</strong> Product buildup, dandruff, and slow growth.</p>
+            <p>Healthy hair starts at the root. Scalp facials use gentle exfoliation to remove impurities like sand, salt, and dry shampoo, stimulating blood flow for healthier growth.</p>
+        </li>
+        <li>
+            <h3>Hard Water Mineral Removal</h3>
+            <p><strong>Best for:</strong> Dullness, brassy blondes, and rough texture.</p>
+            <p>Oceanside water is moderately hard. Demineralizing treatments remove calcium and magnesium deposits that build up on the hair, restoring natural brightness and softness.</p>
+        </li>
+    </ul>
+
+    <div class="section-header" style="text-align: center; margin-bottom: 50px;">
+        <h2>How Professional Treatments Work</h2>
+    </div>
+    <p style="text-align: center; max-width: 700px; margin: 0 auto; margin-bottom: 40px;">While every salon has its own method, the professional restoration process typically follows these steps:</p>
+    <div class="process-grid">
+        <div class="process-step"><span class="step-number">01</span><h4>Diagnosis</h4><p>Stylists analyze hair porosity and elasticity to determine if moisture or protein is needed.</p></div>
+        <div class="process-step"><span class="step-number">02</span><h4>Clarify</h4><p>Surface impurities and mineral buildup are removed to prepare the hair canvas.</p></div>
+        <div class="process-step"><span class="step-number">03</span><h4>Treat</h4><p>Customized formulas are applied, often using heat or steam for deeper penetration.</p></div>
+        <div class="process-step"><span class="step-number">04</span><h4>Seal</h4><p>Nutrients are locked in with a pH-balancing rinse and a cool water seal.</p></div>
+    </div>
+
+    <div class="tips-box">
+        <h3>General Maintenance Recommendations</h3>
+        <ul>
+            <li style="margin-bottom: 15px;"><strong>Cold Rinse:</strong> Finishing a shower with cool water helps close the cuticle, locking in moisture and increasing shine.</li>
+            <li style="margin-bottom: 15px;"><strong>Silk Pillowcase:</strong> Using silk or satin reduces friction while sleeping, preventing breakage and bedhead frizz.</li>
+            <li style="margin-bottom: 15px;"><strong>Leave-In Protection:</strong> Detangling wet hair without a leave-in conditioner can cause snapping, as wet hair is in its most fragile state.</li>
+        </ul>
+    </div>
+
+    <div class="section-header" style="text-align: center; margin-bottom: 50px; margin-top: 60px;">
+        <h2>Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-container">
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">Does hard water cause frizzy hair in Oceanside? <span>+</span></button>
+            <div class="faq-answer">Yes. Oceanside has moderately hard water, which contains minerals like calcium and magnesium. These minerals build up on the hair shaft, lifting the cuticle and causing dryness, frizz, and lack of shine.</div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">How often should I get a Keratin treatment? <span>+</span></button>
+            <div class="faq-answer">Most professionals recommend scheduling Keratin smoothing treatments every 3 to 5 months, depending on your hair type and how frequently you wash your hair.</div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">What is the best treatment for sun-damaged hair? <span>+</span></button>
+            <div class="faq-answer">For sun-damaged hair (common in coastal areas), bond-building treatments like Olaplex or deep hydration masks are highly recommended to restore elasticity and moisture.</div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">Can treatments be done on the same day as color? <span>+</span></button>
+            <div class="faq-answer">Yes, many treatments work synergistically with color services. Bond builders are often added directly into lightener to prevent damage during the lifting process.</div>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 80px; margin-bottom: 20px;">
+        <h3 style="font-size: 2rem;">Ready to Restore Your Hair?</h3>
+        <p>Find the best local professionals for your hair needs.</p>
+       <a href="/blog/best-hair-salons-oceanside-2025/" class="btn-contact">See Top Rated Salons</a>
+    </div>
+
+</main>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-col">
+            <h3>Oceanside Hair Salon</h3>
+            <p>Your local guide to haircuts, grooming, and hair care in Oceanside — built to help you make smarter style decisions in a coastal climate.</p>
+
+            <div class="social-icons">
+                <a href="https://www.facebook.com/profile.php?id=61583963957390" target="_blank" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/oceanside_hair_salon" target="_blank" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.36-.2 6.78-2.618 6.98-6.98.058-1.28.072-1.689.072-4.948 0-3.259-.014-3.667-.072-4.947-.2-4.361-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <a href="https://x.com/OceansideHair" target="_blank" aria-label="X Twitter">
+        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+
+    <a href="https://www.pinterest.com/OceansideHairSalon/" target="_blank" aria-label="Pinterest">
+        <svg viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.399.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.951-7.252 4.173 0 7.41 2.967 7.41 6.93 0 4.136-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.367 18.62 0 12.017 0z"/></svg>
+    </a>
+            </div>
+        </div>
+
+<div class="footer-col">
+    <h4>Quick Links</h4>
+    <ul class="footer-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/services/">Hair Guides</a></li>
+        <li><a href="/prices/">Local Price Insights</a></li>
+        <li><a href="/testimonials/">Community Feedback</a></li>
+        <li><a href="/blog/">Articles & Guides</a></li>
+        <li><a href="/contact/">Contact & Info</a></li>
+    </ul>
+</div>
+
+
+        <div class="footer-col">
+            <h4>Find Us</h4>
+            <div class="contact-row"><span>Address</span><span>Oceanside, CA 92054</span></div>
+           
+            <div class="contact-row"><span>Email</span><a href="mailto:hello@oceansidehairsalon.com">hello@oceansidehairsalon.com</a></div>
+            <div class="contact-row">
+        <span>Purpose</span>
+        <div>
+            <div>Independent hair & grooming guides</div>
+            <div>Local research & style insights</div>
+            <div style="color:var(--accent-color);">No appointments or services offered</div>
+        </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        © 2025 Oceanside Hair Salon. All Rights Reserved. 
+        | <a href="/privacy-policy/">Privacy Policy</a>
+    </div>
+</footer>
+
+<script>
+    function toggleFaq(e){
+        e.parentElement.classList.toggle('active');
+        var s = e.querySelector('span');
+        s.textContent = e.parentElement.classList.contains('active') ? '-' : '+';
+    }
+</script>
+
+</body>
+</html>

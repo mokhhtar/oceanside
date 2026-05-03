@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-PSX8DCHR');
+  }
+</script>
+<script>
+  document.addEventListener('click', function (event) {
+    // تحديد ما إذا كان العنصر المنقور هو رابط أو داخل رابط
+    var targetLink = event.target.closest('a');
+
+    // التحقق مما إذا كان الرابط يخص أمازون
+    if (targetLink && (targetLink.href.includes('amazon.com') || targetLink.href.includes('amzn.to'))) {
+
+      // إعداد المتغيرات الافتراضية في حال كانت النقرة خارج بطاقة المنتج
+      var productName = 'منتج غير محدد';
+      var productId = 'بدون ID';
+      var productAsin = 'بدون ASIN';
+
+      // الصعود في شجرة الـ DOM للعثور على أقرب بطاقة منتج للزر المنقور
+      var productCard = targetLink.closest('.product-card');
+
+      if (productCard) {
+        // سحب الـ ID الخاص بالبطاقة (مثل: malibu-c-shampoo)
+        productId = productCard.id || productId;
+
+        // سحب عنوان المنتج من الـ h3
+        var titleElement = productCard.querySelector('.product-title');
+        if (titleElement) {
+          productName = titleElement.innerText.trim();
+        }
+
+        // سحب الـ ASIN إذا كان موجوداً
+        var asinElement = productCard.querySelector('[data-asin]');
+        if (asinElement) {
+          productAsin = asinElement.getAttribute('data-asin');
+        }
+      }
+
+      // إرسال البيانات الدقيقة إلى Google Tag Manager
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        'event': 'amazon_click_exact',
+        'clicked_url': targetLink.href,
+        'clicked_text': targetLink.innerText.trim() || 'صورة أو زر',
+        'product_name': productName,
+        'product_id': productId,
+        'product_asin': productAsin
+      });
+    }
+  });
+</script>
+    
+
+<meta charset="UTF-8"><link rel="icon" type="image/png" href="https://oceansidehairsalon.com/myfavicon/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/myfavicon/favicon.svg" />
+<link rel="shortcut icon" href="/myfavicon/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/myfavicon/apple-touch-icon.png" />
+<link rel="manifest" href="/myfavicon/site.webmanifest" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>9 Best Barbers in Oceanside, CA – Top Fades & Beard Trims</title>
+    <meta name="description" content="Searching for the best barbers in Oceanside, CA? Discover our ranked list of the top 9 local barbershops for 2025, based on fades, beard trims, and service quality.">
+    <link rel="canonical" href="https://oceansidehairsalon.com/blog/best-barbers-oceanside-2025/" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Schema Markup (BlogPosting + ItemList for LocalBusiness) -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BlogPosting",
+          "@id": "https://oceansidehairsalon.com/blog/best-barbers-oceanside-2025/#blogpost",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://oceansidehairsalon.com/blog/best-barbers-oceanside-2025/"
+          },
+          "headline": "9 Best Barbers in Oceanside, CA (2026 Ranked Guide)",
+          "description": "A comprehensive review of the top barbershops in Oceanside, California for 2026, covering fades, beard trims, prices, and customer ratings.",
+          "image": "https://oceansidehairsalon.com/images/blog/best-barbers-oceanside-2025/header-barber.jpg",
+          "author": {
+            "@type": "Organization",
+            "name": "Oceanside Hair Salon"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Oceanside Hair Salon",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://oceansidehairsalon.com/myfavicon/favicon-96x96.png"
+            }
+          },
+          "datePublished": "2025-12-22",
+          "dateModified": "2026-01-29"
+        },
+        {
+          "@type": "ItemList",
+          "@id": "https://oceansidehairsalon.com/blog/best-barbers-oceanside-2025/#ranking",
+          "name": "Top 9 Barbers in Oceanside, CA",
+          "itemListOrder": "ItemListOrderAscending",
+          "numberOfItems": 9,
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "item": { "@type": "LocalBusiness", "name": "The Gentlemen's Den", "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "1,584" } }},
+            { "@type": "ListItem", "position": 2, "item": { "@type": "LocalBusiness", "name": "Knuckleheads Barber Shop", "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "288" } }},
+            { "@type": "ListItem", "position": 3, "item": { "@type": "LocalBusiness", "name": "East 2 West Cutz", "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.4", "reviewCount": "128" } }},
+            { "@type": "ListItem", "position": 4, "item": { "@type": "LocalBusiness", "name": "Classic Blends Barbershop", "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "115" } }},
+            { "@type": "ListItem", "position": 5, "item": { "@type": "LocalBusiness", "name": "Hello Handsome Barber Shop", "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "44" } }},
+            { "@type": "ListItem", "position": 6, "item": { "@type": "LocalBusiness", "name": "Red Clipper Barber Shop", "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.4", "reviewCount": "50" } }},
+            { "@type": "ListItem", "position": 7, "item": { "@type": "LocalBusiness", "name": "Top Notch Barber Shop", "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.5", "reviewCount": "164" } }},
+            { "@type": "ListItem", "position": 8, "item": { "@type": "LocalBusiness", "name": "City Kutz", "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.5", "reviewCount": "81" } }},
+            { "@type": "ListItem", "position": 9, "item": { "@type": "LocalBusiness", "name": "SeeLowz", "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "131" } }}
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much does a men’s haircut cost in Oceanside, CA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In Oceanside, CA, the average price for a men’s haircut typically ranges between $35 and $55. Prices may vary depending on whether you choose a traditional barbershop, a modern salon, or add services like beard trims or scalp treatments."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What’s the difference between a barber and a hair salon in Oceanside?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most barbers in Oceanside focus on clippers, fades, and beard work, while hair salons typically offer scissor cuts, longer styles, and hair treatments. Many clients choose based on hairstyle goals rather than price alone."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are walk-in barbershops common in Oceanside?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Many barbershops in Oceanside accept walk-ins, especially on weekdays. However, weekends can be busy, so booking an appointment in advance is recommended if you want to avoid long wait times."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What haircut styles are most popular in Oceanside right now?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Popular men’s haircut styles in Oceanside include low and mid fades, textured crops, classic tapers, and longer flow styles influenced by the coastal lifestyle. Beard grooming and natural-looking blends are also in high demand."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a salon or barber better for growing my hair out in Oceanside?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If you’re growing your hair out, many clients in Oceanside prefer a salon-style men’s haircut. Scissor work, shaping, and hair health advice are usually better suited for medium to long hairstyles."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How often should men in Oceanside get a haircut?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most men in Oceanside schedule a haircut every 3 to 5 weeks. Short fades require more frequent maintenance, while longer styles can last longer between visits."
+          }
+        }
+      ]
+    }
+    </script>
+    <style>
+        :root {
+            --primary-color: #005f73;
+            --secondary-color: #0a9396;
+            --accent-color: #e9d8a6;
+            --bg-light: #f4f7f6;
+            --text-dark: #333;
+            --text-light: #fff;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Lato', sans-serif;
+            --spacing-unit: 20px;
+        }
+
+        /* Reset & Base Styles */
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { 
+            font-family:var(--font-body); 
+            color:var(--text-dark); 
+            line-height:1.7; 
+            background:var(--bg-light); 
+        }
+        
+        h1,h2,h3,h4,h5 { font-family:var(--font-heading); margin-bottom: 1rem; }
+        img { max-width: 100%; height: auto; display: block; border-radius: 8px; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* Navigation Bar */
+        .navbar {
+            display:flex; justify-content:center; align-items:center;
+            background:rgba(0,95,115,0.95); width:100%; position:fixed; top:0; left:0;
+            padding:1rem 0; z-index:1000; backdrop-filter:blur(5px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .navbar a, .navbar .dropbtn {
+            font-weight:bold; font-size:17px; color:white !important;
+            padding:14px 20px; text-decoration:none; background:transparent; border:none; cursor:pointer;
+        }
+        .navbar a:hover, .dropdown:hover .dropbtn { color:var(--secondary-color) !important; }
+        .dropdown { position:relative; display:inline-block; }
+        .dropdown-content {
+            display:none; position:absolute; background:#fff; min-width:240px;
+            box-shadow:0 8px 16px rgba(0,0,0,0.2); border-top:3px solid var(--secondary-color); z-index:1;
+        }
+        .dropdown-content a { color:#333 !important; padding:12px 16px; display:block; font-size:15px; }
+        .dropdown-content a:hover { background:#f1f1f1; color:var(--primary-color) !important; }
+        .dropdown:hover .dropdown-content { display:block; }
+
+        /* Header / Hero Section */
+        header {
+            /* Placeholder for main header image */
+            background:linear-gradient(rgba(0,95,115,0.8),rgba(10,147,150,0.8)), url('/images/blog/best-barbers-oceanside-2025/header-barber.jpg');
+            background-size:cover; background-position:center; height:65vh;
+            display:flex; flex-direction:column; justify-content:center; align-items:center;
+            text-align:center; color:white; padding:20px; padding-top:100px;
+        }
+        header h1 { 
+            font-size:3.2rem; 
+            text-shadow:2px 2px 8px rgba(0,0,0,0.5); 
+            margin-bottom:1rem; 
+            max-width: 900px;
+            line-height: 1.2;
+        }
+        header p { 
+            font-size:1.4rem; 
+            margin-bottom:2.5rem; 
+            font-weight: 300;
+            max-width: 700px;
+        }
+
+        .btn-contact {
+            background:var(--primary-color); 
+            color:white !important; 
+            padding:16px 44px;
+            border:2px solid transparent; 
+            border-radius:50px; 
+            font-weight:bold; 
+            font-size:1.1rem;
+            cursor:pointer; 
+            transition:0.3s; 
+            display:inline-block;
+            box-shadow: 0 4px 15px rgba(0,95,115,0.3);
+            text-decoration: none;
+        }
+               
+        .btn-contact:hover { 
+            background:white; 
+            color:var(--primary-color) !important; 
+            border-color: white;
+            transform:translateY(-3px); 
+        }
+
+        /* Main Blog Container */
+        .blog-container {
+            max-width: 900px; 
+            margin: -60px auto 0;
+            background: white; 
+            padding: 4rem 3rem; 
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Typography Inside Blog */
+        .blog-content h2 { 
+            color:var(--primary-color); 
+            margin-top: 3rem; 
+            margin-bottom: 1.5rem; 
+            font-size: 2.2rem; 
+            border-bottom: 2px solid #f0f0f0; 
+            padding-bottom: 15px; 
+        }
+        .blog-content h3 { 
+            color:var(--secondary-color); 
+            margin-top: 2rem; 
+            margin-bottom: 0.8rem; 
+            font-size: 1.6rem; 
+        }
+        .blog-content p { 
+            margin-bottom: 1.5rem; 
+            font-size: 1.15rem; 
+            color: #4a4a4a; 
+        }
+        .blog-content ul { 
+            margin-left: 1.5rem; 
+            margin-bottom: 2rem; 
+            list-style-type: disc;
+        }
+        .blog-content li { 
+            margin-bottom: 0.8rem; 
+            font-size: 1.1rem; 
+            color: #444; 
+        }
+        .blog-content strong { color: var(--primary-color); }
+        
+        /* Links inside text */
+        .blog-content a { 
+            color: var(--secondary-color); 
+            text-decoration: underline; 
+            font-weight: bold; 
+        }
+        .blog-content a:hover { color: var(--primary-color); }
+
+        /* Salon Card Design */
+        .salon-card {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+        .salon-card:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+        .salon-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 5px; height: 100%;
+            background: var(--secondary-color);
+        }
+        .salon-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        .salon-rating {
+            background: var(--accent-color);
+            color: var(--text-dark);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        .salon-features {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .feature-tag {
+            background: #f0f8f8;
+            color: var(--primary-color);
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .visit-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: var(--text-dark);
+            color: white !important;
+            text-decoration: none !important;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .visit-btn:hover {
+            background-color: var(--primary-color);
+        }
+        
+        /* Specific Image Styling for Cards */
+        .salon-card img {
+            width: 100%;
+            height: 280px; /* Fixed height for consistency */
+            object-fit: cover;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        /* Comparison Table */
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-family: var(--font-body);
+        }
+        .price-table th, .price-table td {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: left;
+        }
+        .price-table th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: bold;
+        }
+        .price-table tr:nth-child(even) { background-color: #f9f9f9; }
+
+        /* Map Placeholder */
+        .map-container {
+            position: relative;
+            overflow: hidden;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+                /* FAQ STYLES */
+        .faq-container { margin-top: 2rem; }
+        .faq-item { border-bottom: 1px solid #eee; margin-bottom: 0; }
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            padding: 20px 0;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--primary-color);
+            font-family: var(--font-heading);
+            transition: color 0.3s;
+        }
+        .faq-question:hover { color: var(--secondary-color); }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            opacity: 0;
+            color: #555;
+            line-height: 1.7;
+            padding-right: 20px;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 500px; /* Large enough to fit content */
+            opacity: 1;
+            padding-bottom: 25px;
+        }
+        .faq-question span {
+            font-size: 1.5rem;
+            font-weight: 400;
+            transition: transform 0.3s;
+            color: var(--secondary-color);
+        }
+        .faq-item.active .faq-question span {
+            transform: rotate(45deg);
+            color: var(--primary-color);
+        }
+        /* Footer Styles */
+    footer{background:var(--primary-color);color:white;padding-top:4rem;font-family:'Lato',sans-serif;font-size:0.95rem;margin-top:5rem;}
+    .footer-container{max-width:1200px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:3rem;text-align:left;}
+    .footer-col h3{color:var(--accent-color);font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:1rem;}
+    .footer-col h4{color:white;margin-bottom:1.3rem;font-size:1.15rem;text-transform:uppercase;letter-spacing:1.2px;}
+    .footer-col p{color:rgba(255,255,255,0.85);line-height:1.7;margin-bottom:1rem;}
+    .footer-links li{margin-bottom:12px;}
+    .footer-links a{color:rgba(255,255,255,0.8);text-decoration:none;transition:all .3s ease;}
+    .footer-links a:hover{color:var(--accent-color);padding-left:8px;}
+    .contact-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:18px;color:rgba(255,255,255,0.9);line-height:1.5;}
+    .contact-row a{color:rgba(255,255,255,0.9);text-decoration:none;}
+    .contact-row a:hover{color:var(--accent-color);}
+    .social-icons{display:flex;gap:18px;margin-top:20px;}
+    .social-icons a svg{width:26px;height:26px;fill:white;transition:all .3s ease;}
+    .social-icons a:hover svg{fill:var(--accent-color);transform:translateY(-4px);}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,0.12);margin-top:3.5rem;padding:1.8rem 2rem;text-align:center;font-size:0.85rem;color:rgba(255,255,255,0.6);}
+    .footer-bottom a{color:rgba(255,255,255,0.6);text-decoration:none;}
+    .footer-bottom a:hover{color:var(--accent-color);}
+        
+        /* Responsive */
+        @media (max-width:768px){
+            header{height:auto;min-height:50vh;padding-top:140px;}
+            header h1{font-size:2.2rem;}
+            .blog-container { margin: -30px 15px 0; padding: 2rem 1.5rem; }
+            .salon-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .navbar { position: absolute; }
+
+            .footer-container{text-align:center;grid-template-columns:1fr;}
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<div class="navbar">
+    <a href="/">Home</a>
+    
+    <div class="dropdown">
+        <button class="dropbtn">Hair Guides</button>
+        <div class="dropdown-content">
+            <a href="/services/womens-haircuts/">Women’s Haircut Guide</a>
+            <a href="/services/mens-grooming/">Men’s Grooming Guide</a>
+            <a href="/services/hair-coloring/">Hair Coloring Guide</a>
+            <a href="/services/hair-treatments/">Hair Treatment Guide</a>
+            <a href="/services/bridal-styling/">Bridal Hair Guide</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Tools</button>
+        <div class="dropdown-content">
+            <a href="/tools/ai-shaver-finder/">Ai Shaver Finder</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn">About This Site</button>
+        <div class="dropdown-content">
+            <a href="/prices/">Local Price Averages</a>
+            <a href="/testimonials/">Community Reviews</a>
+            <a href="/contact/">Contact & Editorial Info</a>
+        </div>
+    </div>
+
+    <a href="/blog/">Blog</a>
+</div>
+
+<!-- Header -->
+<header>
+    <h1>9 Best Barbers in Oceanside, CA<br>(2026 Ranked Guide)</h1>
+    <p>Top-rated barbershops for skin fades, hot towel shaves, and classic grooming in North County.</p>
+    <a href="#list" class="btn-contact">See the Rankings</a>
+</header>
+
+<section class="blog-container">
+    <div class="blog-content">
+        
+        <p>There is nothing quite like the feeling of a fresh fade or a perfectly sculpted beard. In Oceanside, the barber culture is strong, with a mix of old-school traditional shops and modern grooming lounges.</p>
+        
+        <p>Whether you need a military regulation cut (high and tight), a trendy skin fade with a design, or just a relaxing hot towel shave, finding the right barber is essential. We have scouted the city to find the barbers who are truly masters of the clippers.</p>
+        
+        <p>We analyzed hundreds of Google reviews, checked wait times, and tested the vibes to bring you this definitive list of the <strong>Top 9 Barbers in Oceanside for 2026</strong>.</p>
+
+        <!-- Selection Criteria -->
+        <div style="background-color:#f9f9f9; padding:25px; border-radius:8px; margin: 30px 0; border-left: 4px solid var(--primary-color);">
+            <h3 style="margin-top:0;">🔎 How We Ranked These Barbers:</h3>
+            <ul>
+                <li><strong>Precision & Skill:</strong> Can they execute a flawless fade without lines?</li>
+                <li><strong>Atmosphere:</strong> Is it a welcoming shop where you can relax?</li>
+                <li><strong>Reliability:</strong> Do they run on time with appointments?</li>
+                <li><strong>Specialties:</strong> Beard work, straight razor skills, and hair art.</li>
+            </ul>
+        </div>
+
+        <h3>Barber Locations in Oceanside</h3>
+        <p>Find the nearest top-rated barber to you in North County.</p>
+        <div class="map-container">
+             <!-- Placeholder for a Google Map Embed centered on Oceanside -->
+             <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d53589.64687291771!2d-117.375494!3d33.195869!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sbarber%20shop%20oceanside%20ca!5e0!3m2!1sen!2sus!4v1703100000000!5m2!1sen!2sus" width="600" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <h2 id="list">The Top 9 Barbers in Oceanside</h2>
+
+        <div class="salon-card">
+            <img src="/images/blog/best-barbers-oceanside-2025/the-gentlemens-den.jpg" alt="The Gentlemen's Den Barbershop Interior">
+            <div class="salon-header">
+                <h3>1. The Gentlemen's Den</h3>
+                <span class="salon-rating">5.0 ⭐ (High Demand)</span>
+            </div>
+            <div class="salon-features">
+                <span class="feature-tag">Classic Cuts</span>
+                <span class="feature-tag">Hot Towel</span>
+                <span class="feature-tag">Beer Included</span>
+            </div>
+            <p>Located on the Coast Highway, <strong>The Gentlemen's Den</strong> offers the quintessential barbershop experience. It feels like a place where men can just be men. The decor is rustic and masculine, and yes, they often offer a cold beverage with your service.</p>
+            <p><strong>Why it's #1:</strong> Consistency. Whether you get Daniel, David, or any other barber, the fade is always blurry (in a good way) and the edges are sharp. Their beard sculpting services are unmatched in the city.</p>
+            <p><em>Services: Fades, Tapers, Beard Trims, Straight Razor Shaves.</em></p>
+            <a href="https://www.thegentlemensdenbarbershop.com/" rel="nofollow" target="_blank" class="visit-btn">Book Appointment</a>
+        </div>
+
+        <div class="salon-card">
+            <img src="/images/blog/best-barbers-oceanside-2025/knuckleheads-barber-shop.jpg" alt="Knuckleheads Barber Shop Oceanside">
+            <div class="salon-header">
+                <h3>2. Knuckleheads Barber Shop</h3>
+                <span class="salon-rating">4.8 ⭐ (Local Favorite)</span>
+            </div>
+            <div class="salon-features">
+                <span class="feature-tag">Old School Vibe</span>
+                <span class="feature-tag">Kid Friendly</span>
+                <span class="feature-tag">Walk-ins</span>
+            </div>
+            <p>Knuckleheads has been a staple in Oceanside for years. It has that classic, no-nonsense barbershop feel with checkerboard floors and vintage chairs. The barbers here are known for their friendly banter and speed without sacrificing quality.</p>
+            <p><strong>Best for:</strong> A solid, traditional haircut at a fair price. They are also excellent with kids who might be nervous about their first haircut.</p>
+            <p><em>Address: S Coast Hwy, Oceanside, CA</em></p>
+             <a href="https://www.knuckleheadsbarbershop.com/" rel="nofollow" target="_blank" class="visit-btn">Book Appointment</a>
+
+        </div>
+
+        <div class="salon-card">
+            <img src="/images/blog/best-barbers-oceanside-2025/east-2-west-cutz.jpg" alt="East 2 West Cutz Fade Work">
+            <div class="salon-header">
+                <h3>3. East 2 West Cutz</h3>
+                <span class="salon-rating">4.4 ⭐ (Trendsetters)</span>
+            </div>
+            <div class="salon-features">
+                <span class="feature-tag">Urban Styles</span>
+                <span class="feature-tag">Designs</span>
+                <span class="feature-tag">Clean Lines</span>
+            </div>
+            <p>If you are looking for a modern, urban style, <strong>East 2 West Cutz</strong> is the place. The barbers here are artists. They specialize in complex hair designs, razor-sharp line-ups, and the cleanest skin fades in town. The vibe is energetic with good music always playing.</p>
+            <p><strong>Pro Tip:</strong> Book in advance. Their best barbers fill up their schedules days ahead.</p>
+            <a href="https://east2westcutz.co/" target="_blank" rel="nofollow"  class="visit-btn">Book Appointment</a>
+
+        </div>
+
+        <div class="salon-card">
+            <img src="/images/blog/best-barbers-oceanside-2025/classic-blends-barbershop.jpg" alt="Classic Blends Barbershop Chair">
+            <div class="salon-header">
+                <h3>4. Classic Blends Barbershop</h3>
+                <span class="salon-rating">4.9 ⭐ (Perfectionists)</span>
+            </div>
+            <div class="salon-features">
+                <span class="feature-tag">Appointment Only</span>
+                <span class="feature-tag">Detailed</span>
+                <span class="feature-tag">Private Feel</span>
+            </div>
+            <p><strong>Classic Blends</strong> lives up to its name. The blending skills here are top-tier. This shop tends to be a bit quieter and more focused on the individual client experience rather than the loud barbershop talk. It's perfect if you want to zone out and get a perfect cut.</p>
+            <p><strong>Service Highlight:</strong> Their "Full Service" which includes a haircut, beard trim, and hot towel facial massage is a must-try.</p>
+            <a href="https://classicblendsbarbershop.schedulista.com/" rel="nofollow" target="_blank" class="visit-btn">Book Appointment</a>
+
+        </div>
+
+        <div class="salon-card">
+            <img src="/images/blog/best-barbers-oceanside-2025/hello-handsome-barber-shop.jpg" alt="Hello Handsome Barber Shop Sign">
+            <div class="salon-header">
+                <h3>5. Hello Handsome Barber Shop</h3>
+                <span class="salon-rating">5.0 ⭐ (New & Hot)</span>
+            </div>
+            <div class="salon-features">
+                <span class="feature-tag">Modern</span>
+                <span class="feature-tag">Inclusive</span>
+                <span class="feature-tag">Styling Experts</span>
+            </div>
+            <p>One of the newer gems in Oceanside/Carlsbad border area. <strong>Hello Handsome</strong> has quickly garnered hundreds of 5-star reviews. The shop is clean, bright, and modern. They are great at consulting with you to find a style that actually suits your face shape.</p>
+            <p><strong>Great for:</strong> Guys who want to try a new style (like a crop top or a mullet) but don't know where to start.</p>
+             <a href="https://hellohandsomebarbershop.com/" rel="nofollow" target="_blank" class="visit-btn">Book Appointment</a>
+
+        </div>
+
+        <div class="salon-card">
+            <img src="/images/blog/best-barbers-oceanside-2025/red-clipper-barber-shop.jpg" alt="Red Clipper Barber Shop Exterior">
+            <div class="salon-header">
+                <h3>6. Red Clipper Barber Shop</h3>
+                <span class="salon-rating">4.4 ⭐ (Military Friendly)</span>
+            </div>
+            <div class="salon-features">
+                <span class="feature-tag">Affordable</span>
+                <span class="feature-tag">Fast</span>
+                <span class="feature-tag">Military Cuts</span>
+            </div>
+            <p>Located on Oceanside Blvd, <strong>Red Clipper</strong> is a no-frills, reliable barbershop. They have a loyal following among the military community for their quick and regulation-standard cuts. You won't get a cappuccino here, but you will get a great haircut for a great price.</p>
+            <p><strong>Best for:</strong> Weekly maintenance cuts and military fades.</p>
+           <a href="https://redclipperbarbershop.com/" target="_blank" rel="nofollow" class="visit-btn">Book Appointment</a>
+            
+        </div>
+
+        <div class="salon-card">
+            <img src="/images/blog/best-barbers-oceanside-2025/top-notch-barber-shop.jpg" alt="Top Notch Barber Shop Station">
+            <div class="salon-header">
+                <h3>7. Top Notch Barber Shop</h3>
+                <span class="salon-rating">4.5 ⭐ (Consistent)</span>
+            </div>
+            <div class="salon-features">
+                <span class="feature-tag">Walk-ins Welcome</span>
+                <span class="feature-tag">Traditional</span>
+            </div>
+            <p>True to its name, Top Notch provides quality service. It’s a neighborhood shop where everyone seems to know each other. The barbers are skilled with all hair textures and are particularly good with scissor cuts on top.</p>
+           <a href="https://topnotchbarbershop.wixsite.com/oceanside/reviews/" rel="nofollow" target="_blank" class="visit-btn">Book Appointment</a>
+        
+        </div>
+
+        <div class="salon-card">
+            <img src="/images/blog/best-barbers-oceanside-2025/city-kutz.jpg" alt="City Kutz Barber">
+            <div class="salon-header">
+                <h3>8. City Kutz</h3>
+                <span class="salon-rating">4.5 ⭐ (Hidden Gem)</span>
+            </div>
+            <div class="salon-features">
+                <span class="feature-tag">Detail Oriented</span>
+                <span class="feature-tag">Great Value</span>
+            </div>
+            <p>Tucked away on Mission Ave, City Kutz is a smaller shop that punches above its weight. The reviews consistently mention how the barbers take their time to ensure every hair is in place. No rushing here.</p>
+           <a href="https://www.instagram.com/explore/locations/160577570968321/city-kutz/" rel="nofollow" target="_blank" class="visit-btn">Book Appointment</a>
+        
+        </div>
+
+        <div class="salon-card">
+            <img src="/images/blog/best-barbers-oceanside-2025/seelowz.jpg" alt="SeeLowz Barber Shop">
+            <div class="salon-header">
+                <h3>9. SeeLowz</h3>
+                <span class="salon-rating">5.0 ⭐ (Elite Fades)</span>
+            </div>
+            <div class="salon-features">
+                <span class="feature-tag">Appointment Only</span>
+                <span class="feature-tag">Luxury Grooming</span>
+            </div>
+            <p>SeeLowz is for the man who cares about the details. Known for incredibly smooth gradients on fades and sharp razor work. It's more of a grooming lounge experience than a quick chop shop.</p>
+           <a href="https://www.instagram.com/seelowz/" target="_blank" class="visit-btn" rel="nofollow">Book Appointment</a>
+        
+        </div>
+
+        <div class="salon-card" style="background-color: #f0f4f8; border-color: var(--primary-color);">
+            <div class="salon-header">
+                <h3>Looking for Longer Styles?</h3>
+                <span class="salon-rating">Advice 💡</span>
+            </div>
+            <p>
+                While traditional barbershops focus on clippers, skin fades, and shaves, some men prefer longer hairstyles (like the surfer flow or textured layers). 
+                If you need significant scissor work, looking for a <strong>Men's Stylist</strong> or a Salon might be a better fit than a traditional barber.
+            </p>
+            <p>
+                <strong>Why consider a Men's Salon?</strong>
+                It’s ideal for men growing their hair out, dealing with scalp issues, or wanting gray blending color services.
+            </p>
+            <a href="/services/mens-grooming/" class="visit-btn" style="background-color: var(--primary-color);">Read Men's Salon Guide</a>
+        </div>
+
+        <hr style="margin: 4rem 0; border:0; border-top:1px solid #ddd;">
+
+        <h2>Barbershop vs. Salon: Which Should You Choose?</h2>
+        <p>Many men in Oceanside are unsure whether to visit a traditional barber or a salon. Here is a quick guide to help you decide:</p>
+
+        <table class="price-table">
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Barbershop</th>
+                    <th>Men's Stylist / Salon</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Best For</strong></td>
+                    <td>Short fades, buzz cuts, beard line-ups.</td>
+                    <td>Medium/long hair, scissor cuts, color.</td>
+                </tr>
+                <tr>
+                    <td><strong>Tools</strong></td>
+                    <td>Mostly clippers and straight razors.</td>
+                    <td>Shears (scissors), texture blades, brushes.</td>
+                </tr>
+                <tr>
+                    <td><strong>Experience</strong></td>
+                    <td>Quick, efficient, camaraderie.</td>
+                    <td>Relaxing, detailed consultation.</td>
+                </tr>
+                <tr>
+                    <td><strong>Services</strong></td>
+                    <td>Haircut + Shave.</td>
+                    <td>Haircut + Wash + Scalp Massage + Styling.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>FAQ: Men's Grooming in Oceanside</h2>
+        <div class="faq-container">
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    How much does a men’s haircut cost in Oceanside, CA? <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    In Oceanside, CA, the average price for a men’s haircut typically ranges between <strong>$35 and $55</strong>. Prices may vary depending on whether you choose a traditional barbershop, a modern salon, or add services like beard trims or scalp treatments.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    What’s the difference between a barber and a hair salon in Oceanside? <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    Most barbers in Oceanside focus on clippers, fades, and beard work, while hair salons typically offer scissor cuts, longer styles, and hair treatments. Many clients choose based on hairstyle goals rather than price alone.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Are walk-in barbershops common in Oceanside? <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    Yes. Many barbershops in Oceanside accept walk-ins, especially on weekdays. However, weekends can be busy, so booking an appointment in advance is recommended if you want to avoid long wait times.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    What haircut styles are most popular in Oceanside right now? <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    Popular men’s haircut styles in Oceanside include low and mid fades, textured crops, classic tapers, and longer flow styles influenced by the coastal lifestyle. Beard grooming and natural-looking blends are also in high demand.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Is a salon or barber better for growing my hair out in Oceanside? <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    If you’re growing your hair out, many clients in Oceanside prefer a salon-style men’s haircut. Scissor work, shaping, and hair health advice are usually better suited for medium to long hairstyles.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    How often should men in Oceanside get a haircut? <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    Most men in Oceanside schedule a haircut every <strong>3 to 5 weeks</strong>. Short fades require more frequent maintenance, while longer styles can last longer between visits.
+                </div>
+            </div>
+
+        </div>
+
+        <div style="background-color: var(--primary-color); color: white; padding: 2.5rem; border-radius: 12px; margin-top: 3rem; text-align: center;">
+            <h3 style="color: var(--accent-color); margin-top: 0;">Unsure About Your Next Style?</h3>
+            <p style="color: rgba(255,255,255,0.9); margin-bottom: 2rem;">Check out our guide on Men's Grooming trends to find the perfect look before you visit the barber.</p>
+            <a href="/services/mens-grooming/" class="btn-contact" style="background: white; color: var(--primary-color) !important;">Read Grooming Guide</a>
+        </div>
+
+    </div>
+</section>
+<script>
+    function toggleFaq(element) {
+        const item = element.parentElement;
+        item.classList.toggle('active');
+        const span = element.querySelector('span');
+    }
+</script>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-col">
+            <h3>Oceanside Hair Salon</h3>
+            <p>Your local guide to haircuts, grooming, and hair care in Oceanside — built to help you make smarter style decisions in a coastal climate.</p>
+
+            <div class="social-icons">
+                <a href="https://www.facebook.com/profile.php?id=61583963957390" target="_blank" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/oceanside_hair_salon" target="_blank" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.36-.2 6.78-2.618 6.98-6.98.058-1.28.072-1.689.072-4.948 0-3.259-.014-3.667-.072-4.947-.2-4.361-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <a href="https://x.com/OceansideHair" target="_blank" aria-label="X Twitter">
+        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+
+    <a href="https://www.pinterest.com/OceansideHairSalon/" target="_blank" aria-label="Pinterest">
+        <svg viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.399.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.951-7.252 4.173 0 7.41 2.967 7.41 6.93 0 4.136-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.367 18.62 0 12.017 0z"/></svg>
+    </a>
+            </div>
+        </div>
+
+<div class="footer-col">
+    <h4>Quick Links</h4>
+    <ul class="footer-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/services/">Hair Guides</a></li>
+        <li><a href="/prices/">Local Price Insights</a></li>
+        <li><a href="/testimonials/">Community Feedback</a></li>
+        <li><a href="/blog/">Articles & Guides</a></li>
+        <li><a href="/contact/">Contact & Info</a></li>
+    </ul>
+</div>
+
+
+        <div class="footer-col">
+            <h4>Find Us</h4>
+            <div class="contact-row"><span>Address</span><span>Oceanside, CA 92054</span></div>
+           
+            <div class="contact-row"><span>Email</span><a href="mailto:hello@oceansidehairsalon.com">hello@oceansidehairsalon.com</a></div>
+            <div class="contact-row" style="align-items:flex-start;">
+        <span>Purpose</span>
+        <div>
+            <div>Independent hair & grooming guides</div>
+            <div>Local research & style insights</div>
+            <div style="color:var(--accent-color);">No appointments or services offered</div>
+        </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        © 2025 Oceanside Hair Salon. All Rights Reserved. 
+        | <a href="/privacy-policy/">Privacy Policy</a>
+    </div>
+</footer>
+
+</body>
+</html>

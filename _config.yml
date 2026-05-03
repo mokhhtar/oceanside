@@ -1,0 +1,50 @@
+# ─────────────────────────────────────────────
+#  _config.yml  —  Oceanside Hair Guides
+# ─────────────────────────────────────────────
+
+# --- Core Identity ---
+title:        "Oceanside Hair Salon"
+description:  "Your local guide to haircuts, grooming, and hair care in Oceanside — built to help you make smarter style decisions in a coastal climate."
+url:          "https://oceansidehairsalon.com"   # NO trailing slash
+baseurl:      ""                                  # leave blank unless in a sub-dir
+
+# --- SEO / Social Defaults (used as fallbacks in head.html) ---
+author:       "Editorial Team"
+logo:         "/myfavicon/favicon-96x96.png"       # absolute path, relative to url
+image:        "/images/default-og.webp"            # fallback OG image
+locale:       "en_US"
+
+twitter:
+  username:   "OceansideHair"
+  card:       "summary_large_image"
+
+# --- Amazon / Affiliate ---
+amazon_tag:   "yourAssociateTag-20"   # used in affiliate disclosure if needed
+
+# --- Build ---
+markdown:     kramdown
+highlighter:  rouge
+permalink:    /blog/:categories/:title/
+
+kramdown:
+  input:          GFM
+  syntax_highlighter: rouge
+
+# --- Plugins ---
+plugins:
+  - jekyll-seo-tag        # optional; our custom head.html is more granular
+  - jekyll-sitemap
+  - jekyll-feed
+
+# --- Defaults: every post in _posts/ gets these front-matter values
+#     unless the post overrides them explicitly.
+defaults:
+  - scope:
+      path:   ""
+      type:   "posts"
+    values:
+      layout:          post
+      author:          "Editorial Team"
+      article_section: "Grooming Guides"
+      price_valid_until: "2026-12-31"
+      word_count:      3000

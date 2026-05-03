@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-PSX8DCHR');
+  }
+</script>
+<script>
+  document.addEventListener('click', function (event) {
+    // تحديد ما إذا كان العنصر المنقور هو رابط أو داخل رابط
+    var targetLink = event.target.closest('a');
+
+    // التحقق مما إذا كان الرابط يخص أمازون
+    if (targetLink && (targetLink.href.includes('amazon.com') || targetLink.href.includes('amzn.to'))) {
+
+      // إعداد المتغيرات الافتراضية في حال كانت النقرة خارج بطاقة المنتج
+      var productName = 'منتج غير محدد';
+      var productId = 'بدون ID';
+      var productAsin = 'بدون ASIN';
+
+      // الصعود في شجرة الـ DOM للعثور على أقرب بطاقة منتج للزر المنقور
+      var productCard = targetLink.closest('.product-card');
+
+      if (productCard) {
+        // سحب الـ ID الخاص بالبطاقة (مثل: malibu-c-shampoo)
+        productId = productCard.id || productId;
+
+        // سحب عنوان المنتج من الـ h3
+        var titleElement = productCard.querySelector('.product-title');
+        if (titleElement) {
+          productName = titleElement.innerText.trim();
+        }
+
+        // سحب الـ ASIN إذا كان موجوداً
+        var asinElement = productCard.querySelector('[data-asin]');
+        if (asinElement) {
+          productAsin = asinElement.getAttribute('data-asin');
+        }
+      }
+
+      // إرسال البيانات الدقيقة إلى Google Tag Manager
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        'event': 'amazon_click_exact',
+        'clicked_url': targetLink.href,
+        'clicked_text': targetLink.innerText.trim() || 'صورة أو زر',
+        'product_name': productName,
+        'product_id': productId,
+        'product_asin': productAsin
+      });
+    }
+  });
+</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="https://oceansidehairsalon.com/myfavicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/myfavicon/favicon.svg" />
+    <link rel="shortcut icon" href="/myfavicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/myfavicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/myfavicon/site.webmanifest" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Is Hard Water Ruining Your Electric Shaver? Cleaning & Maintenance Guide">
+    <meta property="og:description" content="Hard water leaves limescale inside your electric shaver, dulling blades and causing pulling. Step-by-step vinegar cleaning protocol and maintenance habits to fix it.">
+    <meta property="og:image" content="https://oceansidehairsalon.com/images/blog/electric-shavers/hard-water-cleaning-maintenance/hard-water-cleaning-maintenance-cover.webp">
+    <meta property="og:url" content="https://oceansidehairsalon.com/blog/electric-shavers/hard-water-cleaning-maintenance/">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- SEO Meta Tags -->
+    <title>Is Hard Water Ruining Your Electric Shaver? Cleaning & Maintenance Guide</title>
+    <meta name="description" content="Hard water leaves limescale inside your electric shaver, dulling blades and causing pulling. Step-by-step vinegar cleaning protocol and monthly maintenance habits to fix it fast.">
+    <link rel="canonical" href="https://oceansidehairsalon.com/blog/electric-shavers/hard-water-cleaning-maintenance/" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Schema -->
+    <script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@graph":[
+
+{
+"@type": ["BlogPosting","Article"],
+"@id": "https://oceansidehairsalon.com/blog/electric-shavers/hard-water-cleaning-maintenance/#article",
+"mainEntityOfPage": {
+  "@type": "WebPage",
+  "@id": "https://oceansidehairsalon.com/blog/electric-shavers/hard-water-cleaning-maintenance/"
+},
+"headline": "Is Hard Water Ruining Your Electric Shaver? Cleaning & Maintenance Guide",
+"description": "Hard water leaves calcium and magnesium mineral deposits inside your electric shaver every time you rinse it. A monthly deep clean with diluted vinegar fixes the problem and keeps your shaver performing like new.",
+"image": "https://oceansidehairsalon.com/images/blog/electric-shavers/hard-water-cleaning-maintenance/hard-water-cleaning-maintenance-cover.webp",
+"author": {
+  "@type": "Person",
+  "name": "Editorial Team"
+},
+"publisher": {
+  "@type": "Organization",
+  "name": "Oceanside Hair Salon",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://oceansidehairsalon.com/myfavicon/favicon-96x96.png"
+  }
+},
+"datePublished": "2026-03-12",
+"dateModified": "2026-03-12",
+"inLanguage": "en-US",
+"articleSection": "Electric Shavers",
+"keywords": [
+  "hard water electric shaver",
+  "limescale shaver cleaning",
+  "electric razor mineral buildup",
+  "vinegar shaver cleaning",
+  "electric razor maintenance hard water"
+],
+"about": [
+  { "@type": "Thing", "name": "Electric shaver maintenance" },
+  { "@type": "Thing", "name": "Hard water limescale" },
+  { "@type": "Thing", "name": "Shaver cleaning protocol" }
+],
+"wordCount": 2900,
+"hasPart": [
+  { "@id": "https://oceansidehairsalon.com/blog/electric-shavers/hard-water-cleaning-maintenance/#howto" },
+  { "@id": "https://oceansidehairsalon.com/blog/electric-shavers/hard-water-cleaning-maintenance/#faq" }
+]
+},
+
+{
+"@type": "HowTo",
+"@id": "https://oceansidehairsalon.com/blog/electric-shavers/hard-water-cleaning-maintenance/#howto",
+"name": "How to Deep Clean an Electric Shaver Affected by Hard Water",
+"description": "A 5-step vinegar-based protocol to remove mineral deposits and restore shaver performance.",
+"totalTime": "PT30M",
+"tool": [
+  { "@type": "HowToTool", "name": "Small cleaning brush (included with shaver)" },
+  { "@type": "HowToTool", "name": "Small bowl" }
+],
+"supply": [
+  { "@type": "HowToSupply", "name": "White Vinegar (5% acidity)" },
+  { "@type": "HowToSupply", "name": "Shaver Lubricating Oil" },
+  { "@type": "HowToSupply", "name": "Distilled Water (for final rinse)" }
+],
+"estimatedCost": {
+  "@type": "MonetaryAmount",
+  "currency": "USD",
+  "value": "8"
+},
+"step": [
+  {
+    "@type": "HowToStep",
+    "name": "Disassemble the Shaving Head",
+    "text": "Remove the foil frame and blade block from the shaver body. Separate all removable components before soaking.",
+    "url": "https://oceansidehairsalon.com/blog/electric-shavers/hard-water-cleaning-maintenance/#step1"
+  },
+  {
+    "@type": "HowToStep",
+    "name": "Brush Away Hair and Debris",
+    "text": "Use the small cleaning brush to remove visible hair fragments from the foil mesh and blade block before soaking.",
+    "url": "https://oceansidehairsalon.com/blog/electric-shavers/hard-water-cleaning-maintenance/#step2"
+  },
+  {
+    "@type": "HowToStep",
+    "name": "Soak Metal Parts in Diluted Vinegar",
+    "text": "Mix one part white vinegar with three parts water. Submerge foil and blade block for 15-20 minutes to dissolve limescale.",
+    "url": "https://oceansidehairsalon.com/blog/electric-shavers/hard-water-cleaning-maintenance/#step3",
+    "image": "https://oceansidehairsalon.com/images/blog/electric-shavers/hard-water-cleaning-maintenance/cleaning-electric-shaver-vinegar.webp"
+  },
+  {
+    "@type": "HowToStep",
+    "name": "Rinse Thoroughly with Clean Water",
+    "text": "Rinse all components under clean running water for at least 30 seconds. Use distilled water for the final rinse to prevent redeposition.",
+    "url": "https://oceansidehairsalon.com/blog/electric-shavers/hard-water-cleaning-maintenance/#step4"
+  },
+  {
+    "@type": "HowToStep",
+    "name": "Lubricate Before Reassembling",
+    "text": "Apply one drop of shaver lubricating oil to the foil and run the motor for 5-10 seconds to distribute it across the cutting surfaces.",
+    "url": "https://oceansidehairsalon.com/blog/electric-shavers/hard-water-cleaning-maintenance/#step5",
+    "image": "https://oceansidehairsalon.com/images/blog/electric-shavers/hard-water-cleaning-maintenance/electric-shaver-maintenance-oil.webp"
+  }
+]
+},
+
+{
+"@type": "FAQPage",
+"@id": "https://oceansidehairsalon.com/blog/electric-shavers/hard-water-cleaning-maintenance/#faq",
+"mainEntity": [
+  {
+    "@type": "Question",
+    "name": "Does hard water damage electric razors?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Not immediately, but progressively. Calcium and magnesium deposits build up inside the foil and blade mechanism over weeks, increasing friction and dulling the cutting edges faster than normal wear. A shaver used in hard water without monthly deep cleaning typically needs blade head replacement every 10-12 months instead of the standard 15-18 months. A proper vinegar-based deep clean reverses most of the damage."
+    }
+  },
+  {
+    "@type": "Question",
+    "name": "Can vinegar damage a razor?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Not when used correctly. Standard white vinegar at 5% acidity, diluted to one part vinegar and three parts water, is safe for stainless steel foils, blade blocks, and most plastic components for 15-30 minute soaks. Avoid soaking plastic parts in undiluted vinegar for extended periods and always rinse thoroughly afterward."
+    }
+  },
+  {
+    "@type": "Question",
+    "name": "Is distilled water better for cleaning razors?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes, specifically for the final rinse step. Distilled water contains no dissolved minerals, so it leaves no deposits behind as it evaporates. Using distilled water as the final rinse after a deep clean significantly extends how long the shaver stays clean."
+    }
+  },
+  {
+    "@type": "Question",
+    "name": "Why does my electric razor get white residue?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "White residue on an electric shaver foil is almost always calcium and magnesium mineral deposits left behind when hard tap water evaporates. A 15-minute soak in diluted white vinegar dissolves it completely."
+    }
+  },
+  {
+    "@type": "Question",
+    "name": "Why does my electric shaver smell bad after washing?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Bad smell after washing is almost always bacterial growth colonizing the mineral deposits and organic material inside the shaver head. Deep clean with vinegar to remove deposits, then follow with an alcohol spray disinfection. Make sure you air-dry the shaver completely after every use."
+    }
+  }
+]
+},
+
+{
+"@type": "BreadcrumbList",
+"@id": "https://oceansidehairsalon.com/blog/electric-shavers/hard-water-cleaning-maintenance/#breadcrumb",
+"itemListElement": [
+  { "@type": "ListItem", "position": 1, "name": "Home",            "item": "https://oceansidehairsalon.com/" },
+  { "@type": "ListItem", "position": 2, "name": "Blog",            "item": "https://oceansidehairsalon.com/blog/" },
+  { "@type": "ListItem", "position": 3, "name": "Electric Shavers", "item": "https://oceansidehairsalon.com/blog/electric-shavers/" },
+  { "@type": "ListItem", "position": 4, "name": "Hard Water Cleaning & Maintenance", "item": "https://oceansidehairsalon.com/blog/electric-shavers/hard-water-cleaning-maintenance/" }
+]
+}
+
+]
+}
+    </script>
+
+    <style>
+        :root {
+            --primary-color:   #005f73;
+            --secondary-color: #0a9396;
+            --accent-color:    #e9d8a6;
+            --bg-light:        #f4f7f6;
+            --text-dark:       #333;
+            --amazon-orange:   #ff9900;
+            --font-heading:    'Playfair Display', serif;
+            --font-body:       'Lato', sans-serif;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body { font-family: var(--font-body); color: var(--text-dark); line-height: 1.6; background: var(--bg-light); }
+
+        h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--primary-color); margin-bottom: 1rem; line-height: 1.3; }
+
+        h2 { font-size: 2rem; margin-top: 3rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--accent-color); }
+        h3 { font-size: 1.5rem; margin-top: 2rem; color: var(--secondary-color); }
+        h4 { font-size: 1.2rem; margin-top: 1.5rem; }
+
+        p  { margin-bottom: 1.2rem; font-size: 1.05rem; }
+        a  { text-decoration: none; color: inherit; }
+
+        ul { margin-left: 1.5rem; margin-bottom: 1.2rem; }
+        ul li { margin-bottom: 0.8rem; }
+
+        strong { color: var(--primary-color); font-weight: 700; }
+
+        /* ── Navbar ── */
+        .navbar {
+            display: flex; justify-content: center; align-items: center;
+            background: rgba(0,95,115,0.98); width: 100%;
+            position: fixed; top: 0; left: 0;
+            padding: 1rem 0; z-index: 1000;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            flex-wrap: wrap;
+        }
+        .navbar a, .navbar .dropbtn {
+            font-weight: bold; font-size: 17px; color: white !important;
+            padding: 14px 20px; text-decoration: none; background: transparent;
+            border: none; cursor: pointer; white-space: nowrap; font-family: var(--font-body);
+        }
+        .navbar a:hover, .dropdown:hover .dropbtn { color: var(--accent-color) !important; }
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content {
+            display: none; position: absolute; background: #fff;
+            min-width: 240px; box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            border-top: 3px solid var(--secondary-color); z-index: 1;
+        }
+        .dropdown-content a { color: #333 !important; padding: 12px 16px; display: block; font-size: 15px; }
+        .dropdown-content a:hover { background: #f1f1f1; color: var(--primary-color) !important; }
+        .dropdown:hover .dropdown-content { display: block; }
+
+        /* ── Article Header ── */
+        .article-header {
+            background: linear-gradient(rgba(0,40,50,0.72), rgba(0,95,115,0.72)),
+                        url('/images/blog/electric-shavers/hard-water-cleaning-maintenance/hard-water-cleaning-maintenance-cover.webp');
+            background-size: cover; background-position: center;
+            min-height: 65vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            text-align: center; color: white; padding: 120px 20px 40px;
+        }
+        .article-header h1 {
+            font-size: 3.2rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            margin-bottom: 1rem; color: #fff; max-width: 900px;
+        }
+        .article-header p { font-size: 1.4rem; margin-bottom: 2rem; max-width: 700px; color: #eee; }
+
+        .btn-contact {
+            background: var(--primary-color); color: white !important;
+            padding: 12px 25px; border: none; border-radius: 50px;
+            font-weight: bold; font-size: 1.2rem; cursor: pointer;
+            transition: all 0.3s; display: inline-block;
+        }
+        .btn-contact:hover { background: var(--secondary-color); transform: scale(1.05); }
+
+        /* ── Content Container ── */
+        .content-container {
+            max-width: 850px; margin: -35px auto 4rem;
+            position: relative; z-index: 10;
+            background: white; padding: 4rem;
+            border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        /* ── TOC ── */
+        .toc-box {
+            background: #f8f9fa; border: 1px solid #e9ecef;
+            border-radius: 8px; padding: 2rem; margin-bottom: 3rem;
+        }
+        .toc-box h3 { font-size: 1.2rem; margin-bottom: 1rem; color: var(--secondary-color); margin-top: 0; }
+        .toc-list { list-style: none; margin: 0; padding: 0; }
+        .toc-list li { margin-bottom: 8px; font-size: 0.95rem; }
+        .toc-list a { color: var(--primary-color); text-decoration: underline; text-decoration-color: #ddd; }
+        .toc-list a:hover { color: var(--secondary-color); text-decoration-color: var(--secondary-color); }
+
+        /* ── Highlight Boxes ── */
+        .highlight-box {
+            border-left: 4px solid var(--amazon-orange);
+            background: #fff8f0; padding: 1.5rem;
+            margin: 2rem 0; font-style: italic; color: #444;
+        }
+        .highlight-box.tip {
+            border-left-color: var(--secondary-color);
+            background: #f0f7f8; font-style: normal;
+        }
+        .highlight-box a { color: var(--secondary-color); text-decoration: underline; }
+
+        /* ── Step Badge ── */
+        .step-badge {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 2.2rem; height: 2.2rem;
+            background: var(--primary-color); color: #fff; border-radius: 50%;
+            font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700;
+            margin-right: 0.6rem; flex-shrink: 0; vertical-align: middle;
+        }
+
+        /* ── Tables ── */
+        table {
+            display: block; width: 100%; overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-collapse: collapse; margin: 2rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #eee;
+        }
+        th, td { padding: 12px 15px; min-width: 130px; text-align: left; border-bottom: 1px solid #eee; font-size: 0.9rem; }
+        th { background-color: var(--primary-color); color: white; font-weight: 700; }
+        tr:nth-child(even) { background: #f9f9f9; }
+        tr:hover { background: #f5f5f5; }
+
+        /* ── Figures ── */
+        figure { margin: 2.5rem 0; }
+        figure img { width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        figcaption { font-size: 0.9rem; color: #666; text-align: center; margin-top: 8px; font-style: italic; }
+
+        /* ── FAQ ── */
+        .faq-item { border-bottom: 1px solid #eee; }
+        .faq-question {
+            width: 100%; text-align: left; background: none; border: none;
+            padding: 20px 0; font-size: 1.1rem; font-weight: 700; cursor: pointer;
+            display: flex; justify-content: space-between; align-items: center;
+            color: var(--primary-color); font-family: var(--font-body);
+        }
+        .faq-answer { max-height: 0; overflow: hidden; transition: 0.35s ease-out; color: #555; padding-right: 20px; }
+        .faq-item.active .faq-answer { max-height: 500px; padding-bottom: 20px; }
+        .faq-item.active .faq-question { color: var(--secondary-color); }
+        .faq-question span { font-size: 1.5rem; transition: 0.3s; flex-shrink: 0; margin-left: 1rem; }
+        .faq-item.active span { transform: rotate(45deg); }
+
+        /* ── Related Articles ── */
+        .related-articles { background: #f0f7f8; padding: 2rem; border-radius: 8px; margin-top: 3rem; }
+        .related-articles h3 { color: var(--primary-color); margin-top: 0; margin-bottom: 1.5rem; }
+        .related-articles ul { list-style: none; margin: 0; padding: 0; }
+        .related-articles li { margin-bottom: 1rem; }
+        .related-articles a { color: var(--primary-color); text-decoration: underline; font-weight: 600; transition: color 0.3s; }
+        .related-articles a:hover { color: var(--secondary-color); }
+
+        /* ── Footer ── */
+        footer { background: var(--primary-color); color: white; padding-top: 4rem; font-family: 'Lato', sans-serif; font-size: 0.95rem; margin-top: 5rem; }
+        .footer-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 3rem; text-align: left; }
+        .footer-col h3 { color: var(--accent-color); font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 1rem; }
+        .footer-col h4 { color: white; margin-bottom: 1.3rem; font-size: 1.15rem; text-transform: uppercase; letter-spacing: 1.2px; }
+        .footer-col p { color: rgba(255,255,255,0.85); line-height: 1.7; margin-bottom: 1rem; }
+        .footer-links { list-style: none; padding: 0; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: rgba(255,255,255,0.8); text-decoration: none; transition: all 0.3s ease; }
+        .footer-links a:hover { color: var(--accent-color); padding-left: 8px; }
+        .contact-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 18px; color: rgba(255,255,255,0.9); line-height: 1.5; }
+        .contact-row a { color: rgba(255,255,255,0.9); text-decoration: none; }
+        .contact-row a:hover { color: var(--accent-color); }
+        .social-icons { display: flex; gap: 18px; margin-top: 20px; }
+        .social-icons a svg { width: 26px; height: 26px; fill: white; transition: all 0.3s ease; }
+        .social-icons a:hover svg { fill: var(--accent-color); transform: translateY(-4px); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.12); margin-top: 3.5rem; padding: 1.8rem 2rem; text-align: center; font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+        .footer-bottom a { color: rgba(255,255,255,0.6); text-decoration: none; }
+        .footer-bottom a:hover { color: var(--accent-color); }
+
+        /* ── Mobile ── */
+        @media (max-width: 768px) {
+            .navbar { padding: 0.8rem 0.5rem; justify-content: space-around; }
+            .navbar a, .navbar .dropbtn { font-size: 14px; padding: 10px 8px; }
+            .article-header { min-height: auto; padding: 100px 15px 50px; }
+            .article-header h1 { font-size: 1.8rem; }
+            .article-header p { font-size: 1.1rem; }
+            .content-container { margin: -40px 15px 2rem; padding: 2rem 1.5rem; border-radius: 8px; }
+            h2 { font-size: 1.6rem; margin-top: 2rem; }
+            h3 { font-size: 1.3rem; }
+            h4 { font-size: 1.1rem; }
+            p  { font-size: 1rem; }
+            ul { margin-left: 1.2rem; }
+            .footer-container { grid-template-columns: 1fr; text-align: center; gap: 2.5rem; padding: 0 1.5rem; }
+            .contact-row { justify-content: center; flex-direction: column; align-items: center; text-align: center; gap: 5px; }
+            .social-icons { justify-content: center; }
+            .footer-bottom { padding: 1.5rem 1rem; font-size: 0.8rem; }
+        }
+        @media (max-width: 480px) {
+            .navbar a, .navbar .dropbtn { font-size: 12px; padding: 8px 6px; }
+            .article-header h1 { font-size: 1.5rem; }
+            .content-container { padding: 1.5rem 1rem; }
+            h2 { font-size: 1.4rem; }
+            h3 { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
+<div class="navbar">
+    <a href="/">Home</a>
+    <div class="dropdown">
+        <button class="dropbtn">Hair Guides</button>
+        <div class="dropdown-content">
+            <a href="/services/womens-haircuts/">Women's Haircut Guide</a>
+            <a href="/services/mens-grooming/">Men's Grooming Guide</a>
+            <a href="/services/hair-coloring/">Hair Coloring Guide</a>
+            <a href="/services/hair-treatments/">Hair Treatment Guide</a>
+            <a href="/services/bridal-styling/">Bridal Hair Guide</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Tools</button>
+        <div class="dropdown-content">
+            <a href="/tools/ai-shaver-finder/">Ai Shaver Finder</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">About This Site</button>
+        <div class="dropdown-content">
+            <a href="/prices/">Local Price Averages</a>
+            <a href="/testimonials/">Community Reviews</a>
+            <a href="/contact/">Contact &amp; Editorial Info</a>
+        </div>
+    </div>
+    <a href="/blog/">Blog</a>
+</div>
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<header class="article-header">
+    <h1>Is Hard Water Ruining Your Electric Shaver? (Cleaning &amp; Maintenance Guide)</h1>
+    <p>Mineral deposits, dull blades, bacterial buildup — one monthly vinegar soak fixes all of it.</p>
+    <a href="#intro" class="btn-contact">Start Reading</a>
+</header>
+
+<!-- ═══════════════════════ CONTENT ═══════════════════════ -->
+<main class="content-container" id="main-content">
+
+    <div id="intro">
+        <p>Hard water leaves calcium and magnesium mineral deposits inside your electric shaver every time you rinse it under tap water. Over weeks, this limescale builds up on the foil mesh and blade edges, increasing friction, dulling the blades faster, and creating conditions where bacteria thrive. A monthly deep clean with diluted vinegar — plus a switch to distilled water for rinsing — fixes the problem and keeps your shaver performing like new.</p>
+
+        <figure>
+            <img src="/images/blog/electric-shavers/hard-water-cleaning-maintenance/hard-water-mineral-deposits-electric-razor.webp"
+                 alt="Hard water mineral deposits visible on electric shaver foil mesh and blade edges"
+                 loading="lazy"
+                 width="800" height="400">
+            <figcaption>Calcium and magnesium deposits accumulate inside the foil mesh after every tap water rinse — invisible at first, but measurable within weeks.</figcaption>
+        </figure>
+
+        <p>If your electric shaver has been pulling hair lately, feeling rough against the skin, or leaving a white residue on the foil — and you've already ruled out dull blades — hard water is probably the cause you haven't checked yet.</p>
+        <p>Most shaver guides focus on blade wear and lubrication. Almost none mention the water you're using to rinse. But in areas with hard tap water, mineral buildup inside the shaver head is one of the most consistent and easily fixable reasons for degraded performance.</p>
+        <p>This guide covers what hard water actually does to your shaver's cutting mechanism, how to diagnose the signs, a step-by-step cleaning protocol that removes mineral deposits completely, and the maintenance habits that prevent buildup from coming back.</p>
+    </div>
+
+    <!-- TOC -->
+    <div class="toc-box">
+        <h3>Table of Contents</h3>
+        <ul class="toc-list">
+            <li><a href="#what-hard-water-does">What Hard Water Does to Your Electric Shaver</a></li>
+            <li><a href="#signs">Signs Hard Water Is Affecting Your Electric Razor</a></li>
+            <li><a href="#what-builds-up">What Builds Up Inside a Shaver Head</a></li>
+            <li><a href="#how-to-clean">How to Clean an Electric Shaver Affected by Hard Water</a></li>
+            <li><a href="#cleaning-schedule">How Often Should You Clean Your Electric Razor?</a></li>
+            <li><a href="#tap-vs-distilled">Tap Water vs. Distilled Water for Rinsing</a></li>
+            <li><a href="#maintenance-habits">3 Maintenance Habits That Extend Razor Life</a></li>
+            <li><a href="#skin-irritation">Hard Water and Skin Irritation: Is There a Connection?</a></li>
+            <li><a href="#faq">Frequently Asked Questions</a></li>
+        </ul>
+    </div>
+
+    <!-- ═══ SECTION 1 ═══ -->
+    <h2 id="what-hard-water-does">What Hard Water Does to Your Electric Shaver</h2>
+
+    <p>Hard water contains elevated concentrations of dissolved calcium and magnesium — minerals that are harmless to drink but problematic for metal surfaces that get wet repeatedly.</p>
+    <p>Every time you rinse your shaver under tap water, a thin film of mineral-rich water coats the foil, blades, and internal components. As that water evaporates, the minerals stay behind. The first time, this is invisible. After twenty shaves, you have a measurable layer of limescale inside the cutting head.</p>
+    <p>That layer does three things, all of them bad for shaving performance. First, it increases friction between the foil and the blade block — the blade has to work harder to oscillate, which drops motor efficiency and creates drag. Second, it coats the edges of the cutting blades, effectively dulling them without any mechanical wear. Third, it creates a textured surface inside the head where bacteria and organic material (skin cells, oil, hair fragments) accumulate faster and are harder to rinse out.</p>
+    <p>The result is a shaver that feels rougher, pulls more, irritates the skin more, and develops an unpleasant smell faster than normal. People usually blame dull blades and buy a replacement head — which helps temporarily — but within weeks the buildup returns and the problem starts over.</p>
+
+    <!-- ═══ SECTION 2 ═══ -->
+    <h2 id="signs">Signs Hard Water Is Affecting Your Electric Razor</h2>
+    <p>These symptoms appear gradually, which is why most people don't connect them to water quality. If several of these apply at the same time, mineral buildup is almost certainly involved:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Symptom</th>
+                <th>What It Means</th>
+                <th>How Quickly It Appears</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>White or grey residue on the foil</td>
+                <td>Calcium/magnesium mineral deposits</td>
+                <td>2–4 weeks in hard water areas</td>
+            </tr>
+            <tr>
+                <td>Razor pulling hair or snagging</td>
+                <td>Blade edges coated with limescale — reduced cutting efficiency</td>
+                <td>4–8 weeks of regular tap water rinsing</td>
+            </tr>
+            <tr>
+                <td>Foil feels rough to the touch</td>
+                <td>Mineral crust forming on the mesh surface</td>
+                <td>3–6 weeks</td>
+            </tr>
+            <tr>
+                <td>More skin irritation than before</td>
+                <td>Bacteria trapped in mineral deposits; increased friction</td>
+                <td>Varies — starts gradual</td>
+            </tr>
+            <tr>
+                <td>Unpleasant smell after washing</td>
+                <td>Organic material caught in mineral texture; bacterial growth</td>
+                <td>4–6 weeks without deep cleaning</td>
+            </tr>
+            <tr>
+                <td>Blades dulling faster than expected</td>
+                <td>Mineral abrasion wearing blade edges faster than normal use</td>
+                <td>Ongoing — accelerates over time</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="highlight-box">
+        <strong>Is your razor pulling hair?</strong> The 'razor pulling hair' symptom is often misdiagnosed as a blade problem. We cover all the mechanical causes in our full guide: <a href="/blog/electric-shavers/electric-razor-pulling-hair/">Electric Razor Pulling Hair? 5 Mechanical Reasons Your Shaver Isn't Cutting Properly</a>. If you've already replaced the blade head and the pulling returned within a few weeks, hard water buildup is almost certainly the real cause.
+    </div>
+
+    <!-- ═══ SECTION 3 ═══ -->
+    <h2 id="what-builds-up">What Builds Up Inside a Shaver Head</h2>
+
+    <p>Mineral deposits from hard water don't act alone. Inside a shaver head, they combine with several other materials to form a residue that's harder to rinse out than water alone would be:</p>
+
+    <ul>
+        <li><strong>Hard tap water</strong> — calcium and magnesium ions that crystallize into limescale as water evaporates</li>
+        <li><strong>Soap or gel residue</strong> — if you shave wet, surfactant residue from shaving cream bonds with minerals and forms a harder compound</li>
+        <li><strong>Skin oils and sebum</strong> — natural oils from the face coat the foil and trap mineral particles against the surface</li>
+        <li><strong>Dead skin cells</strong> — microscopic fragments that cling to mineral deposits and create a biofilm layer</li>
+        <li><strong>Hair fragments</strong> — short cut hairs that pack into the foil slots and hold moisture against the metal</li>
+    </ul>
+
+    <p>This combination hardens progressively with each shave. A quick rinse under tap water doesn't dissolve it — it adds another mineral layer while washing away the loose debris on top. This is why the problem gets worse with consistent 'clean' maintenance and only improves with a proper descaling process.</p>
+
+    <!-- ═══ SECTION 4 ═══ -->
+    <h2 id="how-to-clean">How to Clean an Electric Shaver Affected by Hard Water</h2>
+
+    <p>This process removes mineral deposits completely. Do it once now if you suspect buildup, then once a month as maintenance.</p>
+    <p><strong>What you'll need:</strong> white vinegar (standard 5% acidity), a small bowl, a soft brush (the one that came with your shaver works), shaver lubricating oil, and clean water for rinsing.</p>
+
+    <h3 id="step1"><span class="step-badge">1</span> Disassemble the Shaving Head</h3>
+    <p>Remove the foil frame and blade block from the shaver body. Most modern shavers have a quick-release button — check your manual if you're unsure. Separate the foil, the blade cassette, and any other removable components. Do not use this process on parts that aren't rated for water exposure; check your model's waterproof rating first.</p>
+
+    <h3 id="step2"><span class="step-badge">2</span> Brush Away Hair and Debris</h3>
+    <p>Use the small cleaning brush to remove visible hair fragments from the foil mesh and the blade block. Tap the foil gently against a hard surface (not sharp-edged) to dislodge packed hair from the slots. This step is important before soaking — wet hair fragments are harder to remove and can block the vinegar from reaching the mineral deposits underneath.</p>
+
+    <h3 id="step3"><span class="step-badge">3</span> Soak Metal Parts in Diluted Vinegar</h3>
+    <p>Mix one part white vinegar with three parts water in a small bowl. Submerge the foil and blade block and let them soak for 15 to 20 minutes. The acetic acid in vinegar dissolves calcium and magnesium deposits effectively — this is the same chemistry used in kettle descalers and coffee machine cleaners.</p>
+    <p>For stubborn buildup that's been accumulating for months, extend the soak to 30 minutes or use a slightly stronger mix (one part vinegar to two parts water). Don't soak plastic components in undiluted vinegar — it can cause discoloration over time.</p>
+
+    <div class="highlight-box tip">
+        <strong>What to expect:</strong> You'll often see small bubbles forming around the foil during the soak — that's the acid reacting with the mineral deposits. Normal and expected. The stronger the reaction, the heavier the buildup.
+    </div>
+
+    <figure>
+        <img src="/images/blog/electric-shavers/hard-water-cleaning-maintenance/cleaning-electric-shaver-vinegar.webp"
+             alt="Electric shaver foil and blade block soaking in diluted white vinegar solution to dissolve limescale"
+             loading="lazy"
+             width="800" height="400">
+        <figcaption>A 15–20 minute soak in diluted white vinegar dissolves calcium deposits from foil mesh and blade edges completely.</figcaption>
+    </figure>
+
+    <h3 id="step4"><span class="step-badge">4</span> Rinse Thoroughly with Clean Water</h3>
+    <p>After soaking, rinse all components under clean running water for at least 30 seconds each. If you have access to distilled or filtered water, use that for the final rinse — it prevents immediate redeposition of minerals. Run your finger across the foil surface; it should feel smooth rather than gritty. If you still feel texture, a second shorter soak usually clears it.</p>
+    <p>Shake out excess water and let components air dry completely before reassembling. Assembling while still wet traps moisture that promotes the next buildup cycle.</p>
+
+    <h3 id="step5"><span class="step-badge">5</span> Lubricate Before Reassembling</h3>
+    <p>Once dry, apply one small drop of shaver lubricating oil to the foil surface and run the motor for 5–10 seconds with the head assembled. The vibration distributes the oil across the cutting surfaces. This restores the smooth, low-friction movement that mineral buildup had been preventing — and you'll usually notice the difference in the very next shave.</p>
+    <p>Lubrication also forms a slight protective barrier on the foil surface that slows the rate at which new mineral deposits adhere. It's not a substitute for monthly cleaning, but it extends the interval between deep cleans.</p>
+
+    <figure>
+        <img src="/images/blog/electric-shavers/hard-water-cleaning-maintenance/electric-shaver-maintenance-oil.webp"
+             alt="Applying a single drop of lubricating oil to a clean electric shaver foil before reassembling"
+             loading="lazy"
+             width="800" height="400">
+        <figcaption>One drop of shaver oil after each deep clean restores smooth cutting performance and creates a barrier that slows future mineral adhesion.</figcaption>
+    </figure>
+
+    <!-- ═══ SECTION 5 ═══ -->
+    <h2 id="cleaning-schedule">How Often Should You Clean Your Electric Razor?</h2>
+
+    <p>The right frequency depends on how hard your local water is and how often you shave. Here's a practical schedule that works for most people:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Cleaning Type</th>
+                <th>Frequency</th>
+                <th>What It Does</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Quick rinse</td>
+                <td>After every shave</td>
+                <td>Removes loose hair and surface debris</td>
+            </tr>
+            <tr>
+                <td>Brush clean</td>
+                <td>Every 3–4 shaves</td>
+                <td>Clears packed hair from foil slots</td>
+            </tr>
+            <tr>
+                <td>Alcohol disinfection</td>
+                <td>Twice weekly</td>
+                <td>Kills bacteria — especially important for neck-prone breakouts</td>
+            </tr>
+            <tr>
+                <td>Deep clean (vinegar soak)</td>
+                <td>Once per month</td>
+                <td>Removes mineral deposits, limescale, and hardened residue</td>
+            </tr>
+            <tr>
+                <td>Blade lubrication</td>
+                <td>Every 10–15 shaves</td>
+                <td>Reduces friction, extends blade and foil life</td>
+            </tr>
+            <tr>
+                <td>Full head replacement</td>
+                <td>Every 12–18 months</td>
+                <td>Restores cutting performance when blades are genuinely worn</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="highlight-box tip">
+        <strong>Very hard water areas:</strong> If you live where tap water exceeds 200 ppm calcium carbonate — common in parts of the US Southwest, Texas, and the UK — move the deep clean to every three weeks rather than monthly. The buildup rate is fast enough that monthly cleaning doesn't keep pace.
+    </div>
+
+    <!-- ═══ SECTION 6 ═══ -->
+    <h2 id="tap-vs-distilled">Tap Water vs. Distilled Water for Rinsing Your Shaver</h2>
+
+    <p>This is the single habit change that has the biggest long-term impact on shaver performance in hard water households.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Water Type</th>
+                <th>Pros</th>
+                <th>Cons</th>
+                <th>Best For</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tap water</td>
+                <td>Free, always available</td>
+                <td>Deposits minerals with every rinse</td>
+                <td>Daily quick rinses (unavoidable)</td>
+            </tr>
+            <tr>
+                <td>Distilled water</td>
+                <td>Zero mineral content — no deposits</td>
+                <td>Small cost, requires storing a bottle</td>
+                <td>Final rinse after deep cleaning</td>
+            </tr>
+            <tr>
+                <td>Filtered water (pitcher)</td>
+                <td>Lower mineral content than tap</td>
+                <td>Some minerals still present</td>
+                <td>Daily rinsing if distilled isn't practical</td>
+            </tr>
+            <tr>
+                <td>Bottled still water</td>
+                <td>Lower minerals than hard tap</td>
+                <td>Cost adds up over time</td>
+                <td>Occasional use when traveling to hard water areas</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="highlight-box">
+        <strong>The practical approach:</strong> Use tap water for the quick post-shave rinse — that's unavoidable and fine as long as you're doing monthly deep cleans. Keep a small bottle of distilled water near the sink for the final rinse after a deep clean. That single step prevents immediate redeposition and significantly extends the interval before the next deep clean is needed.
+    </div>
+
+    <!-- ═══ SECTION 7 ═══ -->
+    <h2 id="maintenance-habits">3 Maintenance Habits That Extend Razor Life</h2>
+
+    <h3><span class="step-badge">1</span> Dry the Razor After Every Clean</h3>
+    <p>Water left sitting inside the shaver head — whether tap or distilled — is the starting condition for both mineral buildup and bacterial growth. After every rinse, shake out the excess water, tap the head against your palm to dislodge water from the foil slots, and store the shaver with the head off (or the protective cap off) so air can circulate.</p>
+    <p>A shaver stored in a sealed travel case while still wet is essentially a mineral deposit incubator. Even distilled water encourages bacterial growth in enclosed spaces.</p>
+
+    <h3><span class="step-badge">2</span> Lubricate on Schedule</h3>
+    <p>Lubricating oil does two things: it reduces blade friction directly (making the shave smoother) and it creates a hydrophobic barrier on the foil surface that slows mineral adhesion. One drop every 10 to 15 shaves is enough — more oil than that just sits on the surface and picks up debris faster.</p>
+    <p>If you use a cleaning station with a cartridge solution, check the cartridge level regularly. An empty cartridge means weeks of dry running — no lubrication, no protection. Replacement cartridges are worth the cost.</p>
+
+    <h3><span class="step-badge">3</span> Replace Foil and Blade Block on Schedule</h3>
+    <p>Even with perfect maintenance, foil mesh and blade edges have a finite lifespan. Most manufacturers recommend replacement every 12 to 18 months for daily use. In very hard water areas, expect the lower end of that range — mineral abrasion accelerates wear regardless of how well you clean.</p>
+    <p>The signal to replace isn't just pulling — it's when the shave feels noticeably less close than it used to, even after a fresh deep clean and lubrication. At that point, the blade geometry is compromised and no amount of cleaning will restore performance.</p>
+
+    <!-- ═══ SECTION 8 ═══ -->
+    <h2 id="skin-irritation">Hard Water and Skin Irritation: Is There a Connection?</h2>
+
+    <p>Yes, and it works in two directions.</p>
+    <p>First, mineral deposits inside the shaver increase friction during each stroke. That friction creates micro-tears in the skin surface that wouldn't appear with a clean, well-maintained shaver. For people with sensitive skin, this friction difference is the line between a comfortable shave and a red, irritated neck.</p>
+    <p>Second, mineral deposits provide an ideal environment for bacterial colonization. The rough, porous texture of limescale traps bacteria more effectively than smooth metal. When a contaminated foil contacts freshly disrupted follicles, the result is post-shave breakouts — specifically the pus-filled bumps on the neck that most people blame on their shaving technique rather than the shaver's hygiene condition.</p>
+
+    <div class="highlight-box tip">
+        <strong>Seeing whiteheads after shaving?</strong> If you're getting whiteheads or bumps on your neck after shaving, the shaver's mineral buildup may be contributing. We cover the causes and fixes in full: <a href="/blog/electric-shavers/electric-shaver-whiteheads-neck/">Electric Shaver Causing Whiteheads on Neck? Here's Why (And How to Stop It)</a>.
+    </div>
+
+    <p>There's also a third factor: hard water residue on the skin itself. If you wash your face before shaving with hard tap water, the mineral film it leaves behind can block follicle openings and contribute to clogged pores. For the full picture of how hard water affects both hair and skin, see our <a href="/blog/hard-water-hair-damage/" style="text-decoration:underline; color:var(--primary-color); font-weight:bold;">complete guide to hard water and hair damage</a>.</p>
+    <!-- ═══ ai-shaver-finder ═══ -->
+    <div class="cta-banner-wrapper" style="margin: 3rem 0;">
+    <div class="cta-banner" style="background: linear-gradient(135deg, var(--primary-color) 0%, #007a8a 50%, var(--secondary-color) 100%); border-radius: 14px; padding: 2.5rem; text-align: center; box-shadow: 0 12px 40px rgba(0, 95, 115, 0.25);">
+        <h3 style="color: white; margin-top: 0; font-size: 1.6rem;">Is Your Shaver Beyond Saving?</h3>
+        <p style="color: rgba(255,255,255,0.9); margin-bottom: 1.5rem;">If mineral damage has permanently ruined your blades, let AI find your perfect replacement. Match your beard density and skin type in 30 seconds.</p>
+        <a href="/tools/ai-shaver-finder/" style="display: inline-block; background: var(--accent-color); color: var(--primary-color); padding: 12px 30px; border-radius: 50px; font-weight: bold; text-decoration: none; transition: all 0.3s;">Use the AI Shaver Finder</a>
+    </div>
+    </div>
+    <!-- ═══ FAQ ═══ -->
+    <h2 id="faq">Frequently Asked Questions</h2>
+
+    <div class="faq-section">
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">Does hard water damage electric razors? <span>+</span></button>
+            <div class="faq-answer">
+                <p>Not immediately, but progressively. Hard water doesn't corrode or break a shaver in a single use — the damage accumulates over weeks. Calcium and magnesium deposits build up inside the foil and blade mechanism, increasing friction and dulling the cutting edges faster than normal mechanical wear would. A shaver used in hard water without monthly deep cleaning will typically need its blade head replaced every 10–12 months instead of the standard 15–18 months. The good news is that a proper vinegar-based deep clean reverses most of the damage and restores performance.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">Can vinegar damage a razor? <span>+</span></button>
+            <div class="faq-answer">
+                <p>Not when used correctly. Standard white vinegar at 5% acidity, diluted to one part vinegar and three parts water, is safe for stainless steel foils, blade blocks, and most plastic components for 15–30 minute soaks. What to avoid: soaking plastic parts in undiluted vinegar for extended periods (can cause discoloration), using stronger cleaning vinegars above 10% acidity, and failing to rinse thoroughly afterward (residual acidity is mildly corrosive over time). If your shaver has a specific manufacturer's cleaning recommendation that contradicts vinegar use, follow that instead.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">Is distilled water better for cleaning razors? <span>+</span></button>
+            <div class="faq-answer">
+                <p>Yes, specifically for the final rinse step. Distilled water contains no dissolved minerals, which means it leaves no deposits behind as it evaporates. Using distilled water as the final rinse after a deep clean is the most effective single change you can make if you live in a hard water area. It doesn't need to be used for every rinse — that's impractical and unnecessary. But a distilled water final rinse after your monthly deep clean significantly extends how long the shaver stays clean and performing well.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">Why does my electric razor get white residue? <span>+</span></button>
+            <div class="faq-answer">
+                <p>White residue on an electric shaver foil is almost always calcium and magnesium mineral deposits left behind when hard tap water evaporates. It's the same white crust you see inside a kettle or on shower fixtures in hard water areas. It's not mold or soap buildup (though those can contribute in small amounts). The residue is easy to remove — a 15-minute soak in diluted white vinegar dissolves it completely. If the white residue returns quickly after cleaning, you're in a high-hardness water area and should consider using distilled water for your final rinse after each clean.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">Why does my electric shaver smell bad after washing? <span>+</span></button>
+            <div class="faq-answer">
+                <p>Bad smell after washing is almost always bacterial growth inside the shaver head — specifically bacteria colonizing the mineral deposits and organic material (skin cells, oil) that accumulate between deep cleans. Hard water buildup makes this worse because the rough mineral texture traps more bacteria than a smooth metal surface would. The fix is a proper deep clean with vinegar to remove the deposits, followed by an alcohol spray disinfection of the foil. If the smell returns within a few days, increase your cleaning frequency and make sure you're air-drying the shaver completely after every use.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <hr style="margin: 3rem 0; border: 0; border-top: 1px solid #eee;">
+
+    <!-- Related Articles -->
+    <div class="related-articles">
+        <h3>Related Articles in This Series</h3>
+        <ul>
+            <li><a href="/blog/electric-shavers/electric-shaving-sensitive-skin/">The Complete Guide to Electric Shaving for Sensitive Skin</a> — The full pillar covering the transition from razor to electric shaver, technique, and tool selection.</li>
+            <li><a href="/blog/electric-shavers/electric-razor-pulling-hair/">Electric Razor Pulling Hair? 5 Mechanical Reasons Your Shaver Isn't Cutting Properly</a> — Covers mineral buildup as one of five mechanical causes of pulling and snagging.</li>
+            <li><a href="/blog/electric-shavers/electric-shaver-whiteheads-neck/">Electric Shaver Causing Whiteheads on Neck? Here's Why (And How to Stop It)</a> — How shaver bacteria and mineral-trapped debris trigger post-shave breakouts.</li>
+        </ul>
+    </div>
+
+</main>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer>
+    <div class="footer-container">
+
+        <div class="footer-col">
+            <h3>Oceanside Hair Salon</h3>
+            <p>Your local guide to haircuts, grooming, and hair care in Oceanside — built to help you make smarter style decisions in a coastal climate.</p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/profile.php?id=61583963957390" target="_blank" rel="noopener" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/oceanside_hair_salon" target="_blank" rel="noopener" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.36-.2 6.78-2.618 6.98-6.98.058-1.28.072-1.689.072-4.948 0-3.259-.014-3.667-.072-4.947-.2-4.361-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.441-.645 1.441-1.44s-.645-1.44-1.441-1.44z"/></svg>
+                </a>
+                <a href="https://x.com/OceansideHair" target="_blank" rel="noopener" aria-label="X Twitter">
+                    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+                <a href="https://www.pinterest.com/OceansideHairSalon/" target="_blank" rel="noopener" aria-label="Pinterest">
+                    <svg viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.399.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.951-7.252 4.173 0 7.41 2.967 7.41 6.93 0 4.136-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.367 18.62 0 12.017 0z"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul class="footer-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/services/">Hair Guides</a></li>
+                <li><a href="/prices/">Local Price Insights</a></li>
+                <li><a href="/testimonials/">Community Feedback</a></li>
+                <li><a href="/blog/">Articles &amp; Guides</a></li>
+                <li><a href="/contact/">Contact &amp; Info</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Find Us</h4>
+            <div class="contact-row"><span>Address</span><span>Oceanside, CA 92054</span></div>
+            <div class="contact-row"><span>Email</span><a href="mailto:info@oceansidehairsalon.com">info@oceansidehairsalon.com</a></div>
+            <div class="contact-row">
+                <span>Purpose</span>
+                <div>
+                    <div>Independent hair &amp; grooming guides</div>
+                    <div>Local research &amp; style insights</div>
+                    <div style="color:var(--accent-color);">No appointments or services offered</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        &copy; 2026 Oceanside Hair Salon. All Rights Reserved.
+        | <a href="/privacy-policy/">Privacy Policy</a>
+    </div>
+</footer>
+
+<script>
+    function toggleFaq(element) {
+        var item = element.parentElement;
+        document.querySelectorAll('.faq-item').forEach(function(el) {
+            if (el !== item) el.classList.remove('active');
+        });
+        item.classList.toggle('active');
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!--
+  _includes/navbar.html
+  ─────────────────────
+  Site-wide navigation bar.
+  Uses `page.url` to highlight the active top-level link via the `active` class.
+  Extend the nav_links list via _data/nav.yml if you add more top-level items.
+-->
+
+<div class="navbar" role="navigation" aria-label="Main navigation">
+
+    <a href="{{ '/' | relative_url }}" {% if page.url=='/' %}aria-current="page" {% endif %}>
+        Home
+    </a>
+
+    <!-- Hair Guides dropdown -->
+    <div class="dropdown">
+        <button class="dropbtn" aria-haspopup="true" aria-expanded="false">
+            Hair Guides
+        </button>
+        <div class="dropdown-content" role="menu">
+            <a href="{{ '/services/womens-haircuts/'  | relative_url }}" role="menuitem">Women's Haircut Guide</a>
+            <a href="{{ '/services/mens-grooming/'    | relative_url }}" role="menuitem">Men's Grooming Guide</a>
+            <a href="{{ '/services/hair-coloring/'    | relative_url }}" role="menuitem">Hair Coloring Guide</a>
+            <a href="{{ '/services/hair-treatments/'  | relative_url }}" role="menuitem">Hair Treatment Guide</a>
+            <a href="{{ '/services/bridal-styling/'   | relative_url }}" role="menuitem">Bridal Hair Guide</a>
+        </div>
+    </div>
+
+    <!-- Tools dropdown -->
+    <div class="dropdown">
+        <button class="dropbtn" aria-haspopup="true" aria-expanded="false">
+            Tools
+        </button>
+        <div class="dropdown-content" role="menu">
+            <a href="{{ '/tools/ai-shaver-finder/' | relative_url }}" role="menuitem">AI Shaver Finder</a>
+        </div>
+    </div>
+
+    <!-- About This Site dropdown -->
+    <div class="dropdown">
+        <button class="dropbtn" aria-haspopup="true" aria-expanded="false">
+            About This Site
+        </button>
+        <div class="dropdown-content" role="menu">
+            <a href="{{ '/prices/'       | relative_url }}" role="menuitem">Local Price Averages</a>
+            <a href="{{ '/testimonials/' | relative_url }}" role="menuitem">Community Reviews</a>
+            <a href="{{ '/contact/'      | relative_url }}" role="menuitem">Contact &amp; Editorial Info</a>
+        </div>
+    </div>
+
+    <a href="{{ '/blog/' | relative_url }}" {% if page.url contains '/blog/' %}aria-current="page" {% endif %}>
+        Blog
+    </a>
+
+</div>

@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-PSX8DCHR');
+  }
+</script>
+<script>
+  document.addEventListener('click', function (event) {
+    // تحديد ما إذا كان العنصر المنقور هو رابط أو داخل رابط
+    var targetLink = event.target.closest('a');
+
+    // التحقق مما إذا كان الرابط يخص أمازون
+    if (targetLink && (targetLink.href.includes('amazon.com') || targetLink.href.includes('amzn.to'))) {
+
+      // إعداد المتغيرات الافتراضية في حال كانت النقرة خارج بطاقة المنتج
+      var productName = 'منتج غير محدد';
+      var productId = 'بدون ID';
+      var productAsin = 'بدون ASIN';
+
+      // الصعود في شجرة الـ DOM للعثور على أقرب بطاقة منتج للزر المنقور
+      var productCard = targetLink.closest('.product-card');
+
+      if (productCard) {
+        // سحب الـ ID الخاص بالبطاقة (مثل: malibu-c-shampoo)
+        productId = productCard.id || productId;
+
+        // سحب عنوان المنتج من الـ h3
+        var titleElement = productCard.querySelector('.product-title');
+        if (titleElement) {
+          productName = titleElement.innerText.trim();
+        }
+
+        // سحب الـ ASIN إذا كان موجوداً
+        var asinElement = productCard.querySelector('[data-asin]');
+        if (asinElement) {
+          productAsin = asinElement.getAttribute('data-asin');
+        }
+      }
+
+      // إرسال البيانات الدقيقة إلى Google Tag Manager
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        'event': 'amazon_click_exact',
+        'clicked_url': targetLink.href,
+        'clicked_text': targetLink.innerText.trim() || 'صورة أو زر',
+        'product_name': productName,
+        'product_id': productId,
+        'product_asin': productAsin
+      });
+    }
+  });
+</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="icon" type="image/png" href="https://oceansidehairsalon.com/myfavicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/myfavicon/favicon.svg" />
+    <link rel="shortcut icon" href="/myfavicon/favicon.ico" />
+    
+<title>AI Shaver Finder: Best Electric Razor Recommendation Tool (Free)</title>
+    <meta name="description" content="Not sure which shaver to buy? Use our free AI Shaver Finder to get a personalized electric razor recommendation based on your hair type, skin sensitivity, and budget.">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "AI Shaver Finder",
+      "url": "https://oceansidehairsalon.com/tools/ai-shaver-finder",
+      "description": "An AI-powered tool to recommend the best electric shaver based on hair type and skin needs.",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "How does the AI Shaver Finder work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our tool uses a dermatological dataset to match your specific hair type (curly, straight, coarse) and skin concerns (sensitive, ingrown hairs) with the electric shaver engineered to handle those specific conditions."
+        }
+      }, {
+        "@type": "Question",
+        "name": "What is the best shaver for sensitive skin?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Generally, foil shavers like the Braun Series or Panasonic Arc are best for sensitive skin as the foil protects the skin from the blades. Our tool will recommend specific models based on your budget."
+        }
+      }]
+    }
+    </script>
+    <style>
+        /* ================= INHERITED SITE STYLES ================= */
+        :root {
+            --primary-color: #005f73;
+            --secondary-color: #0a9396;
+            --accent-color: #e9d8a6;
+            --bg-light: #f4f7f6;
+            --text-dark: #333;
+            --amazon-orange: #ff9900;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Lato', sans-serif;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: var(--font-body); 
+            color: var(--text-dark); 
+            line-height: 1.6; 
+            background: var(--bg-light); 
+        }
+        
+        h1, h2, h3, h4 { 
+            font-family: var(--font-heading); 
+            color: var(--primary-color); 
+            margin-bottom: 1rem; 
+            line-height: 1.3;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* Navbar */
+        .navbar {
+            display: flex; justify-content: center; align-items: center;
+            background: rgba(0,95,115,0.98); width: 100%; position: fixed; 
+            top: 0; left: 0; padding: 1rem 0; z-index: 1000; 
+            backdrop-filter: blur(5px); box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            flex-wrap: wrap;
+        }
+        
+        .navbar a, .navbar .dropbtn {
+            font-weight: bold; font-size: 17px; color: white !important;
+            padding: 14px 20px; text-decoration: none; background: transparent; 
+            border: none; cursor: pointer; white-space: nowrap; font-family: var(--font-body);
+        }
+        
+        .navbar a:hover, .dropdown:hover .dropbtn { color: var(--accent-color) !important; }
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content {
+            display: none; position: absolute; background: #fff; min-width: 240px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2); border-top: 3px solid var(--secondary-color); z-index: 1;
+        }
+        .dropdown-content a { color: #333 !important; padding: 12px 16px; display: block; font-size: 15px; }
+        .dropdown-content a:hover { background: #f1f1f1; color: var(--primary-color) !important; }
+        .dropdown:hover .dropdown-content { display: block; }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color); color: white; padding-top: 4rem;
+            font-family: 'Lato', sans-serif; font-size: 0.95rem; margin-top: 5rem;
+        }
+        .footer-container {
+            max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 3rem; text-align: left;
+        }
+        .footer-col h3 { color: var(--accent-color); font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 1rem; }
+        .footer-col h4 { color: white; margin-bottom: 1.3rem; font-size: 1.15rem; text-transform: uppercase; letter-spacing: 1.2px; }
+        .footer-col p { color: rgba(255,255,255,0.85); line-height: 1.7; margin-bottom: 1rem; }
+        .footer-links { list-style: none; padding: 0; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: rgba(255,255,255,0.8); transition: all 0.3s ease; }
+        .footer-links a:hover { color: var(--accent-color); padding-left: 8px; }
+        .contact-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 18px; color: rgba(255,255,255,0.9); }
+        .social-icons { display: flex; gap: 18px; margin-top: 20px; }
+        .social-icons a svg { width: 26px; height: 26px; fill: white; transition: all 0.3s ease; }
+        .social-icons a:hover svg { fill: var(--accent-color); transform: translateY(-4px); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.12); margin-top: 3.5rem; padding: 1.8rem 2rem; text-align: center; font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+
+        /* ================= TOOL SPECIFIC STYLES ================= */
+        
+        /* Hero Section for Tool */
+        .tool-header {
+            background: linear-gradient(rgba(0,40,50,0.8), rgba(0,95,115,0.9)) ;
+            background-size: cover; background-position: center;
+            padding: 140px 20px 60px;
+            text-align: center; color: white;
+        }
+        
+        .tool-header h1 { color: white; font-size: 2.8rem; text-shadow: 0 2px 10px rgba(0,0,0,0.3); margin-bottom: 0.5rem; }
+        .tool-header p { font-size: 1.2rem; color: var(--accent-color); max-width: 600px; margin: 0 auto; }
+        .tool-header i { font-size: 3rem; color: var(--accent-color); margin-bottom: 1rem; }
+
+        /* Container */
+        .tool-container {
+            max-width: 850px; margin: -50px auto 4rem; position: relative; z-index: 10;
+            background: white; padding: 3rem; border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        /* Form Elements */
+        .form-group { margin-bottom: 1.5rem; }
+        .form-label { display: block; font-weight: 700; color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.1rem; }
+        .form-label i { margin-right: 8px; color: var(--secondary-color); }
+        
+        .form-select {
+            width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px;
+            font-size: 1rem; font-family: var(--font-body); transition: 0.3s;
+            background-color: #f9f9f9; cursor: pointer;
+        }
+        .form-select:focus { border-color: var(--secondary-color); outline: none; background: white; }
+
+        /* Budget Radio Cards */
+        .budget-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .radio-card { cursor: pointer; position: relative; }
+        .radio-card input { display: none; }
+        .radio-content {
+            border: 2px solid #e0e0e0; border-radius: 8px; padding: 15px; text-align: center;
+            transition: all 0.3s; background: #f9f9f9;
+        }
+        .radio-content .emoji { font-size: 1.5rem; display: block; margin-bottom: 5px; }
+        .radio-content .title { font-weight: bold; font-size: 0.9rem; display: block; }
+        .radio-content .range { font-size: 0.8rem; color: #666; }
+        
+        .radio-card input:checked + .radio-content {
+            border-color: var(--primary-color); background: #f0f7f8;
+            transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        /* Submit Button */
+        .btn-submit {
+            width: 100%; background: var(--primary-color); color: white; border: none;
+            padding: 18px; border-radius: 50px; font-size: 1.2rem; font-weight: bold;
+            cursor: pointer; transition: all 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px;
+            margin-top: 1rem;
+        }
+        .btn-submit:hover { background: var(--secondary-color); transform: scale(1.02); }
+
+        /* Loading State */
+        .loader-box { text-align: center; padding: 3rem; display: none; }
+        .spinner {
+            border: 4px solid #f3f3f3; border-top: 4px solid var(--secondary-color);
+            border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 0 auto 1rem;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .pulse-text { animation: pulse 1.5s infinite; color: #666; }
+        @keyframes pulse { 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } }
+
+        /* Results Section (Matches Blog Product Card Style) */
+        .result-box { display: none; animation: fadeIn 0.5s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .ai-message {
+            background: #e6fcf5; border-left: 4px solid #2ecc71; padding: 1.5rem;
+            margin-bottom: 2rem; border-radius: 0 8px 8px 0;
+        }
+        .ai-message h4 { margin: 0 0 0.5rem; color: #006400; font-size: 1.1rem; }
+        .ai-message p { margin: 0; color: #333; font-size: 0.95rem; }
+
+        /* Product Card Styles (Copied from blog) */
+        .product-card {
+            display: grid; grid-template-columns: 280px 1fr; gap: 0;
+            background: #fff; border: 1px solid #e0e0e0; border-radius: 12px;
+            overflow: hidden; transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .product-image-col {
+            background: #fdfdfd; display: flex; align-items: center; justify-content: center;
+            padding: 30px; position: relative; border-right: 1px solid #f0f0f0;
+        }
+        .product-image-col img { max-width: 100%; height: auto; max-height: 250px; object-fit: contain; }
+        .badge {
+            position: absolute; top: 15px; left: 15px; background: var(--primary-color);
+            color: white; padding: 5px 12px; font-size: 0.75rem; font-weight: 700; border-radius: 4px; z-index: 2;
+        }
+        .product-details-col { padding: 2rem; display: flex; flex-direction: column; }
+        .product-title { font-size: 1.7rem !important; margin-bottom: 10px !important; color: var(--primary-color); }
+        .rating-container { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
+        .stars { color: var(--amazon-orange); font-weight: 700; }
+
+        .price-tag { font-size: 1.8rem; font-weight: 700; color: #111; }
+        .amazon-btn {
+            background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
+            border: 1px solid #a88734; border-radius: 8px; color: #111 !important;
+            padding: 10px 20px; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: 0.2s;
+        }
+        .amazon-btn:hover { background: #f0c14b; transform: scale(1.02); }
+        
+        .btn-reset {
+            display: block; width: 100%; text-align: center; margin-top: 20px;
+            color: #666; text-decoration: underline; background: none; border: none; cursor: pointer;
+        }
+.ai-message {
+    background: #f0fdf4; /* لون خلفية أفتح وأكثر عصرية */
+    border: 1px solid #bbf7d0;
+    border-left: 5px solid #2ecc71;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.ai-message h4 {
+    color: #166534;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* تحسين بطاقة المنتج */
+.product-card {
+    display: grid;
+    grid-template-columns: 35% 65%; /* تقسيم المساحة بشكل أفضل */
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px; /* زوايا أكثر استدارة */
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    border-color: var(--secondary-color);
+}
+
+/* تحسين قسم الصورة */
+.product-image-col {
+    background: #f9fafb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+    border-right: 1px solid #f3f4f6;
+}
+
+.product-image-col img {
+    width: 100%;
+    height: 100%;
+    max-height: 280px;
+    object-fit: contain;
+    mix-blend-mode: multiply; /* دمج خلفية الصورة البيضاء مع الخلفية الرمادية */
+}
+
+/* تحسين شارة الذكاء الاصطناعي */
+.badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: var(--primary-color);
+    color: white;
+    padding: 6px 14px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 6px;
+    z-index: 2;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* تحسين تفاصيل المنتج */
+.product-details-col {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.product-brand {
+    font-size: 0.8rem;
+    color: var(--secondary-color);
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.product-title {
+    font-size: 1.8rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 12px !important;
+    color: #1f2937;
+}
+
+.product-description {
+    font-size: 1rem;
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+/* تحسين منطقة السعر والزر */
+.price-cta-area {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid #f3f4f6;
+    display: flex;
+    flex-direction: column; /* ترتيب العناصر تحت بعضها */
+    gap: 12px;
+}
+
+.price-tag {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #111;
+    white-space: nowrap;
+}
+
+.price-tag small {
+    font-size: 1rem;
+    vertical-align: top;
+    margin-right: 2px;
+    color: #555;
+}
+
+.amazon-btn {
+    background: linear-gradient(to bottom, #fcd34d, #fbbf24);
+    border: 1px solid #d97706;
+    color: #111 !important;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: transform 0.2s;
+    flex-grow: 1; /* الزر يأخذ المساحة المتبقية */
+    max-width: 250px; /* منع الزر من أن يصبح عريضاً جداً في الشاشات الكبيرة */
+}
+
+.amazon-btn:hover {
+    transform: translateY(-2px);
+    background: #f59e0b;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.25);
+}
+.ai-disclaimer {
+    font-size: 0.75rem;
+    color: #9ca3af; /* لون رمادي خفيف */
+    text-align: center;
+    margin-top: 15px;
+    font-style: italic;
+    opacity: 0.8;
+}
+/* تحسين زر "Start Over" (الأهم) */
+.btn-reset {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px auto 0; /* توسيط الزر */
+    background: transparent;
+    border: 2px solid #e5e7eb; /* إطار رمادي فاتح */
+    color: #6b7280;
+    padding: 12px 35px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-reset:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    background: #f0f9fa; /* خلفية فاتحة جداً عند التحويم */
+}
+
+/* نص إخلاء المسؤولية */
+.amazon-disclaimer {
+    font-size: 0.75rem; /* حجم مقروء ولكنه صغير */
+    color: #6b7280; /* رمادي متوسط (ليس باهتاً جداً) */
+    font-style: italic;
+    text-align: right; /* محاذاة لليمين */
+    margin: 0;
+    line-height: 1.4;
+}
+/* ================= SEO CONTENT STYLES ================= */
+        .seo-section {
+            max-width: 850px;
+            margin: 0 auto 3rem;
+            padding: 0 1.5rem;
+        }
+        
+        /* Related Article Box */
+        .related-box {
+            background: linear-gradient(to right, #f0f9fa, #e0f2f1);
+            border: 2px solid var(--secondary-color);
+            border-radius: 12px;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .related-content h3 { margin-bottom: 0.5rem; font-size: 1.4rem; }
+        .related-content p { margin-bottom: 0; color: #555; }
+        .related-btn {
+            background: var(--primary-color); color: white; padding: 12px 20px;
+            border-radius: 8px; font-weight: bold; white-space: nowrap; transition: 0.3s;
+        }
+        .related-btn:hover { background: var(--secondary-color); transform: translateY(-2px); }
+
+        /* FAQ Section */
+        .faq-container { background: white; padding: 2rem; border-radius: 12px; }
+        .faq-item { border-bottom: 1px solid #eee; padding: 1.5rem 0; }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-question {
+            font-weight: 700; font-size: 1.1rem; color: var(--primary-color);
+            cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+        }
+        .faq-answer {
+            margin-top: 10px; color: #555; line-height: 1.6; display: none; /* Hidden by default */
+        }
+        .faq-item.active .faq-answer { display: block; animation: fadeIn 0.3s; }
+        .faq-icon { transition: 0.3s; }
+        .faq-item.active .faq-icon { transform: rotate(180deg); }
+
+        @media (max-width: 768px) {
+            .related-box { flex-direction: column; text-align: center; }
+            .related-btn { width: 100%; display: block; text-align: center; }
+        }
+/* ================= RESPONSIVE (MOBILE) ================= */
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar { padding: 0.8rem 0.5rem; justify-content: space-around; }
+            .navbar a, .navbar .dropbtn { font-size: 14px; padding: 10px 8px; }
+            .tool-header { padding-top: 110px; }
+            .tool-container { margin: -30px 15px 2rem; padding: 1.5rem; }
+            .product-card { grid-template-columns: 1fr; }
+            .product-image-col { border-right: none; border-bottom: 1px solid #f0f0f0; }
+            .price-cta-area { flex-direction: column; gap: 15px; align-items: flex-start; }
+            .social-icons { justify-content: center; }
+            .contact-row { justify-content: center; flex-direction: column; }
+            .product-card {
+        grid-template-columns: 1fr; /* تحويل الشبكة لعمود واحد */
+        border-radius: 12px;}
+        .amazon-disclaimer {
+        text-align: center; /* توسيط النص القانوني في الموبايل */
+    }
+     .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2.5rem;
+                padding: 0 1.5rem;
+            }
+
+            .footer-col {
+                align-items: center;
+            }
+
+            .footer-col h3 {
+                font-size: 1.5rem;
+            }
+
+            .footer-col h4 {
+                font-size: 1.05rem;
+            }
+
+            .footer-links {
+                padding: 0;
+            }
+
+            .contact-row {
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 5px;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+
+            .footer-bottom {
+                padding: 1.5rem 1rem;
+                font-size: 0.8rem;
+            }
+    }
+
+    .product-image-col {
+        border-right: none;
+        border-bottom: 1px solid #f3f4f6;
+        padding: 1.5rem;
+    }
+    
+    .product-image-col img {
+        max-height: 220px; /* تصغير الصورة قليلاً في الموبايل */
+    }
+
+    .product-details-col {
+        padding: 1.5rem;
+        text-align: center; /* توسيط النص في الموبايل لمظهر أفضل */
+    }
+
+    .product-title {
+        font-size: 1.5rem !important;
+    }
+
+    .rating-container {
+        justify-content: center;
+    }
+
+    .price-cta-area {
+        flex-direction: column; /* جعل السعر فوق الزر */
+        align-items: center;
+        gap: 15px;
+    }
+
+    .price-tag {
+        font-size: 2.2rem; /* تكبير السعر قليلاً في الموبايل */
+    }
+
+    .amazon-btn {
+        width: 100%; /* الزر يأخذ كامل العرض في الموبايل */
+        justify-content: center;
+        padding: 15px;
+    }
+
+    .disclaimer-text {
+        text-align: center;
+    }
+
+    .btn-reset {
+        width: 100%;
+        margin-top: 20px;
+    }
+        
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="/">Home</a>
+    <div class="dropdown">
+        <button class="dropbtn">Hair Guides</button>
+        <div class="dropdown-content">
+            <a href="/services/womens-haircuts/">Women’s Haircut Guide</a>
+            <a href="/services/mens-grooming/">Men’s Grooming Guide</a>
+            <a href="/services/hair-coloring/">Hair Coloring Guide</a>
+            <a href="/services/hair-treatments/">Hair Treatment Guide</a>
+            <a href="/services/bridal-styling/">Bridal Hair Guide</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Tools</button>
+        <div class="dropdown-content">
+            <a href="/tools/ai-shaver-finder/">Ai Shaver Finder</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">About This Site</button>
+        <div class="dropdown-content">
+            <a href="/prices/">Local Price Averages</a>
+            <a href="/testimonials/">Community Reviews</a>
+            <a href="/contact/">Contact & Editorial Info</a>
+        </div>
+    </div>
+    <a href="/blog/">Blog</a>
+</div>
+
+<header class="tool-header">
+    <i class="fas fa-magic"></i>
+    <h1>AI Shaver Finder</h1>
+    <p>Stop guessing. Let our dermatologist-trained AI recommend the perfect electric shaver for your specific hair type and skin concerns.</p>
+</header>
+
+<main class="tool-container">
+    
+    <div id="formSection">
+        <form id="shaverForm">
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user"></i>Hair Type</label>
+                <select id="hairType" class="form-select" required>
+                    <option value="" disabled selected>Select your hair type...</option>
+                    <option value="Straight & Fine">Straight & Fine</option>
+                    <option value="Wavy">Wavy</option>
+                    <option value="Curly">Curly</option>
+                    <option value="Coily / Afro-textured">Coily / Afro-textured</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-exclamation-circle"></i>Primary Concern</label>
+                <select id="problem" class="form-select" required>
+                    <option value="" disabled selected>What is your main issue?</option>
+                    <option value="Sensitive Skin / Razor Burn">Sensitive Skin / Razor Burn</option>
+                    <option value="Ingrown Hairs">Ingrown Hairs</option>
+                    <option value="Thick / Coarse Hair">Thick / Coarse Hair</option>
+                    <option value="Bald Head Shaving">Bald Head Shaving</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-wallet"></i>Budget</label>
+                <div class="budget-grid">
+                    <label class="radio-card">
+                        <input type="radio" name="budget" value="Budget Friendly" required>
+                        <div class="radio-content">
+                            <span class="emoji">💰</span>
+                            <span class="title">Value</span>
+                        </div>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="budget" value="Mid-Range">
+                        <div class="radio-content">
+                            <span class="emoji">💎</span>
+                            <span class="title">Mid</span>
+                        </div>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="budget" value="Premium">
+                        <div class="radio-content">
+                            <span class="emoji">👑</span>
+                            <span class="title">Pro</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-submit">
+                <span>Find My Perfect Match</span>
+                <i class="fas fa-search"></i>
+            </button>
+        </form>
+    </div>
+
+    <div id="loadingSection" class="loader-box">
+        <div class="spinner"></div>
+        <h3>Analyzing your profile...</h3>
+        <p id="loadingText" class="pulse-text">Consulting dermatological data...</p>
+    </div>
+
+    <div id="resultSection" class="result-box">
+        
+        <div class="ai-message">
+            <h4><i class="fas fa-robot"></i> AI Analysis</h4>
+            <p id="aiReasoning">...</p>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image-col">
+                <span class="badge">AI RECOMMENDED</span>
+                <img id="productImage" src="" alt="Recommended Product">
+            </div>
+            
+            <div class="product-details-col">
+                <div id="productBrand" style="font-size: 0.85rem; color: var(--secondary-color); text-transform: uppercase; font-weight: 900; letter-spacing: 1.5px; margin-bottom: 5px;">TOP PICK</div>
+                <h3 id="productTitle" class="product-title">Product Name</h3>
+                
+                <div class="rating-container">
+                    <span class="stars">★★★★☆</span>
+                    <span id="productRating" style="font-weight:bold; color:#333;">4.5</span>
+                    <span id="productReviews" class="rating-count" style="color: #007185; font-size: 0.9rem;">(1,200 reviews)</span>
+                </div>
+
+                <p style="font-size: 0.95rem; color: #555; margin-bottom: 20px;">
+                    This product was selected because it specifically addresses your hair type and budget constraints with features designed to prevent irritation.
+                </p>
+
+                <div class="price-cta-area">
+                    <div class="price-tag"><small>$</small><span id="productPrice">0.00</span></div>
+                    <a id="productLink" href="#" target="_blank" rel="nofollow" class="amazon-btn">
+                        View on Amazon 
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </a>
+                    <p class="amazon-disclaimer">
+                    As an Amazon Associate, we earn from qualifying purchases.
+                </p>
+                </div>
+            </div>
+        </div>
+
+        <button onclick="resetForm()" class="btn-reset">Start Over</button>
+        <p class="ai-disclaimer">AI Shaver Finder can make mistakes. So it's best to double-check product details before purchasing.</p>
+    </div>
+
+</main>
+<section class="seo-section">
+    
+    <div class="related-box">
+        <div class="related-content">
+            <h3>Prefer to read a detailed guide?</h3>
+            <p>Check out our expert breakdown of the top rated shavers for sensitive skin types.</p>
+        </div>
+        <a href="/blog/best-electric-shavers-sensitive-skin-2025/" class="related-btn">
+            Read Top 5 Guide <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+    </div>
+
+    <div class="faq-container">
+        <h2 style="text-align: center; margin-bottom: 2rem;">Frequently Asked Questions</h2>
+        
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">
+                How accurate is this AI Shaver Finder?
+                <i class="fas fa-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+                Our tool uses a logic model based on dermatological guidelines. It filters shavers based on their cutting mechanism (Foil vs. Rotary) to match your specific hair texture and skin sensitivity, ensuring a scientifically sound recommendation.
+            </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">
+                Should I choose a Foil or Rotary shaver?
+                <i class="fas fa-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+                If you have <b>sensitive skin</b> or need a very close shave on straight hair, a <b>Foil Shaver</b> (like Braun) is usually better. If you have <b>curly hair</b> or shave irregular contours (like a head), a <b>Rotary Shaver</b> (like Philips) might be preferable. Our tool decides this for you.
+            </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">
+                Does expensive mean better for shavers?
+                <i class="fas fa-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+                Not always. High-end shavers often have "cleaning stations" and digital displays which add cost but don't change the shave quality. However, very cheap models often lack powerful motors needed for thick hair. Our "Value" option finds the sweet spot.
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function toggleFaq(element) {
+        element.classList.toggle('active');
+    }
+</script>
+<footer>
+    <div class="footer-container">
+        <div class="footer-col">
+            <h3>Oceanside Hair Salon</h3>
+            <p>Your local guide to haircuts, grooming, and hair care in Oceanside — built to help you make smarter style decisions in a coastal climate.</p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/profile.php?id=61583963957390" target="_blank" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                <a href="https://www.instagram.com/oceanside_hair_salon" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.36-.2 6.78-2.618 6.98-6.98.058-1.28.072-1.689.072-4.948 0-3.259-.014-3.667-.072-4.947-.2-4.361-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.644-1.44-1.439-1.44z"/></svg></a>
+                <a href="https://x.com/OceansideHair" target="_blank" aria-label="X Twitter"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                <a href="https://www.pinterest.com/OceansideHairSalon/" target="_blank" aria-label="Pinterest"><svg viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.399.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.951-7.252 4.173 0 7.41 2.967 7.41 6.93 0 4.136-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.367 18.62 0 12.017 0z"/></svg></a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul class="footer-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/services/">Hair Guides</a></li>
+                <li><a href="/prices/">Local Price Insights</a></li>
+                <li><a href="/testimonials/">Community Feedback</a></li>
+                <li><a href="/blog/">Articles & Guides</a></li>
+                <li><a href="/contact/">Contact & Info</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Find Us</h4>
+            <div class="contact-row"><span>Address</span><span>Oceanside, CA 92054</span></div>
+            <div class="contact-row"><span>Email</span><a href="mailto:hello@oceansidehairsalon.com">hello@oceansidehairsalon.com</a></div>
+            <div class="contact-row"><span>Purpose</span><div><div>Independent hair & grooming guides</div><div>Local research & style insights</div><div style="color:var(--accent-color);">No appointments or services offered</div></div></div>
+        </div>
+    </div>
+    <div class="footer-bottom">© 2025 Oceanside Hair Salon. All Rights Reserved. | <a href="/privacy-policy/">Privacy Policy</a></div>
+</footer>
+
+<script>
+    // ========== CONFIGURATION ==========
+    const API_URL = 'https://shaver-finder-backend.onrender.com/api/recommend'; // Keep local for testing, change when deploying
+    // ===================================
+
+    const form = document.getElementById('shaverForm');
+    const formSection = document.getElementById('formSection');
+    const loadingSection = document.getElementById('loadingSection');
+    const resultSection = document.getElementById('resultSection');
+    const loadingText = document.getElementById('loadingText');
+
+    const loadingMessages = [
+        "Consulting AI dermatologists...",
+        "Scanning Amazon for best prices...",
+        "Analyzing user reviews...",
+        "Selecting the perfect match..."
+    ];
+
+    let messageIndex = 0;
+    let messageInterval;
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const formData = {
+            hairType: document.getElementById('hairType').value,
+            problem: document.getElementById('problem').value,
+            budget: document.querySelector('input[name="budget"]:checked').value
+        };
+
+        // Show loading
+        formSection.style.display = 'none';
+        loadingSection.style.display = 'block';
+
+        // Rotate loading messages
+        messageInterval = setInterval(() => {
+            messageIndex = (messageIndex + 1) % loadingMessages.length;
+            loadingText.textContent = loadingMessages[messageIndex];
+        }, 2000);
+
+        try {
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+
+            if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
+
+            const data = await response.json();
+
+            if (data && data.success && data.product) {
+                displayResult(data);
+            } else {
+                throw new Error('Invalid response format');
+            }
+
+        } catch (error) {
+            console.error('❌ Error:', error);
+            alert('Connection error. Please ensure the Python server is running.');
+            resetForm();
+        } finally {
+            clearInterval(messageInterval);
+            loadingSection.style.display = 'none';
+        }
+    });
+
+    function displayResult(data) {
+        // Set AI reasoning
+        document.getElementById('aiReasoning').textContent = data.reasoning || 'Selected based on your needs.';
+        
+        // Set product details
+        const product = data.product;
+        document.getElementById('productTitle').textContent = product.title || 'Recommended Shaver';
+        document.getElementById('productImage').src = product.image || 'https://via.placeholder.com/300';
+        document.getElementById('productPrice').textContent = product.price ? `${product.price}` : 'Check Price';
+        document.getElementById('productRating').textContent = product.rating || '4.5';
+        document.getElementById('productReviews').textContent = product.reviews ? `(${product.reviews} reviews)` : '';
+        document.getElementById('productLink').href = product.url || '#';
+        
+        // Show result
+        resultSection.style.display = 'block';
+    }
+
+    function resetForm() {
+        resultSection.style.display = 'none';
+        loadingSection.style.display = 'none';
+        formSection.style.display = 'block';
+        form.reset();
+        messageIndex = 0;
+    }
+</script>
+
+</body>
+</html>

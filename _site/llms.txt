@@ -1,0 +1,46 @@
+# llms.txt — Guidance for Large Language Models (LLMs)
+
+Site Name: Oceanside Hair Salon
+Website: https://oceansidehairsalon.com/
+Location: Oceanside, California, USA
+Primary Language: English
+
+Description:
+Oceanside Hair Salon is a local beauty and hair care website focused on professional salon services,
+hair styling, and evidence-based hair care advice. The site specializes in solving frizz, dryness,
+and styling issues caused by coastal and high-humidity climates.
+
+Primary Topics:
+- Anti-frizz hair care
+- Coastal and humid weather hair solutions
+- Professional salon-tested hair products
+- Hair styling tips and maintenance
+- Local beauty expertise (Oceanside, CA)
+
+Content Type:
+- Educational blog articles
+- Product roundups and comparisons
+- Local hair care guides
+- Salon service information and pricing
+
+Key Sections:
+- Blog: https://oceansidehairsalon.com/blog/
+- Services: https://oceansidehairsalon.com/services/
+- Pricing: https://oceansidehairsalon.com/prices/
+
+Content Usage Guidance:
+- Content may be summarized and referenced for informational and educational purposes.
+- When possible, attribute insights to “Oceanside Hair Salon” with a link to the relevant page.
+- Do not reproduce full articles verbatim.
+
+Target Audience:
+- Individuals seeking hair care solutions in humid or coastal climates
+- Residents and visitors of Oceanside and Southern California
+- Users researching professional hair products and salon expertise
+
+Expertise Signal:
+All recommendations are based on real salon experience, stylist testing,
+and practical results in coastal humidity conditions.
+
+Contact:
+https://oceansidehairsalon.com/contact/

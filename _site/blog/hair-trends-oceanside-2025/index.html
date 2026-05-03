@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-PSX8DCHR');
+  }
+</script>
+<script>
+  document.addEventListener('click', function (event) {
+    // تحديد ما إذا كان العنصر المنقور هو رابط أو داخل رابط
+    var targetLink = event.target.closest('a');
+
+    // التحقق مما إذا كان الرابط يخص أمازون
+    if (targetLink && (targetLink.href.includes('amazon.com') || targetLink.href.includes('amzn.to'))) {
+
+      // إعداد المتغيرات الافتراضية في حال كانت النقرة خارج بطاقة المنتج
+      var productName = 'منتج غير محدد';
+      var productId = 'بدون ID';
+      var productAsin = 'بدون ASIN';
+
+      // الصعود في شجرة الـ DOM للعثور على أقرب بطاقة منتج للزر المنقور
+      var productCard = targetLink.closest('.product-card');
+
+      if (productCard) {
+        // سحب الـ ID الخاص بالبطاقة (مثل: malibu-c-shampoo)
+        productId = productCard.id || productId;
+
+        // سحب عنوان المنتج من الـ h3
+        var titleElement = productCard.querySelector('.product-title');
+        if (titleElement) {
+          productName = titleElement.innerText.trim();
+        }
+
+        // سحب الـ ASIN إذا كان موجوداً
+        var asinElement = productCard.querySelector('[data-asin]');
+        if (asinElement) {
+          productAsin = asinElement.getAttribute('data-asin');
+        }
+      }
+
+      // إرسال البيانات الدقيقة إلى Google Tag Manager
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        'event': 'amazon_click_exact',
+        'clicked_url': targetLink.href,
+        'clicked_text': targetLink.innerText.trim() || 'صورة أو زر',
+        'product_name': productName,
+        'product_id': productId,
+        'product_asin': productAsin
+      });
+    }
+  });
+</script>
+    <!-- Google Tag Manager / Analytics -->
+    
+    
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="https://oceansidehairsalon.com/myfavicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/myfavicon/favicon.svg" />
+    <link rel="shortcut icon" href="/myfavicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/myfavicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/myfavicon/site.webmanifest" />
+    
+    <!-- SEO Meta Tags -->
+    <title>Oceanside Haircut Trends 2026: From Skin Fades to Beachy Balayage</title>
+    <meta name="description" content="Discover 2026 haircut trends in Oceanside, CA. From men's skin fades to women's beachy balayage, learn styles that suit coastal lifestyle and North County vibes.">
+    <link rel="canonical" href="https://oceansidehairsalon.com/blog/hair-trends-oceanside-2025/">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Schema Markup with FAQ -->
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Oceanside Haircut Trends 2026: From Skin Fades to Beachy Balayage",
+      "description": "Discover 2026 haircut trends in Oceanside, CA. From men's skin fades to women's beachy balayage, learn styles that suit coastal lifestyle and North County vibes.",
+      "image": "https://oceansidehairsalon.com/images/blog/haircut-trends/header-hero.jpg",
+      "author": {
+        "@type": "Organization",
+        "name": "Oceanside Hair Salon"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Oceanside Hair Salon",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://oceansidehairsalon.com/myfavicon/favicon-96x96.png"
+        }
+      },
+      "dateModified": "2026-01-29",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://oceansidehairsalon.com/blog/hair-trends-oceanside-2025
+/"
+      }
+    }
+    </script>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+                "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What are the popular men's haircuts in Oceanside for 2026?",
+              "acceptedAnswer": { "@type": "Answer", "text": "For 2026, men in Oceanside are favoring textured skin fades and the 'surfer flow' look, which works well with the local humidity and beach lifestyle." }
+            },
+            {
+              "@type": "Question",
+              "name": "Why is balayage popular in Oceanside?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Balayage offers a low-maintenance, sun-kissed look that mimics the natural effects of the sun and grows out gracefully, making it perfect for the relaxed Oceanside vibe." }
+            },
+            {
+              "@type": "Question",
+              "name": "How does Oceanside's marine layer affect hairstyles?",
+              "acceptedAnswer": { "@type": "Answer", "text": "The morning marine layer adds humidity, which can cause frizz for straight styles but enhances natural waves. Textured cuts and layered styles are recommended to work with this moisture rather than against it." }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --primary-color: #005f73;
+            --secondary-color: #0a9396;
+            --accent-color: #e9d8a6;
+            --bg-light: #f4f7f6;
+            --text-dark: #333;
+            --amazon-orange: #ff9900;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Lato', sans-serif;
+            --success-green: #2ecc71;
+        }
+        
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        body { 
+            font-family: var(--font-body); 
+            color: var(--text-dark); 
+            line-height: 1.6; 
+            background: var(--bg-light); 
+        }
+        
+        h1, h2, h3, h4 { 
+            font-family: var(--font-heading); 
+            color: var(--primary-color); 
+            margin-bottom: 1rem; 
+            line-height: 1.3;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-top: 3rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            color: var(--secondary-color);
+        }
+
+        h4 {
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+        }
+        
+        p { 
+            margin-bottom: 1.2rem; 
+            font-size: 1.05rem; 
+        }
+        
+        a { 
+            text-decoration: none; 
+            color: inherit; 
+        }
+
+        ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        strong {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            background: rgba(0,95,115,0.98); 
+            width: 100%; 
+            position: fixed; 
+            top: 0; 
+            left: 0;
+            padding: 1rem 0; 
+            z-index: 1000; 
+            backdrop-filter: blur(5px); 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            flex-wrap: wrap;
+        }
+        
+        .navbar a, .navbar .dropbtn {
+            font-weight: bold; 
+            font-size: 17px; 
+            color: white !important;
+            padding: 14px 20px; 
+            text-decoration: none; 
+            background: transparent; 
+            border: none; 
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        
+        .navbar a:hover, .dropdown:hover .dropbtn { 
+            color: var(--accent-color) !important; 
+        }
+        
+        .dropdown { 
+            position: relative; 
+            display: inline-block; 
+        }
+        
+        .dropdown-content {
+            display: none; 
+            position: absolute; 
+            background: #fff; 
+            min-width: 240px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2); 
+            border-top: 3px solid var(--secondary-color); 
+            z-index: 1;
+        }
+        
+        .dropdown-content a { 
+            color: #333 !important; 
+            padding: 12px 16px; 
+            display: block;
+            font-size: 15px; 
+        }
+        
+        .dropdown-content a:hover { 
+            background: #f1f1f1; 
+            color: var(--primary-color) !important; 
+        }
+        
+        .dropdown:hover .dropdown-content { 
+            display: block; 
+        }
+
+        /* Article Header */
+        .article-header {
+            background: linear-gradient(rgba(0,40,50,0.7), rgba(0,95,115,0.7)), url('/images/blog/haircut-trends/header-hero.jpg');
+            background-size: cover; 
+            background-position: center; 
+            min-height: 65vh;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center;
+            text-align: center; 
+            color: white; 
+            padding: 120px 20px 40px;
+        }
+        
+        .article-header h1 {
+            font-size: 3.2rem; 
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5); 
+            margin-bottom: 1rem; 
+            color: #fff; 
+            max-width: 900px;
+        }
+        
+        .article-header p {
+            font-size: 1.4rem; 
+            margin-bottom: 2rem; 
+            max-width: 700px; 
+            color: #eee; 
+        }
+
+        .btn-contact {
+            background: var(--primary-color); 
+            color: white !important;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px; 
+            font-weight: bold; 
+            font-size: 1.2rem;
+            cursor: pointer; 
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .btn-contact:hover { 
+            background: var(--secondary-color); 
+            transform: scale(1.05); 
+        }
+
+        /* Content Container */
+        .content-container {
+            max-width: 850px; 
+            margin: -35px auto 4rem; 
+            position: relative; 
+            z-index: 10;
+            background: white; 
+            padding: 4rem; 
+            border-radius: 12px; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        /* Table of Contents */
+        .toc-box {
+            background: #f8f9fa; 
+            border: 1px solid #e9ecef; 
+            border-radius: 8px; 
+            padding: 2rem; 
+            margin-bottom: 3rem;
+        }
+        
+        .toc-box h3 { 
+            font-size: 1.2rem; 
+            margin-bottom: 1rem; 
+            color: var(--secondary-color); 
+        }
+        
+        .toc-list { 
+            list-style: none; 
+            margin: 0; 
+            padding: 0; 
+        }
+        
+        .toc-list li { 
+            margin-bottom: 8px; 
+            font-size: 0.95rem; 
+        }
+        
+        .toc-list a { 
+            color: var(--primary-color); 
+            text-decoration: underline; 
+            text-decoration-color: #ddd; 
+        }
+        
+        .toc-list a:hover { 
+            color: var(--secondary-color); 
+            text-decoration-color: var(--secondary-color); 
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            border-left: 4px solid var(--amazon-orange); 
+            background: #fff8f0;
+            padding: 1.5rem; 
+            margin: 2rem 0; 
+            font-style: italic; 
+            color: #444;
+        }
+
+
+        /* Product Callout */
+        .product-callout {
+            background: #fff; 
+            border: 2px solid var(--secondary-color); 
+            border-radius: 10px;
+            padding: 2rem; 
+            margin: 3rem 0; 
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background: var(--primary-color); 
+            color: white !important;
+            padding: 12px 30px; 
+            border-radius: 50px;
+            font-weight: bold; 
+            display: inline-block; 
+            margin-top: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover { 
+            background: var(--secondary-color); 
+            transform: scale(1.05);
+        }
+
+        .faq-item { border-bottom: 1px solid #eee; }
+        .faq-question {
+            width: 100%; text-align: left; background: none; border: none; padding: 20px 0;
+            font-size: 1.1rem; font-weight: 700; cursor: pointer; display: flex;
+            justify-content: space-between; align-items: center; color: var(--primary-color);
+        }
+        .faq-answer { max-height: 0; overflow: hidden; transition: 0.3s ease-out; color: #555; padding-right: 20px; }
+        .faq-item.active .faq-answer { max-height: 200px; padding-bottom: 20px; }
+        .faq-item.active .faq-question { color: var(--secondary-color); }
+        .faq-question span { font-size: 1.5rem; transition: 0.3s; }
+        .faq-item.active span { transform: rotate(45deg); }
+        /* Related Articles */
+        .related-articles {
+            background: #f0f7f8;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 3rem;
+        }
+
+        .related-articles h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .related-articles ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .related-articles li {
+            margin-bottom: 1rem;
+        }
+
+        .related-articles a {
+            color: var(--primary-color);
+            text-decoration: underline;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .related-articles a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: white;
+            padding-top: 4rem;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.95rem;
+            margin-top: 5rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 3rem;
+            text-align: left;
+        }
+        
+        .footer-col h3 {
+            color: var(--accent-color);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 1.3rem;
+            font-size: 1.15rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+        }
+        
+        .footer-col p {
+            color: rgba(255,255,255,0.85);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+            padding-left: 8px;
+        }
+        
+        .contact-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 18px;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.5;
+        }
+        
+        .contact-row a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+        }
+        
+        .contact-row a:hover {
+            color: var(--accent-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 18px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a svg {
+            width: 26px;
+            height: 26px;
+            fill: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover svg {
+            fill: var(--accent-color);
+            transform: translateY(-4px);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.12);
+            margin-top: 3.5rem;
+            padding: 1.8rem 2rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .footer-bottom a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+        }
+        
+        .footer-bottom a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Images */
+        figure {
+            margin: 2.5rem 0;
+        }
+
+        figure img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        figcaption {
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+       /* ========== MOBILE RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.8rem 0.5rem;
+                justify-content: space-around;
+                flex-wrap: wrap;
+            }
+            
+            .navbar a, .navbar .dropbtn {
+                font-size: 14px;
+                padding: 10px 8px;
+            }
+
+            .article-header {
+                min-height: auto;
+                padding: 100px 15px 60px;
+            }
+            
+            .article-header h1 {
+                font-size: 1.8rem;
+                margin-bottom: 0.8rem;
+            }
+            
+            .article-header p {
+                font-size: 1.1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .btn-contact {
+                padding: 12px 28px;
+                font-size: 1rem;
+            }
+
+            .content-container {
+                margin: -40px 15px 2rem;
+                padding: 2rem 1.5rem;
+                border-radius: 8px;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+                margin-top: 2rem;
+            }
+
+            h3 {
+                font-size: 1.3rem;
+                margin-top: 1.5rem;
+            }
+
+            h4 {
+                font-size: 1.1rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            ul {
+                margin-left: 1.2rem;
+            }
+
+            .toc-box {
+                padding: 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .toc-box h3 {
+                font-size: 1.1rem;
+            }
+
+            .toc-list li {
+                font-size: 0.9rem;
+            }
+
+            .highlight-box {
+                padding: 1.2rem;
+                margin: 1.5rem 0;
+                font-size: 0.95rem;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .footer-col {
+                align-items: center;
+                text-align: center;
+            }
+            
+            .contact-row {
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="/">Home</a>
+    <div class="dropdown">
+        <button class="dropbtn">Hair Guides</button>
+        <div class="dropdown-content">
+            <a href="/services/womens-haircuts/">Women’s Haircut Guide</a>
+            <a href="/services/mens-grooming/">Men’s Grooming Guide</a>
+            <a href="/services/hair-coloring/">Hair Coloring Guide</a>
+            <a href="/services/hair-treatments/">Hair Treatment Guide</a>
+            <a href="/services/bridal-styling/">Bridal Hair Guide</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Tools</button>
+        <div class="dropdown-content">
+            <a href="/tools/ai-shaver-finder/">Ai Shaver Finder</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">About This Site</button>
+        <div class="dropdown-content">
+            <a href="/prices/">Local Price Averages</a>
+            <a href="/testimonials/">Community Reviews</a>
+            <a href="/contact/">Contact & Editorial Info</a>
+        </div>
+    </div>
+    <a href="/blog/">Blog</a>
+</div>
+
+
+<header class="article-header">
+    <h1>Oceanside Haircut Trends 2026: From Skin Fades to Beachy Balayage</h1>
+    <p>Discover 2026 haircut trends in Oceanside, CA. From men's skin fades to women's beachy balayage, learn styles that suit coastal lifestyle and North County vibes.</p>
+    <a href="#introduction" class="btn-contact">Start reading</a>
+</header>
+
+<main class="content-container">
+
+    <div class="toc-box">
+        <h3>Table of Contents</h3>
+        <ul class="toc-list">
+            <li><a href="#the-vibe-check">The Vibe Check: Hair That Lives Up to the Lifestyle</a></li>
+            <li><a href="#mens-styles">Men's Styles: Between Military and Waves</a></li>
+            <li><a href="#womens-styles">Women's Styles: Sun, Salt, and Color</a></li>
+            <li><a href="#the-dilemma">The Dilemma: Barber or Salon?</a></li>
+            <li><a href="#the-price-talk">The Price Talk: Why Women Pay More (And What You're Actually Paying For)</a></li>
+            <li><a href="#local-factors">Local Factors That Matter for Your Hair</a></li>
+            <li><a href="#quick-maintenance-guide">Quick Maintenance Guide: Keeping Your Style Fresh</a></li>
+            <li><a href="#conclusion">Conclusion: Your Hair, Oceanside Style</a></li>
+        </ul>
+    </div>
+
+    <h2 id="the-vibe-check">The Vibe Check: Hair That Lives Up to the Lifestyle</h2>
+    <p>Oceanside isn't just another San Diego suburb—it's where military precision meets surf culture, where morning marine layer burns off into perfect beach weather, and where your hair needs to do more than just look good. It needs to survive salt spray, humidity, an active lifestyle, and still photograph well at sunset on the pier.</p>
+    <p>Hair in Oceanside isn't about chasing Instagram trends from New York or LA. It's about styles that work with the reality of North County life: you might start your day at a coffee shop in South O, hit the beach by noon, and end up at a brewery by evening—all without touching your hair. That's the real test.</p>
+    <p>The 2026 Oceanside hair scene reflects this perfectly. Men are split between the sharp, clean precision of Camp Pendleton-influenced fades and the relaxed texture of surfer flow. Women are embracing low-maintenance color that looks expensive while requiring minimal upkeep. And everyone's asking the same question: how do I look put-together without spending hours on my hair?</p>
+    <p>This guide breaks down what's actually working in Oceanside right now—not what magazines say should work, but what locals are wearing, what the best stylists are creating, and what survives real Oceanside conditions.</p>
+
+    <figure>
+        <img src="/images/blog/trends-2025/oceanside-lifestyle-hair-trends-2026.webp" alt="Modern Oceanside haircut styles-beachy and practical for coastal living">
+        <figcaption>Couple with modern, effortless styles standing on Oceanside Pier at sunset—capturing the laid-back yet polished aesthetic of North County beach life.</figcaption>
+    </figure>
+
+    <h2 id="mens-styles">Men's Styles: Between Military and Waves</h2>
+    <p>Let's be honest—Oceanside men's hair comes down to two distinct aesthetics that somehow coexist perfectly in this city.</p>
+
+    <h3>The Clean Fade: Still King for Good Reason</h3>
+    <p>Why it dominates: Camp Pendleton's influence on Oceanside culture means the skin fade isn't going anywhere. But it's evolved beyond basic military cuts into something sharper, more detailed, and frankly, more stylish.</p>
+    <p>What's trending in 2026:</p>
+    <ul>
+        <li>High skin fades with textured tops (not the old-school flat military look)</li>
+        <li>Temple fades that add edge without going full high-and-tight</li>
+        <li>Drop fades that follow the head's natural curve—flatters more face shapes</li>
+        <li>Surgical line work adding clean detail without looking overdone</li>
+    </ul>
+    <p>Why it works in Oceanside: Hot summers, high humidity from the marine layer, active lifestyle. Short sides mean less maintenance, less sweat accumulation, and you can go from gym to work to happy hour without looking disheveled. The texture on top gives you styling options—slick it back for meetings, mess it up for casual vibes.</p>
+    <p>Maintenance reality: You'll need touch-ups every 2-3 weeks to keep fades looking sharp. Budget accordingly if you're going this route—fades require commitment.</p>
+    <p>Pro tip: The difference between a good fade and a great fade is the blending. Don't cheap out here. A mediocre $20 fade that's choppy looks worse than slightly longer hair that grows out evenly.</p>
+
+    <h3>The Surfer Flow: Long Hair Done Right</h3>
+    <p>The evolution: This isn't the greasy, unkempt surfer stereotype. Modern surfer hair in Oceanside is textured, healthy-looking, and intentionally styled to appear effortless.</p>
+    <p>What's trending in 2026:</p>
+    <ul>
+        <li>The bro flow grown past ears with strategic layering</li>
+        <li>Textured crops around collar-length that move naturally</li>
+        <li>Curtain bangs making a comeback (yes, for men)</li>
+        <li>Natural wave enhancement rather than fighting your hair's texture</li>
+    </ul>
+    <p>Why it works here: Salt water actually helps this style. The minerals add texture and body. The humidity from morning marine layer gives natural wave without product. You're working with Oceanside weather, not against it.</p>
+    <p>The catch: Long hair requires actual care. You can't just wash and forget it. Conditioner isn't optional. Regular trims (every 6-8 weeks) keep it shaped rather than scraggly. And here's the hard truth—Oceanside's hard water will wreck your hair if you don't address it.</p>
+    <p>Hard water reality: That coated, dull feeling? That's mineral buildup from our water. Guys with longer hair need chelating shampoo monthly to remove calcium and magnesium deposits. Otherwise, your surfer flow looks limp and greasy despite being clean.</p>
+    <p>For detailed guidance on managing long hair in hard water areas, see our <a href="/blog/best-hard-water-hair-routine/" style="text-decoration: underline; font-weight: bold; color: var(--primary-color);">hair care routine for North County</a> that addresses local water quality.</p>
+
+    <h3>Beards: Precision Over Volume</h3>
+    <p>The 2026 shift: Massive, untamed beards are out. Shaped, maintained beards are in. Think clean lines, defined edges, and length that's intentional rather than neglected.</p>
+    <p>What's working:</p>
+    <ul>
+        <li>Medium length (1-2 inches) with sculpted cheek lines</li>
+        <li>Fade blends where beard meets skin fade (seamless transition)</li>
+        <li>Defined neck cleanup—no more natural necklines</li>
+        <li>Balm over oil (less greasy in humidity)</li>
+    </ul>
+    <p>Maintenance: Most guys hitting up Oceanside barbershops are getting beard trims with their haircuts ($20-30 when combined). It's worth it—DIY beard trimming usually ends badly.</p>
+    <p>Looking for the sharpest fade and beard work in town? Check out our ranked list of the <strong>Top 9 Barbers in Oceanside (Coming Soon)</strong> with detailed reviews and specialty breakdowns.</p>
+
+    <figure>
+        <img src="/images/blog/trends-2025/sculpted-beard-fade-blend-oceanside.webp" alt="Men's haircut styles Oceanside - fade versus long textured hair">
+        <figcaption>Split comparison showing sharp skin fade with textured top (left) and textured surfer flow hair (right).</figcaption>
+    </figure>
+
+    <h2 id="womens-styles">Women's Styles: Sun, Salt, and Color</h2>
+    <p>Oceanside women figured out something crucial: beach life and high-maintenance hair don't mix. The styles dominating in 2026 reflect this wisdom—they look intentional and polished while requiring minimal daily effort.</p>
+
+    <h3>Lived-In Color & Balayage: The Low-Maintenance Obsession</h3>
+    <p>Why balayage owns Oceanside: Dark roots with sun-kissed ends isn't just a trend here—it's survival strategy. When you're not visiting the salon every 6 weeks for root touch-ups, you're spending less money and less time in the chair. It also perfectly mimics how Oceanside sun naturally lightens hair.</p>
+    <p>What's trending in 2026:</p>
+    <ul>
+        <li>Rooted balayage with 2-3 inches of natural color at roots</li>
+        <li>Warm tones (honey, caramel, bronze) over cool ash</li>
+        <li>Babylights around the face for brightening without full highlights</li>
+        <li>Shadow roots intentionally blended darker to avoid harsh lines</li>
+    </ul>
+    <p>The practical genius: Your hair looks better at 8 weeks than traditional highlights do at 4 weeks. Roots are intentional, not regrowth. You can stretch salon visits to 12-16 weeks without looking unkempt.</p>
+    <p>Color and hard water: Here's what your stylist might not tell you—Oceanside's hard water fades color faster and causes brassy tones, especially in blonde shades. Copper and iron in water oxidize on hair, creating orange tints. Using chelating shampoo weekly removes these metals and extends your color by weeks.</p>
+
+    <h3>The Shag & Layers: Movement Is Everything</h3>
+    <p>Why layers work here: Humidity and ocean air give hair natural texture and volume. Fighting it with flat, blunt cuts just creates frizz. Layers embrace the movement instead of resisting it.</p>
+    <p>What's trending in 2026:</p>
+    <ul>
+        <li>Modern shag cuts with face-framing layers (not the 70s version)</li>
+        <li>Long layers that create shape without sacrificing length</li>
+        <li>Curtain bangs that work with wave rather than requiring straightening</li>
+        <li>Textured ends instead of blunt lines (grows out better, looks intentional)</li>
+    </ul>
+    <p>Length sweet spots:</p>
+    <ul>
+        <li>Collarbone to shoulder: Most versatile. Up or down. Dries relatively fast.</li>
+        <li>Mid-back: Looks beachy and California, but requires more conditioning care</li>
+        <li>Bob length: Surprisingly popular in Oceanside—low maintenance, always looks polished</li>
+    </ul>
+    <p>Styling reality: Most Oceanside women are air-drying or using minimal heat. Layers make this work by preventing that flat-against-the-head look while allowing natural texture to show.</p>
+
+    <h3>Beach Waves: Effortless by Design</h3>
+    <p>The truth about "effortless" hair: It's not actually effortless. It's strategically designed to look effortless while being reproducible daily in under 10 minutes.</p>
+    <p>What actually creates the look:</p>
+    <ul>
+        <li>Sea salt spray on damp hair (numerous local beach formulas available)</li>
+        <li>Scrunching while air-drying rather than brushing smooth</li>
+        <li>Texture in the cut doing most of the work—the right layers create natural wave</li>
+        <li>Minimal product once dry (maybe light oil on ends if needed)</li>
+    </ul>
+    <p>The Oceanside advantage: Walking out of a salon into 70-degree weather with damp hair works here. The humidity helps set natural wave as it dries. This exact routine fails in dry climates.</p>
+    <p>When waves don't work: Fine, straight hair that has zero natural texture. Some hair simply won't hold wave without heat tools, and that defeats the low-maintenance purpose. Be realistic with your stylist about your hair's natural behavior.</p>
+    <p>Need a balayage expert who understands how to work with hard water challenges? Don't risk it. See our curated list of the <strong>10 Best Hair Salons in Oceanside (Coming Soon)</strong> with specialty breakdowns.</p>
+
+    <figure>
+        <img src="/images/blog/trends-2025/blonde-balayage-hair-coloring-oceanside.webp" alt="Balayage hair Oceanside CA - low maintenance beach waves">
+        <figcaption>Woman with beachy balayage waves walking through South Oceanside—showcasing the lived-in color and effortless texture that defines Oceanside style.</figcaption>
+    </figure>
+
+    <h2 id="the-dilemma">The Dilemma: Barber or Salon?</h2>
+    <p>This confuses people more than it should, and the answer isn't about gender—it's about what you're asking for.</p>
+
+    <h3>When Men Should Choose a Salon</h3>
+    <p>You need a salon if:</p>
+    <ul>
+        <li>Your hair is past your ears and needs scissor cutting (most barbers focus on clippers)</li>
+        <li>You want color services (most traditional barbershops don't offer color)</li>
+        <li>You need styling advice for growing out or transitioning styles</li>
+        <li>Your hair texture requires specialized cutting (very curly, very fine, unusual growth patterns)</li>
+    </ul>
+    <p>Reality check: Some Oceanside salons charge the same for men's cuts as women's, while others have separate pricing. Call ahead about rates—it varies.</p>
+
+    <h3>When Women Should Choose a Barber</h3>
+    <p>You need a barber if:</p>
+    <ul>
+        <li>You want an undercut, fade, or shaved sides (barbers excel at this)</li>
+        <li>You prefer short, precision cuts under 3 inches</li>
+        <li>You want buzz cuts, crew cuts, or very short pixies</li>
+        <li>You need artistic line work or designs shaved into hair</li>
+    </ul>
+    <p>The blurred lines: Many modern Oceanside barbershops welcome women for short cuts, and many salons have stylists who excel at fades. It's less about the establishment type and more about the individual stylist's skills.</p>
+    <p>Growing your hair out? You might need a stylist instead of a barber to navigate the awkward stages. Read our guide on <strong>men's grooming services (Coming Soon)</strong> to understand the differences in approach and when to make the switch.</p>
+
+    <h2 id="the-price-talk">The Price Talk: Why Women Pay More (And What You're Actually Paying For)</h2>
+    <p>Let's address this directly because it frustrates everyone: women's cuts typically cost 50-100% more than men's cuts, even for similar lengths and complexity.</p>
+
+    <h3>The Actual Reasons</h3>
+    <p>Time matters: Men's cuts at barbershops average 20-40 minutes. Women's cuts at salons average 45-75 minutes. More time = higher labor cost.</p>
+    <p>Blowdrying adds cost: Most men's cuts don't include blow-drying and styling. Most women's cuts do. That's an additional 15-30 minutes of service.</p>
+    <p>Products and tools: Women's services typically include higher-cost products (specialty shampoos, treatments, styling products) applied during service.</p>
+    <p>Consultation and customization: Women's cuts usually include extensive consultation about face shape, lifestyle, and styling preferences. Men's barbershop cuts often work from a few standard styles.</p>
+
+    <h3>2026 Oceanside Averages</h3>
+    <p>Men:</p>
+    <ul>
+        <li>Barbershop fade: $35-50</li>
+        <li>Salon scissor cut: $45-65</li>
+        <li>Beard trim (with cut): +$20-25</li>
+    </ul>
+    <p>Women:</p>
+    <ul>
+        <li>Basic cut: $45-85</li>
+        <li>Cut with balayage: $200-350+</li>
+        <li>Cut with full color: $150-250</li>
+    </ul>
+    <p>The value question: Is the price difference justified? Sometimes yes (genuinely longer service time, more product use). Sometimes no (identical service with gendered pricing). Ask about service details when booking to understand what you're paying for.</p>
+    <p>Planning your budget for regular maintenance? We've broken down the full cost analysis. View the complete <a href="/blog/haircut-prices-oceanside/" style="text-decoration: underline; font-weight: bold; color: var(--primary-color);">2026 Haircut Price Guide for Oceanside</a> with service-by-service breakdowns and salon comparisons.</p>
+
+    <h2 id="local-factors">Local Factors That Matter for Your Hair</h2>
+    <p>These Oceanside-specific conditions affect how your style holds up—ignore them at your own risk.</p>
+
+    <h3>The Marine Layer Effect</h3>
+    <p>What it is: That cool, damp fog that rolls in most mornings and stays until 10-11 AM.</p>
+    <p>How it affects your hair:</p>
+    <ul>
+        <li>Adds humidity and moisture to the air</li>
+        <li>Makes flat-ironed hair instantly wave or frizz</li>
+        <li>Actually helps natural wave look better</li>
+        <li>Extends air-dry time significantly</li>
+    </ul>
+    <p>Style strategy: If you straighten your hair, you're fighting a losing battle before noon. Embrace texture instead. If you have curly hair, the marine layer is your friend—it adds moisture and definition.</p>
+
+    <h3>Hard Water Reality</h3>
+    <p>The problem: Oceanside has moderately hard to hard water depending on your specific area. Calcium and magnesium deposits accumulate on hair, creating coating, dullness, and color fading.</p>
+    <p>Who it affects most:</p>
+    <ul>
+        <li>Anyone with color-treated hair (minerals interfere with dye)</li>
+        <li>People with long hair (more surface area for buildup)</li>
+        <li>Fine hair types (coating is more visible and weighs hair down)</li>
+    </ul>
+    <p>The fix: Chelating shampoo once weekly for long or colored hair, bi-weekly for short hair. This removes mineral deposits regular shampoo cannot touch. Non-negotiable if you want your style to look as intended.</p>
+
+    <h3>Sun Exposure</h3>
+    <p>The damage: Oceanside averages 266 sunny days per year. UV exposure fades color, dries hair, and weakens protein structure over time.</p>
+    <p>Protection strategies:</p>
+    <ul>
+        <li>UV-protective hair products (sprays, leave-in conditioners)</li>
+        <li>Hats when spending extended time outside (yes, really)</li>
+        <li>Color that's intentionally sun-kissed rather than fighting fade</li>
+    </ul>
+
+    <h3>Salt Water Considerations</h3>
+    <p>If you surf or swim regularly:</p>
+    <ul>
+        <li>Rinse hair immediately after ocean exposure (salt draws moisture out)</li>
+        <li>Deep condition weekly minimum (salt is incredibly drying)</li>
+        <li>Consider shorter styles (less damage accumulation on ends)</li>
+        <li>Accept that your color will fade faster—budget accordingly</li>
+    </ul>
+
+    <h2 id="quick-maintenance-guide">Quick Maintenance Guide: Keeping Your Style Fresh</h2>
+
+    <h3>For Fades and Short Cuts</h3>
+    <ul>
+        <li>Touch-ups: Every 2-3 weeks for clean look</li>
+        <li>Home maintenance: Clean up neckline between cuts (or visit for quick $10-15 cleanup)</li>
+        <li>Products: Light pomade or clay for texture, nothing heavy</li>
+    </ul>
+
+    <h3>For Longer Men's Hair</h3>
+    <ul>
+        <li>Trims: Every 6-8 weeks to maintain shape</li>
+        <li>Daily care: Conditioner every wash, shampoo 3-4x weekly maximum</li>
+        <li>Styling: Sea salt spray for texture, light oil for shine</li>
+        <li>Hard water treatment: Chelating shampoo monthly</li>
+    </ul>
+
+    <h3>For Balayage and Color</h3>
+    <ul>
+        <li>Salon visits: Every 12-16 weeks for root touch-up or gloss</li>
+        <li>At-home care: Purple shampoo weekly to counteract brass (if blonde), chelating shampoo weekly to remove minerals</li>
+        <li>Heat protection: Always if using tools—sun damage is already significant</li>
+        <li>Trims: Every 8-10 weeks to keep ends healthy</li>
+    </ul>
+
+    <h3>For Layered Cuts and Texture</h3>
+    <ul>
+        <li>Trims: Every 8-10 weeks to maintain shape</li>
+        <li>Styling: Minimal product, air-dry with scrunching</li>
+        <li>Refresh: Dry shampoo at roots, water spray to reactivate wave</li>
+        <li>Deep condition: Weekly for mid-back length or longer</li>
+    </ul>
+
+<hr style="margin: 3rem 0; border: 0; border-top: 1px solid #eee;">
+
+    <h2 id="faq">Frequently Asked Questions</h2>
+    <div class="faq-section">
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                What are the popular men's haircuts in Oceanside for 2026? <span>+</span>
+            </button>
+            <div class="faq-answer">
+                For 2026, men in Oceanside are favoring textured skin fades and the 'surfer flow' look, which works well with the local humidity and beach lifestyle.
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Why is balayage popular in Oceanside? <span>+</span>
+            </button>
+            <div class="faq-answer">
+                Balayage offers a low-maintenance, sun-kissed look that mimics the natural effects of the sun and grows out gracefully, making it perfect for the relaxed Oceanside vibe.
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                How does Oceanside's marine layer affect hairstyles? <span>+</span>
+            </button>
+            <div class="faq-answer">
+                The morning marine layer adds humidity, which can cause frizz for straight styles but enhances natural waves. Textured cuts and layered styles are recommended to work with this moisture rather than against it.
+            </div>
+        </div>
+    </div>
+
+    <h2 id="conclusion">Conclusion: Your Hair, Oceanside Style</h2>
+    <p>Whether you're looking for the precision of a sharp fade or the lived-in luxury of beachy balayage, Oceanside has the talent to deliver. The key is choosing styles that work with your lifestyle, not against it.</p>
+    <p>The Oceanside hair philosophy: Look intentional without high maintenance. Embrace texture rather than fighting humidity. Invest in color that grows out gracefully. Keep cuts that work whether you're at the beach or a business meeting.</p>
+    <p>The local advantage: Our stylists and barbers understand conditions specific to North County—hard water, marine layer humidity, sun exposure, and active lifestyles. They're creating styles that look good in person, not just in filtered photos.</p>
+    <p>Ready for a change? Don't overthink it. Book a consultation with a stylist or barber whose work you've seen and whose reviews mention understanding your hair type. Bring photos of what you like. Be honest about your daily routine. Trust the process.</p>
+    <p>The best haircut is one you'll actually maintain. Everything else is just visiting someone else's style for a few weeks before growing it out.</p>
+
+    <div class="related-articles">
+        <h3>Related Local Guides</h3>
+        <ul>
+            <li><strong>Top 9 Barbers in Oceanside - Ranked by specialty and style (Coming Soon)</strong></li>
+            <li><strong>10 Best Hair Salons in Oceanside - From budget to luxury (Coming Soon)</strong></li>
+            <li><a href="/blog/haircut-prices-oceanside/">2026 Haircut Price Guide - Complete cost breakdown</a></li>
+            <li><strong>Men's Grooming Services - Understanding your options (Coming Soon)</strong></li>
+            <li><a href="/blog/best-hard-water-hair-routine/">Hair Care for North County - Managing hard water and local conditions</a></li>
+        </ul>
+    </div>
+
+</main>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-col">
+            <h3>Oceanside Hair Salon</h3>
+            <p>Your local guide to haircuts, grooming, and hair care in Oceanside — built to help you make smarter style decisions in a coastal climate.</p>
+
+            <div class="social-icons">
+                <a href="https://www.facebook.com/profile.php?id=61583963957390" target="_blank" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/oceanside_hair_salon" target="_blank" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.36-.2 6.78-2.618 6.98-6.98.058-1.28.072-1.689.072-4.948 0-3.259-.014-3.667-.072-4.947-.2-4.361-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <a href="https://x.com/OceansideHair" target="_blank" aria-label="X Twitter">
+        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+
+    <a href="https://www.pinterest.com/OceansideHairSalon/" target="_blank" aria-label="Pinterest">
+        <svg viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.399.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.951-7.252 4.173 0 7.41 2.967 7.41 6.93 0 4.136-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.367 18.62 0 12.017 0z"/></svg>
+    </a>
+            </div>
+        </div>
+
+<div class="footer-col">
+    <h4>Quick Links</h4>
+    <ul class="footer-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/services/">Hair Guides</a></li>
+        <li><a href="/prices/">Local Price Insights</a></li>
+        <li><a href="/testimonials/">Community Feedback</a></li>
+        <li><a href="/blog/">Articles & Guides</a></li>
+        <li><a href="/contact/">Contact & Info</a></li>
+    </ul>
+</div>
+
+
+        <div class="footer-col">
+            <h4>Find Us</h4>
+            <div class="contact-row"><span>Address</span><span>Oceanside, CA 92054</span></div>
+           
+            <div class="contact-row"><span>Email</span><a href="mailto:hello@oceansidehairsalon.com">hello@oceansidehairsalon.com</a></div>
+            <div class="contact-row">
+        <span>Purpose</span>
+        <div>
+            <div>Independent hair & grooming guides</div>
+            <div>Local research & style insights</div>
+            <div style="color:var(--accent-color);">No appointments or services offered</div>
+        </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 Oceanside Hair Salon. All Rights Reserved. 
+        | <a href="/privacy-policy/">Privacy Policy</a>
+    </div>
+</footer>
+<script>
+    function toggleFaq(element) {
+        const item = element.parentElement;
+        item.classList.toggle('active');
+        // Optional: Close others
+        // const allItems = document.querySelectorAll('.faq-item');
+        // allItems.forEach(i => { if(i !== item) i.classList.remove('active'); });
+    }
+</script>
+</body>
+</html>

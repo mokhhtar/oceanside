@@ -1,0 +1,127 @@
+---
+# _layouts/post.html
+# ───────────────────
+# Master layout for affiliate blog posts.
+# All structural chrome is delegated to _includes/.
+# The post body (markdown or HTML) is injected via {{ content }}.
+#
+# Front-matter variables consumed by this layout (beyond what head.html needs):
+# hero_subtitle – one-liner below the H1 in the hero
+# hero_image – path to the hero background image (same as page.image if shared)
+# jump_to – anchor id for the "Jump to Products" CTA button (default: price-timestamp)
+# updated_at – human-readable "Last Updated" string shown above product cards
+# e.g. "May 03, 2026 at 09:07 AM PT"
+---
+<!DOCTYPE html>
+<html lang="en">
+
+{% include head.html %}
+
+<body>
+
+    <!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
+    {% include navbar.html %}
+
+    <!-- ═══════════════════════ HERO / ARTICLE HEADER ═══════════════════════ -->
+    {%- assign hero_bg = page.hero_image | default: page.image | default: site.image -%}
+    <header class="article-header"
+        style="background-image: linear-gradient(rgba(0,40,50,.72), rgba(0,95,115,.72)), url('{{ hero_bg | relative_url }}');"
+        role="banner">
+
+        <!-- Breadcrumb (visible, lightweight — distinct from JSON-LD breadcrumb) -->
+        {% if page.breadcrumbs %}
+        <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+            <ol class="breadcrumb-list">
+                {% for crumb in page.breadcrumbs %}
+                <li>
+                    {% if forloop.last %}
+                    <span aria-current="page">{{ crumb.name }}</span>
+                    {% else %}
+                    <a href="{{ crumb.url | relative_url }}">{{ crumb.name }}</a>
+                    <span aria-hidden="true">&rsaquo;</span>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ol>
+        </nav>
+        {% endif %}
+
+        <h1>{{ page.title }}</h1>
+
+        {% if page.hero_subtitle %}
+        <p>{{ page.hero_subtitle }}</p>
+        {% endif %}
+
+        {%- assign jump_anchor = page.jump_to | default: 'price-timestamp' -%}
+        <a href="#{{ jump_anchor }}" class="btn-contact">Jump to Products</a>
+
+    </header>
+
+    <!-- ═══════════════════════ MAIN CONTENT ═══════════════════════ -->
+    <main class="content-container" id="main-content">
+
+        <!--
+      ── AFFILIATE DISCLOSURE (shown above product cards) ──
+      The updated_at front-matter value is a human-readable string set per-post.
+      Falls back to the page date formatted automatically.
+    -->
+        {% if page.products %}
+        <p style="font-size:.9rem;color:#555;text-align:center;margin-bottom:2rem;">
+            As an Amazon Associate, we earn from qualifying purchases.
+        </p>
+        <div id="price-timestamp"
+            style="background:#f8f9fa;padding:10px 15px;border-radius:6px;font-size:.85rem;color:#555;margin-bottom:2rem;border-left:3px solid var(--amazon-orange);">
+            ⏱️ <strong>Last Updated:</strong>
+            {{ page.updated_at | default: page.date | date: "%B %d, %Y" }}
+            <br>
+            <small><em>Product prices and availability are accurate as of the date/time indicated and are subject to
+                    change.
+                    Any price and availability information displayed on Amazon.com at the time of purchase will apply to
+                    the
+                    purchase of these products.</em></small>
+        </div>
+        {% endif %}
+
+        <!-- ── THE POST BODY (all markdown/HTML from the post file) ── -->
+        {{ content }}
+
+    </main>
+
+    <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+    {% include footer.html %}
+
+    <!-- ═══════════════════════ SCRIPTS ═══════════════════════ -->
+    <script>
+        /* FAQ accordion — relies on .faq-item / .faq-question / .faq-answer classes
+           in the post body. Works with hand-authored HTML in markdown posts too. */
+        function toggleFaq(element) {
+            var item = element.parentElement;
+            document.querySelectorAll('.faq-item').forEach(function (el) {
+                if (el !== item) el.classList.remove('active');
+            });
+            item.classList.toggle('active');
+        }
+
+        /* Accessible dropdown: toggle aria-expanded on keyboard/touch */
+        document.querySelectorAll('.dropbtn').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var expanded = this.getAttribute('aria-expanded') === 'true';
+                document.querySelectorAll('.dropbtn').forEach(function (b) {
+                    b.setAttribute('aria-expanded', 'false');
+                });
+                this.setAttribute('aria-expanded', String(!expanded));
+            });
+        });
+        /* Close dropdowns when clicking outside */
+        document.addEventListener('click', function (e) {
+            if (!e.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropbtn').forEach(function (b) {
+                    b.setAttribute('aria-expanded', 'false');
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>
