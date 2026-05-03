@@ -28,23 +28,7 @@
         style="background-image: linear-gradient(rgba(0,40,50,.72), rgba(0,95,115,.72)), url('{{ hero_bg | relative_url }}');"
         role="banner">
 
-        <!-- Breadcrumb (visible, lightweight — distinct from JSON-LD breadcrumb) -->
-        {% if page.breadcrumbs %}
-        <nav class="breadcrumb-nav" aria-label="Breadcrumb">
-            <ol class="breadcrumb-list">
-                {% for crumb in page.breadcrumbs %}
-                <li>
-                    {% if forloop.last %}
-                    <span aria-current="page">{{ crumb.name }}</span>
-                    {% else %}
-                    <a href="{{ crumb.url | relative_url }}">{{ crumb.name }}</a>
-                    <span aria-hidden="true">&rsaquo;</span>
-                    {% endif %}
-                </li>
-                {% endfor %}
-            </ol>
-        </nav>
-        {% endif %}
+
 
         <h1>{{ page.title }}</h1>
 
@@ -59,6 +43,38 @@
 
     <!-- ═══════════════════════ MAIN CONTENT ═══════════════════════ -->
     <main class="content-container" id="main-content">
+
+        <!-- Breadcrumbs & Date Header -->
+        <div class="post-meta-header"
+            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid #eee; flex-wrap: wrap; gap: 1rem; font-family: var(--font-body);">
+
+            {% if page.breadcrumbs %}
+            <nav aria-label="Breadcrumb">
+                <ol
+                    style="list-style: none; padding: 0; margin: 0; display: flex; gap: 0.5rem; flex-wrap: wrap; font-size: 0.9rem; color: #555;">
+                    {% for crumb in page.breadcrumbs %}
+                    <li style="margin: 0;">
+                        {% if forloop.last %}
+                        <span aria-current="page" style="color: var(--primary-color); font-weight: bold;">{{ crumb.name
+                            }}</span>
+                        {% else %}
+                        <a href="{{ crumb.url | relative_url }}"
+                            style="color: #666; text-decoration: none; transition: color 0.2s;"
+                            onmouseover="this.style.color='var(--secondary-color)'"
+                            onmouseout="this.style.color='#666'">{{ crumb.name }}</a>
+                        <span aria-hidden="true" style="margin-left: 0.5rem; color: #aaa;">&rsaquo;</span>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ol>
+            </nav>
+            {% endif %}
+
+            <div style="font-size: 0.85rem; color: #777;">
+                <span style="color: var(--amazon-orange);"></span> <strong>Last Updated:</strong> {{ page.updated_at |
+                default: page.date | date: "%B %d, %Y" }}
+            </div>
+        </div>
 
         <!--
       ── AFFILIATE DISCLOSURE (shown above product cards) ──

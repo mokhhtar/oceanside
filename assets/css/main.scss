@@ -1,12 +1,19 @@
---- # assets/css/main.scss # ───────────────────── # The triple-dash front matter tells Jekyll to process this file through Sass. # Output is written to assets/css/main.css (referenced in _includes/head.html). # # Partials live in _sass/ — import them below. # Currently the full ruleset is inline;
-split into partials as the project grows: # @import "variables";
-# @import "base";
-# @import "navbar";
-# @import "hero";
-# @import "product-card";
-# @import "faq";
-# @import "footer";
 ---
+---
+/* assets/css/main.scss */
+/* ───────────────────── */
+/* The triple-dash front matter tells Jekyll to process this file through Sass. */
+/* Output is written to assets/css/main.css (referenced in _includes/head.html). */
+/*  */
+/* Partials live in _sass/ — import them below. */
+/* Currently the full ruleset is inline; split into partials as the project grows: */
+/* @import "variables"; */
+/* @import "base"; */
+/* @import "navbar"; */
+/* @import "hero"; */
+/* @import "product-card"; */
+/* @import "faq"; */
+/* @import "footer"; */
 
 /* ────────────────────────────────────────────────
    DESIGN TOKENS  (CSS custom properties)
