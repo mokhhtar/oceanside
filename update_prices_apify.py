@@ -189,20 +189,39 @@ def update_schema(html_content: str, asin: str, new_price: str) -> str:
 def _walk_schema_update(obj, asin: str, numeric_str: str):
     modified = False
     if isinstance(obj, dict):
+        
+        # 🟢 1. إعادة بناء كائن العرض إذا تم حذفه مسبقاً
+        if obj.get("@type") == "Product" and obj.get("sku") == asin:
+            if "offers" not in obj:
+                new_offer = {
+                    "@type": "Offer",
+                    "sku": asin,
+                    "price": numeric_str,
+                    "priceCurrency": "USD",
+                    "availability": "https://schema.org/InStock"
+                }
+                
+                # استرجاع رابط الأفيليت وإعادته للعرض
+                if "url" in obj:
+                    new_offer["url"] = obj["url"]
+                    
+                obj["offers"] = new_offer
+                print(f"      ✨ Schema [{asin}]: Rebuilt 'offers' block with price and URL")
+                modified = True
+                 
+        # 2. التحديث العادي إذا كان كائن العرض موجوداً أصلاً
         if obj.get("@type") in ("Offer", "AggregateOffer") and obj.get("sku") == asin:
-            # 1. تحديث أو إضافة السعر (حتى لو تم حذفه مسبقاً بواسطة خطة الطوارئ)
             if str(obj.get("price")) != numeric_str:
                 print(f"      📝 Schema [{asin}]: Price updated to {numeric_str}")
                 obj["price"] = numeric_str
                 modified = True
             
-            # 2. إعادة حالة التوفر إلى "متاح" إذا كانت "نفد من المخزون"
             if obj.get("availability") == "https://schema.org/OutOfStock":
                 obj["availability"] = "https://schema.org/InStock"
                 print(f"      🔄 Schema [{asin}]: Marked back as InStock")
                 modified = True
                 
-        for key, val in obj.items():
+        for key, val in list(obj.items()):
             sub_modified, obj[key] = _walk_schema_update(val, asin, numeric_str)
             if sub_modified: modified = True
             
@@ -228,26 +247,6 @@ def update_offer_fallback_in_schema(html_content: str, asin: str) -> str:
         return m.group(0)
     return _SCRIPT_RE.sub(script_replacer, html_content)
 
-def _walk_schema_fallback(obj, asin: str):
-    modified = False
-    if isinstance(obj, dict):
-        if obj.get("@type") == "Product" and "offers" in obj:
-            offer = obj["offers"]
-            if isinstance(offer, dict) and offer.get("sku") == asin:
-                # الإبقاء على الـ Offer ولكن يتم تغيير التوفر وحذف السعر القديم
-                offer["availability"] = "https://schema.org/OutOfStock"
-                if "price" in offer:
-                    del offer["price"]
-                print(f"      ⚠️ Schema: Marked 'offers' as OutOfStock without price for {asin}")
-                modified = True
-        for key, val in list(obj.items()):
-            sub_modified, obj[key] = _walk_schema_fallback(val, asin)
-            if sub_modified: modified = True
-    elif isinstance(obj, list):
-        for idx, item in enumerate(obj):
-            sub_modified, obj[idx] = _walk_schema_fallback(item, asin)
-            if sub_modified: modified = True
-    return modified, obj
 
 def _walk_schema_fallback(obj, asin: str):
     modified = False
@@ -255,19 +254,26 @@ def _walk_schema_fallback(obj, asin: str):
         if obj.get("@type") == "Product" and "offers" in obj:
             offer = obj["offers"]
             if isinstance(offer, dict) and offer.get("sku") == asin:
-                # الإبقاء على الـ Offer ولكن يتم تغيير التوفر وحذف السعر القديم
-                offer["availability"] = "https://schema.org/OutOfStock"
-                if "price" in offer:
-                    del offer["price"]
-                print(f"      ⚠️ Schema: Marked 'offers' as OutOfStock without price for {asin}")
+                
+                # 🟢 خطوة الإنقاذ: نحفظ الـ ASIN والرابط داخل المنتج نفسه
+                obj["sku"] = asin 
+                if "url" in offer:
+                    obj["url"] = offer["url"]
+                
+                # الآن يمكننا حذف كائن العرض بأمان تام
+                del obj["offers"]
+                print(f"      🗑️ Schema: Removed 'offers' but saved URL for {asin}")
                 modified = True
+                
         for key, val in list(obj.items()):
             sub_modified, obj[key] = _walk_schema_fallback(val, asin)
             if sub_modified: modified = True
+            
     elif isinstance(obj, list):
         for idx, item in enumerate(obj):
             sub_modified, obj[idx] = _walk_schema_fallback(item, asin)
             if sub_modified: modified = True
+            
     return modified, obj
 
 
