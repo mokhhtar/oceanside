@@ -83,6 +83,12 @@ PAGES = {
         "B0D4B2T8SR",
         "B07X342321",
     ],
+    "blog/shaving/best-shaving-cream-hard-water/index.html": [
+        "B0084GVSWG",
+        "B07PGWPMD8",
+        "B002A5OLHQ",
+        "B000GHYXG4"
+    ],
 }
 
 # ════════════════════════════════════════════════════════════════
