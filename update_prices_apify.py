@@ -204,7 +204,25 @@ def _walk_schema_update(obj, asin: str, numeric_str: str):
                     "sku": asin,
                     "price": numeric_str,
                     "priceCurrency": "USD",
-                    "availability": "https://schema.org/InStock"
+                    "availability": "https://schema.org/InStock",
+                    "shippingDetails": {
+                        "@type": "OfferShippingDetails",
+                        "shippingRate": {"@type": "MonetaryAmount", "value": "0", "currency": "USD"},
+                        "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "US"},
+                        "deliveryTime": {
+                            "@type": "ShippingDeliveryTime",
+                            "handlingTime": {"@type": "QuantitativeValue", "minValue": 0, "maxValue": 1, "unitCode": "d"},
+                            "transitTime": {"@type": "QuantitativeValue", "minValue": 1, "maxValue": 5, "unitCode": "d"}
+                        }
+                    },
+                    "hasMerchantReturnPolicy": {
+                        "@type": "MerchantReturnPolicy",
+                        "applicableCountry": "US",
+                        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                        "merchantReturnDays": 30,
+                        "returnMethod": "https://schema.org/ReturnByMail",
+                        "returnFees": "https://schema.org/FreeReturn"
+                    }
                 }
                 
                 # استرجاع رابط الأفيليت وإعادته للعرض
@@ -212,7 +230,7 @@ def _walk_schema_update(obj, asin: str, numeric_str: str):
                     new_offer["url"] = obj["url"]
                     
                 obj["offers"] = new_offer
-                print(f"      ✨ Schema [{asin}]: Rebuilt 'offers' block with price and URL")
+                print(f"      ✨ Schema [{asin}]: Rebuilt 'offers' block with price, URL, and shipping/return policies")
                 modified = True
                  
         # 2. التحديث العادي إذا كان كائن العرض موجوداً أصلاً
@@ -225,6 +243,33 @@ def _walk_schema_update(obj, asin: str, numeric_str: str):
             if obj.get("availability") == "https://schema.org/OutOfStock":
                 obj["availability"] = "https://schema.org/InStock"
                 print(f"      🔄 Schema [{asin}]: Marked back as InStock")
+                modified = True
+
+            # التأكد من وجود سياسات الشحن والإرجاع في العروض الحالية
+            if "shippingDetails" not in obj:
+                obj["shippingDetails"] = {
+                    "@type": "OfferShippingDetails",
+                    "shippingRate": {"@type": "MonetaryAmount", "value": "0", "currency": "USD"},
+                    "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "US"},
+                    "deliveryTime": {
+                        "@type": "ShippingDeliveryTime",
+                        "handlingTime": {"@type": "QuantitativeValue", "minValue": 0, "maxValue": 1, "unitCode": "d"},
+                        "transitTime": {"@type": "QuantitativeValue", "minValue": 1, "maxValue": 5, "unitCode": "d"}
+                    }
+                }
+                print(f"      📦 Schema [{asin}]: Added missing shippingDetails")
+                modified = True
+                
+            if "hasMerchantReturnPolicy" not in obj:
+                obj["hasMerchantReturnPolicy"] = {
+                    "@type": "MerchantReturnPolicy",
+                    "applicableCountry": "US",
+                    "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                    "merchantReturnDays": 30,
+                    "returnMethod": "https://schema.org/ReturnByMail",
+                    "returnFees": "https://schema.org/FreeReturn"
+                }
+                print(f"      🔄 Schema [{asin}]: Added missing hasMerchantReturnPolicy")
                 modified = True
                 
         for key, val in list(obj.items()):
