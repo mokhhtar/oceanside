@@ -18,6 +18,7 @@
 
 import os
 import re
+import sys
 import json
 import time
 import argparse
@@ -25,6 +26,11 @@ import traceback
 from pathlib import Path
 import datetime
 from amazon_creatorsapi import AmazonCreatorsApi, Country
+
+# Force standard output to UTF-8 to prevent UnicodeEncodeError on Windows terminals
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+
 
 # ════════════════════════════════════════════════════════════════
 #  ⚙️  إعدادات عامة
@@ -46,7 +52,7 @@ SITE_ROOT = Path(".")
 
 PAGES: dict[str, list[str]] = {
     "blog/best-electric-shavers-sensitive-skin-2025/index.html": [
-        "B07PW4MTHV",
+        "B0FGQQ9X2R",
         "B0F1P5JXCD",
         "B0D4B2T8SR",
         "B0CQ3TMHPM",
@@ -54,6 +60,7 @@ PAGES: dict[str, list[str]] = {
         "B01539X5TA",
     ],
     "blog/best-anti-frizz-products-oceanside/index.html": [
+        "B07PW4MTHV",
         "B0DQTXH4S8",
         "B073CWSQ51",
         "B0B7QX7PPF",
@@ -90,6 +97,12 @@ PAGES: dict[str, list[str]] = {
         "B0F1PKHWNX",
         "B0D4B2T8SR",
         "B07X342321",
+    ],
+    "blog/shaving/best-shaving-cream-hard-water/index.html": [
+        "B0084GVSWG",
+        "B07PGWPMD8",
+        "B002A5OLHQ",
+        "B000GHYXG4"
     ],
 }
 

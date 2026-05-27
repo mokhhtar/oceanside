@@ -14,6 +14,7 @@
 
 import os
 import re
+import sys
 import json
 import time
 import datetime
@@ -21,6 +22,11 @@ import argparse
 import traceback
 from pathlib import Path
 from apify_client import ApifyClient
+
+# Force standard output to UTF-8 to prevent UnicodeEncodeError on Windows terminals
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+
 
 # ════════════════════════════════════════════════════════════════
 #  ⚙️  إعدادات عامة
@@ -38,7 +44,7 @@ SITE_ROOT = Path(".")
 
 PAGES = {
     "blog/best-electric-shavers-sensitive-skin-2025/index.html": [
-        "B07PW4MTHV",
+        "B0FGQQ9X2R",
         "B0F1P5JXCD",
         "B0D4B2T8SR",
         "B0CQ3TMHPM",
@@ -46,6 +52,7 @@ PAGES = {
         "B01539X5TA",
     ],
     "blog/best-anti-frizz-products-oceanside/index.html": [
+        "B07PW4MTHV",
         "B0DQTXH4S8",
         "B073CWSQ51",
         "B0B7QX7PPF",
