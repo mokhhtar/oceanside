@@ -2,4 +2,4 @@ User-agent: *
 Disallow:
 
 # Sitemap location
-Sitemap: https://www.oceansidehairsalon.com/sitemap.xml
+Sitemap: https://oceansidehairsalon.com/sitemap.xml

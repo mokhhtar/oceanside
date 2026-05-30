@@ -14,6 +14,7 @@
 
 import os
 import re
+import sys
 import json
 import time
 import datetime
@@ -21,6 +22,11 @@ import argparse
 import traceback
 from pathlib import Path
 from apify_client import ApifyClient
+
+# Force standard output to UTF-8 to prevent UnicodeEncodeError on Windows terminals
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+
 
 # ════════════════════════════════════════════════════════════════
 #  ⚙️  إعدادات عامة
@@ -38,7 +44,7 @@ SITE_ROOT = Path(".")
 
 PAGES = {
     "blog/best-electric-shavers-sensitive-skin-2025/index.html": [
-        "B07PW4MTHV",
+        "B0FGQQ9X2R",
         "B0F1P5JXCD",
         "B0D4B2T8SR",
         "B0CQ3TMHPM",
@@ -46,6 +52,7 @@ PAGES = {
         "B01539X5TA",
     ],
     "blog/best-anti-frizz-products-oceanside/index.html": [
+        "B07PW4MTHV",
         "B0DQTXH4S8",
         "B073CWSQ51",
         "B0B7QX7PPF",
@@ -82,6 +89,12 @@ PAGES = {
         "B0F1PKHWNX",
         "B0D4B2T8SR",
         "B07X342321",
+    ],
+    "blog/shaving/best-shaving-cream-hard-water/index.html": [
+        "B0084GVSWG",
+        "B07PGWPMD8",
+        "B002A5OLHQ",
+        "B000GHYXG4"
     ],
 }
 
@@ -198,7 +211,25 @@ def _walk_schema_update(obj, asin: str, numeric_str: str):
                     "sku": asin,
                     "price": numeric_str,
                     "priceCurrency": "USD",
-                    "availability": "https://schema.org/InStock"
+                    "availability": "https://schema.org/InStock",
+                    "shippingDetails": {
+                        "@type": "OfferShippingDetails",
+                        "shippingRate": {"@type": "MonetaryAmount", "value": "0", "currency": "USD"},
+                        "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "US"},
+                        "deliveryTime": {
+                            "@type": "ShippingDeliveryTime",
+                            "handlingTime": {"@type": "QuantitativeValue", "minValue": 0, "maxValue": 1, "unitCode": "d"},
+                            "transitTime": {"@type": "QuantitativeValue", "minValue": 1, "maxValue": 5, "unitCode": "d"}
+                        }
+                    },
+                    "hasMerchantReturnPolicy": {
+                        "@type": "MerchantReturnPolicy",
+                        "applicableCountry": "US",
+                        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                        "merchantReturnDays": 30,
+                        "returnMethod": "https://schema.org/ReturnByMail",
+                        "returnFees": "https://schema.org/FreeReturn"
+                    }
                 }
                 
                 # استرجاع رابط الأفيليت وإعادته للعرض
@@ -206,7 +237,7 @@ def _walk_schema_update(obj, asin: str, numeric_str: str):
                     new_offer["url"] = obj["url"]
                     
                 obj["offers"] = new_offer
-                print(f"      ✨ Schema [{asin}]: Rebuilt 'offers' block with price and URL")
+                print(f"      ✨ Schema [{asin}]: Rebuilt 'offers' block with price, URL, and shipping/return policies")
                 modified = True
                  
         # 2. التحديث العادي إذا كان كائن العرض موجوداً أصلاً
@@ -219,6 +250,33 @@ def _walk_schema_update(obj, asin: str, numeric_str: str):
             if obj.get("availability") == "https://schema.org/OutOfStock":
                 obj["availability"] = "https://schema.org/InStock"
                 print(f"      🔄 Schema [{asin}]: Marked back as InStock")
+                modified = True
+
+            # التأكد من وجود سياسات الشحن والإرجاع في العروض الحالية
+            if "shippingDetails" not in obj:
+                obj["shippingDetails"] = {
+                    "@type": "OfferShippingDetails",
+                    "shippingRate": {"@type": "MonetaryAmount", "value": "0", "currency": "USD"},
+                    "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "US"},
+                    "deliveryTime": {
+                        "@type": "ShippingDeliveryTime",
+                        "handlingTime": {"@type": "QuantitativeValue", "minValue": 0, "maxValue": 1, "unitCode": "d"},
+                        "transitTime": {"@type": "QuantitativeValue", "minValue": 1, "maxValue": 5, "unitCode": "d"}
+                    }
+                }
+                print(f"      📦 Schema [{asin}]: Added missing shippingDetails")
+                modified = True
+                
+            if "hasMerchantReturnPolicy" not in obj:
+                obj["hasMerchantReturnPolicy"] = {
+                    "@type": "MerchantReturnPolicy",
+                    "applicableCountry": "US",
+                    "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                    "merchantReturnDays": 30,
+                    "returnMethod": "https://schema.org/ReturnByMail",
+                    "returnFees": "https://schema.org/FreeReturn"
+                }
+                print(f"      🔄 Schema [{asin}]: Added missing hasMerchantReturnPolicy")
                 modified = True
                 
         for key, val in list(obj.items()):

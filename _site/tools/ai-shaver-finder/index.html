@@ -73,20 +73,55 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "AI Shaver Finder",
-      "url": "https://oceansidehairsalon.com/tools/ai-shaver-finder",
-      "description": "An AI-powered tool to recommend the best electric shaver based on hair type and skin needs.",
-      "applicationCategory": "LifestyleApplication",
-      "operatingSystem": "All",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Shaver Finder",
+  "url": "https://oceansidehairsalon.com/tools/ai-shaver-finder",
+  "description": "An AI-powered tool to recommend the best electric shaver based on hair type and skin needs.",
+  "applicationCategory": "LifestyleApplication",
+  "operatingSystem": "All",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "value": "0",
+        "currency": "USD"
+      },
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": "US"
+      },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 0,
+          "maxValue": 1,
+          "unitCode": "d"
+        },
+        "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 1,
+          "maxValue": 5,
+          "unitCode": "d"
+        }
       }
+    },
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": "US",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 30,
+      "returnMethod": "https://schema.org/ReturnByMail",
+      "returnFees": "https://schema.org/FreeReturn"
     }
+  }
+}
     </script>
     <script type="application/ld+json">
     {
@@ -109,6 +144,7 @@
       }]
     }
     </script>
+    <link rel="stylesheet" href="/assets/css/main.css">
     <style>
         /* ================= INHERITED SITE STYLES ================= */
         :root {
