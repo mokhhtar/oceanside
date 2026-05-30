@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<script>
+    <script>
   if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
     (function (w, d, s, l, i) {
       w[l] = w[l] || []; w[l].push({
@@ -59,24 +60,25 @@
     }
   });
 </script>
-<meta charset="UTF-8">
-<link rel="icon" type="image/png" href="https://oceansidehairsalon.com/myfavicon/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="/myfavicon/favicon.svg" />
-<link rel="shortcut icon" href="/myfavicon/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="/myfavicon/apple-touch-icon.png" />
-<link rel="manifest" href="/myfavicon/site.webmanifest" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="https://oceansidehairsalon.com/myfavicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/myfavicon/favicon.svg" />
+    <link rel="shortcut icon" href="/myfavicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/myfavicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/myfavicon/site.webmanifest" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- FIX 1: Updated Meta Title -->
-<title>Oceanside Hair &amp; Style | Expert Guides, Reviews &amp; AI Tools</title>
-<meta name="description" content="Your ultimate guide to hair care, grooming &amp; style in Oceanside, CA. Expert articles on hard water hair damage, product reviews, and AI-powered styling tools.">
-<link rel="canonical" href="https://oceansidehairsalon.com/" />
+    <title>Oceanside Hair &amp; Style | Expert Guides, Reviews &amp; AI Tools</title>
+    <meta name="description"
+        content="Your ultimate guide to hair care, grooming &amp; style in Oceanside, CA. Expert articles on hard water hair damage, product reviews, and AI-powered styling tools.">
+    <link rel="canonical" href="https://oceansidehairsalon.com/" />
 
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap"
+        rel="stylesheet">
 
-<!-- FIX 1: Schema changed from HairSalon to WebSite — local business attributes removed -->
-<script type="application/ld+json">
+    <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
@@ -102,609 +104,999 @@
   ]
 }
 </script>
-<style>
-    /* ===================== CSS VARIABLES ===================== */
-    :root {
-        --primary-color: #005f73;
-        --secondary-color: #0a9396;
-        --accent-color: #e9d8a6;
-        --bg-light: #f4f7f6;
-        --text-dark: #333;
-        --text-light: #fff;
-        --font-heading: 'Playfair Display', serif;
-        --font-body: 'Lato', sans-serif;
-    }
+    <link rel="stylesheet" href="/assets/css/main.css">
 
-    /* ===================== RESET & BASE ===================== */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: var(--font-body); color: var(--text-dark); line-height: 1.6; background: var(--bg-light); }
-    h1, h2, h3 { font-family: var(--font-heading); }
+    <style>
+        /* ===================== CSS VARIABLES ===================== */
+        :root {
+            --primary-color: #005f73;
+            --secondary-color: #0a9396;
+            --accent-color: #e9d8a6;
+            --bg-light: #f4f7f6;
+            --text-dark: #333;
+            --text-light: #fff;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Lato', sans-serif;
+        }
 
-    /* ===================== NAVBAR ===================== */
-    .navbar {
-        display: flex; justify-content: center; align-items: center;
-        background: rgba(0,95,115,0.95); width: 100%; position: absolute; top: 0; left: 0;
-        padding: 1rem 0; z-index: 1000; backdrop-filter: blur(5px);
-    }
-    .navbar a, .navbar .dropbtn {
-        font-weight: bold; font-size: 17px; color: white !important;
-        padding: 14px 20px; text-decoration: none; background: transparent; border: none; cursor: pointer;
-    }
-    .navbar a:hover, .dropdown:hover .dropbtn { color: var(--secondary-color) !important; }
-    .dropdown { position: relative; display: inline-block; }
-    .dropdown-content {
-        display: none; position: absolute; background: #fff; min-width: 240px;
-        box-shadow: 0 8px 16px rgba(0,0,0,0.2); border-top: 3px solid var(--secondary-color); z-index: 1;
-    }
-    .dropdown-content a { color: #333 !important; padding: 12px 16px; display: block; font-size: 15px; }
-    .dropdown-content a:hover { background: #f1f1f1; color: var(--primary-color) !important; }
-    .dropdown:hover .dropdown-content { display: block; }
+        /* ===================== RESET & BASE ===================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* ===================== HERO HEADER ===================== */
-    header {
-        background: linear-gradient(rgba(0,95,115,0.7), rgba(10,147,150,0.7)),
-                    url('/images/hero.jpg');
-        background-size: cover; background-position: center; height: 85vh;
-        display: flex; flex-direction: column; justify-content: center; align-items: center;
-        text-align: center; color: white; padding: 20px; padding-top: 100px;
-    }
-    header h1 { font-size: 3.5rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.5); margin-bottom: 0.5rem; }
-    header p { font-size: 1.4rem; margin-bottom: 2rem; }
+        body {
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            line-height: 1.6;
+            background: var(--bg-light);
+        }
 
-    .btn-contact {
-        background: var(--primary-color); color: white; padding: 16px 44px;
-        border: none; border-radius: 50px; font-weight: bold; font-size: 1.2rem;
-        cursor: pointer; transition: 0.3s; text-decoration: none; display: inline-block;
-    }
-    .btn-contact:hover { background: var(--secondary-color); transform: scale(1.05); }
+        h1,
+        h2,
+        h3 {
+            font-family: var(--font-heading);
+        }
 
-    /* ===================== SERVICES SECTION ===================== */
-    section { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
-    .services-grid {
-        display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 2.5rem; margin: 3rem 0;
-    }
-    .service-card {
-        background: white; border-radius: 12px; overflow: hidden;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.1); transition: 0.3s;
-    }
-    .service-card:hover { transform: translateY(-10px); }
-    .service-card img { width: 100%; height: 220px; object-fit: cover; }
-    .service-content { padding: 2rem; text-align: center; }
-    .service-content h3 { color: var(--primary-color); margin-bottom: 1rem; }
+        /* ===================== HERO HEADER ===================== */
+        header {
+            background: linear-gradient(rgba(0, 95, 115, 0.7), rgba(10, 147, 150, 0.7)),
+                url('/images/hero.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+            padding-top: 100px;
+        }
 
-    /* ===================== ABOUT SECTION ===================== */
-    .about-section { background-color: white; padding: 4rem 2rem; }
-    .about-inner { max-width: 900px; margin: 0 auto; text-align: left; }
-    .about-inner h2 { text-align: center; color: var(--primary-color); margin-bottom: 20px; }
-    .about-inner p { margin-bottom: 15px; color: #555; }
-    .about-cta { text-align: center; margin-top: 30px; }
+        header h1 {
+            font-size: 3.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
 
-    /* ===================== HUB SECTIONS SHARED ===================== */
-    .hub-section { padding: 5rem 2rem; width: 100%; }
-    .hub-section-inner { max-width: 1200px; margin: 0 auto; }
-    .hub-section-title {
-        text-align: center; color: var(--primary-color);
-        font-family: var(--font-heading); font-size: 2.4rem;
-        margin-bottom: 0.6rem; position: relative;
-    }
-    .hub-section-title::after {
-        content: ''; display: block; width: 70px; height: 3px;
-        background: var(--secondary-color); margin: 0.8rem auto 0; border-radius: 2px;
-    }
-    .hub-section-subtitle {
-        text-align: center; color: #666; font-size: 1.05rem;
-        margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;
-    }
+        header p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+        }
 
-    /* ===================== ARTICLE CARDS ===================== */
-    .hub-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
-        gap: 2rem; margin-bottom: 3rem;
-    }
-    .hub-card {
-        background: #fff; border-radius: 14px; overflow: hidden;
-        box-shadow: 0 6px 24px rgba(0,95,115,0.10);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        text-decoration: none; color: inherit;
-        display: flex; flex-direction: column; position: relative;
-    }
-    .hub-card:hover { transform: translateY(-8px); box-shadow: 0 14px 36px rgba(0,95,115,0.18); }
-    .hub-card-thumb {
-        width: 100%; height: 200px; display: flex;
-        align-items: center; justify-content: center;
-        font-size: 3rem; color: rgba(255,255,255,0.8); flex-shrink: 0;
-    }
-    .hub-card-thumb.guide-1 { background: linear-gradient(135deg, #005f73 0%, #0a9396 100%); }
-    .hub-card-thumb.guide-2 { background: linear-gradient(135deg, #0a9396 0%, #94d2bd 100%); }
-    .hub-card-thumb.guide-3 { background: linear-gradient(135deg, #184e77 0%, #1e6091 100%); }
-    .hub-card-thumb.review-1 { background: linear-gradient(135deg, #005f73 0%, #0a9396 100%); }
-    .hub-card-thumb.review-2 { background: linear-gradient(135deg, #52796f 0%, #84a98c 100%); }
-    .hub-card-thumb.review-3 { background: linear-gradient(135deg, #0a9396 0%, #52b788 100%); }
-    .hub-card-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
-    .hub-card-tag {
-        display: inline-block; background: var(--bg-light); color: var(--secondary-color);
-        font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
-        padding: 3px 10px; border-radius: 20px; margin-bottom: 0.7rem;
-    }
-    .hub-card h3 {
-        font-family: var(--font-heading); color: var(--primary-color);
-        font-size: 1.2rem; margin-bottom: 0.6rem; line-height: 1.4;
-    }
-    .hub-card p { font-size: 0.92rem; color: #666; line-height: 1.6; flex: 1; }
-    .hub-card-link {
-        display: inline-flex; align-items: center; gap: 5px;
-        color: var(--secondary-color); font-weight: 700; font-size: 0.88rem;
-        margin-top: 1rem; text-decoration: none; transition: gap 0.2s;
-    }
-    .hub-card-link:hover { gap: 9px; color: var(--primary-color); }
-/* ---- Article Cards Images (Updated) ---- */
-    .hub-card-img-container {
-        width: 100%;
-        height: 200px;
-        overflow: hidden;
-        position: relative;
-    }
-    .hub-card-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        transition: transform 0.4s ease;
-    }
-    .hub-card:hover .hub-card-img {
-        transform: scale(1.08); /* تأثير تكبير الصورة عند تمرير الماوس */
-    }
-    /* Review badge */
-    .badge-top-pick {
-        position: absolute; top: 14px; right: 14px;
-        background: var(--accent-color); color: #3d2c00;
-        font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
-        letter-spacing: 0.8px; padding: 4px 12px; border-radius: 20px;
-        z-index: 2; box-shadow: 0 2px 8px rgba(0,0,0,0.18);
-    }
+        .btn-contact {
+            background: var(--primary-color);
+            color: white;
+            padding: 16px 44px;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
 
-    /* Center CTA button */
-    .hub-cta-wrap { text-align: center; margin-top: 1rem; }
-    .btn-hub {
-        display: inline-block; background: var(--primary-color); color: #fff;
-        padding: 14px 40px; border-radius: 50px; font-weight: 700; font-size: 1rem;
-        text-decoration: none; transition: background 0.3s, transform 0.2s; letter-spacing: 0.3px;
-    }
-    .btn-hub:hover { background: var(--secondary-color); transform: scale(1.04); }
+        .btn-contact:hover {
+            background: var(--secondary-color);
+            transform: scale(1.05);
+        }
 
-    /* ===================== TOOLS HUB SECTION ===================== */
-    .tools-section {
-        background: var(--primary-color);
-        padding: 5rem 2rem;
-        width: 100%;
-        position: relative;
-        overflow: hidden;
-    }
-    /* Subtle dot pattern overlay */
-    .tools-section::before {
-        content: '';
-        position: absolute; inset: 0;
-        background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        pointer-events: none;
-    }
-    .tools-section-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
-    .tools-section-title {
-        text-align: center; font-family: var(--font-heading);
-        font-size: 2.4rem; color: #fff; margin-bottom: 0.6rem;
-    }
-    .tools-section-title::after {
-        content: ''; display: block; width: 70px; height: 3px;
-        background: var(--accent-color); margin: 0.8rem auto 0; border-radius: 2px;
-    }
-    .tools-section-subtitle {
-        text-align: center; color: rgba(255,255,255,0.75);
-        font-size: 1.05rem; margin-bottom: 3rem;
-        max-width: 600px; margin-left: auto; margin-right: auto;
-    }
+        /* ===================== SERVICES SECTION ===================== */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-    /* Tool Cards Grid */
-    .tools-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
-        gap: 2rem;
-    }
-    .tool-card {
-        background: rgba(255,255,255,0.06);
-        border: 1px solid rgba(233,216,166,0.25);
-        border-radius: 16px; padding: 2.2rem;
-        display: flex; flex-direction: column;
-        transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-        position: relative; overflow: hidden;
-    }
-    .tool-card::before {
-        content: ''; position: absolute; inset: 0; border-radius: 16px;
-        background: linear-gradient(135deg, rgba(233,216,166,0.05) 0%, transparent 70%);
-        pointer-events: none;
-    }
-    .tool-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 16px 40px rgba(0,0,0,0.3);
-        background: rgba(255,255,255,0.1);
-        border-color: rgba(233,216,166,0.5);
-    }
-    .tool-card.coming-soon { opacity: 0.65; }
-    .tool-card.coming-soon:hover { transform: none; box-shadow: none; }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin: 3rem 0;
+        }
 
-    .tool-icon {
-        font-size: 2.6rem; margin-bottom: 1.2rem;
-        width: 64px; height: 64px; display: flex; align-items: center;
-        justify-content: center; background: rgba(233,216,166,0.12);
-        border-radius: 14px; border: 1px solid rgba(233,216,166,0.2);
-    }
-    .tool-badge {
-        display: inline-block; font-size: 0.68rem; font-weight: 700;
-        text-transform: uppercase; letter-spacing: 1px;
-        padding: 3px 10px; border-radius: 20px; margin-bottom: 0.9rem;
-    }
-    .tool-badge.active {
-        background: var(--accent-color); color: #2a1e00;
-    }
-    .tool-badge.soon {
-        background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.6);
-        border: 1px solid rgba(255,255,255,0.15);
-    }
-    .tool-card h3 {
-        font-family: var(--font-heading); color: #fff;
-        font-size: 1.3rem; margin-bottom: 0.7rem; line-height: 1.3;
-    }
-    .tool-card p {
-        font-size: 0.93rem; color: rgba(255,255,255,0.72);
-        line-height: 1.65; flex: 1; margin-bottom: 1.6rem;
-    }
-    .btn-tool {
-        display: inline-block; background: var(--accent-color); color: #2a1e00;
-        padding: 12px 28px; border-radius: 50px; font-weight: 700;
-        font-size: 0.95rem; text-decoration: none;
-        transition: transform 0.25s, box-shadow 0.25s;
-        box-shadow: 0 4px 14px rgba(0,0,0,0.2); align-self: flex-start;
-        border: none; cursor: pointer;
-    }
-    .btn-tool:hover { transform: scale(1.05) translateY(-2px); box-shadow: 0 8px 22px rgba(0,0,0,0.28); }
-    .btn-tool.disabled {
-        background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.4);
-        border: 1px solid rgba(255,255,255,0.15);
-        cursor: not-allowed; box-shadow: none;
-    }
-    .btn-tool.disabled:hover { transform: none; box-shadow: none; }
+        .service-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
 
-    /* ===================== FOOTER ===================== */
-    footer {
-        background-color: var(--primary-color); color: white;
-        padding-top: 4rem; font-family: var(--font-body); font-size: 0.95rem; margin-top: 5rem;
-    }
-    .footer-container {
-        max-width: 1200px; margin: 0 auto; padding: 0 2rem;
-        display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
-        gap: 3rem; text-align: left;
-    }
-    .footer-col h3 { color: var(--accent-color); font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 1rem; }
-    .footer-col h4 { color: white; margin-bottom: 1.3rem; font-size: 1.15rem; text-transform: uppercase; letter-spacing: 1.2px; }
-    .footer-col p { color: rgba(255,255,255,0.85); line-height: 1.7; margin-bottom: 1rem; }
-    .footer-links { list-style: none; }
-    .footer-links li { margin-bottom: 12px; }
-    .footer-links a { color: rgba(255,255,255,0.8); text-decoration: none; transition: all .3s ease; }
-    .footer-links a:hover { color: var(--accent-color); padding-left: 8px; }
-    .contact-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 18px; color: rgba(255,255,255,0.9); line-height: 1.5; }
-    .contact-row a { color: rgba(255,255,255,0.9); text-decoration: none; }
-    .contact-row a:hover { color: var(--accent-color); }
-    .social-icons { display: flex; gap: 18px; margin-top: 20px; }
-    .social-icons a svg { width: 26px; height: 26px; fill: white; transition: all .3s ease; }
-    .social-icons a:hover svg { fill: var(--accent-color); transform: translateY(-4px); }
-    .footer-bottom {
-        border-top: 1px solid rgba(255,255,255,0.12); margin-top: 3.5rem;
-        padding: 1.8rem 2rem; text-align: center; font-size: 0.85rem; color: rgba(255,255,255,0.6);
-    }
-    .footer-bottom a { color: rgba(255,255,255,0.6); text-decoration: none; }
-    .footer-bottom a:hover { color: var(--accent-color); }
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
 
-    /* ===================== RESPONSIVE ===================== */
-    @media (max-width: 768px) {
-        header { height: auto; min-height: 50vh; padding-top: 140px; }
-        header h1 { font-size: 2.5rem; }
-        .hub-grid, .tools-grid { grid-template-columns: 1fr; }
-        .hub-section-title, .tools-section-title { font-size: 1.9rem; }
-        .footer-container { text-align: center; grid-template-columns: 1fr; }
-        .contact-row, .social-icons { justify-content: center; }
-    }
-</style>
+        .service-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .service-content {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .service-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* ===================== ABOUT SECTION ===================== */
+        .about-section {
+            background-color: white;
+            padding: 4rem 2rem;
+        }
+
+        .about-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .about-inner h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .about-inner p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .about-cta {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        /* ===================== HUB SECTIONS SHARED ===================== */
+        .hub-section {
+            padding: 5rem 2rem;
+            width: 100%;
+        }
+
+        .hub-section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hub-section-title {
+            text-align: center;
+            color: var(--primary-color);
+            font-family: var(--font-heading);
+            font-size: 2.4rem;
+            margin-bottom: 0.6rem;
+            position: relative;
+        }
+
+        .hub-section-title::after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 3px;
+            background: var(--secondary-color);
+            margin: 0.8rem auto 0;
+            border-radius: 2px;
+        }
+
+        .hub-section-subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 1.05rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ===================== ARTICLE CARDS ===================== */
+        .hub-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .hub-card {
+            background: #fff;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 6px 24px rgba(0, 95, 115, 0.10);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .hub-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 14px 36px rgba(0, 95, 115, 0.18);
+        }
+
+        .hub-card-thumb {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.8);
+            flex-shrink: 0;
+        }
+
+        .hub-card-thumb.guide-1 {
+            background: linear-gradient(135deg, #005f73 0%, #0a9396 100%);
+        }
+
+        .hub-card-thumb.guide-2 {
+            background: linear-gradient(135deg, #0a9396 0%, #94d2bd 100%);
+        }
+
+        .hub-card-thumb.guide-3 {
+            background: linear-gradient(135deg, #184e77 0%, #1e6091 100%);
+        }
+
+        .hub-card-thumb.review-1 {
+            background: linear-gradient(135deg, #005f73 0%, #0a9396 100%);
+        }
+
+        .hub-card-thumb.review-2 {
+            background: linear-gradient(135deg, #52796f 0%, #84a98c 100%);
+        }
+
+        .hub-card-thumb.review-3 {
+            background: linear-gradient(135deg, #0a9396 0%, #52b788 100%);
+        }
+
+        .hub-card-body {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hub-card-tag {
+            display: inline-block;
+            background: var(--bg-light);
+            color: var(--secondary-color);
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-bottom: 0.7rem;
+        }
+
+        .hub-card h3 {
+            font-family: var(--font-heading);
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-bottom: 0.6rem;
+            line-height: 1.4;
+        }
+
+        .hub-card p {
+            font-size: 0.92rem;
+            color: #666;
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .hub-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--secondary-color);
+            font-weight: 700;
+            font-size: 0.88rem;
+            margin-top: 1rem;
+            text-decoration: none;
+            transition: gap 0.2s;
+        }
+
+        .hub-card-link:hover {
+            gap: 9px;
+            color: var(--primary-color);
+        }
+
+        /* ---- Article Cards Images (Updated) ---- */
+        .hub-card-img-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hub-card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .hub-card:hover .hub-card-img {
+            transform: scale(1.08);
+            /* تأثير تكبير الصورة عند تمرير الماوس */
+        }
+
+        /* Review badge */
+        .badge-top-pick {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: var(--accent-color);
+            color: #3d2c00;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            z-index: 2;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+        }
+
+        /* Center CTA button */
+        .hub-cta-wrap {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .btn-hub {
+            display: inline-block;
+            background: var(--primary-color);
+            color: #fff;
+            padding: 14px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.2s;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-hub:hover {
+            background: var(--secondary-color);
+            transform: scale(1.04);
+        }
+
+        /* ===================== TOOLS HUB SECTION ===================== */
+        .tools-section {
+            background: var(--primary-color);
+            padding: 5rem 2rem;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle dot pattern overlay */
+        .tools-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .tools-section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tools-section-title {
+            text-align: center;
+            font-family: var(--font-heading);
+            font-size: 2.4rem;
+            color: #fff;
+            margin-bottom: 0.6rem;
+        }
+
+        .tools-section-title::after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 3px;
+            background: var(--accent-color);
+            margin: 0.8rem auto 0;
+            border-radius: 2px;
+        }
+
+        .tools-section-subtitle {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 1.05rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Tool Cards Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .tool-card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(233, 216, 166, 0.25);
+            border-radius: 16px;
+            padding: 2.2rem;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(233, 216, 166, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(233, 216, 166, 0.5);
+        }
+
+        .tool-card.coming-soon {
+            opacity: 0.65;
+        }
+
+        .tool-card.coming-soon:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .tool-icon {
+            font-size: 2.6rem;
+            margin-bottom: 1.2rem;
+            width: 64px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(233, 216, 166, 0.12);
+            border-radius: 14px;
+            border: 1px solid rgba(233, 216, 166, 0.2);
+        }
+
+        .tool-badge {
+            display: inline-block;
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-bottom: 0.9rem;
+        }
+
+        .tool-badge.active {
+            background: var(--accent-color);
+            color: #2a1e00;
+        }
+
+        .tool-badge.soon {
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .tool-card h3 {
+            font-family: var(--font-heading);
+            color: #fff;
+            font-size: 1.3rem;
+            margin-bottom: 0.7rem;
+            line-height: 1.3;
+        }
+
+        .tool-card p {
+            font-size: 0.93rem;
+            color: rgba(255, 255, 255, 0.72);
+            line-height: 1.65;
+            flex: 1;
+            margin-bottom: 1.6rem;
+        }
+
+        .btn-tool {
+            display: inline-block;
+            background: var(--accent-color);
+            color: #2a1e00;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: transform 0.25s, box-shadow 0.25s;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+            align-self: flex-start;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-tool:hover {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
+        }
+
+        .btn-tool.disabled {
+            background: rgba(255, 255, 255, 0.12);
+            color: rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .btn-tool.disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* ===================== RESPONSIVE ===================== */
+        @media (max-width: 768px) {
+            header {
+                height: auto;
+                min-height: 50vh;
+                padding-top: 140px;
+            }
+
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            .hub-grid,
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hub-section-title,
+            .tools-section-title {
+                font-size: 1.9rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- ======================== HEADER + NAVBAR ======================== -->
-<header>
-    <div class="navbar">
-        <a href="/">Home</a>
-        <div class="dropdown">
-            <button class="dropbtn">Hair Guides</button>
-            <div class="dropdown-content">
-                <a href="/services/womens-haircuts/">Women's Haircut Guide</a>
-                <a href="/services/mens-grooming/">Men's Grooming Guide</a>
-                <a href="/services/hair-coloring/">Hair Coloring Guide</a>
-                <a href="/services/hair-treatments/">Hair Treatment Guide</a>
-                <a href="/services/bridal-styling/">Bridal Hair Guide</a>
-            </div>
-        </div>
-        <div class="dropdown">
-            <button class="dropbtn">Tools</button>
-            <div class="dropdown-content">
-                <a href="/tools/ai-shaver-finder/">AI Shaver Finder</a>
-            </div>
-        </div>
-        <div class="dropdown">
-            <button class="dropbtn">About This Site</button>
-            <div class="dropdown-content">
-                <a href="/prices/">Local Price Averages</a>
-                <a href="/testimonials/">Community Reviews</a>
-                <a href="/contact/">Contact &amp; Editorial Info</a>
-            </div>
-        </div>
-        <a href="/blog/">Blog</a>
-    </div>
+    <!-- ======================== HEADER + NAVBAR ======================== -->
+    <header>
+        <!--
+  _includes/navbar.html
+  ─────────────────────
+  Site-wide navigation bar.
+  Uses `page.url` to highlight the active top-level link via the `active` class.
+  Extend the nav_links list via _data/nav.yml if you add more top-level items.
+-->
 
-    <!-- FIX 2: Updated subtitle and CTA button -->
-    <h1>Oceanside Hair Salon</h1>
-    <p>Independent Hair & Grooming Guides for Coastal Living</p>
-    <a href="/blog/" class="btn-contact">Explore Our Guides</a>
-</header>
-<section style="background-color: #fff; padding: 4rem 2rem 1rem; text-align: center;">
-    <div style="max-width: 800px; margin: 0 auto;">
-        <p style="font-size: 1.2rem; line-height: 1.8; color: #555; font-weight: 400; font-family: var(--font-body);">
-            <strong>Oceanside Hair & Style</strong> is an independent editorial platform focused on hair science, product testing, and coastal hair care challenges. We combine local salon insights with practical, data-driven research to help you make better grooming decisions — from combating hard water damage to finding the perfect tools for your routine.
-        </p>
-    </div>
-</section>
-<!-- ======================== FIX 3: Style Inspiration & Guides (repurposed Services) ======================== -->
-<section>
-    <h2 style="text-align:center; color:var(--primary-color); margin-bottom:3rem; font-size:2.5rem;">Style Inspiration &amp; Guides</h2>
-    <div class="services-grid">
-        
-        <a href="/services/womens-haircuts/" class="service-card" style="text-decoration:none; color:inherit; display:block;">
-            <img src="/images/womens-haircut-styling-oceanside.jpg" alt="Women's Haircut Guide Oceanside">
-            <div class="service-content">
-                <h3>Women's Haircuts</h3>
-                <p>Discover the best cuts for a coastal lifestyle — from beach waves to sleek bobs.</p>
-            </div>
-        </a>
+<div class="navbar" role="navigation" aria-label="Main navigation">
 
-        <a href="/services/mens-grooming/" class="service-card" style="text-decoration:none; color:inherit; display:block;">
-            <img src="/images/mens-barber-fade-oceanside.jpg" alt="Men's Grooming Guide Oceanside">
-            <div class="service-content">
-                <h3>Men's Grooming</h3>
-                <p>Explore modern fades, classic taper styles, and grooming tips for every face shape.</p>
-            </div>
-        </a>
+    <a href="/" aria-current="page" >
+        Home
+    </a>
 
-        <a href="/services/hair-coloring/" class="service-card" style="text-decoration:none; color:inherit; display:block;">
-            <img src="/images/blonde-balayage-hair-coloring-oceanside.jpg" alt="Hair Coloring Guide Oceanside">
-            <div class="service-content">
-                <h3>Coloring &amp; Balayage</h3>
-                <p>Learn what coloring techniques work best in sunny, humid coastal climates.</p>
-            </div>
-        </a>
-
-        <a href="/services/hair-treatments/" class="service-card" style="text-decoration:none; color:inherit; display:block;">
-            <img src="/images/keratin-hair-treatment-wash-oceanside.jpg" alt="Hair Treatments Guide Oceanside">
-            <div class="service-content">
-                <h3>Treatments</h3>
-                <p>Read our deep-dives on Keratin, Olaplex, and bond-repair treatments worth trying.</p>
-            </div>
-        </a>
-
-        <a href="/services/bridal-styling/" class="service-card" style="text-decoration:none; color:inherit; display:block;">
-            <img src="/images/bridal-wedding-hair-stylist-oceanside.jpg" alt="Bridal Hair Styling Guide Oceanside">
-            <div class="service-content">
-                <h3>Bridal Styling</h3>
-                <p>Look breathtaking on your big day with our expert wedding hair styling and on-site guide.</p>
-            </div>
-        </a>
-
-    </div>
-</section>
-
-<!-- FIX 3: "Why Us" section REMOVED entirely. About section below serves as the bridge. -->
-
-<!-- ======================== ABOUT SECTION (The Bridge) ======================== -->
-<section class="about-section">
-    <div class="about-inner">
-        <h2>Your Coastal Hair &amp; Style Resource</h2>
-
-        <p>Welcome to <strong>Oceanside Hair &amp; Style</strong> — an independent editorial guide built for anyone navigating hair care in a coastal climate. Whether you're battling salt air, hard water buildup, or just looking for honest product reviews, we cover it all.</p>
-
-        <p>Our in-depth guides are written for real people dealing with real hair challenges. We break down everything from the science of hard water damage to choosing the right shaver for sensitive skin — so you can make informed decisions without the guesswork.</p>
-
-        <p>Beyond guides and reviews, we build <strong>AI-powered tools</strong> to help you find the right products faster. Expect more interactive tools and expert articles to launch regularly. This is your one-stop resource for smarter hair and grooming choices.</p>
-
-        <div class="about-cta">
-            <a href="/blog/" class="btn-contact" style="text-decoration:none;">Browse All Articles</a>
+    <!-- Hair Guides dropdown -->
+    <div class="dropdown">
+        <button class="dropbtn" aria-haspopup="true" aria-expanded="false">
+            Hair Guides
+        </button>
+        <div class="dropdown-content" role="menu">
+            <a href="/services/womens-haircuts/" role="menuitem">Women's Haircut Guide</a>
+            <a href="/services/mens-grooming/" role="menuitem">Men's Grooming Guide</a>
+            <a href="/services/hair-coloring/" role="menuitem">Hair Coloring Guide</a>
+            <a href="/services/hair-treatments/" role="menuitem">Hair Treatment Guide</a>
+            <a href="/services/bridal-styling/" role="menuitem">Bridal Hair Guide</a>
         </div>
     </div>
-</section>
 
-<!-- ======================== EXPERT HAIR CARE GUIDES (bg-light) ======================== -->
-<div class="hub-section" style="background: var(--bg-light);">
-    <div class="hub-section-inner">
-        <h2 class="hub-section-title">Expert Hair Care Guides</h2>
-        <p class="hub-section-subtitle">Science-backed advice for healthier hair — especially if you're battling hard water and coastal conditions.</p>
-
-<div class="hub-grid">
-            <a href="/blog/metal-detox-vs-regular-shampoo/" class="hub-card">
-                <div class="hub-card-img-container">
-                    <img src="/images/blog/best-chelating-shampoos-hard-water-hero.jpg" alt="Metal Detox vs Regular Shampoo" class="hub-card-img" loading="lazy">
-                </div>
-                <div class="hub-card-body">
-                    <span class="hub-card-tag">Hair Science</span>
-                    <h3>Metal Detox vs Regular Shampoo</h3>
-                    <p>Hard water leaves calcium and copper deposits on your strands. Find out whether a metal detox shampoo is worth the switch over your regular cleanser.</p>
-                    <span class="hub-card-link">Read Guide <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                </div>
-            </a>
-
-            <a href="/blog/best-hard-water-hair-routine/" class="hub-card">
-                <div class="hub-card-img-container">
-                    <img src="/images/blog/routine/best-hard-water-hair-routine-cover.webp" alt="Best Hard Water Hair Routine" class="hub-card-img" loading="lazy">
-                </div>
-                <div class="hub-card-body">
-                    <span class="hub-card-tag">Hair Routine</span>
-                    <h3>Best Hard Water Hair Routine</h3>
-                    <p>A step-by-step daily and weekly routine to prevent mineral buildup, restore shine, and keep your hair manageable even in the harshest water conditions.</p>
-                    <span class="hub-card-link">Read Guide <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                </div>
-            </a>
-
-            <a href="/blog/hard-water-hair-damage/" class="hub-card">
-                <div class="hub-card-img-container">
-                    <img src="/images/blog/hard-water-hair-damage/hard-water-hair-damage-cover.webp" alt="Hard Water Hair Damage Guide" class="hub-card-img" loading="lazy">
-                </div>
-                <div class="hub-card-body">
-                    <span class="hub-card-tag">In-Depth Guide</span>
-                    <h3>Hard Water Hair Damage Guide</h3>
-                    <p>Everything you need to know about how hard water silently damages your hair over time — from breakage and dullness to scalp issues — and how to fight back.</p>
-                    <span class="hub-card-link">Read Guide <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                </div>
-            </a>
-        </div>
-
-        <div class="hub-cta-wrap">
-            <a href="/blog/" class="btn-hub">View All Guides</a>
+    <!-- Tools dropdown -->
+    <div class="dropdown">
+        <button class="dropbtn" aria-haspopup="true" aria-expanded="false">
+            Tools
+        </button>
+        <div class="dropdown-content" role="menu">
+            <a href="/tools/ai-shaver-finder/" role="menuitem">AI Shaver Finder</a>
         </div>
     </div>
+
+    <!-- About This Site dropdown -->
+    <div class="dropdown">
+        <button class="dropbtn" aria-haspopup="true" aria-expanded="false">
+            About This Site
+        </button>
+        <div class="dropdown-content" role="menu">
+            <a href="/prices/" role="menuitem">Local Price Averages</a>
+            <a href="/testimonials/" role="menuitem">Community Reviews</a>
+            <a href="/newsletter/" role="menuitem">Grooming Newsletter</a>
+            <a href="/contact/" role="menuitem">Contact &amp; Editorial Info</a>
+        </div>
+    </div>
+
+    <a href="/blog/" >
+        Blog
+    </a>
+
 </div>
 
-<!-- ======================== TOP RATED PRODUCTS & TOOLS (white) ======================== -->
-<div class="hub-section" style="background: #ffffff;">
-    <div class="hub-section-inner">
-        <h2 class="hub-section-title">Top Rated Products &amp; Tools</h2>
-        <p class="hub-section-subtitle">Our editors test and review the most effective hair and grooming tools so you don't have to guess.</p>
-
-<div class="hub-grid">
-            <a href="/blog/best-electric-shavers-sensitive-skin-2025/" class="hub-card">
-                <span class="badge-top-pick">⭐ Top Pick</span>
-                <div class="hub-card-img-container">
-                    <img src="/images/blog/Best-Electric-Shavers-for-Sensitive-Skin-hero.jpg" alt="Best Electric Shavers for Sensitive Skin" class="hub-card-img" loading="lazy">
-                </div>
-                <div class="hub-card-body">
-                    <span class="hub-card-tag">Product Review</span>
-                    <h3>Best Electric Shavers for Sensitive Skin 2025</h3>
-                    <p>Redness, razor burn, and irritation are avoidable. We ranked the top electric shavers tested on sensitive skin — with picks for every budget.</p>
-                    <span class="hub-card-link">Read Review <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                </div>
-            </a>
-
-            <a href="/blog/best-anti-frizz-products-oceanside/" class="hub-card">
-                <span class="badge-top-pick">Review</span>
-                <div class="hub-card-img-container">
-                    <img src="/images/blog/anti-frizz-hero.jpg" alt="Best Anti-Frizz Products" class="hub-card-img" loading="lazy">
-                </div>
-                <div class="hub-card-body">
-                    <span class="hub-card-tag">Product Review</span>
-                    <h3>Best Anti-Frizz Products</h3>
-                    <p>Coastal humidity is your hair's biggest enemy. These are the anti-frizz serums, creams, and sprays that actually hold up against Oceanside's salty air.</p>
-                    <span class="hub-card-link">Read Review <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                </div>
-            </a>
-
-            <a href="/blog/5-signs-hair-treatment-oceanside/" class="hub-card">
-                <span class="badge-top-pick">Review</span>
-                <div class="hub-card-img-container">
-                    <img src="/images/blog/damaged-frizzy-hair-help.jpg" alt="Top Hair Treatments" class="hub-card-img" loading="lazy">
-                </div>
-                <div class="hub-card-body">
-                    <span class="hub-card-tag">Product Review</span>
-                    <h3>Top Hair Treatments</h3>
-                    <p>5 clear signs your hair is crying out for a professional treatment — and the best salon-grade and at-home options to restore it to its healthiest state.</p>
-                    <span class="hub-card-link">Read Review <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                </div>
-            </a>
+        <!-- FIX 2: Updated subtitle and CTA button -->
+        <h1>Oceanside Hair Salon</h1>
+        <p>Independent Hair & Grooming Guides for Coastal Living</p>
+        <a href="/blog/" class="btn-contact">Explore Our Guides</a>
+    </header>
+    <section style="background-color: #fff; padding: 4rem 2rem 1rem; text-align: center;">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <p
+                style="font-size: 1.2rem; line-height: 1.8; color: #555; font-weight: 400; font-family: var(--font-body);">
+                <strong>Oceanside Hair & Style</strong> is an independent editorial platform focused on hair science,
+                product testing, and coastal hair care challenges. We combine local salon insights with practical,
+                data-driven research to help you make better grooming decisions — from combating hard water damage to
+                finding the perfect tools for your routine.
+            </p>
         </div>
-    </div>
-</div>
+    </section>
+    <!-- ======================== FIX 3: Style Inspiration & Guides (repurposed Services) ======================== -->
+    <section>
+        <h2 style="text-align:center; color:var(--primary-color); margin-bottom:3rem; font-size:2.5rem;">Style
+            Inspiration &amp; Guides</h2>
+        <div class="services-grid">
 
-<!-- ======================== FIX 4: INTERACTIVE STYLING TOOLS (Multi-Tool Grid) ======================== -->
-<div class="tools-section">
-    <div class="tools-section-inner">
-        <h2 class="tools-section-title">Interactive Styling Tools</h2>
-        <p class="tools-section-subtitle">AI-powered tools to help you make smarter hair and grooming decisions — fast.</p>
+            <a href="/services/womens-haircuts/" class="service-card"
+                style="text-decoration:none; color:inherit; display:block;">
+                <img src="/images/womens-haircut-styling-oceanside.jpg" alt="Women's Haircut Guide Oceanside">
+                <div class="service-content">
+                    <h3>Women's Haircuts</h3>
+                    <p>Discover the best cuts for a coastal lifestyle — from beach waves to sleek bobs.</p>
+                </div>
+            </a>
 
-        <div class="tools-grid">
+            <a href="/services/mens-grooming/" class="service-card"
+                style="text-decoration:none; color:inherit; display:block;">
+                <img src="/images/mens-barber-fade-oceanside.jpg" alt="Men's Grooming Guide Oceanside">
+                <div class="service-content">
+                    <h3>Men's Grooming</h3>
+                    <p>Explore modern fades, classic taper styles, and grooming tips for every face shape.</p>
+                </div>
+            </a>
 
-            <!-- Tool 1: Active — AI Shaver Finder -->
-            <div class="tool-card">
-                <div class="tool-icon">🪒</div>
-                <span class="tool-badge active">✦ Live Tool</span>
-                <h3>AI Shaver Finder</h3>
-                <p>Answer 3 simple questions and let our AI match you with the perfect electric shaver for your skin type and budget. No more guessing — just the right pick, instantly.</p>
-                <a href="/tools/ai-shaver-finder/" class="btn-tool">Launch AI Tool &rarr;</a>
-            </div>
+            <a href="/services/hair-coloring/" class="service-card"
+                style="text-decoration:none; color:inherit; display:block;">
+                <img src="/images/blonde-balayage-hair-coloring-oceanside.jpg" alt="Hair Coloring Guide Oceanside">
+                <div class="service-content">
+                    <h3>Coloring &amp; Balayage</h3>
+                    <p>Learn what coloring techniques work best in sunny, humid coastal climates.</p>
+                </div>
+            </a>
 
-            <!-- Tool 2: Coming Soon — Hair Porosity Test -->
-            <div class="tool-card coming-soon">
-                <div class="tool-icon">🧪</div>
-                <span class="tool-badge soon">Coming Soon</span>
-                <h3>Hair Porosity Test</h3>
-                <p>Discover your hair's porosity level — low, medium, or high — and get a customized list of product recommendations tailored to how your hair absorbs moisture.</p>
-                <button class="btn-tool disabled" disabled>Coming Soon</button>
-            </div>
+            <a href="/services/hair-treatments/" class="service-card"
+                style="text-decoration:none; color:inherit; display:block;">
+                <img src="/images/keratin-hair-treatment-wash-oceanside.jpg" alt="Hair Treatments Guide Oceanside">
+                <div class="service-content">
+                    <h3>Treatments</h3>
+                    <p>Read our deep-dives on Keratin, Olaplex, and bond-repair treatments worth trying.</p>
+                </div>
+            </a>
 
-            <!-- Tool 3: Coming Soon — Local Price Checker -->
-            <div class="tool-card coming-soon">
-                <div class="tool-icon">💰</div>
-                <span class="tool-badge soon">Coming Soon</span>
-                <h3>Local Price Checker</h3>
-                <p>Compare average haircut, coloring, and treatment prices across salons in Oceanside — so you always know what a fair price looks like before you book.</p>
-                <button class="btn-tool disabled" disabled>Coming Soon</button>
-            </div>
+            <a href="/services/bridal-styling/" class="service-card"
+                style="text-decoration:none; color:inherit; display:block;">
+                <img src="/images/bridal-wedding-hair-stylist-oceanside.jpg" alt="Bridal Hair Styling Guide Oceanside">
+                <div class="service-content">
+                    <h3>Bridal Styling</h3>
+                    <p>Look breathtaking on your big day with our expert wedding hair styling and on-site guide.</p>
+                </div>
+            </a>
 
         </div>
-    </div>
-</div>
+    </section>
 
-<!-- ======================== FOOTER ======================== -->
+    <!-- FIX 3: "Why Us" section REMOVED entirely. About section below serves as the bridge. -->
+
+    <!-- ======================== ABOUT SECTION (The Bridge) ======================== -->
+    <section class="about-section">
+        <div class="about-inner">
+            <h2>Your Coastal Hair &amp; Style Resource</h2>
+
+            <p>Welcome to <strong>Oceanside Hair &amp; Style</strong> — an independent editorial guide built for anyone
+                navigating hair care in a coastal climate. Whether you're battling salt air, hard water buildup, or just
+                looking for honest product reviews, we cover it all.</p>
+
+            <p>Our in-depth guides are written for real people dealing with real hair challenges. We break down
+                everything from the science of hard water damage to choosing the right shaver for sensitive skin — so
+                you can make informed decisions without the guesswork.</p>
+
+            <p>Beyond guides and reviews, we build <strong>AI-powered tools</strong> to help you find the right products
+                faster. Expect more interactive tools and expert articles to launch regularly. This is your one-stop
+                resource for smarter hair and grooming choices.</p>
+
+            <div class="about-cta">
+                <a href="/blog/" class="btn-contact" style="text-decoration:none;">Browse All Articles</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================== EXPERT HAIR CARE GUIDES (bg-light) ======================== -->
+    <div class="hub-section" style="background: var(--bg-light);">
+        <div class="hub-section-inner">
+            <h2 class="hub-section-title">Expert Hair Care Guides</h2>
+            <p class="hub-section-subtitle">Science-backed advice for healthier hair — especially if you're battling
+                hard water and coastal conditions.</p>
+
+            <div class="hub-grid">
+                <a href="/blog/metal-detox-vs-regular-shampoo/" class="hub-card">
+                    <div class="hub-card-img-container">
+                        <img src="/images/blog/best-chelating-shampoos-hard-water-hero.jpg"
+                            alt="Metal Detox vs Regular Shampoo" class="hub-card-img" loading="lazy">
+                    </div>
+                    <div class="hub-card-body">
+                        <span class="hub-card-tag">Hair Science</span>
+                        <h3>Metal Detox vs Regular Shampoo</h3>
+                        <p>Hard water leaves calcium and copper deposits on your strands. Find out whether a metal detox
+                            shampoo is worth the switch over your regular cleanser.</p>
+                        <span class="hub-card-link">Read Guide <svg xmlns="http://www.w3.org/2000/svg" width="14"
+                                height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg></span>
+                    </div>
+                </a>
+
+                <a href="/blog/best-hard-water-hair-routine/" class="hub-card">
+                    <div class="hub-card-img-container">
+                        <img src="/images/blog/routine/best-hard-water-hair-routine-cover.webp"
+                            alt="Best Hard Water Hair Routine" class="hub-card-img" loading="lazy">
+                    </div>
+                    <div class="hub-card-body">
+                        <span class="hub-card-tag">Hair Routine</span>
+                        <h3>Best Hard Water Hair Routine</h3>
+                        <p>A step-by-step daily and weekly routine to prevent mineral buildup, restore shine, and keep
+                            your hair manageable even in the harshest water conditions.</p>
+                        <span class="hub-card-link">Read Guide <svg xmlns="http://www.w3.org/2000/svg" width="14"
+                                height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg></span>
+                    </div>
+                </a>
+
+                <a href="/blog/hard-water-hair-damage/" class="hub-card">
+                    <div class="hub-card-img-container">
+                        <img src="/images/blog/hard-water-hair-damage/hard-water-hair-damage-cover.webp"
+                            alt="Hard Water Hair Damage Guide" class="hub-card-img" loading="lazy">
+                    </div>
+                    <div class="hub-card-body">
+                        <span class="hub-card-tag">In-Depth Guide</span>
+                        <h3>Hard Water Hair Damage Guide</h3>
+                        <p>Everything you need to know about how hard water silently damages your hair over time — from
+                            breakage and dullness to scalp issues — and how to fight back.</p>
+                        <span class="hub-card-link">Read Guide <svg xmlns="http://www.w3.org/2000/svg" width="14"
+                                height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg></span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="hub-cta-wrap">
+                <a href="/blog/" class="btn-hub">View All Guides</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================== TOP RATED PRODUCTS & TOOLS (white) ======================== -->
+    <div class="hub-section" style="background: #ffffff;">
+        <div class="hub-section-inner">
+            <h2 class="hub-section-title">Top Rated Products &amp; Tools</h2>
+            <p class="hub-section-subtitle">Our editors test and review the most effective hair and grooming tools so
+                you don't have to guess.</p>
+
+            <div class="hub-grid">
+                <a href="/blog/best-electric-shavers-sensitive-skin-2025/" class="hub-card">
+                    <span class="badge-top-pick">⭐ Top Pick</span>
+                    <div class="hub-card-img-container">
+                        <img src="/images/blog/Best-Electric-Shavers-for-Sensitive-Skin-hero.jpg"
+                            alt="Best Electric Shavers for Sensitive Skin" class="hub-card-img" loading="lazy">
+                    </div>
+                    <div class="hub-card-body">
+                        <span class="hub-card-tag">Product Review</span>
+                        <h3>Best Electric Shavers for Sensitive Skin 2025</h3>
+                        <p>Redness, razor burn, and irritation are avoidable. We ranked the top electric shavers tested
+                            on sensitive skin — with picks for every budget.</p>
+                        <span class="hub-card-link">Read Review <svg xmlns="http://www.w3.org/2000/svg" width="14"
+                                height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg></span>
+                    </div>
+                </a>
+
+                <a href="/blog/best-anti-frizz-products-oceanside/" class="hub-card">
+                    <span class="badge-top-pick">Review</span>
+                    <div class="hub-card-img-container">
+                        <img src="/images/blog/anti-frizz-hero.jpg" alt="Best Anti-Frizz Products" class="hub-card-img"
+                            loading="lazy">
+                    </div>
+                    <div class="hub-card-body">
+                        <span class="hub-card-tag">Product Review</span>
+                        <h3>Best Anti-Frizz Products</h3>
+                        <p>Coastal humidity is your hair's biggest enemy. These are the anti-frizz serums, creams, and
+                            sprays that actually hold up against Oceanside's salty air.</p>
+                        <span class="hub-card-link">Read Review <svg xmlns="http://www.w3.org/2000/svg" width="14"
+                                height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg></span>
+                    </div>
+                </a>
+
+                <a href="/blog/5-signs-hair-treatment-oceanside/" class="hub-card">
+                    <span class="badge-top-pick">Review</span>
+                    <div class="hub-card-img-container">
+                        <img src="/images/blog/damaged-frizzy-hair-help.jpg" alt="Top Hair Treatments"
+                            class="hub-card-img" loading="lazy">
+                    </div>
+                    <div class="hub-card-body">
+                        <span class="hub-card-tag">Product Review</span>
+                        <h3>Top Hair Treatments</h3>
+                        <p>5 clear signs your hair is crying out for a professional treatment — and the best salon-grade
+                            and at-home options to restore it to its healthiest state.</p>
+                        <span class="hub-card-link">Read Review <svg xmlns="http://www.w3.org/2000/svg" width="14"
+                                height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================== FIX 4: INTERACTIVE STYLING TOOLS (Multi-Tool Grid) ======================== -->
+    <div class="tools-section">
+        <div class="tools-section-inner">
+            <h2 class="tools-section-title">Interactive Styling Tools</h2>
+            <p class="tools-section-subtitle">AI-powered tools to help you make smarter hair and grooming decisions —
+                fast.</p>
+
+            <div class="tools-grid">
+
+                <!-- Tool 1: Active — AI Shaver Finder -->
+                <div class="tool-card">
+                    <div class="tool-icon">🪒</div>
+                    <span class="tool-badge active">✦ Live Tool</span>
+                    <h3>AI Shaver Finder</h3>
+                    <p>Answer 3 simple questions and let our AI match you with the perfect electric shaver for your skin
+                        type and budget. No more guessing — just the right pick, instantly.</p>
+                    <a href="/tools/ai-shaver-finder/" class="btn-tool">Launch AI Tool &rarr;</a>
+                </div>
+
+                <!-- Tool 2: Coming Soon — Hair Porosity Test -->
+                <div class="tool-card coming-soon">
+                    <div class="tool-icon">🧪</div>
+                    <span class="tool-badge soon">Coming Soon</span>
+                    <h3>Hair Porosity Test</h3>
+                    <p>Discover your hair's porosity level — low, medium, or high — and get a customized list of product
+                        recommendations tailored to how your hair absorbs moisture.</p>
+                    <button class="btn-tool disabled" disabled>Coming Soon</button>
+                </div>
+
+                <!-- Tool 3: Coming Soon — Local Price Checker -->
+                <div class="tool-card coming-soon">
+                    <div class="tool-icon">💰</div>
+                    <span class="tool-badge soon">Coming Soon</span>
+                    <h3>Local Price Checker</h3>
+                    <p>Compare average haircut, coloring, and treatment prices across salons in Oceanside — so you
+                        always know what a fair price looks like before you book.</p>
+                    <button class="btn-tool disabled" disabled>Coming Soon</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================== FOOTER ======================== -->
+    <!--
+  _includes/footer.html
+  ─────────────────────
+  Site-wide footer.
+  Contact details are pulled from _config.yml or hardcoded here since they rarely change.
+  Social handles: site.twitter.username, site.social.facebook_url, etc.
+-->
+
 <footer>
     <div class="footer-container">
+
+        <!-- Column 1 — Brand & Social -->
         <div class="footer-col">
-            <h3>Oceanside Hair &amp; Style</h3>
-            <p>Your independent guide to hair care, grooming, and style in Oceanside — built to help you make smarter decisions in a coastal climate.</p>
+            <h3>Oceanside Hair Salon</h3>
+            <p>Your local guide to haircuts, grooming, and hair care in Oceanside — built to help you make smarter style decisions in a coastal climate.</p>
+
             <div class="social-icons">
-                <a href="https://www.facebook.com/profile.php?id=61583963957390" target="_blank" aria-label="Facebook">
-                    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+
+                <a href="https://www.facebook.com/profile.php?id=61583963957390"
+                    target="_blank" rel="noopener" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                    </svg>
                 </a>
-                <a href="https://www.instagram.com/oceanside_hair_salon" target="_blank" aria-label="Instagram">
-                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.36-.2 6.78-2.618 6.98-6.98.058-1.28.072-1.689.072-4.948 0-3.259-.014-3.667-.072-4.947-.2-4.361-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.44-.645 1.44-1.44s-.644-1.44-1.44-1.44z"/></svg>
+
+                <a href="https://www.instagram.com/oceanside_hair_salon"
+                    target="_blank" rel="noopener" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.36-.2 6.78-2.618 6.98-6.98.058-1.28.072-1.689.072-4.948 0-3.259-.014-3.667-.072-4.947-.2-4.361-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.441-.645 1.441-1.44s-.645-1.44-1.441-1.44z" />
+                    </svg>
                 </a>
-                <a href="https://x.com/OceansideHair" target="_blank" aria-label="X Twitter">
-                    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+
+                <a href="https://x.com/OceansideHair" target="_blank"
+                    rel="noopener" aria-label="X / Twitter">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
                 </a>
-                <a href="https://www.pinterest.com/OceansideHairSalon/" target="_blank" aria-label="Pinterest">
-                    <svg viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.399.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.951-7.252 4.173 0 7.41 2.967 7.41 6.93 0 4.136-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.367 18.62 0 12.017 0z"/></svg>
+
+                <a href="https://www.pinterest.com/OceansideHairSalon/"
+                    target="_blank" rel="noopener" aria-label="Pinterest">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.399.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.951-7.252 4.173 0 7.41 2.967 7.41 6.93 0 4.136-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.367 18.62 0 12.017 0z" />
+                    </svg>
                 </a>
+
             </div>
         </div>
 
+        <!-- Column 2 — Quick Links -->
         <div class="footer-col">
             <h4>Quick Links</h4>
             <ul class="footer-links">
                 <li><a href="/">Home</a></li>
                 <li><a href="/services/">Hair Guides</a></li>
-                <li><a href="/tools/ai-shaver-finder/">AI Shaver Finder</a></li>
                 <li><a href="/prices/">Local Price Insights</a></li>
                 <li><a href="/testimonials/">Community Feedback</a></li>
+                <li><a href="/newsletter/" style="font-weight: bold; color: var(--accent-color);">Grooming Newsletter</a></li>
                 <li><a href="/blog/">Articles &amp; Guides</a></li>
                 <li><a href="/contact/">Contact &amp; Info</a></li>
             </ul>
         </div>
 
+        <!-- Column 3 — Contact -->
         <div class="footer-col">
-            <h4>About This Site</h4>
-            <!-- FIX 5: Cloudflare email obfuscation removed — plain mailto link restored -->
-            <div class="contact-row"><span>Email</span><a href="mailto:hello@oceansidehairsalon.com">hello@oceansidehairsalon.com</a></div>
-            <div class="contact-row" style="align-items:flex-start;">
+            <h4>Find Us</h4>
+            <div class="contact-row">
+                <span>Address</span>
+                <span>Oceanside, CA 92054</span>
+            </div>
+            <div class="contact-row">
+                <span>Email</span>
+                <a href="mailto:info@oceansidehairsalon.com">
+                    info@oceansidehairsalon.com
+                </a>
+            </div>
+            <div class="contact-row">
                 <span>Purpose</span>
                 <div>
                     <div>Independent hair &amp; grooming guides</div>
@@ -713,13 +1105,16 @@
                 </div>
             </div>
         </div>
-    </div>
+
+    </div><!-- /.footer-container -->
 
     <div class="footer-bottom">
-        &copy; 2025 Oceanside Hair &amp; Style. All Rights Reserved.
+        &copy; 2026 Oceanside Hair Salon. All Rights Reserved.
         | <a href="/privacy-policy/">Privacy Policy</a>
     </div>
+
 </footer>
 
 </body>
+
 </html>

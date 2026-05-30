@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<script>
+    <script>
   if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
     (function (w, d, s, l, i) {
       w[l] = w[l] || []; w[l].push({
@@ -71,10 +72,14 @@
     <link rel="manifest" href="/myfavicon/site.webmanifest" />
 
     <title>Electric Shavers & Sensitive Skin Grooming Guides | Oceanside Hair Salon</title>
-    <meta name="description" content="Expert guides on choosing the right electric shaver, solving post-shave neck irritation, and stopping razor pull. Barber-approved advice for sensitive skin.">
+    <meta name="description"
+        content="Expert guides on choosing the right electric shaver, solving post-shave neck irritation, and stopping razor pull. Barber-approved advice for sensitive skin.">
     <link rel="canonical" href="https://oceansidehairsalon.com/blog/electric-shavers/" />
+    <link rel="stylesheet" href="/assets/css/main.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap"
+        rel="stylesheet">
 
     <script type="application/ld+json">
     {
@@ -179,40 +184,54 @@
             --font-body: 'Lato', sans-serif;
         }
 
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body { font-family:var(--font-body); color:var(--text-dark); line-height:1.6; background:var(--bg-light); }
-        h1,h2,h3 { font-family:var(--font-heading); }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        /* Navbar */
-        .navbar {
-            display:flex; justify-content:center; align-items:center;
-            background:rgba(0,95,115,0.98); width:100%; position:fixed; top:0; left:0;
-            padding:1rem 0; z-index:1000; backdrop-filter:blur(5px);
-            box-shadow:0 2px 10px rgba(0,0,0,0.1);
+        body {
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            line-height: 1.6;
+            background: var(--bg-light);
         }
-        .navbar a, .navbar .dropbtn {
-            font-weight:bold; font-size:17px; color:white !important;
-            padding:14px 20px; text-decoration:none; background:transparent; border:none; cursor:pointer;
+
+        h1,
+        h2,
+        h3 {
+            font-family: var(--font-heading);
         }
-        .navbar a:hover, .dropdown:hover .dropbtn { color:var(--accent-color) !important; }
-        .dropdown { position:relative; display:inline-block; }
-        .dropdown-content {
-            display:none; position:absolute; background:#fff; min-width:240px;
-            box-shadow:0 8px 16px rgba(0,0,0,0.2); border-top:3px solid var(--secondary-color); z-index:1;
-        }
-        .dropdown-content a { color:#333 !important; padding:12px 16px; display:block; font-size:15px; }
-        .dropdown-content a:hover { background:#f1f1f1; color:var(--primary-color) !important; }
-        .dropdown:hover .dropdown-content { display:block; }
 
         /* Header */
         header {
-            background:linear-gradient(rgba(0,95,115,0.8),rgba(10,147,150,0.8)), url('/images/blog/blog-hero.jpg');
-            background-size:cover; background-position:center; height:50vh; min-height: 400px;
-            display:flex; flex-direction:column; justify-content:center; align-items:center;
-            text-align:center; color:white; padding:20px; padding-top:80px;
+            background: linear-gradient(rgba(0, 95, 115, 0.8), rgba(10, 147, 150, 0.8)), url('/images/blog/blog-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+            padding-top: 80px;
         }
-        header h1 { font-size:3.5rem; text-shadow:2px 2px 8px rgba(0,0,0,0.5); margin-bottom:0.5rem; }
-        header p { font-size:1.4rem; margin-bottom:2rem; max-width: 660px; }
+
+        header h1 {
+            font-size: 3.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        header p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            max-width: 660px;
+        }
 
         /* Breadcrumb */
         .breadcrumb {
@@ -222,13 +241,20 @@
             font-size: 0.88rem;
             color: #888;
         }
+
         .breadcrumb a {
             color: var(--secondary-color);
             text-decoration: none;
             font-weight: 600;
         }
-        .breadcrumb a:hover { color: var(--primary-color); }
-        .breadcrumb span { margin: 0 6px; }
+
+        .breadcrumb a:hover {
+            color: var(--primary-color);
+        }
+
+        .breadcrumb span {
+            margin: 0 6px;
+        }
 
         /* === AI CTA Banner === */
         .cta-banner-wrapper {
@@ -236,6 +262,7 @@
             margin: 2.5rem auto 4rem;
             padding: 0 20px;
         }
+
         .cta-banner {
             background: linear-gradient(135deg, var(--primary-color) 0%, #007a8a 50%, var(--secondary-color) 100%);
             border-radius: 14px;
@@ -248,23 +275,35 @@
             position: relative;
             overflow: hidden;
         }
+
         .cta-banner::before {
             content: '';
             position: absolute;
-            top: -60px; right: -60px;
-            width: 220px; height: 220px;
-            background: rgba(255,255,255,0.05);
+            top: -60px;
+            right: -60px;
+            width: 220px;
+            height: 220px;
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 50%;
         }
+
         .cta-banner::after {
             content: '';
             position: absolute;
-            bottom: -80px; left: 30%;
-            width: 280px; height: 280px;
-            background: rgba(255,255,255,0.04);
+            bottom: -80px;
+            left: 30%;
+            width: 280px;
+            height: 280px;
+            background: rgba(255, 255, 255, 0.04);
             border-radius: 50%;
         }
-        .cta-banner-text { flex: 1; position: relative; z-index: 1; }
+
+        .cta-banner-text {
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+
         .cta-banner-eyebrow {
             display: inline-block;
             background: rgba(233, 216, 166, 0.2);
@@ -278,6 +317,7 @@
             letter-spacing: 1px;
             margin-bottom: 1rem;
         }
+
         .cta-banner-text h2 {
             font-family: var(--font-heading);
             font-size: 1.9rem;
@@ -285,17 +325,20 @@
             line-height: 1.25;
             margin-bottom: 0.75rem;
         }
+
         .cta-banner-text p {
-            color: rgba(255,255,255,0.85);
+            color: rgba(255, 255, 255, 0.85);
             font-size: 1.05rem;
             line-height: 1.6;
             max-width: 560px;
         }
+
         .cta-banner-action {
             flex-shrink: 0;
             position: relative;
             z-index: 1;
         }
+
         .btn-cta-primary {
             display: inline-block;
             background: var(--accent-color);
@@ -307,467 +350,536 @@
             text-decoration: none;
             letter-spacing: 0.3px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 18px rgba(0,0,0,0.18);
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
             white-space: nowrap;
         }
+
         .btn-cta-primary:hover {
             background: white;
             transform: translateY(-2px);
-            box-shadow: 0 8px 28px rgba(0,0,0,0.22);
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
         }
 
         /* === Category Sections === */
-        .category-section { max-width: 1100px; margin: 0 auto 5rem; padding: 0 20px; }
-        .category-header {
-            display: flex; align-items: center; justify-content: space-between;
-            margin-bottom: 2rem; border-bottom: 2px solid #e0e0e0; padding-bottom: 10px;
+        .category-section {
+            max-width: 1100px;
+            margin: 0 auto 5rem;
+            padding: 0 20px;
         }
-        .category-title { font-size: 1.8rem; color: var(--primary-color); position: relative; }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+
         .category-title::after {
-            content: ''; position: absolute; bottom: -12px; left: 0;
-            width: 100%; height: 2px; background: var(--secondary-color);
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--secondary-color);
         }
 
         /* Grid & Cards */
-        .blog-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:30px; }
-        .blog-card { background:white; border-radius:10px; overflow:hidden; box-shadow:0 5px 15px rgba(0,0,0,0.05); transition:0.3s; display: flex; flex-direction: column; }
-        .blog-card:hover { transform:translateY(-5px); box-shadow:0 12px 25px rgba(0,0,0,0.1); }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
 
-        .blog-img { height: 200px; overflow: hidden; position: relative; }
-        .blog-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.4s; }
-        .blog-card:hover .blog-img img { transform: scale(1.08); }
+        .blog-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .blog-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+
+        .blog-card:hover .blog-img img {
+            transform: scale(1.08);
+        }
 
         /* Badges for Cards */
         .card-badge {
-            position: absolute; top: 15px; left: 15px;
-            background: rgba(0, 95, 115, 0.9); color: white;
-            padding: 4px 10px; font-size: 0.75rem; font-weight: 700;
-            text-transform: uppercase; border-radius: 4px; z-index: 2;
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(0, 95, 115, 0.9);
+            color: white;
+            padding: 4px 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 4px;
+            z-index: 2;
         }
-        .badge-science { background: #2a9d8f; }
-        .badge-guide { background: #e9c46a; color: #333; }
-        .badge-trends { background: #e76f51; }
 
-        .blog-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
-        .blog-content h3 { font-size: 1.4rem; margin-bottom: 10px; color: var(--primary-color); line-height: 1.3; }
-        .blog-meta { color: #888; font-size: 0.85rem; margin-bottom: 12px; font-weight: 600; }
-        .blog-excerpt { color: #555; font-size: 0.95rem; margin-bottom: 20px; flex-grow: 1; }
-        .read-more { color: var(--secondary-color); font-weight: bold; text-decoration: none; display: inline-flex; align-items: center; }
-        .read-more:hover { color: var(--primary-color); }
+        .badge-science {
+            background: #2a9d8f;
+        }
+
+        .badge-guide {
+            background: #e9c46a;
+            color: #333;
+        }
+
+        .badge-trends {
+            background: #e76f51;
+        }
+
+        .blog-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+            line-height: 1.3;
+        }
+
+        .blog-meta {
+            color: #888;
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .blog-excerpt {
+            color: #555;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .read-more {
+            color: var(--secondary-color);
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .read-more:hover {
+            color: var(--primary-color);
+        }
 
         /* Mobile */
         @media (max-width: 768px) {
-            header { height: auto; padding-top: 120px; padding-bottom: 80px; }
-            header h1 { font-size: 2.2rem; }
-            .cta-banner { flex-direction: column; padding: 2rem; text-align: center; }
-            .cta-banner-text p { max-width: 100%; }
-            .cta-banner-action { width: 100%; text-align: center; }
-            .btn-cta-primary { width: 100%; text-align: center; }
-            .category-section { margin-bottom: 3rem; }
-            .footer-container { grid-template-columns: 1fr; text-align: center; }
-            .contact-row, .social-icons { justify-content: center; }
-        }
-
-        /* Footer */
-        footer {
-            background: var(--primary-color);
-            color: white;
-            padding-top: 4rem;
-            font-family: 'Lato', sans-serif;
-            font-size: 0.95rem;
-            margin-top: 5rem;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 3rem;
-            text-align: left;
-        }
-
-        .footer-col h3 {
-            color: var(--accent-color);
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer-col h4 {
-            color: white;
-            margin-bottom: 1.3rem;
-            font-size: 1.15rem;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-        }
-
-        .footer-col p {
-            color: rgba(255,255,255,0.85);
-            line-height: 1.7;
-            margin-bottom: 1rem;
-        }
-
-        .footer-links {
-            list-style: none;
-            padding: 0;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent-color);
-            padding-left: 8px;
-        }
-
-        .contact-row {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 18px;
-            color: rgba(255,255,255,0.9);
-            line-height: 1.5;
-        }
-
-        .contact-row a {
-            color: rgba(255,255,255,0.9);
-            text-decoration: none;
-        }
-
-        .contact-row a:hover {
-            color: var(--accent-color);
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 18px;
-            margin-top: 20px;
-        }
-
-        .social-icons a svg {
-            width: 26px;
-            height: 26px;
-            fill: white;
-            transition: all 0.3s ease;
-        }
-
-        .social-icons a:hover svg {
-            fill: var(--accent-color);
-            transform: translateY(-4px);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.12);
-            margin-top: 3.5rem;
-            padding: 1.8rem 2rem;
-            text-align: center;
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.6);
-        }
-
-        .footer-bottom a {
-            color: rgba(255,255,255,0.6);
-            text-decoration: none;
-        }
-
-        .footer-bottom a:hover {
-            color: var(--accent-color);
-        }
-
-        @media (max-width: 768px) {
-            .footer-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-                text-align: center;
+            header {
+                height: auto;
+                padding-top: 120px;
+                padding-bottom: 80px;
             }
 
-            .footer-col {
-                align-items: center;
-                text-align: center;
+            header h1 {
+                font-size: 2.2rem;
             }
 
-            .footer-links {
-                padding: 0;
-            }
-
-            .footer-links li {
-                list-style: none;
-            }
-
-            .contact-row {
-                justify-content: center;
-                align-items: center;
-                text-align: center;
+            .cta-banner {
                 flex-direction: column;
-                gap: 8px;
+                padding: 2rem;
+                text-align: center;
             }
 
-            .social-icons {
-                justify-content: center;
+            .cta-banner-text p {
+                max-width: 100%;
+            }
+
+            .cta-banner-action {
+                width: 100%;
+                text-align: center;
+            }
+
+            .btn-cta-primary {
+                width: 100%;
+                text-align: center;
+            }
+
+            .category-section {
+                margin-bottom: 3rem;
             }
         }
     </style>
 </head>
+
 <body>
 
 
-<!-- ============================================================
+    <!-- ============================================================
      NAVBAR — unchanged from reference
      ============================================================ -->
-<div class="navbar">
-    <a href="/">Home</a>
+    <!--
+  _includes/navbar.html
+  ─────────────────────
+  Site-wide navigation bar.
+  Uses `page.url` to highlight the active top-level link via the `active` class.
+  Extend the nav_links list via _data/nav.yml if you add more top-level items.
+-->
+
+<div class="navbar" role="navigation" aria-label="Main navigation">
+
+    <a href="/" >
+        Home
+    </a>
+
+    <!-- Hair Guides dropdown -->
     <div class="dropdown">
-        <button class="dropbtn">Hair Guides</button>
-        <div class="dropdown-content">
-            <a href="/services/womens-haircuts/">Women's Haircut Guide</a>
-            <a href="/services/mens-grooming/">Men's Grooming Guide</a>
-            <a href="/services/hair-coloring/">Hair Coloring Guide</a>
-            <a href="/services/hair-treatments/">Hair Treatment Guide</a>
-            <a href="/services/bridal-styling/">Bridal Hair Guide</a>
+        <button class="dropbtn" aria-haspopup="true" aria-expanded="false">
+            Hair Guides
+        </button>
+        <div class="dropdown-content" role="menu">
+            <a href="/services/womens-haircuts/" role="menuitem">Women's Haircut Guide</a>
+            <a href="/services/mens-grooming/" role="menuitem">Men's Grooming Guide</a>
+            <a href="/services/hair-coloring/" role="menuitem">Hair Coloring Guide</a>
+            <a href="/services/hair-treatments/" role="menuitem">Hair Treatment Guide</a>
+            <a href="/services/bridal-styling/" role="menuitem">Bridal Hair Guide</a>
         </div>
     </div>
+
+    <!-- Tools dropdown -->
     <div class="dropdown">
-        <button class="dropbtn">Tools</button>
-        <div class="dropdown-content">
-            <a href="/tools/ai-shaver-finder/">Ai Shaver Finder</a>
+        <button class="dropbtn" aria-haspopup="true" aria-expanded="false">
+            Tools
+        </button>
+        <div class="dropdown-content" role="menu">
+            <a href="/tools/ai-shaver-finder/" role="menuitem">AI Shaver Finder</a>
         </div>
     </div>
+
+    <!-- About This Site dropdown -->
     <div class="dropdown">
-        <button class="dropbtn">About This Site</button>
-        <div class="dropdown-content">
-            <a href="/prices/">Local Price Averages</a>
-            <a href="/testimonials/">Community Reviews</a>
-            <a href="/contact/">Contact &amp; Editorial Info</a>
+        <button class="dropbtn" aria-haspopup="true" aria-expanded="false">
+            About This Site
+        </button>
+        <div class="dropdown-content" role="menu">
+            <a href="/prices/" role="menuitem">Local Price Averages</a>
+            <a href="/testimonials/" role="menuitem">Community Reviews</a>
+            <a href="/newsletter/" role="menuitem">Grooming Newsletter</a>
+            <a href="/contact/" role="menuitem">Contact &amp; Editorial Info</a>
         </div>
     </div>
-    <a href="/blog/">Blog</a>
+
+    <a href="/blog/" aria-current="page" >
+        Blog
+    </a>
+
 </div>
-<!-- ============================================================
+    <!-- ============================================================
      HEADER — Hero
      ============================================================ -->
-<header>
-    <h1>Electric Shavers &amp; Grooming Guides</h1>
-    <p>Practical solutions for sensitive skin, neck irritation, and getting a clean shave without the burn.</p>
-</header>
+    <header>
+        <h1>Electric Shavers &amp; Grooming Guides</h1>
+        <p>Practical solutions for sensitive skin, neck irritation, and getting a clean shave without the burn.</p>
+    </header>
 
-<!-- ============================================================
+    <!-- ============================================================
      BREADCRUMB
      ============================================================ -->
-<nav class="breadcrumb" aria-label="Breadcrumb">
-    <a href="/">Home</a>
-    <span>›</span>
-    <a href="/blog/">Blog</a>
-    <span>›</span>
-    Electric Shavers
-</nav>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span>›</span>
+        <a href="/blog/">Blog</a>
+        <span>›</span>
+        Electric Shavers
+    </nav>
 
-<!-- ============================================================
+    <!-- ============================================================
      AI SHAVER FINDER CTA BANNER
      ============================================================ -->
-<div class="cta-banner-wrapper">
-    <div class="cta-banner">
-        <div class="cta-banner-text">
-            <span class="cta-banner-eyebrow">⚡ Free AI Tool</span>
-            <h2>Not Sure Which Shaver Is Right for You?</h2>
-            <p>Tired of guessing? Find the perfect electric razor for your exact skin type and beard density in 30 seconds.</p>
-        </div>
-        <div class="cta-banner-action">
-            <a href="/tools/ai-shaver-finder/" class="btn-cta-primary">Launch AI Shaver Finder →</a>
+    <div class="cta-banner-wrapper">
+        <div class="cta-banner">
+            <div class="cta-banner-text">
+                <span class="cta-banner-eyebrow">⚡ Free AI Tool</span>
+                <h2>Not Sure Which Shaver Is Right for You?</h2>
+                <p>Tired of guessing? Find the perfect electric razor for your exact skin type and beard density in 30
+                    seconds.</p>
+            </div>
+            <div class="cta-banner-action">
+                <a href="/tools/ai-shaver-finder/" class="btn-cta-primary">Launch AI Shaver Finder →</a>
+            </div>
         </div>
     </div>
-</div>
 
-<!-- ============================================================
+    <!-- ============================================================
      ARTICLE GRID
      ============================================================ -->
-<div class="category-section">
-    <div class="category-header">
-        <h2 class="category-title">All Electric Shaver Guides</h2>
+    <div class="category-section">
+        <div class="category-header">
+            <h2 class="category-title">All Electric Shaver Guides</h2>
+        </div>
+        <div class="blog-grid">
+
+            <!-- Card 1: Master Guide -->
+            <div class="blog-card">
+                <div class="blog-img">
+                    <span class="card-badge badge-guide">Master Guide</span>
+                    <img src="/images/blog/electric-shavers/electric-shaving-sensitive-skin/electric-shaving-sensitive-skin-guide-cover.webp"
+                        alt="Electric Shaving for Sensitive Skin" loading="lazy">
+                </div>
+                <div class="blog-content">
+                    <h3>The Complete Guide to Electric Shaving for Sensitive Skin</h3>
+                    <div class="blog-meta">Feb 19, 2026 • 12 min read</div>
+                    <p class="blog-excerpt">Transition, technique, and tool selection for a zero-irritation shave.</p>
+                    <a href="/blog/electric-shavers/electric-shaving-sensitive-skin/" class="read-more">Read Article
+                        →</a>
+                </div>
+            </div>
+
+            <!-- Card 2: Best for Neck -->
+            <div class="blog-card">
+                <div class="blog-img">
+                    <span class="card-badge badge-guide">Top Picks</span>
+                    <img src="/images/blog/electric-shavers/best-for-neck/best-electric-shaver-neck-cover.webp"
+                        alt="Best Electric Shavers for Neck" loading="lazy">
+                </div>
+                <div class="blog-content">
+                    <h3>Best Electric Shavers for Neck (No Irritation Guide 2026)</h3>
+                    <div class="blog-meta">Mar 12, 2026 • 10 min read</div>
+                    <p class="blog-excerpt">The neck is where shaving goes wrong. 5 shavers built for neck contours,
+                        flat-lying hairs, and whorls — not just general sensitive skin.</p>
+                    <a href="/blog/electric-shavers/best-for-neck/" class="read-more">Read Article →</a>
+                </div>
+            </div>
+
+            <!-- Card 3: Troubleshooting -->
+            <div class="blog-card">
+                <div class="blog-img">
+                    <span class="card-badge badge-science">Troubleshooting</span>
+                    <img src="/images/blog/electric-shavers/electric-razor-pulling-hair/electric-razor-pulling-hair-cover.webp"
+                        alt="Electric Razor Pulling Hair" loading="lazy">
+                </div>
+                <div class="blog-content">
+                    <h3>Electric Razor Pulling Hair? 5 Mechanical Fixes</h3>
+                    <div class="blog-meta">Feb 25, 2026 • 8 min read</div>
+                    <p class="blog-excerpt">Dull blades, hard water, or low battery? Fix your snagging shaver fast with
+                        this diagnostic guide.</p>
+                    <a href="/blog/electric-shavers/electric-razor-pulling-hair/" class="read-more">Read Article →</a>
+                </div>
+            </div>
+
+            <!-- Card 4: Skin Health -->
+            <div class="blog-card">
+                <div class="blog-img">
+                    <span class="card-badge badge-science">Skin Health</span>
+                    <img src="/images/blog/electric-shavers/electric-shaver-whiteheads-neck/electric-shaver-whiteheads-neck-cover.webp"
+                        alt="Whiteheads on neck from shaving" loading="lazy">
+                </div>
+                <div class="blog-content">
+                    <h3>Electric Shaver Whiteheads on Neck? Here's Why</h3>
+                    <div class="blog-meta">Mar 05, 2026 • 9 min read</div>
+                    <p class="blog-excerpt">Stop post-shave breakouts. 4 proven fixes for whiteheads caused by electric
+                        razors and bacteria.</p>
+                    <a href="/blog/electric-shavers/electric-shaver-whiteheads-neck/" class="read-more">Read Article
+                        →</a>
+                </div>
+            </div>
+
+            <!-- Card 5: Wet vs Dry -->
+            <div class="blog-card">
+                <div class="blog-img">
+                    <span class="card-badge badge-science">Comparison</span>
+                    <img src="/images/blog/electric-shavers/wet-vs-dry/wet-vs-dry-electric-shaving-cover.webp"
+                        alt="Wet vs Dry Electric Shaving" loading="lazy">
+                </div>
+                <div class="blog-content">
+                    <h3>Wet vs. Dry Electric Shaving: Which Is Better for Hard Water?</h3>
+                    <div class="blog-meta">Apr 10, 2026 • 9 min read</div>
+                    <p class="blog-excerpt">Wet shaving with hard water is a losing battle. Discover why dry electric
+                        shaving wins on mineral-heavy tap water and which method suits your skin.</p>
+                    <a href="/blog/electric-shavers/wet-vs-dry/" class="read-more">Read Article →</a>
+                </div>
+            </div>
+
+            <!-- Card 6: Best for Acne -->
+            <div class="blog-card">
+                <div class="blog-img">
+                    <span class="card-badge badge-science">Skin Health</span>
+                    <img src="/images/blog/electric-shavers/best-for-acne-ingrown-hair/best-electric-shaver-acne-ingrown-hair-cover.webp"
+                        alt="Best Shavers for Acne and Ingrown Hairs" loading="lazy">
+                </div>
+                <div class="blog-content">
+                    <h3>Best Electric Shavers for Acne &amp; Ingrown Hairs</h3>
+                    <div class="blog-meta">Apr 22, 2026 • 10 min read</div>
+                    <p class="blog-excerpt">Shavers that reduce ingrown hairs, minimize pore clogging, and are safe for
+                        active acne — ranked by mechanism, not marketing.</p>
+                    <a href="/blog/electric-shavers/best-for-acne-ingrown-hair/" class="read-more">Read Article →</a>
+                </div>
+            </div>
+
+            <!-- Card 7: Hard Water Maintenance -->
+            <div class="blog-card">
+                <div class="blog-img">
+                    <span class="card-badge badge-guide">Maintenance</span>
+                    <img src="/images/blog/electric-shavers/hard-water-cleaning-maintenance/hard-water-cleaning-maintenance-cover.webp"
+                        alt="Cleaning Electric Shaver Hard Water" loading="lazy">
+                </div>
+                <div class="blog-content">
+                    <h3>How to Clean an Electric Shaver in Hard Water Areas</h3>
+                    <div class="blog-meta">May 01, 2026 • 7 min read</div>
+                    <p class="blog-excerpt">Hard water leaves calcium deposits on blades and foils that kill
+                        performance. Learn the exact cleaning routine for mineral-heavy environments.</p>
+                    <a href="/blog/electric-shavers/hard-water-cleaning-maintenance/" class="read-more">Read Article
+                        →</a>
+                </div>
+            </div>
+
+            <!-- Card 8: Tools -->
+            <div class="blog-card">
+                <div class="blog-img">
+                    <span class="card-badge badge-guide">Tools</span>
+                    <img src="/images/blog/Best-Electric-Shavers-for-Sensitive-Skin-hero.jpg" alt="Electric Shavers"
+                        loading="lazy">
+                </div>
+                <div class="blog-content">
+                    <h3>Best Electric Shavers for Sensitive Skin</h3>
+                    <div class="blog-meta">Dec 28, 2025 • 8 min read</div>
+                    <p class="blog-excerpt">Barber-approved guide to the best electric razors specifically for coastal
+                        climates.</p>
+                    <a href="/blog/best-electric-shavers-sensitive-skin-2025/" class="read-more">Read Article →</a>
+                </div>
+            </div>
+
+        </div>
     </div>
-    <div class="blog-grid">
 
-        <!-- Card 1: Master Guide -->
-        <div class="blog-card">
-            <div class="blog-img">
-                <span class="card-badge badge-guide">Master Guide</span>
-                <img src="/images/blog/electric-shavers/electric-shaving-sensitive-skin/electric-shaving-sensitive-skin-guide-cover.webp" alt="Electric Shaving for Sensitive Skin" loading="lazy">
-            </div>
-            <div class="blog-content">
-                <h3>The Complete Guide to Electric Shaving for Sensitive Skin</h3>
-                <div class="blog-meta">Feb 19, 2026 • 12 min read</div>
-                <p class="blog-excerpt">Transition, technique, and tool selection for a zero-irritation shave.</p>
-                <a href="/blog/electric-shavers/electric-shaving-sensitive-skin/" class="read-more">Read Article →</a>
-            </div>
-        </div>
-
-        <!-- Card 2: Best for Neck -->
-        <div class="blog-card">
-            <div class="blog-img">
-                <span class="card-badge badge-guide">Top Picks</span>
-                <img src="/images/blog/electric-shavers/best-for-neck/best-electric-shaver-neck-cover.webp" alt="Best Electric Shavers for Neck" loading="lazy">
-            </div>
-            <div class="blog-content">
-                <h3>Best Electric Shavers for Neck (No Irritation Guide 2026)</h3>
-                <div class="blog-meta">Mar 12, 2026 • 10 min read</div>
-                <p class="blog-excerpt">The neck is where shaving goes wrong. 5 shavers built for neck contours, flat-lying hairs, and whorls — not just general sensitive skin.</p>
-                <a href="/blog/electric-shavers/best-for-neck/" class="read-more">Read Article →</a>
-            </div>
-        </div>
-
-        <!-- Card 3: Troubleshooting -->
-        <div class="blog-card">
-            <div class="blog-img">
-                <span class="card-badge badge-science">Troubleshooting</span>
-                <img src="/images/blog/electric-shavers/electric-razor-pulling-hair/electric-razor-pulling-hair-cover.webp" alt="Electric Razor Pulling Hair" loading="lazy">
-            </div>
-            <div class="blog-content">
-                <h3>Electric Razor Pulling Hair? 5 Mechanical Fixes</h3>
-                <div class="blog-meta">Feb 25, 2026 • 8 min read</div>
-                <p class="blog-excerpt">Dull blades, hard water, or low battery? Fix your snagging shaver fast with this diagnostic guide.</p>
-                <a href="/blog/electric-shavers/electric-razor-pulling-hair/" class="read-more">Read Article →</a>
-            </div>
-        </div>
-
-        <!-- Card 4: Skin Health -->
-        <div class="blog-card">
-            <div class="blog-img">
-                <span class="card-badge badge-science">Skin Health</span>
-                <img src="/images/blog/electric-shavers/electric-shaver-whiteheads-neck/electric-shaver-whiteheads-neck-cover.webp" alt="Whiteheads on neck from shaving" loading="lazy">
-            </div>
-            <div class="blog-content">
-                <h3>Electric Shaver Whiteheads on Neck? Here's Why</h3>
-                <div class="blog-meta">Mar 05, 2026 • 9 min read</div>
-                <p class="blog-excerpt">Stop post-shave breakouts. 4 proven fixes for whiteheads caused by electric razors and bacteria.</p>
-                <a href="/blog/electric-shavers/electric-shaver-whiteheads-neck/" class="read-more">Read Article →</a>
-            </div>
-        </div>
-
-        <!-- Card 5: Wet vs Dry -->
-        <div class="blog-card">
-            <div class="blog-img">
-                <span class="card-badge badge-science">Comparison</span>
-                <img src="/images/blog/electric-shavers/wet-vs-dry/wet-vs-dry-electric-shaving-cover.webp" alt="Wet vs Dry Electric Shaving" loading="lazy">
-            </div>
-            <div class="blog-content">
-                <h3>Wet vs. Dry Electric Shaving: Which Is Better for Hard Water?</h3>
-                <div class="blog-meta">Apr 10, 2026 • 9 min read</div>
-                <p class="blog-excerpt">Wet shaving with hard water is a losing battle. Discover why dry electric shaving wins on mineral-heavy tap water and which method suits your skin.</p>
-                <a href="/blog/electric-shavers/wet-vs-dry/" class="read-more">Read Article →</a>
-            </div>
-        </div>
-
-        <!-- Card 6: Best for Acne -->
-        <div class="blog-card">
-            <div class="blog-img">
-                <span class="card-badge badge-science">Skin Health</span>
-                <img src="/images/blog/electric-shavers/best-for-acne-ingrown-hair/best-electric-shaver-acne-ingrown-hair-cover.webp" alt="Best Shavers for Acne and Ingrown Hairs" loading="lazy">
-            </div>
-            <div class="blog-content">
-                <h3>Best Electric Shavers for Acne &amp; Ingrown Hairs</h3>
-                <div class="blog-meta">Apr 22, 2026 • 10 min read</div>
-                <p class="blog-excerpt">Shavers that reduce ingrown hairs, minimize pore clogging, and are safe for active acne — ranked by mechanism, not marketing.</p>
-                <a href="/blog/electric-shavers/best-for-acne-ingrown-hair/" class="read-more">Read Article →</a>
-            </div>
-        </div>
-
-        <!-- Card 7: Hard Water Maintenance -->
-        <div class="blog-card">
-            <div class="blog-img">
-                <span class="card-badge badge-guide">Maintenance</span>
-                <img src="/images/blog/electric-shavers/hard-water-cleaning-maintenance/hard-water-cleaning-maintenance-cover.webp" alt="Cleaning Electric Shaver Hard Water" loading="lazy">
-            </div>
-            <div class="blog-content">
-                <h3>How to Clean an Electric Shaver in Hard Water Areas</h3>
-                <div class="blog-meta">May 01, 2026 • 7 min read</div>
-                <p class="blog-excerpt">Hard water leaves calcium deposits on blades and foils that kill performance. Learn the exact cleaning routine for mineral-heavy environments.</p>
-                <a href="/blog/electric-shavers/hard-water-cleaning-maintenance/" class="read-more">Read Article →</a>
-            </div>
-        </div>
-
-        <!-- Card 8: Tools -->
-        <div class="blog-card">
-            <div class="blog-img">
-                <span class="card-badge badge-guide">Tools</span>
-                <img src="/images/blog/Best-Electric-Shavers-for-Sensitive-Skin-hero.jpg" alt="Electric Shavers" loading="lazy">
-            </div>
-            <div class="blog-content">
-                <h3>Best Electric Shavers for Sensitive Skin</h3>
-                <div class="blog-meta">Dec 28, 2025 • 8 min read</div>
-                <p class="blog-excerpt">Barber-approved guide to the best electric razors specifically for coastal climates.</p>
-                <a href="/blog/best-electric-shavers-sensitive-skin-2025/" class="read-more">Read Article →</a>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<!-- ============================================================
+    <!-- ============================================================
      FOOTER — unchanged from reference
      ============================================================ -->
+    <!--
+  _includes/footer.html
+  ─────────────────────
+  Site-wide footer.
+  Contact details are pulled from _config.yml or hardcoded here since they rarely change.
+  Social handles: site.twitter.username, site.social.facebook_url, etc.
+-->
+
 <footer>
     <div class="footer-container">
+
+        <!-- Column 1 — Brand & Social -->
         <div class="footer-col">
             <h3>Oceanside Hair Salon</h3>
             <p>Your local guide to haircuts, grooming, and hair care in Oceanside — built to help you make smarter style decisions in a coastal climate.</p>
 
             <div class="social-icons">
-                <a href="https://www.facebook.com/profile.php?id=61583963957390" target="_blank" aria-label="Facebook">
-                    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                </a>
-                <a href="https://www.instagram.com/oceanside_hair_salon" target="_blank" aria-label="Instagram">
-                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.36-.2 6.78-2.618 6.98-6.98.058-1.28.072-1.689.072-4.948 0-3.259-.014-3.667-.072-4.947-.2-4.361-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.644-1.44-1.439-1.44z"/></svg>
-                </a>
-                <a href="https://x.com/OceansideHair" target="_blank" aria-label="X Twitter">
-        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-    </a>
 
-    <a href="https://www.pinterest.com/OceansideHairSalon/" target="_blank" aria-label="Pinterest">
-        <svg viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.399.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.951-7.252 4.173 0 7.41 2.967 7.41 6.93 0 4.136-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.367 18.62 0 12.017 0z"/></svg>
-    </a>
+                <a href="https://www.facebook.com/profile.php?id=61583963957390"
+                    target="_blank" rel="noopener" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                    </svg>
+                </a>
+
+                <a href="https://www.instagram.com/oceanside_hair_salon"
+                    target="_blank" rel="noopener" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.36-.2 6.78-2.618 6.98-6.98.058-1.28.072-1.689.072-4.948 0-3.259-.014-3.667-.072-4.947-.2-4.361-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.441-.645 1.441-1.44s-.645-1.44-1.441-1.44z" />
+                    </svg>
+                </a>
+
+                <a href="https://x.com/OceansideHair" target="_blank"
+                    rel="noopener" aria-label="X / Twitter">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
+                </a>
+
+                <a href="https://www.pinterest.com/OceansideHairSalon/"
+                    target="_blank" rel="noopener" aria-label="Pinterest">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.399.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.951-7.252 4.173 0 7.41 2.967 7.41 6.93 0 4.136-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.367 18.62 0 12.017 0z" />
+                    </svg>
+                </a>
+
             </div>
         </div>
 
-<div class="footer-col">
-    <h4>Quick Links</h4>
-    <ul class="footer-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/services/">Hair Guides</a></li>
-        <li><a href="/prices/">Local Price Insights</a></li>
-        <li><a href="/testimonials/">Community Feedback</a></li>
-        <li><a href="/blog/">Articles & Guides</a></li>
-        <li><a href="/contact/">Contact & Info</a></li>
-    </ul>
-</div>
+        <!-- Column 2 — Quick Links -->
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul class="footer-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/services/">Hair Guides</a></li>
+                <li><a href="/prices/">Local Price Insights</a></li>
+                <li><a href="/testimonials/">Community Feedback</a></li>
+                <li><a href="/newsletter/" style="font-weight: bold; color: var(--accent-color);">Grooming Newsletter</a></li>
+                <li><a href="/blog/">Articles &amp; Guides</a></li>
+                <li><a href="/contact/">Contact &amp; Info</a></li>
+            </ul>
+        </div>
 
-
+        <!-- Column 3 — Contact -->
         <div class="footer-col">
             <h4>Find Us</h4>
-            <div class="contact-row"><span>Address</span><span>Oceanside, CA 92054</span></div>
-           
-            <div class="contact-row"><span>Email</span><a href="mailto:info@oceansidehairsalon.com">info@oceansidehairsalon.com</a></div>
-            <div class="contact-row" >
-        <span>Purpose</span>
-        <div>
-            <div>Independent hair & grooming guides</div>
-            <div>Local research & style insights</div>
-            <div style="color:var(--accent-color);">No appointments or services offered</div>
-        </div>
+            <div class="contact-row">
+                <span>Address</span>
+                <span>Oceanside, CA 92054</span>
+            </div>
+            <div class="contact-row">
+                <span>Email</span>
+                <a href="mailto:info@oceansidehairsalon.com">
+                    info@oceansidehairsalon.com
+                </a>
+            </div>
+            <div class="contact-row">
+                <span>Purpose</span>
+                <div>
+                    <div>Independent hair &amp; grooming guides</div>
+                    <div>Local research &amp; style insights</div>
+                    <div style="color:var(--accent-color);">No appointments or services offered</div>
+                </div>
             </div>
         </div>
-    </div>
+
+    </div><!-- /.footer-container -->
+
     <div class="footer-bottom">
-              <p>&copy; 2026 Oceanside Hair Salon. All rights reserved. | Independent hair & grooming resource — not affiliated with any salon.</p>
+        &copy; 2026 Oceanside Hair Salon. All Rights Reserved.
+        | <a href="/privacy-policy/">Privacy Policy</a>
     </div>
+
 </footer>
 
 </body>
+
 </html>
