@@ -2,6 +2,7 @@
 ---
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     {% include gtm.html %}
     <meta charset="UTF-8">
@@ -11,12 +12,15 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/myfavicon/apple-touch-icon.png" />
     <link rel="manifest" href="/myfavicon/site.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>Smarter Grooming Newsletter | Oceanside Hair Guide</title>
-    <meta name="description" content="Subscribe to the Oceanside Grooming Newsletter. Get expert, personalized tips on electric & safety razors, hard water skin solutions, and shaving science.">
+    <meta name="description"
+        content="Subscribe to the Oceanside Grooming Newsletter. Get expert, personalized tips on electric & safety razors, hard water skin solutions, and shaving science.">
     <link rel="canonical" href="https://oceansidehairsalon.com/newsletter/" />
-    
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:wght@400;700&display=swap"
+        rel="stylesheet">
 
     <script type="application/ld+json">
     {
@@ -44,9 +48,9 @@
             --font-heading: 'Playfair Display', serif;
             --font-body: 'Lato', sans-serif;
             --white: #ffffff;
-            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
-            --shadow-md: 0 10px 30px rgba(0,0,0,0.08);
-            --shadow-lg: 0 20px 40px rgba(0,0,0,0.12);
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.12);
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -64,7 +68,9 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3 {
+        h1,
+        h2,
+        h3 {
             font-family: var(--font-heading);
             color: var(--primary-color);
         }
@@ -73,8 +79,8 @@
 
         /* Hero Landing Header */
         header {
-            background: linear-gradient(135deg, rgba(0, 95, 115, 0.9), rgba(10, 147, 150, 0.8)), 
-                        url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1950&q=80');
+            background: linear-gradient(135deg, rgba(0, 95, 115, 0.9), rgba(10, 147, 150, 0.8)),
+                url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1950&q=80');
             background-size: cover;
             background-position: center;
             min-height: 50vh;
@@ -104,7 +110,7 @@
             margin-bottom: 1rem;
             color: #fff;
             max-width: 900px;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             animation: fadeInDown 0.8s ease;
         }
 
@@ -113,7 +119,7 @@
             max-width: 750px;
             color: rgba(255, 255, 255, 0.95);
             margin-bottom: 0;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
             animation: fadeInUp 0.8s ease 0.2s;
             animation-fill-mode: both;
         }
@@ -261,12 +267,12 @@
             position: relative;
         }
 
-        .interest-checkbox-real:checked + .interest-checkbox-custom {
+        .interest-checkbox-real:checked+.interest-checkbox-custom {
             background: var(--secondary-color);
             border-color: var(--secondary-color);
         }
 
-        .interest-checkbox-real:checked + .interest-checkbox-custom::after {
+        .interest-checkbox-real:checked+.interest-checkbox-custom::after {
             content: '';
             position: absolute;
             left: 6px;
@@ -278,7 +284,7 @@
             transform: rotate(45deg);
         }
 
-        .interest-checkbox-real:checked ~ .interest-card {
+        .interest-checkbox-real:checked~.interest-card {
             border-color: var(--secondary-color);
             background: rgba(10, 147, 150, 0.05);
         }
@@ -447,6 +453,7 @@
                 opacity: 0;
                 transform: translateY(-20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -458,6 +465,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -501,141 +509,153 @@
                 font-size: 0.95rem;
             }
         }
-
-
     </style>
 </head>
+
 <body>
 
-{% include navbar.html %}
+    {% include navbar.html %}
 
-<header>
-    <h1>Free Grooming &amp; Hair Care Insights, Delivered Weekly.</h1>
-    <p>Join our free newsletter for expert advice tailored to your routine. Select your interests below, enter your email, and confirm your subscription to start receiving tips that actually work.</p>
-</header>
+    <header>
+        <h1>Free Grooming &amp; Hair Care Insights, Delivered Weekly.</h1>
+        <p>Join our free newsletter for expert advice tailored to your routine. Select your interests below, enter your
+            email, and confirm your subscription to start receiving tips that actually work.</p>
+    </header>
 
-<div class="container">
-    
-    <!-- LEFT: Form Card -->
-    <div class="form-card">
-        <h2>Smarter Hair &amp; Skin Care</h2>
-        <p class="intro">Tell us what you're focused on, and we'll tailor our expert weekly digests directly to your beauty and grooming routine.</p>
-        
-        <!-- Newsletter Form (Kit platform compatible) -->
-        <form action="https://app.kit.com/sandbox/form-submit" method="POST" id="newsletter-form">
-            
-            <div class="input-group">
-                <label for="first-name">First Name</label>
-                <input type="text" id="first-name" name="fields[first_name]" placeholder="e.g. Alex" required>
+    <div class="container">
+
+        <!-- LEFT: Form Card -->
+        <div class="form-card">
+            <h2>Smarter Hair &amp; Skin Care</h2>
+            <p class="intro">Tell us what you're focused on, and we'll tailor our expert weekly digests directly to your
+                beauty and grooming routine.</p>
+
+            <!-- Newsletter Form (Kit platform compatible) -->
+            <form action="https://app.kit.com/forms/9508322/subscriptions" method="POST" id="newsletter-form">
+
+                <div class="input-group">
+                    <label for="first-name">First Name</label>
+                    <input type="text" id="first-name" name="fields[first_name]" placeholder="e.g. Alex" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="email-address">Email Address</label>
+                    <input type="email" id="email-address" name="email_address" placeholder="e.g. alex@example.com"
+                        required>
+                </div>
+
+                <div class="interests-section">
+                    <div class="interests-title">Choose Your Interests (Select all that apply)</div>
+
+                    <!-- Checkbox 1: Combined Shaving and Creams -->
+                    <label class="interest-card" id="card-shaving">
+                        <div class="interest-checkbox-container">
+                            <input type="checkbox" name="tags[]" value="19967264" id="chk-shaving"
+                                class="interest-checkbox-real">
+                            <div class="interest-checkbox-custom"></div>
+                        </div>
+                        <div>
+                            <div class="interest-card-label">Razor &amp; Shaving Cream Mastery</div>
+                            <div class="interest-card-desc">Wet shaving, razor choices, and product ingredient chemistry
+                                to prevent skin irritation.</div>
+                        </div>
+                    </label>
+
+                    <!-- Checkbox 2: Hard Water Solutions -->
+                    <label class="interest-card" id="card-water">
+                        <div class="interest-checkbox-container">
+                            <input type="checkbox" name="tags[]" value="19967266" id="chk-water"
+                                class="interest-checkbox-real">
+                            <div class="interest-checkbox-custom"></div>
+                        </div>
+                        <div>
+                            <div class="interest-card-label">Hard Water Solutions for Skin &amp; Hair</div>
+                            <div class="interest-card-desc">How to combat high mineral levels in Oceanside and coastal
+                                tap water.</div>
+                        </div>
+                    </label>
+
+                    <!-- Checkbox 3: Hair Care & Styling Essentials -->
+                    <label class="interest-card" id="card-hair">
+                        <div class="interest-checkbox-container">
+                            <input type="checkbox" name="tags[]" value="19967267" id="chk-hair"
+                                class="interest-checkbox-real">
+                            <div class="interest-checkbox-custom"></div>
+                        </div>
+                        <div>
+                            <div class="interest-card-label">Hair Care &amp; Styling Essentials</div>
+                            <div class="interest-card-desc">Expert hair health, salon advice, and home hair-care
+                                routines for all hair types.</div>
+                        </div>
+                    </label>
+                </div>
+
+                <button type="submit" class="submit-btn">Subscribe for Free</button>
+
+                <div class="trust-text">
+                    <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                    <span>100% Free. No spam, just real advice. Unsubscribe at any time.</span>
+                </div>
+            </form>
+        </div>
+
+        <!-- RIGHT: Sidebar Benefits -->
+        <div class="sidebar-content">
+
+            <div class="benefit-box">
+                <h3>
+                    <div class="benefit-icon-wrapper">✓</div>
+                    Coastal Water Hacks
+                </h3>
+                <p>Oceanside and Southern California coastal tap water is notoriously hard. Learn the exact soap,
+                    chelating shampoos, and softening tricks that protect your scalp and skin barrier.</p>
             </div>
-            
-            <div class="input-group">
-                <label for="email-address">Email Address</label>
-                <input type="email" id="email-address" name="email_address" placeholder="e.g. alex@example.com" required>
+
+            <div class="benefit-box">
+                <h3>
+                    <div class="benefit-icon-wrapper">✓</div>
+                    Zero Hype, Pure Science
+                </h3>
+                <p>We break down grooming products down to their raw ingredients. You will discover exactly what works
+                    for sensitive, acne-prone, or dry skin type without spending hundreds of dollars.</p>
             </div>
-            
-            <div class="interests-section">
-                <div class="interests-title">Choose Your Interests (Select all that apply)</div>
-                
-                <!-- Checkbox 1: Combined Shaving and Creams -->
-                <label class="interest-card" id="card-shaving">
-                    <div class="interest-checkbox-container">
-                        <input type="checkbox" name="tags[]" value="razor_cream_mastery" id="chk-shaving" class="interest-checkbox-real">
-                        <div class="interest-checkbox-custom"></div>
-                    </div>
-                    <div>
-                        <div class="interest-card-label">Razor &amp; Shaving Cream Mastery</div>
-                        <div class="interest-card-desc">Wet shaving, razor choices, and product ingredient chemistry to prevent skin irritation.</div>
-                    </div>
-                </label>
-                
-                <!-- Checkbox 2: Hard Water Solutions -->
-                <label class="interest-card" id="card-water">
-                    <div class="interest-checkbox-container">
-                        <input type="checkbox" name="tags[]" value="hard_water_solutions" id="chk-water" class="interest-checkbox-real">
-                        <div class="interest-checkbox-custom"></div>
-                    </div>
-                    <div>
-                        <div class="interest-card-label">Hard Water Solutions for Skin &amp; Hair</div>
-                        <div class="interest-card-desc">How to combat high mineral levels in Oceanside and coastal tap water.</div>
-                    </div>
-                </label>
-                
-                <!-- Checkbox 3: Hair Care & Styling Essentials -->
-                <label class="interest-card" id="card-hair">
-                    <div class="interest-checkbox-container">
-                        <input type="checkbox" name="tags[]" value="hair_care_styling" id="chk-hair" class="interest-checkbox-real">
-                        <div class="interest-checkbox-custom"></div>
-                    </div>
-                    <div>
-                        <div class="interest-card-label">Hair Care &amp; Styling Essentials</div>
-                        <div class="interest-card-desc">Expert hair health, salon advice, and home hair-care routines for all hair types.</div>
-                    </div>
-                </label>
+
+            <div class="benefit-box">
+                <h3>
+                    <div class="benefit-icon-wrapper">✓</div>
+                    Exclusive Reviews &amp; Guides
+                </h3>
+                <p>Get immediate, direct-access digests comparing styling products, hair treatments, shavers, and expert
+                    local North County styling recommendations.</p>
             </div>
-            
-            <button type="submit" class="submit-btn">Subscribe for Free</button>
-            
-            <div class="trust-text">
-                <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                </svg>
-                <span>100% Free. No spam, just real advice. Unsubscribe at any time.</span>
-            </div>
-        </form>
+        </div>
     </div>
 
-    <!-- RIGHT: Sidebar Benefits -->
-    <div class="sidebar-content">
-        
-        <div class="benefit-box">
-            <h3>
-                <div class="benefit-icon-wrapper">✓</div>
-                Coastal Water Hacks
-            </h3>
-            <p>Oceanside and Southern California coastal tap water is notoriously hard. Learn the exact soap, chelating shampoos, and softening tricks that protect your scalp and skin barrier.</p>
-        </div>
+    {% include footer.html %}
 
-        <div class="benefit-box">
-            <h3>
-                <div class="benefit-icon-wrapper">✓</div>
-                Zero Hype, Pure Science
-            </h3>
-            <p>We break down grooming products down to their raw ingredients. You will discover exactly what works for sensitive, acne-prone, or dry skin type without spending hundreds of dollars.</p>
-        </div>
+    <script>
+        // Premium interactive experience for the interest selection cards
+        document.querySelectorAll('.interest-card').forEach(card => {
+            const checkbox = card.querySelector('.interest-checkbox-real');
 
-        <div class="benefit-box">
-            <h3>
-                <div class="benefit-icon-wrapper">✓</div>
-                Exclusive Reviews &amp; Guides
-            </h3>
-            <p>Get immediate, direct-access digests comparing styling products, hair treatments, shavers, and expert local North County styling recommendations.</p>
-        </div>
-    </div>
-</div>
-
-{% include footer.html %}
-
-<script>
-    // Premium interactive experience for the interest selection cards
-    document.querySelectorAll('.interest-card').forEach(card => {
-        const checkbox = card.querySelector('.interest-checkbox-real');
-        
-        // Sync active class with initial state
-        if (checkbox.checked) {
-            card.classList.add('active');
-        }
-
-        // Listen to change events on the real hidden checkbox
-        checkbox.addEventListener('change', () => {
+            // Sync active class with initial state
             if (checkbox.checked) {
                 card.classList.add('active');
-            } else {
-                card.classList.remove('active');
             }
+
+            // Listen to change events on the real hidden checkbox
+            checkbox.addEventListener('change', () => {
+                if (checkbox.checked) {
+                    card.classList.add('active');
+                } else {
+                    card.classList.remove('active');
+                }
+            });
         });
-    });
-</script>
+    </script>
 
 </body>
+
 </html>
