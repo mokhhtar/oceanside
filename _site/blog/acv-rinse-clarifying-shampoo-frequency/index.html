@@ -1300,47 +1300,55 @@
         cursor: pointer;
     }
 
-    /* Custom checkbox */
-    .ohs-nl-check-item input[type="checkbox"] {
-        -webkit-appearance: none;
-        appearance: none;
-        display: inline-block;
-        vertical-align: middle;
+    /* Hide the real checkbox entirely */
+    .ohs-nl-checkbox-real {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
         margin: 0;
+        padding: 0;
+        pointer-events: none;
+    }
+
+    /* Custom Checkbox Design */
+    .ohs-nl-checkbox-custom {
+        display: inline-block;
         width: 18px;
         height: 18px;
         min-width: 18px;
-        flex-shrink: 0;
         border: 2px solid var(--nl-border);
         border-radius: 4px;
         background: var(--nl-white);
+        position: relative;
         cursor: pointer;
         transition: background var(--nl-transition), border-color var(--nl-transition);
-        position: relative;
+        flex-shrink: 0;
     }
 
-    .ohs-nl-check-item input[type="checkbox"]:checked {
+    /* Style checked state */
+    .ohs-nl-checkbox-real:checked + .ohs-nl-checkbox-custom {
         background: var(--nl-primary);
         border-color: var(--nl-primary);
     }
 
-    /* Checkmark via pseudo-element */
-    .ohs-nl-check-item input[type="checkbox"]:checked::after {
+    /* Draw the checkmark */
+    .ohs-nl-checkbox-real:checked + .ohs-nl-checkbox-custom::after {
         content: '';
         display: block;
         position: absolute;
         top: 2px;
         left: 5px;
-        width: 5px;
-        height: 9px;
+        width: 4px;
+        height: 8px;
         border: 2px solid var(--nl-white);
         border-top: none;
         border-left: none;
         transform: rotate(45deg);
     }
 
-    .ohs-nl-check-item input[type="checkbox"]:focus-visible {
-        outline: none;
+    /* Focus styling */
+    .ohs-nl-checkbox-real:focus-visible + .ohs-nl-checkbox-custom {
         box-shadow: 0 0 0 3px rgba(0, 95, 115, 0.3);
     }
 
@@ -1537,21 +1545,25 @@
 
                 <!-- Preference 1: Electric Shaving -->
                 <label class="ohs-nl-check-item">
-                    <input type="checkbox" name="tags[]" value="19967264"
+                    <input type="checkbox" name="tags[]" value="19967264" class="ohs-nl-checkbox-real"
                         aria-label="Subscribe to Electric Shaving tips" />
+                    <span class="ohs-nl-checkbox-custom"></span>
                     <span>Electric Shaving</span>
                 </label>
 
                 <!-- Preference 2: Hard Water Solutions -->
                 <label class="ohs-nl-check-item">
-                    <input type="checkbox" name="tags[]" value="19967266"
+                    <input type="checkbox" name="tags[]" value="19967266" class="ohs-nl-checkbox-real"
                         aria-label="Subscribe to Hard Water Solutions tips" />
+                    <span class="ohs-nl-checkbox-custom"></span>
                     <span>Hard Water Solutions</span>
                 </label>
 
                 <!-- Preference 3: Hair Care -->
                 <label class="ohs-nl-check-item">
-                    <input type="checkbox" name="tags[]" value="19967267" aria-label="Subscribe to Hair Care tips" />
+                    <input type="checkbox" name="tags[]" value="19967267" class="ohs-nl-checkbox-real"
+                        aria-label="Subscribe to Hair Care tips" />
+                    <span class="ohs-nl-checkbox-custom"></span>
                     <span>Hair Care</span>
                 </label>
 
