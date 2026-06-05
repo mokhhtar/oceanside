@@ -1,7 +1,7 @@
-{% raw %}<!--
+<!--
   ============================================================
   FILE: _includes/newsletter-inline.html
-  USAGE: {% include newsletter-inline.html %}
+  USAGE: {% raw %}{% include newsletter-inline.html %}{% endraw %}
   BRAND: Oceanside Hair Salon
   DESCRIPTION: Inline newsletter subscription component for
   Jekyll articles. Kit (ConvertKit) compatible. No external
@@ -16,6 +16,7 @@
      Mobile-first: base styles are for mobile, desktop styles
      are in a min-width: 560px media query.
      ============================================================ -->
+{% raw %}
 <style>
     /* ── CSS Custom Properties (scoped to component root) ── */
     .ohs-nl-wrap {
@@ -398,6 +399,7 @@
         }
     }
 </style>
+{% endraw %}
 
 <!-- ============================================================
      COMPONENT HTML
@@ -460,7 +462,8 @@
                 <!-- Preference 1: Electric Shaving -->
                 <label class="ohs-nl-check-item">
                     <input type="checkbox" name="tags[]" value="19967264" class="ohs-nl-checkbox-real"
-                        aria-label="Subscribe to Electric Shaving tips" />
+                        aria-label="Subscribe to Electric Shaving tips"
+                        {% if include.tag == "electric-shaving" or include.tag == "hard-water-shaving" %}checked{% endif %} />
                     <span class="ohs-nl-checkbox-custom"></span>
                     <span>Electric Shaving</span>
                 </label>
@@ -468,7 +471,8 @@
                 <!-- Preference 2: Hard Water Solutions -->
                 <label class="ohs-nl-check-item">
                     <input type="checkbox" name="tags[]" value="19967266" class="ohs-nl-checkbox-real"
-                        aria-label="Subscribe to Hard Water Solutions tips" />
+                        aria-label="Subscribe to Hard Water Solutions tips"
+                        {% if include.tag == "hard-water" or include.tag == "hard-water-shaving" %}checked{% endif %} />
                     <span class="ohs-nl-checkbox-custom"></span>
                     <span>Hard Water Solutions</span>
                 </label>
@@ -476,7 +480,8 @@
                 <!-- Preference 3: Hair Care -->
                 <label class="ohs-nl-check-item">
                     <input type="checkbox" name="tags[]" value="19967267" class="ohs-nl-checkbox-real"
-                        aria-label="Subscribe to Hair Care tips" />
+                        aria-label="Subscribe to Hair Care tips"
+                        {% if include.tag == "hair-care" %}checked{% endif %} />
                     <span class="ohs-nl-checkbox-custom"></span>
                     <span>Hair Care</span>
                 </label>
@@ -525,6 +530,7 @@
        2. CLS-safe collapse animation on dismiss
        3. Async form submission with success state
      ============================================================ -->
+{% raw %}
 <script>
     (function () {
         'use strict';
@@ -659,4 +665,5 @@
         }
 
     })();
-</script>{% endraw %}
+</script>
+{% endraw %}
