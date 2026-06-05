@@ -1702,6 +1702,676 @@
             </div>
         </div>
 
+        <!--
+  ============================================================
+  FILE: _includes/newsletter-inline.html
+  USAGE: {% include newsletter-inline.html %}
+  BRAND: Oceanside Hair Salon
+  DESCRIPTION: Inline newsletter subscription component for
+  Jekyll articles. Kit (ConvertKit) compatible. No external
+  dependencies. localStorage dismiss for 14 days.
+  ============================================================
+-->
+
+<!-- ============================================================
+     SCOPED STYLES
+     All classes are prefixed with "ohs-nl-" (Oceanside Hair Salon
+     Newsletter) to prevent collisions with existing site CSS.
+     Mobile-first: base styles are for mobile, desktop styles
+     are in a min-width: 560px media query.
+     ============================================================ -->
+
+<style>
+    /* ── CSS Custom Properties (scoped to component root) ── */
+    .ohs-nl-wrap {
+        --nl-primary: #005f73;
+        --nl-accent: #0a9396;
+        --nl-bg: #f4f7f6;
+        --nl-border: #cde0e4;
+        --nl-text: #1a2e33;
+        --nl-muted: #4a6a72;
+        --nl-white: #ffffff;
+        --nl-success-bg: #e6f4f1;
+        --nl-success-text: #005f73;
+        --nl-radius: 10px;
+        --nl-transition: 0.35s ease;
+    }
+
+    /* ── Wrapper: outer container ── */
+    .ohs-nl-wrap {
+        position: relative;
+        margin: 2.5rem 0;
+        background-color: var(--nl-bg);
+        border: 1px solid var(--nl-border);
+        border-left: 4px solid var(--nl-accent);
+        border-radius: var(--nl-radius);
+        padding: 1.75rem 1.5rem 1.5rem;
+        box-sizing: border-box;
+        font-family: Georgia, 'Times New Roman', serif;
+
+        /* Fade-in on load */
+        opacity: 1;
+        transition: opacity var(--nl-transition), max-height var(--nl-transition),
+            margin var(--nl-transition), padding var(--nl-transition);
+        overflow: hidden;
+    }
+
+    /* ── Hidden state (after dismiss) ──
+     We animate max-height to zero rather than display:none
+     to avoid layout shifts (CLS). The wrapper collapses
+     gracefully so surrounding article content reflows smoothly. */
+    .ohs-nl-wrap.ohs-nl--dismissed {
+        opacity: 0;
+        max-height: 0 !important;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        border-width: 0;
+        pointer-events: none;
+    }
+
+    /* ── Close button ── */
+    .ohs-nl-close {
+        position: absolute;
+        top: 10px;
+        right: 12px;
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: 1px solid var(--nl-border);
+        border-radius: 50%;
+        cursor: pointer;
+        color: var(--nl-muted);
+        font-size: 15px;
+        line-height: 1;
+        padding: 0;
+        transition: background var(--nl-transition), color var(--nl-transition),
+            border-color var(--nl-transition), transform 0.2s ease;
+        font-family: Arial, sans-serif;
+        /* Use system font for × symbol */
+    }
+
+    .ohs-nl-close:hover,
+    .ohs-nl-close:focus-visible {
+        background: var(--nl-primary);
+        color: var(--nl-white);
+        border-color: var(--nl-primary);
+        transform: rotate(90deg);
+        outline: none;
+    }
+
+    .ohs-nl-close:focus-visible {
+        box-shadow: 0 0 0 3px rgba(0, 95, 115, 0.3);
+    }
+
+    /* ── Header: eyebrow + heading ── */
+    .ohs-nl-eyebrow {
+        display: block;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        color: var(--nl-accent);
+        margin-bottom: 6px;
+    }
+
+    .ohs-nl-heading {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--nl-primary);
+        margin: 0 0 6px 0;
+        line-height: 1.3;
+        padding-right: 30px;
+        /* avoid overlap with close btn */
+    }
+
+    .ohs-nl-subtext {
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 0.85rem;
+        color: var(--nl-muted);
+        margin: 0 0 1.25rem 0;
+        line-height: 1.55;
+    }
+
+    /* ── Form layout ── */
+    .ohs-nl-form {
+        width: 100%;
+    }
+
+    /* Input row: stacks on mobile, side-by-side on desktop */
+    .ohs-nl-input-row {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 14px;
+    }
+
+    /* ── Input + label groups ── */
+    .ohs-nl-field {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+
+    .ohs-nl-label {
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        color: var(--nl-primary);
+        margin-bottom: 5px;
+    }
+
+    .ohs-nl-input {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px 14px;
+        border: 1.5px solid var(--nl-border);
+        border-radius: 6px;
+        background: var(--nl-white);
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 0.9rem;
+        color: var(--nl-text);
+        transition: border-color var(--nl-transition), box-shadow var(--nl-transition);
+        -webkit-appearance: none;
+        appearance: none;
+    }
+
+    .ohs-nl-input::placeholder {
+        color: #a0b8bd;
+    }
+
+    .ohs-nl-input:focus {
+        outline: none;
+        border-color: var(--nl-accent);
+        box-shadow: 0 0 0 3px rgba(10, 147, 150, 0.18);
+    }
+
+    /* ── Preferences section ── */
+    .ohs-nl-prefs-label {
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        color: var(--nl-primary);
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    .ohs-nl-checkboxes {
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+        margin-bottom: 18px;
+    }
+
+    .ohs-nl-check-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+    }
+
+    /* Hide the real checkbox entirely */
+    .ohs-nl-checkbox-real {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+        margin: 0;
+        padding: 0;
+        pointer-events: none;
+    }
+
+    /* Custom Checkbox Design */
+    .ohs-nl-checkbox-custom {
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        min-width: 18px;
+        border: 2px solid var(--nl-border);
+        border-radius: 4px;
+        background: var(--nl-white);
+        position: relative;
+        cursor: pointer;
+        transition: background var(--nl-transition), border-color var(--nl-transition);
+        flex-shrink: 0;
+    }
+
+    /* Style checked state */
+    .ohs-nl-checkbox-real:checked + .ohs-nl-checkbox-custom {
+        background: var(--nl-primary);
+        border-color: var(--nl-primary);
+    }
+
+    /* Draw the checkmark */
+    .ohs-nl-checkbox-real:checked + .ohs-nl-checkbox-custom::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 2px;
+        left: 5px;
+        width: 4px;
+        height: 8px;
+        border: 2px solid var(--nl-white);
+        border-top: none;
+        border-left: none;
+        transform: rotate(45deg);
+    }
+
+    /* Focus styling */
+    .ohs-nl-checkbox-real:focus-visible + .ohs-nl-checkbox-custom {
+        box-shadow: 0 0 0 3px rgba(0, 95, 115, 0.3);
+    }
+
+    .ohs-nl-check-item span {
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 0.875rem;
+        color: var(--nl-text);
+        user-select: none;
+    }
+
+    /* ── Submit button ── */
+    .ohs-nl-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        padding: 12px 24px;
+        background: var(--nl-primary);
+        color: var(--nl-white);
+        border: none;
+        border-radius: 6px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 0.9rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        cursor: pointer;
+        transition: background var(--nl-transition), transform 0.15s ease,
+            box-shadow var(--nl-transition);
+        -webkit-appearance: none;
+        appearance: none;
+    }
+
+    .ohs-nl-btn:hover,
+    .ohs-nl-btn:focus-visible {
+        background: var(--nl-accent);
+        box-shadow: 0 4px 16px rgba(0, 95, 115, 0.25);
+        outline: none;
+    }
+
+    .ohs-nl-btn:active {
+        transform: scale(0.98);
+    }
+
+    .ohs-nl-btn:focus-visible {
+        box-shadow: 0 0 0 3px rgba(0, 95, 115, 0.35);
+    }
+
+    /* Button loading/submitting state */
+    .ohs-nl-btn[aria-busy="true"] {
+        opacity: 0.7;
+        cursor: not-allowed;
+    }
+
+    /* ── Success message (hidden by default) ── */
+    .ohs-nl-success {
+        display: none;
+        align-items: center;
+        gap: 12px;
+        background: var(--nl-success-bg);
+        border: 1px solid var(--nl-border);
+        border-radius: 6px;
+        padding: 14px 16px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 0.9rem;
+        color: var(--nl-success-text);
+        line-height: 1.5;
+        margin-top: 4px;
+    }
+
+    .ohs-nl-success.ohs-nl--visible {
+        display: flex;
+    }
+
+    .ohs-nl-success-icon {
+        font-size: 1.4rem;
+        flex-shrink: 0;
+    }
+
+    /* ── Privacy note ── */
+    .ohs-nl-privacy {
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 0.72rem;
+        color: var(--nl-muted);
+        margin-top: 12px;
+        margin-bottom: 0;
+        line-height: 1.5;
+        text-align: center;
+    }
+
+    .ohs-nl-privacy a {
+        color: var(--nl-primary);
+        text-decoration: underline;
+    }
+
+    /* ── Decorative wave divider (pure CSS, no extra DOM) ── */
+    .ohs-nl-wrap::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--nl-primary), var(--nl-accent), var(--nl-primary));
+        border-radius: var(--nl-radius) var(--nl-radius) 0 0;
+        opacity: 0.6;
+    }
+
+    /* ── Desktop layout (560px+) ── */
+    @media (min-width: 560px) {
+        .ohs-nl-wrap {
+            padding: 2rem 2rem 1.75rem;
+        }
+
+        /* First name + email side by side */
+        .ohs-nl-input-row {
+            flex-direction: row;
+            align-items: flex-end;
+        }
+
+        /* Checkboxes in a row on desktop */
+        .ohs-nl-checkboxes {
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 14px 24px;
+        }
+
+        /* Button auto-width on desktop */
+        .ohs-nl-btn {
+            width: auto;
+            min-width: 200px;
+        }
+    }
+</style>
+
+
+<!-- ============================================================
+     COMPONENT HTML
+     Kit/ConvertKit form action URL.
+     The `data-sv-form` attribute is used by Kit's embed JS if
+     you later choose to use it; for pure HTML, it's informational.
+     ============================================================ -->
+<aside class="ohs-nl-wrap" id="ohs-newsletter-inline" aria-label="Newsletter subscription" role="complementary">
+
+    <!-- Close / Dismiss button -->
+    <button class="ohs-nl-close" id="ohs-nl-close-btn" type="button" aria-label="Dismiss newsletter subscription form"
+        title="Dismiss">&#215;</button>
+
+    <!-- Header -->
+    <span class="ohs-nl-eyebrow" aria-hidden="true">Free Newsletter</span>
+    <h2 class="ohs-nl-heading">Unlock Your Best Hair Days</h2>
+    <p class="ohs-nl-subtext">
+        Join our readers and get expert tips on hair care, styling, and keeping your hair healthy
+        — delivered straight to your inbox.
+    </p>
+
+    <!-- ── Kit-compatible form ──
+       Kit's native redirect after submit is handled via the
+       `redirect` hidden field or your Kit form settings. -->
+    <form class="ohs-nl-form" id="ohs-nl-form" action="https://app.kit.com/forms/9508322/subscriptions" method="post"
+        novalidate aria-label="Newsletter sign-up form">
+
+        <!-- Hidden field: Kit uses this to identify the form source -->
+        <input type="hidden" name="utf8" value="✓" />
+
+        <!-- ── Name + Email row ── -->
+        <div class="ohs-nl-input-row">
+
+            <!-- First Name -->
+            <div class="ohs-nl-field">
+                <label class="ohs-nl-label" for="ohs-nl-fname">First Name</label>
+                <input class="ohs-nl-input" type="text" id="ohs-nl-fname" name="fields[first_name]"
+                    placeholder="e.g. Alex" autocomplete="given-name" aria-label="Your first name"
+                    aria-required="false" />
+            </div>
+
+            <!-- Email Address -->
+            <div class="ohs-nl-field">
+                <label class="ohs-nl-label" for="ohs-nl-email">
+                    Email Address <span aria-hidden="true">*</span>
+                </label>
+                <input class="ohs-nl-input" type="email" id="ohs-nl-email" name="email_address"
+                    placeholder="you@example.com" autocomplete="email" aria-label="Your email address"
+                    aria-required="true" required />
+            </div>
+
+        </div>
+        <!-- END: Name + Email row -->
+
+        <!-- ── Preferences / Tag checkboxes ── -->
+        <fieldset style="border:none; padding:0; margin:0 0 0 0;" aria-label="Choose your content preferences">
+            <legend class="ohs-nl-prefs-label">I'm interested in: (optional)</legend>
+            <div class="ohs-nl-checkboxes" role="group">
+
+                <!-- Preference 1: Electric Shaving -->
+                <label class="ohs-nl-check-item">
+                    <input type="checkbox" name="tags[]" value="19967264" class="ohs-nl-checkbox-real"
+                        aria-label="Subscribe to Electric Shaving tips"
+                         />
+                    <span class="ohs-nl-checkbox-custom"></span>
+                    <span>Electric Shaving</span>
+                </label>
+
+                <!-- Preference 2: Hard Water Solutions -->
+                <label class="ohs-nl-check-item">
+                    <input type="checkbox" name="tags[]" value="19967266" class="ohs-nl-checkbox-real"
+                        aria-label="Subscribe to Hard Water Solutions tips"
+                        checked />
+                    <span class="ohs-nl-checkbox-custom"></span>
+                    <span>Hard Water Solutions</span>
+                </label>
+
+                <!-- Preference 3: Hair Care -->
+                <label class="ohs-nl-check-item">
+                    <input type="checkbox" name="tags[]" value="19967267" class="ohs-nl-checkbox-real"
+                        aria-label="Subscribe to Hair Care tips"
+                         />
+                    <span class="ohs-nl-checkbox-custom"></span>
+                    <span>Hair Care</span>
+                </label>
+
+            </div>
+        </fieldset>
+        <!-- END: Preferences -->
+
+        <!-- ── Submit button ── -->
+        <button class="ohs-nl-btn" type="submit" id="ohs-nl-submit"
+            aria-label="Subscribe to the Oceanside Hair Salon newsletter">
+            <!-- Wave/scissors icon (SVG, no external dependency) -->
+            <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                style="flex-shrink:0;">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+            </svg>
+            Subscribe — It's Free
+        </button>
+
+        <!-- ── Success message (revealed after submit via JS) ── -->
+        <div class="ohs-nl-success" id="ohs-nl-success" role="alert" aria-live="polite" aria-atomic="true">
+            <span class="ohs-nl-success-icon" aria-hidden="true">✅</span>
+            <span>
+                <strong>You're in!</strong> Check your inbox for a confirmation email
+                from Oceanside Hair Salon.
+            </span>
+        </div>
+
+        <!-- ── Privacy reassurance ── -->
+        <p class="ohs-nl-privacy">
+            No spam, ever. Unsubscribe in one click.We do not sell or share your information with anyone
+            <!-- Update href to your actual privacy policy URL -->
+            <a href="https://oceansidehairsalon.com/privacy-policy/" target="_blank" rel="noopener">Privacy policy.</a>
+        </p>
+
+    </form>
+
+</aside>
+
+<!-- ============================================================
+     VANILLA JAVASCRIPT — No external dependencies
+     Handles:
+       1. localStorage dismiss with 14-day expiry
+       2. CLS-safe collapse animation on dismiss
+       3. Async form submission with success state
+     ============================================================ -->
+
+<script>
+    (function () {
+        'use strict';
+
+        // ── Constants ──────────────────────────────────────────────
+        // The localStorage key used to record when the user dismissed
+        // the newsletter. Prefixed to avoid collisions with other keys.
+        var STORAGE_KEY = 'ohs_nl_dismissed_at';
+
+        // How long (in milliseconds) the dismissed state persists.
+        // 14 days = 14 * 24 * 60 * 60 * 1000
+        var DISMISS_TTL = 14 * 24 * 60 * 60 * 1000;
+
+        // ── DOM references ─────────────────────────────────────────
+        var wrap = document.getElementById('ohs-newsletter-inline');
+        var closeBtn = document.getElementById('ohs-nl-close-btn');
+        var form = document.getElementById('ohs-nl-form');
+        var submitBtn = document.getElementById('ohs-nl-submit');
+        var success = document.getElementById('ohs-nl-success');
+
+        // Guard: if any element is missing, bail out silently.
+        if (!wrap || !closeBtn || !form) return;
+
+        // ── Step 1: Check if the user has already dismissed ────────
+        // On every page load, read sessionStorage to see if a dismiss
+        // timestamp was stored. We bypass this during development/testing.
+        function isDismissed() {
+            // Bypass dismissal check if running in development (localhost) or with test parameter in URL
+            if (window.location.hostname === 'localhost' || 
+                window.location.hostname === '127.0.0.1' || 
+                window.location.search.includes('test=')) {
+                return false;
+            }
+            try {
+                var storedAt = sessionStorage.getItem(STORAGE_KEY);
+                if (!storedAt) return false;
+                // If it is stored, we keep it hidden for 14 days or until session ends
+                return (Date.now() - parseInt(storedAt, 10)) < DISMISS_TTL;
+            } catch (e) {
+                return false;
+            }
+        }
+
+        // ── Step 2: Hide immediately (no animation) on page load ───
+        // If already dismissed, we remove the element from layout
+        // before the first paint so there's zero CLS impact.
+        if (isDismissed()) {
+            wrap.style.display = 'none';
+            return; // Nothing else to set up — exit early.
+        }
+
+        // ── Step 3: Set a concrete max-height for the animation ────
+        // The CSS transition on max-height requires a known value to
+        // animate FROM. We measure the natural height after render
+        // and set it explicitly so the collapse animation works.
+        // Using requestAnimationFrame ensures the DOM has painted.
+        requestAnimationFrame(function () {
+            wrap.style.maxHeight = wrap.scrollHeight + 'px';
+        });
+
+        // ── Step 4: Dismiss handler ─────────────────────────────────
+        function dismissNewsletter() {
+            // Add the CSS class that triggers the opacity + max-height
+            // transition (defined in the <style> block above).
+            // This avoids layout shifts (CLS) by collapsing smoothly
+            // instead of abruptly removing the element.
+            wrap.classList.add('ohs-nl--dismissed');
+
+            // After the CSS transition completes, hide the element fully
+            // from the accessibility tree and layout flow.
+            wrap.addEventListener('transitionend', function onEnd() {
+                wrap.style.display = 'none';
+                wrap.removeEventListener('transitionend', onEnd);
+            }, { once: true });
+
+            // Persist the dismissal timestamp in sessionStorage.
+            try {
+                sessionStorage.setItem(STORAGE_KEY, Date.now().toString());
+            } catch (e) {
+                // Silently ignore if sessionStorage is unavailable.
+            }
+        }
+
+        // Attach click handler to the × close button.
+        closeBtn.addEventListener('click', dismissNewsletter);
+
+        // ── Step 5: Async form submission ──────────────────────────
+        // Intercept the native submit to send via fetch() so the user
+        // stays on the article page and sees an inline success message.
+        if (form && success) {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                var email = form.querySelector('[name="email_address"]');
+                // Basic client-side validation: require a non-empty email.
+                if (!email || !email.value.trim()) {
+                    email && email.focus();
+                    return;
+                }
+
+                // Show a loading state on the button.
+                submitBtn.setAttribute('aria-busy', 'true');
+                submitBtn.textContent = 'Subscribing…';
+
+                var data = new FormData(form);
+
+                fetch(form.action, {
+                    method: 'POST',
+                    body: data,
+                    headers: { 'Accept': 'application/json' }
+                })
+                    .then(function (res) {
+                        // Kit returns 200 on success; treat any 2xx as success.
+                        if (res.ok || res.status === 200) {
+                            // Hide the form fields, show the success message.
+                            form.querySelectorAll(
+                                '.ohs-nl-input-row, fieldset, .ohs-nl-btn, .ohs-nl-privacy'
+                            ).forEach(function (el) { el.style.display = 'none'; });
+
+                            success.classList.add('ohs-nl--visible');
+                            success.focus();
+                        } else {
+                            throw new Error('Server error: ' + res.status);
+                        }
+                    })
+                    .catch(function () {
+                        // On error, restore the button so the user can retry.
+                        submitBtn.removeAttribute('aria-busy');
+                        submitBtn.textContent = 'Try Again';
+                    });
+            });
+        }
+
+    })();
+</script>
+
+
         <div class="product-card">
             <div class="product-image-col">
                 <span class="badge">LONG LIFE</span>
