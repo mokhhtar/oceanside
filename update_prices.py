@@ -36,8 +36,8 @@ if hasattr(sys.stdout, 'reconfigure'):
 #  ⚙️  إعدادات عامة
 # ════════════════════════════════════════════════════════════════
 
-CREDENTIAL_ID     = os.environ.get("AMAZON_ACCESS_KEY")
-CREDENTIAL_SECRET = os.environ.get("AMAZON_SECRET_KEY")
+CREDENTIAL_ID     = "amzn1.application-oa2-client.91c3a2f55ca4432895dce277ba9f83ac"
+CREDENTIAL_SECRET = "amzn1.oa2-cs.v1.621284ab79d7d3f528c03c2f23b8b0d0a9efaee6cd4277a7e86bb51236bd24df"
 PARTNER_TAG       = "oceansidehair-20"
 API_VERSION       = "3.1"
 
@@ -45,9 +45,6 @@ SITE_ROOT = Path(".")
 
 # ════════════════════════════════════════════════════════════════
 #  🗺️  خريطة الصفحات: مسار الملف  →  [ASIN, ...]
-#
-#  ✅ v2 change: Affiliate URLs removed — ASIN is now the sole key
-#     for both HTML and Schema matching. Much simpler & safer.
 # ════════════════════════════════════════════════════════════════
 
 PAGES: dict[str, list[str]] = {
@@ -117,7 +114,6 @@ def fetch_prices(api: AmazonCreatorsApi, asins: list[str]) -> dict[str, str]:
     ASINs with no available price are silently skipped.
     """
     prices: dict[str, str] = {}
-    # Deduplicate while preserving order, then batch in groups of 10 (API limit)
     unique_asins = list(dict.fromkeys(asins))
     for i in range(0, len(unique_asins), 10):
         batch = unique_asins[i : i + 10]
@@ -126,13 +122,12 @@ def fetch_prices(api: AmazonCreatorsApi, asins: list[str]) -> dict[str, str]:
             for item in items:
                 price_str = _extract_price(item)
                 if price_str:
-                    prices[item.asin] = price_str
-                    print(f"   ✅ {item.asin}: {price_str}")
+                    prices[item.asin] = _price_to_numeric_str(price_str)
+                    print(f"   ✅ {item.asin}: {prices[item.asin]}")
                 else:
                     print(f"   ⚠️  {item.asin}: السعر غير متاح (out of stock or restricted)")
         except Exception as exc:
             print(f"   ❌ خطأ في جلب الـ batch {batch}: {exc}")
-        # Respect Amazon API rate limits between batches
         if i + 10 < len(unique_asins):
             time.sleep(1)
     return prices
@@ -148,21 +143,17 @@ def _extract_price(item) -> str | None:
         listings = item.offers_v2.listings
         if not listings:
             return None
-        # Prefer the Buy Box winner for the most accurate/current price
         chosen = next((l for l in listings if getattr(l, "is_buy_box_winner", False)), None)
         if chosen is None:
-            chosen = listings[0]  # Fallback to first listing
+            chosen = listings[0]
 
-        # Attempt 1: use the pre-formatted display_amount (e.g. "$49.96")
         try:
             val = chosen.price.money.display_amount
             if val:
-                # Strip everything except digits and the decimal point
                 return re.sub(r"[^\d.]", "", val)
         except AttributeError:
             pass
 
-        # Attempt 2: build numeric string from raw amount + currency
         try:
             amount = float(chosen.price.money.amount)
             return f"{amount:.2f}"
@@ -174,6 +165,17 @@ def _extract_price(item) -> str | None:
     return None
 
 
+def _price_to_numeric_str(price_str: str) -> str:
+    """
+    Strips non-numeric symbols and formats the number to always have 2 decimal places.
+    """
+    clean_str = re.sub(r"[^\d.]", "", str(price_str))
+    try:
+        return f"{float(clean_str):.2f}"
+    except ValueError:
+        return clean_str
+
+
 # ════════════════════════════════════════════════════════════════
 #  🛠️  تحديث HTML — استهداف <span data-asin="ASIN">
 # ════════════════════════════════════════════════════════════════
@@ -181,18 +183,14 @@ def _extract_price(item) -> str | None:
 def update_html(html: str, asin: str, new_price: str) -> tuple[str, bool]:
     """
     Finds <span data-asin="ASIN">OLD_PRICE</span> and replaces the
-    text content with new_price. The data-asin attribute is the
-    single, unambiguous anchor — no URL slug matching needed.
-
+    text content with new_price.
     Returns (updated_html, was_changed).
     """
-    # Pattern: opening tag with data-asin attribute (allows other attrs too),
-    # then captures the current price text, then the closing tag.
-    # The [^<]+ ensures we only replace text nodes, never nested HTML.
+    numeric = _price_to_numeric_str(new_price) if new_price != "Check Price" else new_price
     pattern = re.compile(
-        r'(<span\b[^>]*\bdata-asin="' + re.escape(asin) + r'"[^>]*>)'  # ① opening tag
-        r'([^<]+)'                                                         # ② current price text
-        r'(</span>)',                                                       # ③ closing tag
+        r'(<span\b[^>]*\bdata-asin="' + re.escape(asin) + r'"[^>]*>)'
+        r'([^<]+)'
+        r'(</span>)',
         re.IGNORECASE,
     )
 
@@ -201,11 +199,10 @@ def update_html(html: str, asin: str, new_price: str) -> tuple[str, bool]:
     def replacer(m: re.Match) -> str:
         nonlocal changed
         current = m.group(2).strip()
-        if current != new_price:
+        if current != numeric:
             changed = True
-            print(f"      📝 HTML  [{asin}]: {current!r} → {new_price!r}")
-        # Preserve the original whitespace/indentation style around the number
-        return m.group(1) + new_price + m.group(3)
+            print(f"      📝 HTML  [{asin}]: {current!r} → {numeric!r}")
+        return m.group(1) + numeric + m.group(3)
 
     updated = pattern.sub(replacer, html)
     return updated, changed
@@ -215,7 +212,6 @@ def update_html(html: str, asin: str, new_price: str) -> tuple[str, bool]:
 #  🛠️  تحديث Schema JSON-LD — مطابقة عبر "sku"
 # ════════════════════════════════════════════════════════════════
 
-# Regex that isolates every <script type="application/ld+json"> block
 _SCRIPT_RE = re.compile(
     r'(<script\s[^>]*type=["\']application/ld\+json["\'][^>]*>)(.*?)(</script>)',
     re.DOTALL | re.IGNORECASE,
@@ -226,12 +222,131 @@ def update_schema(html: str, asin: str, new_price: str) -> tuple[str, bool]:
     """
     Parses every JSON-LD <script> block in the page, then walks the
     JSON object tree looking for Offer / AggregateOffer nodes whose
-    "sku" field matches the ASIN.  Updates "price" to new_price and
-    re-serialises the JSON back into the HTML.
+    "sku" field matches the ASIN. Updates schema to add/update price,
+    shippingDetails, availability, and merchantReturnPolicy.
+    Returns (updated_html, was_changed).
+    """
+    numeric = _price_to_numeric_str(new_price)
+    changed = False
 
-    Using JSON parsing (not regex) means no risk of cross-contaminating
-    prices between products that share a page.
+    def script_replacer(m: re.Match) -> str:
+        nonlocal changed
+        raw_json = m.group(2)
+        try:
+            obj = json.loads(raw_json)
+        except json.JSONDecodeError as exc:
+            print(f"      ⚠️  JSON parse error in schema block: {exc}")
+            return m.group(0)
 
+        block_changed, obj = _walk_and_update(obj, asin, numeric)
+        if block_changed:
+            changed = True
+            updated_json = json.dumps(obj, ensure_ascii=False, indent=2)
+            return m.group(1) + "\n" + updated_json + "\n    " + m.group(3)
+        return m.group(0)
+
+    updated_html = _SCRIPT_RE.sub(script_replacer, html)
+    return updated_html, changed
+
+
+def _walk_and_update(obj: object, asin: str, numeric_str: str) -> tuple[bool, object]:
+    """
+    Recursively walks a parsed JSON object. Updates/rebuilds "offers" if needed.
+    """
+    modified = False
+
+    if isinstance(obj, dict):
+        # 1. Rebuild offers if it was removed previously
+        if obj.get("@type") == "Product" and obj.get("sku") == asin:
+            if "offers" not in obj:
+                new_offer = {
+                    "@type": "Offer",
+                    "sku": asin,
+                    "price": numeric_str,
+                    "priceCurrency": "USD",
+                    "availability": "https://schema.org/InStock",
+                    "shippingDetails": {
+                        "@type": "OfferShippingDetails",
+                        "shippingRate": {"@type": "MonetaryAmount", "value": "0", "currency": "USD"},
+                        "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "US"},
+                        "deliveryTime": {
+                            "@type": "ShippingDeliveryTime",
+                            "handlingTime": {"@type": "QuantitativeValue", "minValue": 0, "maxValue": 1, "unitCode": "d"},
+                            "transitTime": {"@type": "QuantitativeValue", "minValue": 1, "maxValue": 5, "unitCode": "d"}
+                        }
+                    },
+                    "hasMerchantReturnPolicy": {
+                        "@type": "MerchantReturnPolicy",
+                        "applicableCountry": "US",
+                        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                        "merchantReturnDays": 30,
+                        "returnMethod": "https://schema.org/ReturnByMail",
+                        "returnFees": "https://schema.org/FreeReturn"
+                    }
+                }
+                if "url" in obj:
+                    new_offer["url"] = obj["url"]
+                    
+                obj["offers"] = new_offer
+                print(f"      ✨ Schema [{asin}]: Rebuilt 'offers' block with price, URL, and shipping/return policies")
+                modified = True
+                 
+        # 2. Standard update if the offer already exists
+        if obj.get("@type") in ("Offer", "AggregateOffer") and obj.get("sku") == asin:
+            if str(obj.get("price")) != numeric_str:
+                print(f"      📝 Schema [{asin}]: Price updated to {numeric_str}")
+                obj["price"] = numeric_str
+                modified = True
+            
+            if obj.get("availability") == "https://schema.org/OutOfStock":
+                obj["availability"] = "https://schema.org/InStock"
+                print(f"      🔄 Schema [{asin}]: Marked back as InStock")
+                modified = True
+
+            if "shippingDetails" not in obj:
+                obj["shippingDetails"] = {
+                    "@type": "OfferShippingDetails",
+                    "shippingRate": {"@type": "MonetaryAmount", "value": "0", "currency": "USD"},
+                    "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "US"},
+                    "deliveryTime": {
+                        "@type": "ShippingDeliveryTime",
+                        "handlingTime": {"@type": "QuantitativeValue", "minValue": 0, "maxValue": 1, "unitCode": "d"},
+                        "transitTime": {"@type": "QuantitativeValue", "minValue": 1, "maxValue": 5, "unitCode": "d"}
+                    }
+                }
+                print(f"      📦 Schema [{asin}]: Added missing shippingDetails")
+                modified = True
+                
+            if "hasMerchantReturnPolicy" not in obj:
+                obj["hasMerchantReturnPolicy"] = {
+                    "@type": "MerchantReturnPolicy",
+                    "applicableCountry": "US",
+                    "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                    "merchantReturnDays": 30,
+                    "returnMethod": "https://schema.org/ReturnByMail",
+                    "returnFees": "https://schema.org/FreeReturn"
+                }
+                print(f"      🔄 Schema [{asin}]: Added missing hasMerchantReturnPolicy")
+                modified = True
+                
+        for key, val in list(obj.items()):
+            sub_modified, obj[key] = _walk_and_update(val, asin, numeric_str)
+            if sub_modified:
+                modified = True
+            
+    elif isinstance(obj, list):
+        for idx, item in enumerate(obj):
+            sub_modified, obj[idx] = _walk_and_update(item, asin, numeric_str)
+            if sub_modified:
+                modified = True
+            
+    return modified, obj
+
+
+def update_offer_fallback_in_schema(html: str, asin: str) -> tuple[str, bool]:
+    """
+    Finds a Product schema block matching ASIN, saves sku & url on it, and deletes
+    its "offers" field so Google doesn't index an outdated price or out-of-stock item.
     Returns (updated_html, was_changed).
     """
     changed = False
@@ -243,12 +358,11 @@ def update_schema(html: str, asin: str, new_price: str) -> tuple[str, bool]:
             obj = json.loads(raw_json)
         except json.JSONDecodeError as exc:
             print(f"      ⚠️  JSON parse error in schema block: {exc}")
-            return m.group(0)  # Leave malformed block untouched
+            return m.group(0)
 
-        block_changed, obj = _walk_and_update(obj, asin, new_price)
+        block_changed, obj = _walk_schema_fallback(obj, asin)
         if block_changed:
             changed = True
-            # Re-serialise with matching indentation (2-space, no trailing space)
             updated_json = json.dumps(obj, ensure_ascii=False, indent=2)
             return m.group(1) + "\n" + updated_json + "\n    " + m.group(3)
         return m.group(0)
@@ -257,51 +371,43 @@ def update_schema(html: str, asin: str, new_price: str) -> tuple[str, bool]:
     return updated_html, changed
 
 
-def _walk_and_update(obj: object, asin: str, new_price: str) -> tuple[bool, object]:
-    """
-    Recursively walks a parsed JSON object (dict or list).
-    When it finds a dict whose @type is "Offer" or "AggregateOffer"
-    AND whose "sku" matches the target ASIN, it updates "price".
-
-    Returns (was_modified, updated_obj).
-    """
+def _walk_schema_fallback(obj: object, asin: str) -> tuple[bool, object]:
     modified = False
 
     if isinstance(obj, dict):
-        offer_type = obj.get("@type", "")
-        is_offer = offer_type in ("Offer", "AggregateOffer")
-        sku_match = obj.get("sku", "") == asin
-
-        if is_offer and sku_match and "price" in obj:
-            old_price = str(obj["price"])
-            if old_price != new_price:
-                print(f"      📝 Schema [{asin}]: {old_price!r} → {new_price!r}")
+        if obj.get("@type") == "Product" and "offers" in obj:
+            offer = obj["offers"]
+            if isinstance(offer, dict) and offer.get("sku") == asin:
+                # Save ASIN (sku) and affiliate URL to Product block before deleting offer
+                obj["sku"] = asin 
+                if "url" in offer:
+                    obj["url"] = offer["url"]
+                
+                del obj["offers"]
+                print(f"      🗑️ Schema: Removed 'offers' but saved URL for {asin}")
                 modified = True
-            # Always write as a string to stay consistent with Google's
-            # recommended format and avoid float precision surprises
-            obj["price"] = new_price
-
-        # Recurse into all child values regardless
-        for key, val in obj.items():
-            child_changed, obj[key] = _walk_and_update(val, asin, new_price)
-            if child_changed:
+                
+        for key, val in list(obj.items()):
+            sub_modified, obj[key] = _walk_schema_fallback(val, asin)
+            if sub_modified:
                 modified = True
-
+            
     elif isinstance(obj, list):
         for idx, item in enumerate(obj):
-            child_changed, obj[idx] = _walk_and_update(item, asin, new_price)
-            if child_changed:
+            sub_modified, obj[idx] = _walk_schema_fallback(item, asin)
+            if sub_modified:
                 modified = True
-
+            
     return modified, obj
 
+
 def update_timestamp(html_content: str) -> tuple[str, bool]:
-    # تنسيق الوقت ليناسب توقيت كاليفورنيا (Pacific Time) بما أن جمهورك في Oceanside
-    # مثال: "February 20, 2025 at 10:30 AM PT"
+    """
+    Updates the price timestamp to Pacific Time.
+    """
     now_str = datetime.datetime.now().strftime("%B %d, %Y at %I:%M %p PT")
     changed = False
     
-    # البحث عن السبان الخاص بالتاريخ وتحديثه
     pattern = re.compile(
         r'(<span\s+id="price-timestamp"[^>]*>)(.*?)(</span>)',
         re.IGNORECASE | re.DOTALL
@@ -316,6 +422,8 @@ def update_timestamp(html_content: str) -> tuple[str, bool]:
 
     updated_html = pattern.sub(replacer, html_content)
     return updated_html, changed
+
+
 # ════════════════════════════════════════════════════════════════
 #  🚀  الدالة الرئيسية
 # ════════════════════════════════════════════════════════════════
@@ -325,20 +433,27 @@ def run(dry_run: bool = False, page_filter: str | None = None) -> None:
     print("  🛒 Amazon Price Updater v2 — Oceanside Hair Salon")
     print("═" * 60)
 
-    print("\n🔌 Connecting to Amazon Creators API...")
-    api = AmazonCreatorsApi(
-        credential_id=CREDENTIAL_ID,
-        credential_secret=CREDENTIAL_SECRET,
-        version=API_VERSION,
-        tag=PARTNER_TAG,
-        country=Country.US,
-    )
-    print("✅ Connected.\n")
+    if not CREDENTIAL_ID or not CREDENTIAL_SECRET:
+        print("\n❌ Error: Amazon API credentials (AMAZON_ACCESS_KEY / AMAZON_SECRET_KEY) are missing.")
+        sys.exit(1)
+
+    try:
+        print("\n🔌 Connecting to Amazon Creators API...")
+        api = AmazonCreatorsApi(
+            credential_id=CREDENTIAL_ID,
+            credential_secret=CREDENTIAL_SECRET,
+            version=API_VERSION,
+            tag=PARTNER_TAG,
+            country=Country.US,
+        )
+        print("✅ Connected.\n")
+    except Exception as exc:
+        print(f"❌ Failed to connect to Amazon API: {exc}")
+        sys.exit(1)
 
     total_updated = 0
 
     for rel_path, asins in PAGES.items():
-        # Optional single-page filter (e.g. --page neck)
         if page_filter and page_filter.lower() not in rel_path.lower():
             continue
 
@@ -350,14 +465,10 @@ def run(dry_run: bool = False, page_filter: str | None = None) -> None:
             print(f"   ⚠️  الملف غير موجود: {file_path}")
             continue
 
-        # Deduplicate ASINs for this page before hitting the API
         unique_asins = list(dict.fromkeys(asins))
+        
         print(f"   📦 Fetching {len(unique_asins)} ASIN(s) from Amazon API...")
         prices = fetch_prices(api, unique_asins)
-
-        if not prices:
-            print("   ⚠️  لم يتم الحصول على أي سعر لهذه الصفحة.")
-            continue
 
         html = file_path.read_text(encoding="utf-8")
         original_html = html
@@ -366,18 +477,14 @@ def run(dry_run: bool = False, page_filter: str | None = None) -> None:
         for asin in unique_asins:
             new_price = prices.get(asin)
             if not new_price:
-                # ⚠️ هنا يتدخل نظام الحماية
-                print(f"\n   ⚠️  API Failed for {asin} → Applying Fallback (Removing Price)")
+                # Apply fallback (Check Price in HTML, remove offers in Schema)
+                print(f"\n   ⚠️  Failed to fetch price for {asin} → Applying Fallback (Check Price)")
                 
-                # 1. تحديث HTML ليضع كلمة Check Price بدل الرقم السعري القديم
                 html, html_changed = update_html(html, asin, "Check Price")
-                
-                # 2. خطوة هامة للـ SEO: تحديث Schema لكي لا ترسل سعراً قديماً لجوجل
-                html, schema_changed = update_schema(html, asin, "Out of Stock / Check Link") 
+                html, schema_changed = update_offer_fallback_in_schema(html, asin)
                 
                 if html_changed or schema_changed:
                     page_changed = True
-                    
                 continue
 
             print(f"\n   🏷️  {asin} → ${new_price}")
@@ -390,7 +497,7 @@ def run(dry_run: bool = False, page_filter: str | None = None) -> None:
 
             if html_changed or schema_changed:
                 page_changed = True
-            elif prices.get(asin):
+            else:
                 print(f"      ℹ️  {asin}: السعر لم يتغير")
                 
         html, time_changed = update_timestamp(html)
