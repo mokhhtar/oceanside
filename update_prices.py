@@ -41,8 +41,9 @@ if hasattr(sys.stdout, 'reconfigure'):
 #  ⚙️  إعدادات عامة
 # ════════════════════════════════════════════════════════════════
 
-CREDENTIAL_ID     = "amzn1.application-oa2-client.91c3a2f55ca4432895dce277ba9f83ac"
-CREDENTIAL_SECRET = "amzn1.oa2-cs.v1.621284ab79d7d3f528c03c2f23b8b0d0a9efaee6cd4277a7e86bb51236bd24df"
+# نقرأ المفاتيح بأمان تام من متغيرات البيئة فقط
+CREDENTIAL_ID     = os.environ.get("AMAZON_ACCESS_KEY", "")
+CREDENTIAL_SECRET = os.environ.get("AMAZON_SECRET_KEY", "")
 PARTNER_TAG       = "oceansidehair-20"
 API_VERSION       = "3.1"
 
@@ -109,33 +110,103 @@ PAGES: dict[str, list[str]] = {
 }
 
 # ════════════════════════════════════════════════════════════════
-#  🔧  جلب الأسعار من Amazon API
+#  🔧  جلب تفاصيل المنتجات من Amazon API (الأسعار، التقييمات، الصور)
 # ════════════════════════════════════════════════════════════════
 
-def fetch_prices(api: AmazonCreatorsApi, asins: list[str]) -> dict[str, str]:
+def fetch_product_details(api: AmazonCreatorsApi, asins: list[str]) -> dict[str, dict]:
     """
-    Fetches live prices for a list of ASINs from the Amazon Creators API.
-    Returns a dict mapping ASIN → numeric price string (e.g. "49.96").
-    ASINs with no available price are silently skipped.
+    Fetches live details (price, stars, reviews count, image URL) for a list of ASINs from the Amazon Creators API.
+    Returns a dict mapping ASIN → details dict.
+    Runs successfully even if the product is out of stock.
     """
-    prices: dict[str, str] = {}
+    details: dict[str, dict] = {}
     unique_asins = list(dict.fromkeys(asins))
+    
+    from amazon_creatorsapi.models import GetItemsResource
+    resources = [
+        GetItemsResource.OFFERS_V2_DOT_LISTINGS_DOT_PRICE,
+        GetItemsResource.OFFERS_V2_DOT_LISTINGS_DOT_AVAILABILITY,
+        GetItemsResource.OFFERS_V2_DOT_LISTINGS_DOT_IS_BUY_BOX_WINNER,
+        GetItemsResource.CUSTOMER_REVIEWS_DOT_COUNT,
+        GetItemsResource.CUSTOMER_REVIEWS_DOT_STAR_RATING,
+        GetItemsResource.IMAGES_DOT_PRIMARY_DOT_LARGE,
+        GetItemsResource.ITEM_INFO_DOT_TITLE,
+    ]
+
     for i in range(0, len(unique_asins), 10):
         batch = unique_asins[i : i + 10]
         try:
-            items = api.get_items(batch)
+            items = api.get_items(batch, resources=resources)
             for item in items:
+                # 1. Extract Price
                 price_str = _extract_price(item)
-                if price_str:
-                    prices[item.asin] = _price_to_numeric_str(price_str)
-                    print(f"   ✅ {item.asin}: {prices[item.asin]}")
-                else:
-                    print(f"   ⚠️  {item.asin}: السعر غير متاح (out of stock or restricted)")
+                price_val = _price_to_numeric_str(price_str) if price_str else "Check Price"
+                
+                # 2. Extract rating stars and reviews count
+                rating_val, reviews_count = _extract_reviews_and_stars(item)
+                
+                # 3. Extract image URL
+                image_url = _extract_image_url(item)
+                
+                # 4. Extract title
+                title = None
+                try:
+                    if item.item_info and item.item_info.title:
+                        title = item.item_info.title.display_value
+                except AttributeError:
+                    pass
+
+                details[item.asin] = {
+                    "price": price_val,
+                    "rating_stars_val": rating_val,
+                    "rating_count_val": reviews_count,
+                    "image_url": image_url,
+                    "title": title
+                }
+                print(f"   ✅ {item.asin}: Price={price_val}, Stars={rating_val}, Reviews={reviews_count}, Image={'Yes' if image_url else 'No'}")
         except Exception as exc:
             print(f"   ❌ خطأ في جلب الـ batch {batch}: {exc}")
         if i + 10 < len(unique_asins):
             time.sleep(1)
-    return prices
+    return details
+
+
+def _extract_reviews_and_stars(item) -> tuple[float | None, int | None]:
+    try:
+        reviews = item.customer_reviews
+        if reviews:
+            count = getattr(reviews, "count", None)
+            rating = getattr(reviews, "star_rating", None)
+            rating_val = getattr(rating, "value", None) if rating else None
+            return rating_val, count
+    except AttributeError:
+        pass
+    return None, None
+
+
+def _extract_image_url(item) -> str | None:
+    try:
+        images = item.images
+        if images and images.primary and images.primary.large:
+            return images.primary.large.url
+    except AttributeError:
+        pass
+    return None
+
+
+def _build_rating_stars(val: float, original_val: str | None = None) -> str:
+    stars = "★" * round(val) + "☆" * (5 - round(val))
+    if original_val and "/5" in str(original_val):
+        return f"{val:.1f}/5 {stars}"
+    return f"{val:.1f} {stars}"
+
+
+def _build_rating_count(count: int, original_val: str | None = None) -> str:
+    formatted_count = f"{count:,}"
+    if original_val and "ratings" in str(original_val).lower():
+        suffix = "Ratings" if "Ratings" in str(original_val) else "ratings"
+        return f"{formatted_count} {suffix}"
+    return f"{formatted_count} Ratings"
 
 
 def _extract_price(item) -> str | None:
@@ -435,11 +506,12 @@ def update_timestamp(html_content: str) -> tuple[str, bool]:
 
 def run(dry_run: bool = False, page_filter: str | None = None) -> None:
     print("═" * 60)
-    print("  🛒 Amazon Price Updater v2 — Oceanside Hair Salon")
+    print("  🛒 Amazon Price & Metadata Updater v3 — Oceanside Hair Salon")
     print("═" * 60)
 
     if not CREDENTIAL_ID or not CREDENTIAL_SECRET:
         print("\n❌ Error: Amazon API credentials (AMAZON_ACCESS_KEY / AMAZON_SECRET_KEY) are missing.")
+        print("   Please set the environment variables AMAZON_ACCESS_KEY and AMAZON_SECRET_KEY.")
         sys.exit(1)
 
     try:
@@ -472,8 +544,8 @@ def run(dry_run: bool = False, page_filter: str | None = None) -> None:
 
         unique_asins = list(dict.fromkeys(asins))
         
-        print(f"   📦 Fetching {len(unique_asins)} ASIN(s) from Amazon API...")
-        prices = fetch_prices(api, unique_asins)
+        print(f"   📦 Fetching {len(unique_asins)} ASIN(s) metadata from Amazon API...")
+        details = fetch_product_details(api, unique_asins)
 
         html = file_path.read_text(encoding="utf-8")
         original_html = html
@@ -498,33 +570,63 @@ def run(dry_run: bool = False, page_filter: str | None = None) -> None:
         if fm is not None:
             # YAML-based dynamic page
             for asin in unique_asins:
-                new_price = prices.get(asin)
-                if not new_price:
-                    new_price = "Check Price"
-                    print(f"\n   ⚠️  Failed to fetch price for {asin} → Setting to Check Price")
-                else:
-                    print(f"\n   🏷️  {asin} → ${new_price}")
+                prod_details = details.get(asin)
+                if not prod_details:
+                    print(f"\n   ⚠️  Failed to fetch details for {asin}")
+                    continue
                 
+                new_price = prod_details["price"]
+                new_stars_val = prod_details["rating_stars_val"]
+                new_count_val = prod_details["rating_count_val"]
+                new_image_url = prod_details["image_url"]
+
                 # Update product price in Front Matter
                 for product in fm.get("products", []):
                     if product.get("asin") == asin:
+                        # 1. Update Price
                         current_price = str(product.get("price", "")).strip()
                         numeric_new_price = _price_to_numeric_str(new_price) if new_price != "Check Price" else new_price
                         if current_price != numeric_new_price:
                             product["price"] = numeric_new_price
-                            print(f"      📝 YAML  [{asin}]: {current_price!r} → {numeric_new_price!r}")
+                            print(f"      📝 YAML Price  [{asin}]: {current_price!r} → {numeric_new_price!r}")
                             page_changed = True
                             
                         # handle stock warnings automatically
                         if numeric_new_price == "Check Price":
                             if "stock_warning" not in product:
                                 product["stock_warning"] = "Temporarily Out of Stock"
-                                print(f"      ⚠️  YAML  [{asin}]: Product out of stock, added warning")
+                                print(f"      ⚠️  YAML Stock  [{asin}]: Product out of stock, added warning")
                                 page_changed = True
                         else:
                             if "stock_warning" in product:
                                 del product["stock_warning"]
-                                print(f"      🔄 YAML  [{asin}]: Product back in stock, removed warning")
+                                print(f"      🔄 YAML Stock  [{asin}]: Product back in stock, removed warning")
+                                page_changed = True
+
+                        # 2. Update Rating Stars
+                        if new_stars_val is not None:
+                            old_stars = product.get("rating_stars")
+                            formatted_stars = _build_rating_stars(new_stars_val, old_stars)
+                            if old_stars != formatted_stars:
+                                product["rating_stars"] = formatted_stars
+                                print(f"      📝 YAML Stars  [{asin}]: {old_stars!r} → {formatted_stars!r}")
+                                page_changed = True
+
+                        # 3. Update Rating Count
+                        if new_count_val is not None:
+                            old_count = product.get("rating_count")
+                            formatted_count = _build_rating_count(new_count_val, old_count)
+                            if old_count != formatted_count:
+                                product["rating_count"] = formatted_count
+                                print(f"      📝 YAML Reviews [{asin}]: {old_count!r} → {formatted_count!r}")
+                                page_changed = True
+
+                        # 4. Update Product Image (Legal direct CDN hotlink)
+                        if new_image_url:
+                            old_amazon_image = product.get("amazon_image_url")
+                            if old_amazon_image != new_image_url:
+                                product["amazon_image_url"] = new_image_url
+                                print(f"      📝 YAML Amazon Image [{asin}]: {old_amazon_image!r} → {new_image_url!r}")
                                 page_changed = True
 
             body, time_changed = update_timestamp(body)
@@ -537,11 +639,13 @@ def run(dry_run: bool = False, page_filter: str | None = None) -> None:
         else:
             # Legacy HTML/Regex-based page
             for asin in unique_asins:
-                new_price = prices.get(asin)
-                if not new_price:
-                    # Apply fallback (Check Price in HTML, remove offers in Schema)
+                prod_details = details.get(asin)
+                if not prod_details:
+                    continue
+                new_price = prod_details["price"]
+                
+                if new_price == "Check Price":
                     print(f"\n   ⚠️  Failed to fetch price for {asin} → Applying Fallback (Check Price)")
-                    
                     html, html_changed = update_html(html, asin, "Check Price")
                     html, schema_changed = update_offer_fallback_in_schema(html, asin)
                     

@@ -4,7 +4,13 @@
     {% if include.product.badge %}
       <span class="best-for-badge"{% if include.product.highlight %} style="background-color: #2ecc71;"{% endif %}>{{ include.product.badge }}</span>
     {% endif %}
-    <img src="{{ include.product.image }}" alt="{{ include.product.alt }}" loading="lazy" width="600" height="400">
+    <a href="{{ include.product.affiliate_url }}" target="_blank" rel="nofollow">
+      {% if include.product.amazon_image_url and include.product.amazon_image_url != "" %}
+        <img src="{{ include.product.amazon_image_url }}" onerror="this.onerror=null; this.src='{{ include.product.image }}';" alt="{{ include.product.alt }}" loading="lazy" width="600" height="400">
+      {% else %}
+        <img src="{{ include.product.image }}" alt="{{ include.product.alt }}" loading="lazy" width="600" height="400">
+      {% endif %}
+    </a>
   </div>
 
   <!-- Details Column -->
