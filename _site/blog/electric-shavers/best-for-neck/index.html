@@ -368,7 +368,7 @@
             "offers": {
               "@type": "Offer",
               "sku": "B0F1PKHWNX",
-              "price": "379.96",
+              "price": "284.96",
               "priceCurrency": "USD",
               "availability": "https://schema.org/InStock",
               "shippingDetails": {
@@ -580,728 +580,7 @@
     }
   ]
 }
-</script>
-
-    <style>
-        :root {
-            --primary-color: #005f73;
-            --secondary-color: #0a9396;
-            --accent-color: #e9d8a6;
-            --bg-light: #f4f7f6;
-            --text-dark: #333;
-            --amazon-orange: #ff9900;
-            --font-heading: 'Playfair Display', serif;
-            --font-body: 'Lato', sans-serif;
-        }
-
-        *,
-        *::before,
-        *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: var(--font-body);
-            color: var(--text-dark);
-            line-height: 1.6;
-            background: var(--bg-light);
-        }
-
-        h1,
-        h2,
-        h3,
-        h4 {
-            font-family: var(--font-heading);
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            line-height: 1.3;
-        }
-
-        h2 {
-            font-size: 2rem;
-            margin-top: 3rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--accent-color);
-        }
-
-        h3 {
-            font-size: 1.5rem;
-            margin-top: 2rem;
-            color: var(--secondary-color);
-        }
-
-        h4 {
-            font-size: 1.2rem;
-            margin-top: 1.5rem;
-        }
-
-        p {
-            margin-bottom: 1.2rem;
-            font-size: 1.05rem;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        ul {
-            margin-left: 1.5rem;
-            margin-bottom: 1.2rem;
-        }
-
-        ul li {
-            margin-bottom: 0.8rem;
-        }
-
-        ol {
-            margin-left: 1.5rem;
-            margin-bottom: 1.2rem;
-        }
-
-        ol li {
-            margin-bottom: 0.9rem;
-            font-size: 1.05rem;
-        }
-
-        strong {
-            color: var(--primary-color);
-            font-weight: 700;
-        }
-
-
-
-        /* ── Article Header ── */
-        .article-header {
-            background: linear-gradient(rgba(0, 40, 50, 0.72), rgba(0, 95, 115, 0.72)),
-                url('/images/blog/electric-shavers/best-for-neck/best-electric-shaver-neck-cover.webp');
-            background-size: cover;
-            background-position: center;
-            min-height: 65vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-            padding: 120px 20px 40px;
-        }
-
-        .article-header h1 {
-            font-size: 3.2rem;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-            margin-bottom: 1rem;
-            color: #fff;
-            max-width: 900px;
-        }
-
-        .article-header p {
-            font-size: 1.4rem;
-            margin-bottom: 2rem;
-            max-width: 700px;
-            color: #eee;
-        }
-
-        .btn-contact {
-            background: var(--primary-color);
-            color: white !important;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: inline-block;
-        }
-
-        .btn-contact:hover {
-            background: var(--secondary-color);
-            transform: scale(1.05);
-        }
-
-        /* ── Content Container ── */
-        .content-container {
-            max-width: 850px;
-            margin: -35px auto 4rem;
-            position: relative;
-            z-index: 10;
-            background: white;
-            padding: 4rem;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-        }
-
-        /* ── Quick Picks ── */
-        .quick-picks {
-            background: linear-gradient(135deg, #f0f9f8, #e6f4f4);
-            border: 1px solid #c8e6e6;
-            border-left: 4px solid var(--secondary-color);
-            border-radius: 0 8px 8px 0;
-            padding: 1.6rem 1.8rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .quick-picks h3 {
-            font-size: 1.1rem;
-            color: var(--primary-color);
-            margin-top: 0;
-            margin-bottom: 1rem;
-        }
-
-        .quick-picks ul {
-            margin: 0 0 0 1.2rem;
-        }
-
-        .quick-picks ul li {
-            margin-bottom: 0.5rem;
-            font-size: 1rem;
-        }
-
-        .quick-picks .cta-note {
-            margin-top: 1rem;
-            margin-bottom: 0;
-            font-size: 0.95rem;
-            color: #555;
-            font-style: italic;
-        }
-
-        /* ── TOC ── */
-        .toc-box {
-            background: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 8px;
-            padding: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .toc-box h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: var(--secondary-color);
-            margin-top: 0;
-        }
-
-        .toc-list {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .toc-list li {
-            margin-bottom: 8px;
-            font-size: 0.95rem;
-        }
-
-        .toc-list a {
-            color: var(--primary-color);
-            text-decoration: underline;
-            text-decoration-color: #ddd;
-        }
-
-        .toc-list a:hover {
-            color: var(--secondary-color);
-            text-decoration-color: var(--secondary-color);
-        }
-
-        /* ── Highlight Boxes ── */
-        .highlight-box {
-            border-left: 4px solid var(--amazon-orange);
-            background: #fff8f0;
-            padding: 1.5rem;
-            margin: 2rem 0;
-            font-style: italic;
-            color: #444;
-        }
-
-        .highlight-box.tip {
-            border-left-color: var(--secondary-color);
-            background: #f0f7f8;
-            font-style: normal;
-        }
-
-        .highlight-box a {
-            color: var(--secondary-color);
-            text-decoration: underline;
-        }
-
-        /* ── Step Badge ── */
-        .step-badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 2.2rem;
-            height: 2.2rem;
-            background: var(--primary-color);
-            color: #fff;
-            border-radius: 50%;
-            font-family: var(--font-heading);
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-right: 0.6rem;
-            flex-shrink: 0;
-            vertical-align: middle;
-        }
-
-        /* ── Product Cards ── */
-        .product-card {
-            display: grid;
-            grid-template-columns: 260px 1fr;
-            gap: 0;
-            background: #fff;
-            border: 1px solid #e0e0e0;
-            border-radius: 12px;
-            margin: 3rem 0;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-            border-color: var(--secondary-color);
-        }
-
-        .product-image-col {
-            background: #fdfdfd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 30px;
-            position: relative;
-            border-right: 1px solid #f0f0f0;
-        }
-
-        .product-img-placeholder {
-            width: 100%;
-            height: 300px;
-            background: linear-gradient(135deg, #e8f4f5, #c8e6e8);
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-color);
-            font-size: 2.5rem;
-        }
-
-        .product-img-placeholder span {
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-align: center;
-            margin-top: 0.5rem;
-            color: var(--secondary-color);
-            font-family: var(--font-body);
-        }
-
-        .badge {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: var(--primary-color);
-            color: white;
-            padding: 5px 12px;
-            font-size: 0.72rem;
-            font-weight: 700;
-            border-radius: 4px;
-            z-index: 2;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .product-details-col {
-            padding: 1.8rem 2rem;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .product-brand {
-            font-size: 0.82rem;
-            color: var(--secondary-color);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 900;
-            margin-bottom: 4px;
-        }
-
-        .product-title {
-            font-size: 1.55rem !important;
-            margin-top: 0 !important;
-            margin-bottom: 10px !important;
-            color: var(--primary-color);
-            border: none !important;
-            padding: 0 !important;
-            line-height: 1.25 !important;
-        }
-
-        .rating-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 14px;
-            flex-wrap: wrap;
-        }
-
-        .stars {
-            color: var(--amazon-orange);
-            font-weight: 700;
-            font-size: 1rem;
-        }
-
-        .rating-count {
-            font-size: 0.88rem;
-            color: #007185;
-        }
-
-        .buyers-count {
-            font-size: 0.82rem;
-            color: #565959;
-            background: #f0f2f2;
-            padding: 3px 8px;
-            border-radius: 4px;
-        }
-
-        .product-description {
-            font-size: 0.97rem;
-            color: #444;
-            line-height: 1.55;
-            margin-bottom: 1rem;
-        }
-
-        .product-info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            background: #f9f9f9;
-            padding: 14px;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-        }
-
-        .info-item b {
-            display: block;
-            color: var(--primary-color);
-            font-size: 0.78rem;
-            text-transform: uppercase;
-            margin-bottom: 2px;
-        }
-
-        .info-item span {
-            font-size: 0.88rem;
-            color: #333;
-        }
-
-        .product-verdict-row {
-            background: white;
-            border: 1px solid #e0eeee;
-            border-radius: 6px;
-            padding: 0.8rem 1rem;
-            margin-bottom: 0.8rem;
-            font-size: 0.92rem;
-        }
-
-        .verdict-good {
-            color: #1a7a1a;
-            margin-bottom: 4px;
-        }
-
-        .verdict-bad {
-            color: #a0281a;
-            margin-bottom: 0;
-        }
-
-        .price-cta-area {
-            margin-top: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 14px;
-            border-top: 1px solid #eee;
-        }
-
-        .price-tag {
-            font-size: 1.7rem;
-            font-weight: 700;
-            color: #111;
-        }
-
-        .price-tag small {
-            font-size: 1rem;
-            vertical-align: super;
-            margin-right: 2px;
-        }
-
-        .price-tag .sale-badge {
-            display: inline-block;
-            background: #cc0c39;
-            color: white;
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 2px 7px;
-            border-radius: 4px;
-            vertical-align: middle;
-            margin-left: 8px;
-        }
-
-        .amazon-btn {
-            background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
-            border: 1px solid #a88734;
-            border-radius: 8px;
-            color: #111 !important;
-            padding: 10px 18px;
-            font-weight: 700;
-            font-size: 0.88rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            transition: 0.2s;
-            text-decoration: none;
-        }
-
-        .amazon-btn:hover {
-            background: #f0c14b;
-            transform: scale(1.02);
-        }
-
-        .affiliate-note {
-            font-size: 0.76rem;
-            color: #999;
-            margin-top: 0.3rem;
-            font-style: italic;
-        }
-
-        /* ── Tables ── */
-        table {
-            display: block;
-            width: 100%;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            border-collapse: collapse;
-            margin: 2rem 0;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            border: 1px solid #eee;
-        }
-
-        th,
-        td {
-            padding: 12px 15px;
-            min-width: 130px;
-            text-align: left;
-            border-bottom: 1px solid #eee;
-            font-size: 0.9rem;
-        }
-
-        th {
-            background-color: var(--primary-color);
-            color: white;
-            font-weight: 700;
-        }
-
-        tr:nth-child(even) {
-            background: #f9f9f9;
-        }
-
-        tr:hover {
-            background: #f5f5f5;
-        }
-
-        /* ── Figures ── */
-        figure {
-            margin: 2.5rem 0;
-        }
-
-        figure img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        figcaption {
-            font-size: 0.9rem;
-            color: #666;
-            text-align: center;
-            margin-top: 8px;
-            font-style: italic;
-        }
-
-        /* ── FAQ ── */
-        .faq-item {
-            border-bottom: 1px solid #eee;
-        }
-
-        .faq-question {
-            width: 100%;
-            text-align: left;
-            background: none;
-            border: none;
-            padding: 20px 0;
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: var(--primary-color);
-            font-family: var(--font-body);
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: 0.35s ease-out;
-            color: #555;
-            padding-right: 20px;
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 500px;
-            padding-bottom: 20px;
-        }
-
-        .faq-item.active .faq-question {
-            color: var(--secondary-color);
-        }
-
-        .faq-question span {
-            font-size: 1.5rem;
-            transition: 0.3s;
-            flex-shrink: 0;
-            margin-left: 1rem;
-        }
-
-        .faq-item.active span {
-            transform: rotate(45deg);
-        }
-
-        /* ── Related Articles ── */
-        .related-articles {
-            background: #f0f7f8;
-            padding: 2rem;
-            border-radius: 8px;
-            margin-top: 3rem;
-        }
-
-        .related-articles h3 {
-            color: var(--primary-color);
-            margin-top: 0;
-            margin-bottom: 1.5rem;
-        }
-
-        .related-articles ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .related-articles li {
-            margin-bottom: 1rem;
-        }
-
-        .related-articles a {
-            color: var(--primary-color);
-            text-decoration: underline;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        .related-articles a:hover {
-            color: var(--secondary-color);
-        }
-
-
-
-        /* ── Mobile ── */
-        @media (max-width: 768px) {
-
-
-            .article-header {
-                min-height: auto;
-                padding: 100px 15px 50px;
-            }
-
-            .article-header h1 {
-                font-size: 1.8rem;
-            }
-
-            .article-header p {
-                font-size: 1.1rem;
-            }
-
-            .content-container {
-                margin: -40px 15px 2rem;
-                padding: 2rem 1.5rem;
-                border-radius: 8px;
-            }
-
-            h2 {
-                font-size: 1.6rem;
-                margin-top: 2rem;
-            }
-
-            h3 {
-                font-size: 1.3rem;
-            }
-
-            p {
-                font-size: 1rem;
-            }
-
-            ul {
-                margin-left: 1.2rem;
-            }
-
-            ol {
-                margin-left: 1.2rem;
-            }
-
-            .product-card {
-                grid-template-columns: 1fr;
-            }
-
-            .product-image-col {
-                border-right: none;
-                border-bottom: 1px solid #eee;
-                max-height: 300px;
-            }
-
-            .product-details-col {
-                padding: 1.4rem;
-            }
-
-            .product-info-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .price-cta-area {
-                flex-direction: column;
-                gap: 0.8rem;
-                align-items: flex-start;
-            }
-
-
-        }
-
-        @media (max-width: 480px) {
-
-
-
-            .article-header h1 {
-                font-size: 1.5rem;
-            }
-
-            .content-container {
-                padding: 1.5rem 1rem;
-            }
-
-            h2 {
-                font-size: 1.4rem;
-            }
-        }
-    </style>
+    </script>
 </head>
 
 <body>
@@ -1365,8 +644,8 @@
 </div>
 
     <!-- ═══════════════════════ HERO ═══════════════════════ -->
-    <header class="article-header">
-        <h1>Best Electric Shavers & Razors for Neck Hair (2026)</h1>
+    <header class="article-header" style="background-image: linear-gradient(rgba(0, 40, 50, 0.72), rgba(0, 95, 115, 0.72)), url('/images/blog/electric-shavers/best-for-neck/best-electric-shaver-neck-cover.webp');">
+        <h1>Best Electric Shavers & Razors for Neck Hair (2026 Guide)</h1>
         <p>The neck is where shaving goes wrong. Here are the tools mechanically built to cut flat-lying neck hair
             without irritation.</p>
         <a href="#price-timestamp" class="btn-contact">Jump to Products</a>
@@ -1532,140 +811,284 @@
             from qualifying purchases.</p>
         <div
             style="background: #f8f9fa; padding: 10px 15px; border-radius: 6px; font-size: 0.85rem; color: #555; margin-bottom: 2rem; border-left: 3px solid var(--amazon-orange);">
-            ⏱️ <strong>Last Updated:</strong> <span id="price-timestamp">June 04, 2026 at 09:01 AM PT</span>
+            ⏱️ <strong>Last Updated:</strong> <span id="price-timestamp">June 08, 2026 at 01:03 PM PT</span>
             <br>
             <small><em>Product prices and availability are accurate as of the date/time indicated and are subject to
                     change. Any price and availability information displayed on Amazon.com at the time of purchase will
                     apply to the purchase of these products.</em></small>
         </div>
 
-        <!-- PRODUCT 1 -->
-        <div class="product-card">
-            <div class="product-image-col">
-                <span class="badge">Best for Adam's Apple</span>
-                <div class="product-img-placeholder">
-                    <img src="/images/blog/electric-shavers/best-for-neck/philips-norelco-oneblade.jpg"
-                        alt="Philips Norelco OneBlade" loading="lazy" width="300px" height="400" class="upsell-img">
-                </div>
-            </div>
-            <div class="product-details-col">
-                <div class="product-brand">Philips Norelco</div>
-                <h3 class="product-title">OneBlade Electric Shaver</h3>
-                <div class="rating-container">
-                    <span class="stars">4.5 ★★★★★</span>
-                    <span class="rating-count">46,102 ratings</span>
-                    <span class="buyers-count">10K+ bought last month</span>
-                </div>
-                <p class="product-description">The OneBlade's compact, narrow head is its defining advantage on the
-                    neck. Most full-size foil shavers bridge rather than follow tight curves. The OneBlade head is
-                    narrow enough to work around the Adam's apple like a precision tool. Does not cut at absolute
-                    zero-gap — maintains a safe micrometric distance from skin that prevents the catches and nicks that
-                    larger heads create.</p>
-                <div class="product-info-grid">
-                    <div class="info-item">
-                        <b>🔍 Neck Advantage</b>
-                        <span>Small pivoting head navigates Adam's apple contours</span>
-                    </div>
-                    <div class="info-item">
-                        <b>👤 Best For</b>
-                        <span>Adam's apple area, sharp jaw angles, beginners</span>
-                    </div>
-                    <div class="info-item">
-                        <b>⚙️ Key Mechanism</b>
-                        <span>Micrometric blade gap — no direct skin contact</span>
-                    </div>
-                    <div class="info-item">
-                        <b>✅ Problem Solved</b>
-                        <span>Nicks &amp; redness from rigid foils catching on neck curves</span>
-                    </div>
-                </div>
-                <div class="product-verdict-row">
-                    <p class="verdict-good">✅ <strong>Our Take:</strong> The easiest neck shaver for most people to use
-                        correctly from day one — most forgiving on neck contours.</p>
-                    <p class="verdict-bad">❌ <strong>Avoid if:</strong> You need the closest possible shave — it leaves
-                        a microscopic bit of stubble to protect the skin.</p>
-                </div>
-                <div class="price-cta-area">
-                    <div class="price-tag"><small>$</small><span data-asin="B0BZDPFH45">42.99</span></div>
-                    <a href="https://amzn.to/4rSv84s" target="_blank" rel="noopener nofollow" class="amazon-btn">
-                        Check on Amazon
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
+        
+          <div class="product-card">
+  <!-- Image Column -->
+  <div class="product-image-col">
+    
+      <span class="best-for-badge">Best for Adam's Apple</span>
+    
+    <img src="/images/blog/electric-shavers/best-for-neck/philips-norelco-oneblade.jpg" alt="Philips Norelco OneBlade" loading="lazy" width="600" height="400">
+  </div>
 
-        <!-- PRODUCT 2 -->
-        <div class="product-card">
-            <div class="product-image-col">
-                <span class="badge">Best for Flat-Lying Hairs</span>
-                <div class="product-img-placeholder">
-                    <div class="product-img-placeholder">
-                        <img src="/images/blog/electric-shavers/best-for-neck/Braun-Series-9-PRO.jpg"
-                            alt="Braun Series 9 PRO+ " loading="lazy" width="300px" height="400" class="upsell-img">
-                    </div>
-                </div>
-            </div>
-            <div class="product-details-col">
-                <div class="product-brand">Braun</div>
-                <h3 class="product-title">Series 9 PRO+ Electric Shaver</h3>
-                <div class="rating-container">
-                    <span class="stars">4.4 ★★★★☆</span>
-                    <span class="rating-count">159 ratings</span>
-                    <span class="buyers-count">1K+ bought last month</span>
-                </div>
-                <p class="product-description">Contains a dedicated ProLift trimmer element — a specialized middle blade
-                    positioned to engage hairs that lie flat against the skin before the main cutting foils reach them.
-                    The 10D FlexBall head pivots in multiple axes simultaneously. Hairs that would require two or three
-                    passes with a standard foil are caught in one.</p>
-                <div class="product-info-grid">
-                    <div class="info-item">
-                        <b>🔍 Neck Advantage</b>
-                        <span>ProLift trimmer raises flat-lying hairs into cutting path</span>
-                    </div>
-                    <div class="info-item">
-                        <b>👤 Best For</b>
-                        <span>Necks that need 2–3 passes to catch missed hairs</span>
-                    </div>
-                    <div class="info-item">
-                        <b>⚙️ Key Mechanism</b>
-                        <span>10D FlexBall + ProLift middle trimmer</span>
-                    </div>
-                    <div class="info-item">
-                        <b>✅ Problem Solved</b>
-                        <span>Replaces 3 friction-heavy passes with 1 clean pass</span>
-                    </div>
-                </div>
-                <div class="product-verdict-row">
-                    <p class="verdict-good">✅ <strong>Our Take:</strong> The only mainstream shaver with a dedicated
-                        flat-hair lifting mechanism — neck redness reduces dramatically within the first week.</p>
-                    <p class="verdict-bad">❌ <strong>Avoid if:</strong> Budget is a constraint — this is a premium
-                        investment for a very specific neck problem.</p>
-                </div>
-                <div class="price-cta-area">
-                    <div class="price-tag">
-                        <small>$</small><span data-asin="B0FGQQ9X2R">339.99</span>
-                    </div>
-                    <a href="https://amzn.to/4syYkyE" target="_blank" rel="noopener nofollow" class="amazon-btn">
-                        Check on Amazon
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
+  <!-- Details Column -->
+  <div class="product-details-col">
+    <div class="product-header">
+      <div>
+        <div class="product-brand">Philips Norelco</div>
+        <h2 class="product-title">OneBlade Electric Shaver</h2>
+      </div>
+    </div>
 
-        <!-- PRODUCT 3 -->
-        <!--
+    <!-- Ratings Section -->
+    
+      <div class="rating-container">
+        
+          <span class="stars">4.5/5 ★★★★★</span>
+        
+        
+          <span class="rating-count">46,102 Ratings</span>
+        
+        
+          <span class="buyers-count">10K+ bought in past month</span>
+        
+      </div>
+    
+
+    <!-- Description -->
+    <p style="margin-bottom: 15px;">The OneBlade's compact, narrow head is its defining advantage on the neck. Most full-size foil shavers bridge rather than follow tight curves. The OneBlade head is narrow enough to work around the Adam's apple like a precision tool. Does not cut at absolute zero-gap — maintains a safe micrometric distance from skin that prevents the catches and nicks that larger heads create.</p>
+
+    <!-- Key Features Grid -->
+    
+      <div class="product-info-grid">
+        
+          
+          
+          
+          
+          
+          
+          
+          
+            <div class="info-item">
+              <b>Neck Advantage</b>
+              <span>Small pivoting head navigates Adam's apple contours</span>
+            </div>
+          
+        
+          
+          
+          
+          
+          
+          
+          
+          
+            <div class="info-item">
+              <b>Best For</b>
+              <span>Adam's apple area, sharp jaw angles, beginners</span>
+            </div>
+          
+        
+          
+          
+          
+          
+          
+          
+          
+          
+            <div class="info-item">
+              <b>Key Mechanism</b>
+              <span>Micrometric blade gap — no direct skin contact</span>
+            </div>
+          
+        
+          
+          
+          
+          
+          
+          
+          
+          
+            <div class="info-item">
+              <b>Problem Solved</b>
+              <span>Nicks & redness from rigid foils catching on neck curves</span>
+            </div>
+          
+        
+      </div>
+    
+
+    <!-- Local Barbershop Context -->
+    
+      <div class="local-context">
+        <strong>✅ Bottom Line:</strong> The easiest neck shaver for most people to use correctly from day one — most forgiving on neck contours.<br><br><strong>❌ Avoid if:</strong> You need the closest possible shave — it leaves a microscopic bit of stubble to protect the skin.
+      </div>
+    
+
+    <!-- Price Area and Amazon Button -->
+    <div class="price-area">
+      <div>
+        <div class="price-tag">
+          
+            <small>$</small><span data-asin="B0BZDPFH45">42.99</span>
+          
+        </div>
+        
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:center;">
+        <a href="https://amzn.to/4rSv84s" target="_blank" rel="nofollow" class="amazon-btn">
+          
+            Buy on Amazon
+          
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 8px;">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+          
+        
+          <div class="product-card">
+  <!-- Image Column -->
+  <div class="product-image-col">
+    
+      <span class="best-for-badge">Best for Flat-Lying Hairs</span>
+    
+    <img src="/images/blog/electric-shavers/best-for-neck/Braun-Series-9-PRO.jpg" alt="Braun Series 9 PRO+" loading="lazy" width="600" height="400">
+  </div>
+
+  <!-- Details Column -->
+  <div class="product-details-col">
+    <div class="product-header">
+      <div>
+        <div class="product-brand">Braun</div>
+        <h2 class="product-title">Series 9 PRO+ Electric Shaver</h2>
+      </div>
+    </div>
+
+    <!-- Ratings Section -->
+    
+      <div class="rating-container">
+        
+          <span class="stars">4.4/5 ★★★★☆</span>
+        
+        
+          <span class="rating-count">159 Ratings</span>
+        
+        
+          <span class="buyers-count">1K+ bought in past month</span>
+        
+      </div>
+    
+
+    <!-- Description -->
+    <p style="margin-bottom: 15px;">Contains a dedicated ProLift trimmer element — a specialized middle blade positioned to engage hairs that lie flat against the skin before the main cutting foils reach them. The 10D FlexBall head pivots in multiple axes simultaneously. Hairs that would require two or three passes with a standard foil are caught in one.</p>
+
+    <!-- Key Features Grid -->
+    
+      <div class="product-info-grid">
+        
+          
+          
+          
+          
+          
+          
+          
+          
+            <div class="info-item">
+              <b>Neck Advantage</b>
+              <span>ProLift trimmer raises flat-lying hairs into cutting path</span>
+            </div>
+          
+        
+          
+          
+          
+          
+          
+          
+          
+          
+            <div class="info-item">
+              <b>Best For</b>
+              <span>Necks that need 2–3 passes to catch missed hairs</span>
+            </div>
+          
+        
+          
+          
+          
+          
+          
+          
+          
+          
+            <div class="info-item">
+              <b>Key Mechanism</b>
+              <span>10D FlexBall + ProLift middle trimmer</span>
+            </div>
+          
+        
+          
+          
+          
+          
+          
+          
+          
+          
+            <div class="info-item">
+              <b>Problem Solved</b>
+              <span>Replaces 3 friction-heavy passes with 1 clean pass</span>
+            </div>
+          
+        
+      </div>
+    
+
+    <!-- Local Barbershop Context -->
+    
+      <div class="local-context">
+        <strong>✅ Bottom Line:</strong> The only mainstream shaver with a dedicated flat-hair lifting mechanism — neck redness reduces dramatically within the first week.<br><br><strong>❌ Avoid if:</strong> Budget is a constraint — this is a premium investment for a very specific neck problem.
+      </div>
+    
+
+    <!-- Price Area and Amazon Button -->
+    <div class="price-area">
+      <div>
+        <div class="price-tag">
+          
+            <small>$</small><span data-asin="B0FGQQ9X2R">339.99</span>
+          
+        </div>
+        
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:center;">
+        <a href="https://amzn.to/4syYkyE" target="_blank" rel="nofollow" class="amazon-btn">
+          
+            Buy on Amazon
+          
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 8px;">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+          
+            <!--
   ============================================================
   FILE: _includes/newsletter-inline.html
   USAGE: {% include newsletter-inline.html %}
@@ -2334,197 +1757,413 @@
     })();
 </script>
 
+          
+        
+          <div class="product-card">
+  <!-- Image Column -->
+  <div class="product-image-col">
+    
+      <span class="best-for-badge">Best for Neck Whorls</span>
+    
+    <img src="/images/blog/electric-shavers/best-for-neck/Philips-Norelco-i9000.jpg" alt="Philips Norelco i9000" loading="lazy" width="600" height="400">
+  </div>
 
-        <div class="product-card">
-            <div class="product-image-col">
-                <span class="badge">Best for Neck Whorls</span>
-                <div class="product-img-placeholder">
-                    <div class="product-img-placeholder">
-                        <img src="/images/blog/electric-shavers/best-for-neck/Philips-Norelco-i9000.jpg"
-                            alt="Philips Norelco i9000" loading="lazy" width="300px" height="400" class="upsell-img">
-                    </div>
-                </div>
+  <!-- Details Column -->
+  <div class="product-details-col">
+    <div class="product-header">
+      <div>
+        <div class="product-brand">Philips Norelco</div>
+        <h2 class="product-title">Shaver i9000 Prestige</h2>
+      </div>
+    </div>
+
+    <!-- Ratings Section -->
+    
+      <div class="rating-container">
+        
+          <span class="stars">4.5/5 ★★★★★</span>
+        
+        
+          <span class="rating-count">396 Ratings</span>
+        
+        
+          <span class="buyers-count">400+ bought in past month</span>
+        
+      </div>
+    
+
+    <!-- Description -->
+    <p style="margin-bottom: 15px;">Three fully independent GyroFlex 3D rotary heads that pivot in every direction. Each head adjusts individually to neck curves including the Adam's apple — cutting multi-directional growth without requiring the user to reposition the shaver for each growth zone. The exception to the 'foil is better for sensitive skin' rule when whorls are the core problem.</p>
+
+    <!-- Key Features Grid -->
+    
+      <div class="product-info-grid">
+        
+          
+          
+          
+          
+          
+          
+          
+          
+            <div class="info-item">
+              <b>Neck Advantage</b>
+              <span>3 independent heads capture all growth directions simultaneously</span>
             </div>
-            <div class="product-details-col">
-                <div class="product-brand">Philips Norelco</div>
-                <h3 class="product-title">Shaver i9000 Prestige</h3>
-                <div class="rating-container">
-                    <span class="stars">4.5 ★★★★★</span>
-                    <span class="rating-count">396 ratings</span>
-                    <span class="buyers-count">400+ bought last month</span>
-                </div>
-                <p class="product-description">Three fully independent GyroFlex 3D rotary heads that pivot in every
-                    direction. Each head adjusts individually to neck curves including the Adam's apple — cutting
-                    multi-directional growth without requiring the user to reposition the shaver for each growth zone.
-                    The exception to the 'foil is better for sensitive skin' rule when whorls are the core problem.</p>
-                <div class="product-info-grid">
-                    <div class="info-item">
-                        <b>🔍 Neck Advantage</b>
-                        <span>3 independent heads capture all growth directions simultaneously</span>
-                    </div>
-                    <div class="info-item">
-                        <b>👤 Best For</b>
-                        <span>Necks with visible whorls or conflicting growth directions</span>
-                    </div>
-                    <div class="info-item">
-                        <b>⚙️ Key Mechanism</b>
-                        <span>GyroFlex 3D — each rotary disc pivots independently</span>
-                    </div>
-                    <div class="info-item">
-                        <b>✅ Problem Solved</b>
-                        <span>Eliminates constant repositioning on multi-directional growth zones</span>
-                    </div>
-                </div>
-                <div class="product-verdict-row">
-                    <p class="verdict-good">✅ <strong>Our Take:</strong> On a neck with genuinely chaotic
-                        multi-directional growth, this high-quality rotary outperforms any foil. Use with light pressure
-                        and wet pre-shave.</p>
-                    <p class="verdict-bad">❌ <strong>Avoid if:</strong> Your neck hair grows in a single predictable
-                        direction — a foil will give lower baseline irritation.</p>
-                </div>
-                <div class="price-cta-area">
-                    <div class="price-tag"><small>$</small><span data-asin="B0F1PKHWNX">379.96</span></div>
-                    <a href="https://amzn.to/4bwzHfZ" target="_blank" rel="noopener nofollow" class="amazon-btn">
-                        Check on Amazon
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                </div>
+          
+        
+          
+          
+          
+          
+          
+          
+          
+          
+            <div class="info-item">
+              <b>Best For</b>
+              <span>Necks with visible whorls or conflicting growth directions</span>
             </div>
+          
+        
+          
+          
+          
+          
+          
+          
+          
+          
+            <div class="info-item">
+              <b>Key Mechanism</b>
+              <span>GyroFlex 3D — each rotary disc pivots independently</span>
+            </div>
+          
+        
+          
+          
+          
+          
+          
+          
+          
+          
+            <div class="info-item">
+              <b>Problem Solved</b>
+              <span>Eliminates constant repositioning on multi-directional growth zones</span>
+            </div>
+          
+        
+      </div>
+    
+
+    <!-- Local Barbershop Context -->
+    
+      <div class="local-context">
+        <strong>✅ Bottom Line:</strong> On a neck with genuinely chaotic multi-directional growth, this high-quality rotary outperforms any foil. Use with light pressure and wet pre-shave.<br><br><strong>❌ Avoid if:</strong> Your neck hair grows in a single predictable direction — a foil will give lower baseline irritation.
+      </div>
+    
+
+    <!-- Price Area and Amazon Button -->
+    <div class="price-area">
+      <div>
+        <div class="price-tag">
+          
+            <small>$</small><span data-asin="B0F1PKHWNX">284.96</span>
+          
         </div>
+        
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:center;">
+        <a href="https://amzn.to/4bwzHfZ" target="_blank" rel="nofollow" class="amazon-btn">
+          
+            Buy on Amazon
+          
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 8px;">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
 
-        <!-- PRODUCT 4 -->
-        <div class="product-card">
-            <div class="product-image-col">
-                <span class="badge">Best for Thick Neck Hair</span>
-                <div class="product-img-placeholder">
-                    <div class="product-img-placeholder">
-                        <img src="/images/blog/electric-shavers/best-for-neck/Panasonic-Arc5.jpg" alt="Panasonic Arc5"
-                            loading="lazy" width="300px" height="400" class="upsell-img">
-                    </div>
-                </div>
-            </div>
-            <div class="product-details-col">
-                <div class="product-brand">Panasonic</div>
-                <h3 class="product-title">Arc5 Electric Shaver</h3>
-                <div class="rating-container">
-                    <span class="stars">4.3 ★★★★☆</span>
-                    <span class="rating-count">165 ratings</span>
-                    <span class="buyers-count">Big Spring Sale</span>
-                </div>
-                <p class="product-description">Built around blade speed — its 14,000 CPM linear motor is among the
-                    fastest available in consumer shavers. For thick or dense neck hair, speed determines how many
-                    passes you need: a fast motor cuts each hair cleanly in a single contact. The Multi-Flex 16D head
-                    adds 16-direction geometric adaptability across the jaw-to-neck transition.</p>
-                <div class="product-info-grid">
-                    <div class="info-item">
-                        <b>🔍 Neck Advantage</b>
-                        <span>14,000 CPM motor cuts dense hair in one contact</span>
-                    </div>
-                    <div class="info-item">
-                        <b>👤 Best For</b>
-                        <span>Thick or fast-regrowing neck hair, dense beards</span>
-                    </div>
-                    <div class="info-item">
-                        <b>⚙️ Key Mechanism</b>
-                        <span>Multi-Flex 16D pivoting head + 5-blade arc design</span>
-                    </div>
-                    <div class="info-item">
-                        <b>✅ Problem Solved</b>
-                        <span>Eliminates extra passes caused by motor struggling with thick hair</span>
-                    </div>
-                </div>
-                <div class="product-verdict-row">
-                    <p class="verdict-good">✅ <strong>Our Take:</strong> For people whose neck problem is density rather
-                        than contour — the speed advantage reduces passes where a slower motor forces repeat friction.
-                    </p>
-                    <p class="verdict-bad">❌ <strong>Avoid if:</strong> Your main issue is sharp contours or whorls —
-                        this is less forgiving than the OneBlade on complex curves.</p>
-                </div>
-                <div class="price-cta-area">
-                    <div class="price-tag">
-                        <small>$</small><span data-asin="B0D4B2T8SR">200.79</span>
+          
+        
+          <div class="product-card">
+  <!-- Image Column -->
+  <div class="product-image-col">
+    
+      <span class="best-for-badge">Best for Thick Neck Hair</span>
+    
+    <img src="/images/blog/electric-shavers/best-for-neck/Panasonic-Arc5.jpg" alt="Panasonic Arc5" loading="lazy" width="600" height="400">
+  </div>
 
-                    </div>
-                    <a href="https://amzn.to/4lMNMcw" target="_blank" rel="noopener nofollow" class="amazon-btn">
-                        Check on Amazon
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                </div>
+  <!-- Details Column -->
+  <div class="product-details-col">
+    <div class="product-header">
+      <div>
+        <div class="product-brand">Panasonic</div>
+        <h2 class="product-title">Arc5 Electric Shaver</h2>
+      </div>
+    </div>
+
+    <!-- Ratings Section -->
+    
+      <div class="rating-container">
+        
+          <span class="stars">4.3/5 ★★★★☆</span>
+        
+        
+          <span class="rating-count">165 Ratings</span>
+        
+        
+          <span class="buyers-count">Big Spring Sale</span>
+        
+      </div>
+    
+
+    <!-- Description -->
+    <p style="margin-bottom: 15px;">Built around blade speed — its 14,000 CPM linear motor is among the fastest available in consumer shavers. For thick or dense neck hair, speed determines how many passes you need: a fast motor cuts each hair cleanly in a single contact. The Multi-Flex 16D head adds 16-direction geometric adaptability across the jaw-to-neck transition.</p>
+
+    <!-- Key Features Grid -->
+    
+      <div class="product-info-grid">
+        
+          
+          
+          
+          
+          
+          
+          
+          
+            <div class="info-item">
+              <b>Neck Advantage</b>
+              <span>14,000 CPM motor cuts dense hair in one contact</span>
             </div>
+          
+        
+          
+          
+          
+          
+          
+          
+          
+          
+            <div class="info-item">
+              <b>Best For</b>
+              <span>Thick or fast-regrowing neck hair, dense beards</span>
+            </div>
+          
+        
+          
+          
+          
+          
+          
+          
+          
+          
+            <div class="info-item">
+              <b>Key Mechanism</b>
+              <span>Multi-Flex 16D pivoting head + 5-blade arc design</span>
+            </div>
+          
+        
+          
+          
+          
+          
+          
+          
+          
+          
+            <div class="info-item">
+              <b>Problem Solved</b>
+              <span>Eliminates extra passes caused by motor struggling with thick hair</span>
+            </div>
+          
+        
+      </div>
+    
+
+    <!-- Local Barbershop Context -->
+    
+      <div class="local-context">
+        <strong>✅ Bottom Line:</strong> For people whose neck problem is density rather than contour — the speed advantage reduces passes where a slower motor forces repeat friction.<br><br><strong>❌ Avoid if:</strong> Your main issue is sharp contours or whorls — this is less forgiving than the OneBlade on complex curves.
+      </div>
+    
+
+    <!-- Price Area and Amazon Button -->
+    <div class="price-area">
+      <div>
+        <div class="price-tag">
+          
+            <small>$</small><span data-asin="B0D4B2T8SR">200.79</span>
+          
         </div>
+        
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:center;">
+        <a href="https://amzn.to/4lMNMcw" target="_blank" rel="nofollow" class="amazon-btn">
+          
+            Buy on Amazon
+          
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 8px;">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
 
-        <!-- PRODUCT 5 -->
-        <div class="product-card">
-            <div class="product-image-col">
-                <span class="badge">Best for Coarse / Curly</span>
-                <div class="product-img-placeholder">
-                    <div class="product-img-placeholder">
-                        <img src="/images/blog/electric-shavers/best-for-neck/Bevel-Beard-Trimmer.jpg"
-                            alt="Bevel Beard Trimmer" loading="lazy" width="300px" height="400" class="upsell-img">
-                    </div>
-                </div>
+          
+        
+          <div class="product-card">
+  <!-- Image Column -->
+  <div class="product-image-col">
+    
+      <span class="best-for-badge">Best for Coarse / Curly</span>
+    
+    <img src="/images/blog/electric-shavers/best-for-neck/Bevel-Beard-Trimmer.jpg" alt="Bevel Beard Trimmer" loading="lazy" width="600" height="400">
+  </div>
+
+  <!-- Details Column -->
+  <div class="product-details-col">
+    <div class="product-header">
+      <div>
+        <div class="product-brand">Bevel</div>
+        <h2 class="product-title">Bevel Electric Shaver & Trimmer</h2>
+      </div>
+    </div>
+
+    <!-- Ratings Section -->
+    
+      <div class="rating-container">
+        
+          <span class="stars">4.4/5 ★★★★☆</span>
+        
+        
+          <span class="rating-count">2,889 Ratings</span>
+        
+        
+          <span class="buyers-count">50+ bought in past month</span>
+        
+      </div>
+    
+
+    <!-- Description -->
+    <p style="margin-bottom: 15px;">Runs cooler than most during extended use — the motor and blade geometry are calibrated for the longer contact times that coarse, curly beard hair requires without overheating. For the neck specifically, this matters because neck whorls common in coarse hair require longer, slower passes that heat up standard shavers. Provides unusually precise neckline control for a consumer-grade tool.</p>
+
+    <!-- Key Features Grid -->
+    
+      <div class="product-info-grid">
+        
+          
+          
+          
+          
+          
+          
+          
+          
+            <div class="info-item">
+              <b>Neck Advantage</b>
+              <span>Cool-running motor for extended coarse-hair neck sessions</span>
             </div>
-            <div class="product-details-col">
-                <div class="product-brand">Bevel</div>
-                <h3 class="product-title">Bevel Electric Shaver & Trimmer</h3>
-                <div class="rating-container">
-                    <span class="stars">4.4 ★★★★☆</span>
-                    <span class="rating-count">2,889 ratings</span>
-                    <span class="buyers-count">50+ bought last month</span>
-                </div>
-                <p class="product-description">Runs cooler than most during extended use — the motor and blade geometry
-                    are calibrated for the longer contact times that coarse, curly beard hair requires without
-                    overheating. For the neck specifically, this matters because neck whorls common in coarse hair
-                    require longer, slower passes that heat up standard shavers. Provides unusually precise neckline
-                    control for a consumer-grade tool.</p>
-                <div class="product-info-grid">
-                    <div class="info-item">
-                        <b>🔍 Neck Advantage</b>
-                        <span>Cool-running motor for extended coarse-hair neck sessions</span>
-                    </div>
-                    <div class="info-item">
-                        <b>👤 Best For</b>
-                        <span>Coarse/curly neck hair, neckline precision (Type 3–4)</span>
-                    </div>
-                    <div class="info-item">
-                        <b>⚙️ Key Mechanism</b>
-                        <span>Geometry calibrated for tightly coiled, high-density hair</span>
-                    </div>
-                    <div class="info-item">
-                        <b>✅ Problem Solved</b>
-                        <span>Heat irritation on neck + pseudofolliculitis barbae (shaving bumps)</span>
-                    </div>
-                </div>
-                <div class="product-verdict-row">
-                    <p class="verdict-good">✅ <strong>Our Take:</strong> The neck shaver for men with coarse or tightly
-                        curled beard hair who need both irritation control and a clean neckline definition.</p>
-                    <p class="verdict-bad">❌ <strong>Avoid if:</strong> You have fine, straight neck hair — the premium
-                        geometry isn't needed and you'll overpay.</p>
-                </div>
-                <div class="price-cta-area">
-                    <div class="price-tag"><small>$</small><span data-asin="B07X342321">149.95</span></div>
-                    <a href="https://amzn.to/4lBY67d" target="_blank" rel="noopener nofollow" class="amazon-btn">
-                        Check on Amazon
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                </div>
+          
+        
+          
+          
+          
+          
+          
+          
+          
+          
+            <div class="info-item">
+              <b>Best For</b>
+              <span>Coarse/curly neck hair, neckline precision (Type 3–4)</span>
             </div>
+          
+        
+          
+          
+          
+          
+          
+          
+          
+          
+            <div class="info-item">
+              <b>Key Mechanism</b>
+              <span>Geometry calibrated for tightly coiled, high-density hair</span>
+            </div>
+          
+        
+          
+          
+          
+          
+          
+          
+          
+          
+            <div class="info-item">
+              <b>Problem Solved</b>
+              <span>Heat irritation on neck + pseudofolliculitis barbae (shaving bumps)</span>
+            </div>
+          
+        
+      </div>
+    
+
+    <!-- Local Barbershop Context -->
+    
+      <div class="local-context">
+        <strong>✅ Bottom Line:</strong> The neck shaver for men with coarse or tightly curled beard hair who need both irritation control and a clean neckline definition.<br><br><strong>❌ Avoid if:</strong> You have fine, straight neck hair — the premium geometry isn't needed and you'll overpay.
+      </div>
+    
+
+    <!-- Price Area and Amazon Button -->
+    <div class="price-area">
+      <div>
+        <div class="price-tag">
+          
+            <small>$</small><span data-asin="B07X342321">149.95</span>
+          
         </div>
+        
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:center;">
+        <a href="https://amzn.to/4lBY67d" target="_blank" rel="nofollow" class="amazon-btn">
+          
+            Buy on Amazon
+          
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 8px;">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+          
+        
 
         <!-- ═══ COMPARISON TABLE ═══ -->
         <h2 id="comparison">Quick Comparison — Which Shaver Is Right for Your Neck Problem?</h2>

@@ -1,0 +1,92 @@
+{% if page.products %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Top {{ page.products | size }} Electric Shavers for Sensitive Skin",
+  "description": "{{ page.description | strip_html | strip_newlines | escape }}",
+  "url": "{{ page.canonical }}",
+  "numberOfItems": {{ page.products | size }},
+  "itemListElement": [
+    {% for product in page.products %}
+    {
+      "@type": "ListItem",
+      "position": {{ forloop.index }},
+      "item": {
+        "@type": "Product",
+        "@id": "{{ page.canonical }}#item-{{ forloop.index }}",
+        "name": "{{ product.brand }} {{ product.title }}",
+        "brand": {
+          "@type": "Brand",
+          "name": "{{ product.brand }}"
+        },
+        "image": "https://oceansidehairsalon.com{{ product.image }}",
+        "description": "{{ product.description | strip_html | strip_newlines | escape }}",
+        {% if product.price and product.price != "Check Price" %}
+        "offers": {
+          "@type": "Offer",
+          "sku": "{{ product.asin }}",
+          "url": "{{ product.affiliate_url }}",
+          "priceCurrency": "USD",
+          "price": "{{ product.price }}",
+          "priceValidUntil": "2026-12-31",
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "seller": {
+            "@type": "Organization",
+            "name": "Amazon"
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": "0",
+              "currency": "USD"
+            },
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "US"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 0,
+                "maxValue": 1,
+                "unitCode": "d"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 5,
+                "unitCode": "d"
+              }
+            }
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "US",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 30,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/FreeReturn"
+          }
+        },
+        {% else %}
+        "sku": "{{ product.asin }}",
+        "url": "{{ product.affiliate_url }}",
+        {% endif %}
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "{{ product.rating_value }}",
+          "reviewCount": "{{ product.review_count }}",
+          "bestRating": "5",
+          "worstRating": "1"
+        }
+      }
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endif %}

@@ -1,0 +1,109 @@
+<div class="product-card"{% if include.product.highlight %} style="border-color: #2ecc71; background: #f0fdf4;"{% endif %}>
+  <!-- Image Column -->
+  <div class="product-image-col">
+    {% if include.product.badge %}
+      <span class="best-for-badge"{% if include.product.highlight %} style="background-color: #2ecc71;"{% endif %}>{{ include.product.badge }}</span>
+    {% endif %}
+    <img src="{{ include.product.image }}" alt="{{ include.product.alt }}" loading="lazy" width="600" height="400">
+  </div>
+
+  <!-- Details Column -->
+  <div class="product-details-col">
+    <div class="product-header">
+      <div>
+        <div class="product-brand">{{ include.product.brand }}</div>
+        <h2 class="product-title">{{ include.product.title }}</h2>
+      </div>
+    </div>
+
+    <!-- Ratings Section -->
+    {% if include.product.rating_stars or include.product.rating_count or include.product.buyers_count %}
+      <div class="rating-container">
+        {% if include.product.rating_stars %}
+          <span class="stars">{{ include.product.rating_stars }}</span>
+        {% endif %}
+        {% if include.product.rating_count %}
+          <span class="rating-count">{{ include.product.rating_count }}</span>
+        {% endif %}
+        {% if include.product.buyers_count %}
+          <span class="buyers-count">{{ include.product.buyers_count }}</span>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <!-- Description -->
+    <p style="margin-bottom: 15px;">{{ include.product.description }}</p>
+
+    <!-- Key Features Grid -->
+    {% if include.product.features %}
+      <div class="product-info-grid">
+        {% for feature in include.product.features %}
+          {% assign clean_feature = feature | strip_html %}
+          {% assign clean_feature = clean_feature | replace: "🔍", "" | replace: "📅", "" | replace: "🧪", "" | replace: "👤", "" | replace: "⚙️", "" | replace: "✅", "" | replace: "⚙", "" | replace: "⚡", "" | replace: "☁️", "" | replace: "🏆", "" | replace: "💰", "" | replace: "💈", "" | replace: "🌧️", "" | replace: "✨", "" | replace: "🎯", "" | replace: "🔥", "" | replace: "🏖️", "" | replace: "💎", "" | replace: "❌", "" | replace: "👉", "" | replace: "🏷️", "" %}
+          {% assign parts = clean_feature | split: ":" %}
+          {% assign label = parts[0] | strip %}
+          {% assign value = "" %}
+          {% for part in parts offset:1 %}
+            {% if forloop.first %}
+              {% assign value = part %}
+            {% else %}
+              {% assign value = value | append: ":" | append: part %}
+            {% endif %}
+          {% endfor %}
+          {% assign value = value | strip %}
+          {% if value != "" %}
+            <div class="info-item">
+              <b>{{ label }}</b>
+              <span>{{ value }}</span>
+            </div>
+          {% else %}
+            <div class="info-item">
+              <b>Feature</b>
+              <span>{{ label }}</span>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <!-- Local Barbershop Context -->
+    {% if include.product.local_context %}
+      <div class="local-context">
+        {{ include.product.local_context }}
+      </div>
+    {% endif %}
+
+    <!-- Price Area and Amazon Button -->
+    <div class="price-area">
+      <div>
+        <div class="price-tag">
+          {% if include.product.price == "Check Price" %}
+            <span data-asin="{{ include.product.asin }}">{{ include.product.price }}</span>
+          {% else %}
+            <small>$</small><span data-asin="{{ include.product.asin }}">{{ include.product.price }}</span>
+          {% endif %}
+        </div>
+        {% if include.product.price_sub %}
+          <div class="price-sub">{{ include.product.price_sub }}</div>
+        {% endif %}
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:center;">
+        <a href="{{ include.product.affiliate_url }}" target="_blank" rel="nofollow" class="amazon-btn"{% if include.product.highlight %} style="background: #005f73; color: white !important; border: none;"{% endif %}>
+          {% if include.product.btn_text %}
+            {{ include.product.btn_text }}
+          {% else %}
+            Buy on Amazon
+          {% endif %}
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 8px;">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </a>
+        {% if include.product.stock_warning %}
+          <span class="stock-warning">{{ include.product.stock_warning }}</span>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

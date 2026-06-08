@@ -26,6 +26,11 @@ import traceback
 from pathlib import Path
 import datetime
 from amazon_creatorsapi import AmazonCreatorsApi, Country
+import yaml
+
+class IndentDumper(yaml.Dumper):
+    def increase_indent(self, flow=False, indentless=False):
+        return super(IndentDumper, self).increase_indent(flow, False)
 
 # Force standard output to UTF-8 to prevent UnicodeEncodeError on Windows terminals
 if hasattr(sys.stdout, 'reconfigure'):
@@ -474,33 +479,90 @@ def run(dry_run: bool = False, page_filter: str | None = None) -> None:
         original_html = html
         page_changed = False
 
-        for asin in unique_asins:
-            new_price = prices.get(asin)
-            if not new_price:
-                # Apply fallback (Check Price in HTML, remove offers in Schema)
-                print(f"\n   ⚠️  Failed to fetch price for {asin} → Applying Fallback (Check Price)")
+        # Try to parse front matter to check if it's a data-driven page
+        fm = None
+        body = html
+        if html.startswith("---"):
+            parts = html.split("---", 2)
+            if len(parts) >= 3:
+                try:
+                    fm = yaml.safe_load(parts[1])
+                    if isinstance(fm, dict) and "products" in fm:
+                        body = parts[2]
+                    else:
+                        fm = None
+                except Exception as e:
+                    print(f"      ⚠️  Error parsing Front Matter YAML: {e}")
+                    fm = None
+
+        if fm is not None:
+            # YAML-based dynamic page
+            for asin in unique_asins:
+                new_price = prices.get(asin)
+                if not new_price:
+                    new_price = "Check Price"
+                    print(f"\n   ⚠️  Failed to fetch price for {asin} → Setting to Check Price")
+                else:
+                    print(f"\n   🏷️  {asin} → ${new_price}")
                 
-                html, html_changed = update_html(html, asin, "Check Price")
-                html, schema_changed = update_offer_fallback_in_schema(html, asin)
-                
+                # Update product price in Front Matter
+                for product in fm.get("products", []):
+                    if product.get("asin") == asin:
+                        current_price = str(product.get("price", "")).strip()
+                        numeric_new_price = _price_to_numeric_str(new_price) if new_price != "Check Price" else new_price
+                        if current_price != numeric_new_price:
+                            product["price"] = numeric_new_price
+                            print(f"      📝 YAML  [{asin}]: {current_price!r} → {numeric_new_price!r}")
+                            page_changed = True
+                            
+                        # handle stock warnings automatically
+                        if numeric_new_price == "Check Price":
+                            if "stock_warning" not in product:
+                                product["stock_warning"] = "Temporarily Out of Stock"
+                                print(f"      ⚠️  YAML  [{asin}]: Product out of stock, added warning")
+                                page_changed = True
+                        else:
+                            if "stock_warning" in product:
+                                del product["stock_warning"]
+                                print(f"      🔄 YAML  [{asin}]: Product back in stock, removed warning")
+                                page_changed = True
+
+            body, time_changed = update_timestamp(body)
+            if time_changed:
+                page_changed = True
+
+            if page_changed:
+                fm_yaml = yaml.dump(fm, Dumper=IndentDumper, allow_unicode=True, default_flow_style=False, sort_keys=False, indent=2)
+                html = f"---\n{fm_yaml}---{body}"
+        else:
+            # Legacy HTML/Regex-based page
+            for asin in unique_asins:
+                new_price = prices.get(asin)
+                if not new_price:
+                    # Apply fallback (Check Price in HTML, remove offers in Schema)
+                    print(f"\n   ⚠️  Failed to fetch price for {asin} → Applying Fallback (Check Price)")
+                    
+                    html, html_changed = update_html(html, asin, "Check Price")
+                    html, schema_changed = update_offer_fallback_in_schema(html, asin)
+                    
+                    if html_changed or schema_changed:
+                        page_changed = True
+                    continue
+
+                print(f"\n   🏷️  {asin} → ${new_price}")
+
+                # ── 1. Update the visible HTML price (<span data-asin="ASIN">) ──
+                html, html_changed = update_html(html, asin, new_price)
+
+                # ── 2. Update the JSON-LD Schema price ("sku": "ASIN") ──────────
+                html, schema_changed = update_schema(html, asin, new_price)
+
                 if html_changed or schema_changed:
                     page_changed = True
-                continue
-
-            print(f"\n   🏷️  {asin} → ${new_price}")
-
-            # ── 1. Update the visible HTML price (<span data-asin="ASIN">) ──
-            html, html_changed = update_html(html, asin, new_price)
-
-            # ── 2. Update the JSON-LD Schema price ("sku": "ASIN") ──────────
-            html, schema_changed = update_schema(html, asin, new_price)
-
-            if html_changed or schema_changed:
-                page_changed = True
-            else:
-                print(f"      ℹ️  {asin}: السعر لم يتغير")
-                
-        html, time_changed = update_timestamp(html)
+                else:
+                    print(f"      ℹ️  {asin}: السعر لم يتغير")
+                    
+            html, time_changed = update_timestamp(html)
         if time_changed:
             page_changed = True
             

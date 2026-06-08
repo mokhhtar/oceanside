@@ -1,0 +1,14 @@
+# تجاهل مجلد البناء المؤقت ومجلد الكاش الخاص بـ Jekyll
+_site/
+.jekyll-cache/
+.jekyll-metadata
+
+# تجاهل كافة ملفات HTML (لحماية الجزء العلوي YAML Front Matter وأكواد Liquid)
+**/*.html
+
+# تجاهل كافة ملفات Markdown (المقالات المكتوبة بصيغة md)
+**/*.md
+
+# تجاهل ملفات الإعدادات والـ feed
+_config.yml
+feed.xml

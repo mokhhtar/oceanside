@@ -23,8 +23,8 @@
   --bg-light: #f4f7f6;
   --text-dark: #333;
   --amazon-orange: #ff9900;
-  --font-heading: 'Playfair Display', serif;
-  --font-body: 'Lato', sans-serif;
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Lato", sans-serif;
 }
 
 /* ────────────────────────────────────────────────
@@ -83,13 +83,19 @@ a {
   color: inherit;
 }
 
-ul {
+ul,
+ol {
   margin-left: 1.5rem;
   margin-bottom: 1.2rem;
 }
 
-ul li {
+ul li,
+ol li {
   margin-bottom: 0.8rem;
+}
+
+ol li {
+  font-size: 1.05rem;
 }
 
 strong {
@@ -256,6 +262,42 @@ strong {
   padding: 4rem;
   border-radius: 12px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* ── Breadcrumbs & Post Meta inside Content Container ── */
+.breadcrumbs {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.breadcrumbs a {
+  color: var(--primary-color);
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+.breadcrumbs a:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+.breadcrumbs .separator {
+  margin: 0 8px;
+  color: #aaa;
+  font-size: 1.1rem;
+}
+
+.post-meta {
+  font-size: 0.95rem;
+  color: #777;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+  font-style: italic;
 }
 
 /* ────────────────────────────────────────────────
@@ -439,6 +481,59 @@ strong {
   letter-spacing: 0.5px;
 }
 
+.best-for-badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: var(--primary-color);
+  color: white;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+.features-list {
+  list-style: none;
+  margin-bottom: 1.5rem;
+  padding-left: 0;
+}
+
+.features-list li {
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+  color: #555;
+  position: relative;
+  padding-left: 20px;
+}
+
+.features-list li::before {
+  content: "✓";
+  color: var(--success-green, #2ecc71);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.local-context {
+  background: #f0f7f8;
+  border-left: 4px solid var(--secondary-color);
+  padding: 12px 15px;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: #444;
+  font-style: italic;
+}
+
+.local-context strong {
+  color: var(--primary-color);
+  font-style: normal;
+}
+
 .product-details-col {
   padding: 1.8rem 2rem;
   display: flex;
@@ -540,6 +635,7 @@ strong {
   margin-bottom: 0;
 }
 
+.price-area,
 .price-cta-area {
   margin-top: auto;
   display: flex;
@@ -586,6 +682,14 @@ strong {
   color: #999;
   margin-top: 0.3rem;
   font-style: italic;
+}
+
+.stock-warning {
+  font-size: 0.72rem;
+  color: #e63946;
+  font-weight: 700;
+  margin-top: 4px;
+  display: block;
 }
 
 /* ────────────────────────────────────────────────
@@ -910,7 +1014,8 @@ footer {
   p {
     font-size: 1rem;
   }
-  ul {
+  ul,
+  ol {
     margin-left: 1.2rem;
   }
   .product-card {
@@ -927,10 +1032,12 @@ footer {
   .product-info-grid {
     grid-template-columns: 1fr;
   }
+  .price-area,
   .price-cta-area {
     flex-direction: column;
     gap: 0.8rem;
-    align-items: flex-start;
+    align-items: center; /* يوسط العناصر أفقياً في المنتصف */
+    text-align: center; /* يوسط النصوص مثل السعر والوصف */
   }
   .footer-container {
     grid-template-columns: 1fr;
