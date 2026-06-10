@@ -36,6 +36,21 @@ class IndentDumper(yaml.Dumper):
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
+# تحميل متغيرات البيئة من ملف .env محلي إذا كان موجوداً
+env_path = Path(".") / ".env"
+if env_path.exists():
+    try:
+        with open(env_path, "r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line or line.startswith("#"):
+                    continue
+                if "=" in line:
+                    key, val = line.split("=", 1)
+                    val_clean = val.strip().strip('"').strip("'")
+                    os.environ[key.strip()] = val_clean
+    except Exception as e:
+        print(f"⚠️ Warning: Failed to read .env file: {e}")
 
 # ════════════════════════════════════════════════════════════════
 #  ⚙️  إعدادات عامة
