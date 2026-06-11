@@ -719,6 +719,40 @@ products:
             display: block;
         }
 
+        /* Internal Link Box */
+        .internal-link-box {
+            background: #f0f7f8;
+            border: 1px solid #b2d8dc;
+            border-radius: 8px;
+            padding: 1.2rem 1.5rem;
+            margin: 2rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .internal-link-box .link-icon {
+            font-size: 1.4rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .internal-link-box p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #444;
+        }
+
+        .internal-link-box a {
+            color: var(--primary-color);
+            font-weight: 700;
+            text-decoration: underline;
+        }
+
+        .internal-link-box a:hover {
+            color: var(--secondary-color);
+        }
+
         /* Tables */
         table {
             display: block;
@@ -2149,7 +2183,10 @@ products:
 
         <hr style="margin: 3rem 0; border: 0; border-top: 1px solid #eee;">
 
-        <!-- INTERNAL LINK SUGGESTION: <a href="/blog/shaving/hard-water-razor-burn-aftershave/">Hard Water Razor Burn & Post-Shave Breakouts: The Fix</a> -->
+        <div class="internal-link-box">
+            <span class="link-icon">🪒</span>
+            <p><strong>Suffering from skin irritation after your shave?</strong> Hard water minerals don't just ruin your lather—they also damage your skin barrier and clog pores. Check out our guide to <a href="/blog/shaving/hard-water-razor-burn-aftershave/">Hard Water Razor Burn &amp; Post-Shave Breakouts: The Dermatologist-Backed Fix</a> for a complete recovery protocol.</p>
+        </div>
         <h2>Conclusion</h2>
         <p>Hard water doesn't have to ruin your shave. The right product makes an enormous difference — not just any
             soap, but specifically formulated creams and sticks that address the mineral interference at the chemical
