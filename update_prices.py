@@ -138,6 +138,8 @@ def fetch_product_details(api: AmazonCreatorsApi, asins: list[str]) -> dict[str,
     unique_asins = list(dict.fromkeys(asins))
     
     from amazon_creatorsapi.models import GetItemsResource
+    from amazon_creatorsapi.errors import TooManyRequestsError
+    
     resources = [
         GetItemsResource.OFFERS_V2_DOT_LISTINGS_DOT_PRICE,
         GetItemsResource.OFFERS_V2_DOT_LISTINGS_DOT_AVAILABILITY,
@@ -150,8 +152,26 @@ def fetch_product_details(api: AmazonCreatorsApi, asins: list[str]) -> dict[str,
 
     for i in range(0, len(unique_asins), 10):
         batch = unique_asins[i : i + 10]
-        try:
-            items = api.get_items(batch, resources=resources)
+        items = None
+        max_retries = 4
+        backoff_delay = 5.0
+        
+        for attempt in range(max_retries + 1):
+            try:
+                items = api.get_items(batch, resources=resources)
+                break
+            except TooManyRequestsError as exc:
+                if attempt < max_retries:
+                    print(f"   ⚠️ Rate limit hit (429). Retrying batch {batch} in {backoff_delay} seconds... (Attempt {attempt + 1}/{max_retries})")
+                    time.sleep(backoff_delay)
+                    backoff_delay *= 2.0
+                else:
+                    print(f"   ❌ خطأ في جلب الـ batch {batch}: Rate limit exceeded after {max_retries} retries.")
+            except Exception as exc:
+                print(f"   ❌ خطأ في جلب الـ batch {batch}: {exc}")
+                break
+
+        if items:
             for item in items:
                 # 1. Extract Price
                 price_str = _extract_price(item)
@@ -179,10 +199,10 @@ def fetch_product_details(api: AmazonCreatorsApi, asins: list[str]) -> dict[str,
                     "title": title
                 }
                 print(f"   ✅ {item.asin}: Price={price_val}, Stars={rating_val}, Reviews={reviews_count}, Image={'Yes' if image_url else 'No'}")
-        except Exception as exc:
-            print(f"   ❌ خطأ في جلب الـ batch {batch}: {exc}")
+                
         if i + 10 < len(unique_asins):
             time.sleep(1)
+            
     return details
 
 
@@ -537,6 +557,7 @@ def run(dry_run: bool = False, page_filter: str | None = None) -> None:
             version=API_VERSION,
             tag=PARTNER_TAG,
             country=Country.US,
+            throttling=3.0,
         )
         print("✅ Connected.\n")
     except Exception as exc:
@@ -643,6 +664,17 @@ def run(dry_run: bool = False, page_filter: str | None = None) -> None:
                                 product["amazon_image_url"] = new_image_url
                                 print(f"      📝 YAML Amazon Image [{asin}]: {old_amazon_image!r} → {new_image_url!r}")
                                 page_changed = True
+
+                # Update HTML & Schema in the body of the YAML-based page
+                if new_price == "Check Price":
+                    body, html_changed = update_html(body, asin, "Check Price")
+                    body, schema_changed = update_offer_fallback_in_schema(body, asin)
+                else:
+                    body, html_changed = update_html(body, asin, new_price)
+                    body, schema_changed = update_schema(body, asin, new_price)
+                
+                if html_changed or schema_changed:
+                    page_changed = True
 
             body, time_changed = update_timestamp(body)
             if time_changed:
