@@ -1107,4 +1107,90 @@ footer {
   color: var(--secondary-color);
 }
 
+/* ────────────────────────────────────────────────
+   WATER CHECKER CALLOUT
+   ──────────────────────────────────────────────── */
+.water-tool-callout {
+  background: linear-gradient(135deg, #005f73 0%, #0a9396 100%);
+  color: white;
+  padding: 25px;
+  border-radius: 12px;
+  margin: 30px 0;
+  box-shadow: 0 8px 24px rgba(10, 147, 150, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.water-tool-callout-content {
+  flex: 1;
+  min-width: 260px;
+}
+
+.water-tool-callout-content h4 {
+  color: #e9d8a6 !important;
+  margin: 0 0 8px 0 !important;
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: bold;
+  border-bottom: none !important;
+  padding-bottom: 0 !important;
+}
+
+.water-tool-callout-content p {
+  margin: 0 !important;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #f4f7f6 !important;
+}
+
+.water-tool-callout-actions {
+  flex-shrink: 0;
+}
+
+.water-tool-callout-actions a {
+  background-color: #e9d8a6;
+  color: #002832 !important;
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+}
+
+.water-tool-callout-actions a:hover {
+  transform: scale(1.05);
+  background-color: #fff;
+}
+
+@media (max-width: 768px) {
+  .water-tool-callout {
+    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+  }
+  .water-tool-callout-content {
+    min-width: 100%;
+  }
+  .water-tool-callout-actions {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .water-tool-callout-actions a {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+    white-space: normal;
+  }
+}
+
 /*# sourceMappingURL=main.css.map */
