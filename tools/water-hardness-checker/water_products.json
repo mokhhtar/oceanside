@@ -1,0 +1,170 @@
+{
+  "category_1": {
+    "name": "Chlorine Shower Filters (PPM 61-120)",
+    "description": "Reduces chlorine, heavy metals, and odors to prevent initial scalp irritation.",
+    "trigger": "PPM 61-120",
+    "items": [
+      {
+        "asin": "B01MUBU0YC",
+        "title": "AquaBliss High Output Shower Filter (SF100)",
+        "price": "36.99",
+        "rating_stars": "4.5/5 ★★★★☆",
+        "rating_count": "120 Ratings",
+        "image_url": "https://m.media-amazon.com/images/I/31NtRLMvSRL._SL500_.jpg",
+        "affiliate_url": "https://www.amazon.com/dp/B01MUBU0YC?tag=oceansidehair-20"
+      },
+      {
+        "asin": "B0BM4CX6F2",
+        "title": "Weddell Duo Shower Filter (WD-100)",
+        "price": "120.00",
+        "rating_stars": "4.6/5 ★★★★★",
+        "rating_count": "320 Ratings",
+        "image_url": "https://m.media-amazon.com/images/I/21RfRG4EJoL._SL500_.jpg",
+        "affiliate_url": "https://www.amazon.com/dp/B0BM4CX6F2?tag=oceansidehair-20"
+      }
+    ]
+  },
+  "category_2": {
+    "name": "True Shower & Portable Water Softeners (PPM 121-170)",
+    "description": "Physically removes calcium and magnesium ions via ion-exchange resin.",
+    "trigger": "PPM 121-170",
+    "items": [
+      {
+        "asin": "SHOWER_STICK",
+        "title": "ShowerStick by WaterStik (Portable)",
+        "price": "260.00",
+        "rating_stars": "5.0/5 ★★★★★",
+        "rating_count": "106 Ratings",
+        "image_url": "/images/blog/best-shower-filters/waterstick.webp",
+        "affiliate_url": "https://watersticks.com/product/showerstick/"
+      },
+      {
+        "asin": "B085Q2LBJV",
+        "title": "On The Go Portable Double Standard Water Softener",
+        "price": "299.99",
+        "rating_stars": "4.5/5 ★★★★☆",
+        "rating_count": "120 Ratings",
+        "image_url": "https://m.media-amazon.com/images/I/41737e4IraL._SL500_.jpg",
+        "affiliate_url": "https://www.amazon.com/dp/B085Q2LBJV?tag=oceansidehair-20"
+      }
+    ]
+  },
+  "category_3": {
+    "name": "Whole House Water Softeners (PPM 171+)",
+    "description": "Solves hard water completely at the main line to protect all home outlets.",
+    "trigger": "PPM 171+",
+    "items": [
+      {
+        "asin": "SPRINGWELL_SS",
+        "title": "SpringWell SS Salt-Based Water Softener",
+        "price": "1379.00",
+        "rating_stars": "4.8/5 ★★★★★",
+        "rating_count": "1,250 Ratings",
+        "image_url": "/images/products/springwell_ss.webp",
+        "affiliate_url": "https://www.springwellwater.com/product/water-softeners/salt-based-water-softeners/"
+      },
+      {
+        "asin": "B091FXNCHB",
+        "title": "Waterboss 900 Water Softener (36,400 Grain)",
+        "price": "450.00",
+        "rating_stars": "4.5/5 ★★★★☆",
+        "rating_count": "120 Ratings",
+        "image_url": "https://m.media-amazon.com/images/I/31DOhpNHw8L._SL500_.jpg",
+        "affiliate_url": "https://www.amazon.com/dp/B091FXNCHB?tag=oceansidehair-20"
+      }
+    ]
+  },
+  "category_4": {
+    "name": "Chelating Shampoos",
+    "description": "Deep cleansers designed to strip calcium, magnesium, copper, and iron from hair strands.",
+    "trigger": "PPM > 60",
+    "items": [
+      {
+        "asin": "B01N23J5C1",
+        "title": "Malibu C Hard Water Wellness Shampoo",
+        "price": "17.98",
+        "rating_stars": "4.5/5 ★★★★☆",
+        "rating_count": "120 Ratings",
+        "image_url": "https://m.media-amazon.com/images/I/31-j5aKWuZL._SL500_.jpg",
+        "affiliate_url": "https://www.amazon.com/dp/B01N23J5C1?tag=oceansidehair-20"
+      },
+      {
+        "asin": "B084C2PC69",
+        "title": "OUAI Detox Shampoo",
+        "price": "32.00",
+        "rating_stars": "4.5/5 ★★★★☆",
+        "rating_count": "120 Ratings",
+        "image_url": "https://m.media-amazon.com/images/I/31rBbQ8676L._SL500_.jpg",
+        "affiliate_url": "https://www.amazon.com/dp/B084C2PC69?tag=oceansidehair-20"
+      },
+      {
+        "asin": "B0CS6MXF5Q",
+        "title": "L'Oréal Professionnel Metal Detox Shampoo",
+        "price": "48.00",
+        "rating_stars": "4.5/5 ★★★★☆",
+        "rating_count": "120 Ratings",
+        "image_url": "https://m.media-amazon.com/images/I/3181QDO5C0L._SL500_.jpg",
+        "affiliate_url": "https://www.amazon.com/dp/B0CS6MXF5Q?tag=oceansidehair-20"
+      }
+    ]
+  },
+  "category_5": {
+    "name": "Hydrating Masks",
+    "description": "Deeply replenishes the moisture and protein balance lost to hard water dehydration.",
+    "trigger": "PPM > 120",
+    "items": [
+      {
+        "asin": "B07NT4GWR7",
+        "title": "SheaMoisture Raw Shea Butter Deep Treatment Masque",
+        "price": "13.99",
+        "rating_stars": "4.5/5 ★★★★☆",
+        "rating_count": "120 Ratings",
+        "image_url": "https://m.media-amazon.com/images/I/61lBY2OFyVL._SL500_.jpg",
+        "affiliate_url": "https://www.amazon.com/dp/B07NT4GWR7?tag=oceansidehair-20"
+      },
+      {
+        "asin": "B00J4R760C",
+        "title": "Briogeo Don't Despair, Repair! Deep Conditioning Mask",
+        "price": "39.00",
+        "rating_stars": "4.5/5 ★★★★☆",
+        "rating_count": "120 Ratings",
+        "image_url": "https://m.media-amazon.com/images/I/413KeH-CjhL._SL500_.jpg",
+        "affiliate_url": "https://www.amazon.com/dp/B00J4R760C?tag=oceansidehair-20"
+      }
+    ]
+  },
+  "category_6": {
+    "name": "pH Balancing & Metal Detox",
+    "description": "Restores natural pH balance and neutralizes metallic iron/rust discoloration.",
+    "trigger": "pH > 7.8 or Iron > 0.3 PPM",
+    "items": [
+      {
+        "asin": "B00YO38G4Q",
+        "title": "Redken One United All-In-One Leave-In Treatment",
+        "price": "31.00",
+        "rating_stars": "4.5/5 ★★★★☆",
+        "rating_count": "120 Ratings",
+        "image_url": "https://m.media-amazon.com/images/I/31xF-nAKd0L._SL500_.jpg",
+        "affiliate_url": "https://www.amazon.com/dp/B00YO38G4Q?tag=oceansidehair-20"
+      },
+      {
+        "asin": "B0019HYC6G",
+        "title": "Malibu C Crystal Gel Wellness Remedy",
+        "price": "14.00",
+        "rating_stars": "4.5/5 ★★★★☆",
+        "rating_count": "120 Ratings",
+        "image_url": "https://m.media-amazon.com/images/I/414hMH4m4TL._SL500_.jpg",
+        "affiliate_url": "https://www.amazon.com/dp/B0019HYC6G?tag=oceansidehair-20"
+      },
+      {
+        "asin": "B08L8B421V",
+        "title": "Joico Color Balance Blue Shampoo",
+        "price": "24.50",
+        "rating_stars": "4.5/5 ★★★★☆",
+        "rating_count": "120 Ratings",
+        "image_url": "https://m.media-amazon.com/images/I/31tfswUH43L._SL500_.jpg",
+        "affiliate_url": "https://www.amazon.com/dp/B08L8B421V?tag=oceansidehair-20"
+      }
+    ]
+  }
+}
