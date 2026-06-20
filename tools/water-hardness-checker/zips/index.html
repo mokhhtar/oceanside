@@ -1,0 +1,1773 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Water Hardness Checker — Oceanside Hair Salon</title>
+    <meta
+      name="description"
+      content="Check your home water hardness by ZIP code. Free tool using real EPA lab data — get personalized hair care recommendations."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Playfair+Display:ital,wght@0,700;1,400&family=Outfit:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+      /* ── Reset & Base ── */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        font-family: "Outfit", "Lato", system-ui, sans-serif;
+        line-height: 1.5;
+        color: #1a2e33;
+      }
+      body {
+        background: #f4f7f6;
+        min-height: 100vh;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      button,
+      input {
+        font: inherit;
+      }
+
+      /* ── Tokens ── */
+      :root {
+        --primary: #005f73;
+        --accent: #0a9396;
+        --accent2: #94d2bd;
+        --bg: #f4f7f6;
+        --card: #ffffff;
+        --text: #1a2e33;
+        --muted: #4a6a72;
+        --border: #cde0e4;
+        --soft-bg: #e8f5f0;
+        --radius: 12px;
+        --shadow: 0 2px 16px rgba(0, 95, 115, 0.07);
+      }
+
+      /* ── HERO ── */
+      .hero {
+        background: linear-gradient(
+          155deg,
+          #003d4d 0%,
+          #005f73 50%,
+          #0a9396 100%
+        );
+        padding: 4rem 1.5rem 3.5rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      }
+      .hero-inner {
+        position: relative;
+        max-width: 640px;
+        margin: 0 auto;
+      }
+      .hero-eyebrow {
+        display: inline-block;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        color: var(--accent2);
+        margin-bottom: 1rem;
+      }
+      .hero h1 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(1.9rem, 5vw, 2.8rem);
+        color: #fff;
+        line-height: 1.15;
+        margin-bottom: 1rem;
+      }
+      .hero h1 em {
+        font-style: italic;
+        color: var(--accent2);
+      }
+      .hero p {
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 1.05rem;
+        max-width: 460px;
+        margin: 0 auto 2rem;
+        line-height: 1.65;
+      }
+      .hero-stats {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+      .stat-item {
+        text-align: center;
+      }
+      .stat-num {
+        display: block;
+        font-family: "Playfair Display", serif;
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #fff;
+        line-height: 1;
+      }
+      .stat-label {
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.6);
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        margin-top: 3px;
+      }
+
+      /* ── Layout ── */
+      .page-wrap {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2.5rem 1.25rem 5rem;
+      }
+
+      /* ── Search ── */
+      .search-card {
+        background: var(--card);
+        border-radius: var(--radius);
+        padding: 2rem 2rem 1.75rem;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border);
+        margin-bottom: 2rem;
+      }
+      .field-label {
+        display: block;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--primary);
+        margin-bottom: 0.6rem;
+      }
+      .search-row {
+        display: flex;
+        gap: 10px;
+      }
+      .zip-input {
+        flex: 1;
+        padding: 0.9rem 1.1rem;
+        font-size: 1.3rem;
+        font-weight: 700;
+        letter-spacing: 3px;
+        border: 2px solid var(--border);
+        border-radius: 8px;
+        color: var(--text);
+        background: #fff;
+        outline: none;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
+      }
+      .zip-input:focus {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(10, 147, 150, 0.15);
+      }
+      .zip-input::placeholder {
+        letter-spacing: 0;
+        color: #a0b8bd;
+        font-weight: 400;
+      }
+      .check-btn {
+        padding: 0 1.75rem;
+        background: var(--primary);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        font-weight: 700;
+        cursor: pointer;
+        white-space: nowrap;
+        transition:
+          background 0.18s,
+          transform 0.1s;
+        min-width: 130px;
+      }
+      .check-btn:hover {
+        background: var(--accent);
+      }
+      .check-btn:active {
+        transform: scale(0.97);
+      }
+      .check-btn:disabled {
+        opacity: 0.55;
+        cursor: not-allowed;
+      }
+      .err-box {
+        display: none;
+        margin-top: 0.75rem;
+        padding: 0.6rem 0.9rem;
+        background: #faece7;
+        border-left: 3px solid #993c1d;
+        border-radius: 6px;
+        font-size: 0.875rem;
+        color: #712b13;
+      }
+
+      /* ── Loading ── */
+      .loading-wrap {
+        display: none;
+        text-align: center;
+        padding: 3rem 1rem;
+        color: var(--muted);
+      }
+      .spinner {
+        display: inline-block;
+        width: 28px;
+        height: 28px;
+        border: 3px solid var(--border);
+        border-top-color: var(--accent);
+        border-radius: 50%;
+        animation: spin 0.75s linear infinite;
+        margin-bottom: 0.75rem;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* ── Results ── */
+      .results-wrap {
+        display: none;
+      }
+
+      .result-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 2rem 1.75rem 1.6rem;
+        box-shadow: var(--shadow);
+        margin-bottom: 1.25rem;
+      }
+      .result-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        margin-bottom: 1.5rem;
+      }
+      .r-zip-label {
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 5px;
+      }
+      .r-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.4rem;
+        color: var(--primary);
+        line-height: 1.2;
+        margin-bottom: 6px;
+      }
+      .r-system {
+        font-size: 0.85rem;
+        color: var(--muted);
+        margin-bottom: 10px;
+      }
+      .tier-pill {
+        display: inline-block;
+        padding: 0.25rem 0.85rem;
+        border-radius: 20px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+      }
+      .pill-soft {
+        background: #e1f5ee;
+        color: #085041;
+      }
+      .pill-moderate {
+        background: #faeeda;
+        color: #633806;
+      }
+      .pill-hard {
+        background: #faece7;
+        color: #712b13;
+      }
+      .pill-vhard {
+        background: #fcebeb;
+        color: #791f1f;
+      }
+
+      .ppm-block {
+        text-align: right;
+        min-width: 110px;
+      }
+      .ppm-num {
+        font-family: "Playfair Display", serif;
+        font-size: 3.5rem;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--primary);
+      }
+      .ppm-unit {
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--muted);
+        display: block;
+        margin-top: 4px;
+      }
+      .gpg-label {
+        font-size: 0.78rem;
+        color: var(--muted);
+        margin-top: 4px;
+      }
+
+      /* Scale bar */
+      .scale-wrap {
+        margin-bottom: 1.5rem;
+      }
+      .scale-labels {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.62rem;
+        font-weight: 700;
+        letter-spacing: 0.7px;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 8px;
+      }
+      .scale-track {
+        position: relative;
+        height: 10px;
+        border-radius: 5px;
+        background: linear-gradient(
+          to right,
+          #1d9e75 0%,
+          #1d9e75 20%,
+          #ba7517 20%,
+          #ba7517 50%,
+          #d85a30 50%,
+          #d85a30 75%,
+          #e24b4a 75%,
+          #e24b4a 100%
+        );
+      }
+      .scale-dot {
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 20px;
+        height: 20px;
+        background: var(--primary);
+        border: 3px solid #fff;
+        border-radius: 50%;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+        transition: left 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .scale-subs {
+        display: flex;
+        margin-top: 5px;
+        font-size: 0.62rem;
+        color: var(--muted);
+      }
+      .scale-sub {
+        flex: 1;
+        text-align: center;
+      }
+
+      /* Source note */
+      .src-note {
+        display: flex;
+        align-items: flex-start;
+        gap: 7px;
+        font-size: 0.73rem;
+        color: var(--muted);
+        padding-top: 1rem;
+        border-top: 1px solid var(--border);
+        line-height: 1.5;
+        margin-top: 0.5rem;
+      }
+      .src-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        margin-top: 4px;
+      }
+      .dot-lab {
+        background: #1d9e75;
+      }
+      .dot-est {
+        background: #ba7517;
+      }
+
+      /* ── Alerts (pH / Iron / Lead) ── */
+      .alert-strip {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 0.85rem 1rem;
+        border-radius: 8px;
+        font-size: 0.83rem;
+        line-height: 1.5;
+        margin-bottom: 0.75rem;
+      }
+      .alert-strip:last-child {
+        margin-bottom: 0;
+      }
+      .alert-icon {
+        font-size: 1.1rem;
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
+      .alert-warning {
+        background: #faeeda;
+        border-left: 3px solid #ba7517;
+        color: #633806;
+      }
+      .alert-danger {
+        background: #fcebeb;
+        border-left: 3px solid #e24b4a;
+        color: #791f1f;
+      }
+      .alert-info {
+        background: #e8f5f0;
+        border-left: 3px solid var(--accent);
+        color: var(--primary);
+      }
+
+      /* ── Impact grid ── */
+      .impact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+        gap: 12px;
+        margin-bottom: 1.25rem;
+      }
+      .impact-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.1rem 1.2rem;
+      }
+      .impact-icon {
+        font-size: 1.3rem;
+        display: block;
+        margin-bottom: 6px;
+      }
+      .impact-title {
+        font-size: 0.65rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+        color: var(--accent);
+        margin-bottom: 4px;
+      }
+      .impact-body {
+        font-size: 0.83rem;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      /* ── Recommendations ── */
+      .recs-card {
+        background: var(--soft-bg);
+        border: 1px solid #9fe1cb;
+        border-radius: var(--radius);
+        padding: 1.75rem;
+        margin-bottom: 1.25rem;
+      }
+      .recs-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.2rem;
+        color: var(--primary);
+        margin-bottom: 0.35rem;
+      }
+      .recs-subtitle {
+        font-size: 0.8rem;
+        color: var(--muted);
+        margin-bottom: 1.5rem;
+        line-height: 1.5;
+      }
+
+      /* Priority tiers */
+      .rec-tier {
+        margin-bottom: 1.5rem;
+      }
+      .rec-tier:last-child {
+        margin-bottom: 0;
+      }
+      .tier-label {
+        font-size: 0.62rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .tier-label::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: #9fe1cb;
+      }
+
+      .rec-item {
+        display: flex;
+        gap: 12px;
+        padding: 0.9rem 0;
+        border-bottom: 1px dashed #b8e4d4;
+      }
+      .rec-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      .rec-type-badge {
+        flex-shrink: 0;
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.6rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.7px;
+        height: fit-content;
+        margin-top: 2px;
+      }
+      .rt-filter {
+        background: #005f73;
+        color: #fff;
+      }
+      .rt-shampoo {
+        background: #0a9396;
+        color: #fff;
+      }
+      .rt-routine {
+        background: #085041;
+        color: #fff;
+      }
+      .rt-tip {
+        background: #94d2bd;
+        color: #003d4d;
+      }
+      .rt-urgent {
+        background: #e24b4a;
+        color: #fff;
+      }
+
+      .rec-name {
+        font-weight: 700;
+        font-size: 0.9rem;
+        color: var(--text);
+        margin-bottom: 3px;
+      }
+      .rec-desc {
+        font-size: 0.8rem;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+      .rec-why {
+        display: inline-block;
+        margin-top: 5px;
+        font-size: 0.72rem;
+        color: var(--accent);
+        font-weight: 600;
+      }
+      .rec-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        margin-top: 8px;
+        padding: 0.3rem 0.8rem;
+        background: var(--primary);
+        color: #fff;
+        border-radius: 6px;
+        font-size: 0.73rem;
+        font-weight: 700;
+        text-decoration: none;
+        transition: background 0.18s;
+      }
+      .rec-btn:hover {
+        background: var(--accent);
+      }
+
+      /* ── Mineral chart ── */
+      .chart-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.75rem;
+        box-shadow: var(--shadow);
+        margin-bottom: 1.25rem;
+      }
+      .card-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.15rem;
+        color: var(--primary);
+        margin-bottom: 4px;
+      }
+      .card-subtitle {
+        font-size: 0.8rem;
+        color: var(--muted);
+        margin-bottom: 1.25rem;
+        line-height: 1.5;
+      }
+
+      /* ── Mineral cards ── */
+      .minerals-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 14px;
+        margin-bottom: 1.25rem;
+      }
+      .mineral-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.35rem 1.25rem;
+        box-shadow: var(--shadow);
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+      .mineral-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(0, 95, 115, 0.09);
+      }
+      .mc-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 1rem;
+      }
+      .mc-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        background: var(--soft-bg);
+        color: var(--primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .mc-icon i {
+        width: 18px;
+        height: 18px;
+      }
+      .mc-name {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--text);
+      }
+      .mc-symbol {
+        font-size: 0.65rem;
+        color: var(--muted);
+        font-family: monospace;
+      }
+      .mc-badge {
+        margin-left: auto;
+        font-size: 0.62rem;
+        font-weight: 700;
+        padding: 0.22rem 0.5rem;
+        border-radius: 6px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .mc-val {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--primary);
+        line-height: 1;
+      }
+      .mc-unit {
+        font-size: 0.75rem;
+        color: var(--muted);
+        font-weight: 600;
+        margin-left: 4px;
+      }
+      .mc-bar-bg {
+        height: 5px;
+        background: var(--bg);
+        border-radius: 3px;
+        margin: 0.85rem 0 0.5rem;
+      }
+      .mc-bar-fill {
+        height: 100%;
+        border-radius: 3px;
+        transition: width 0.6s ease;
+      }
+      .mc-marks {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.58rem;
+        color: var(--muted);
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+      .mc-desc {
+        font-size: 0.75rem;
+        color: var(--muted);
+        line-height: 1.45;
+        margin-top: 0.75rem;
+        padding-top: 0.75rem;
+        border-top: 1px dashed var(--border);
+      }
+
+      /* status colours */
+      .s-low {
+        background: #e1f5ee;
+        color: #085041;
+      }
+      .s-normal {
+        background: #e1f5ee;
+        color: #085041;
+      }
+      .s-medium {
+        background: #faeeda;
+        color: #633806;
+      }
+      .s-high {
+        background: #faece7;
+        color: #712b13;
+      }
+      .s-critical {
+        background: #fcebeb;
+        color: #791f1f;
+      }
+      .s-unknown {
+        background: var(--bg);
+        color: var(--muted);
+      }
+
+      /* ── About ── */
+      .about-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.5rem 1.75rem;
+      }
+      .about-card h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.05rem;
+        color: var(--primary);
+        margin-bottom: 0.7rem;
+      }
+      .about-card p {
+        font-size: 0.83rem;
+        color: var(--muted);
+        line-height: 1.65;
+        margin-bottom: 0.6rem;
+      }
+      .about-card p:last-child {
+        margin-bottom: 0;
+      }
+
+      @media (max-width: 500px) {
+        .search-row {
+          flex-direction: column;
+        }
+        .check-btn {
+          padding: 0.85rem;
+        }
+        .result-top {
+          flex-direction: column-reverse;
+        }
+        .ppm-block {
+          text-align: left;
+          min-width: auto;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="hero">
+      <div class="hero-inner">
+        <span class="hero-eyebrow">Free Water Quality Tool</span>
+        <h1>Is Hard Water <em>Ruining</em> Your Hair?</h1>
+        <p>
+          Enter your ZIP code to check real lab-tested water hardness levels and
+          get a personalized hair care plan.
+        </p>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-num">1,200+</span>
+            <span class="stat-label">Cities Covered</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">Lab</span>
+            <span class="stat-label">Verified Data</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">Free</span>
+            <span class="stat-label">No Sign-Up</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-wrap">
+      <!-- Search -->
+      <div class="search-card">
+        <label class="field-label" for="zip">Your ZIP Code</label>
+        <div class="search-row">
+          <input
+            type="text"
+            id="zip"
+            class="zip-input"
+            placeholder="e.g. 90210"
+            maxlength="5"
+            inputmode="numeric"
+            pattern="[0-9]{5}"
+            aria-label="Enter your 5-digit ZIP code"
+            autocomplete="postal-code"
+          />
+          <button class="check-btn" id="check-btn" onclick="runCheck()">
+            Check Water
+          </button>
+        </div>
+        <div class="err-box" id="err" role="alert"></div>
+      </div>
+
+      <!-- Loading -->
+      <div class="loading-wrap" id="loading">
+        <div class="spinner"></div>
+        <p>Analyzing your water supply…</p>
+      </div>
+
+      <!-- Results -->
+      <div class="results-wrap" id="results" aria-live="polite">
+        <!-- Main score -->
+        <div class="result-card" id="result-main">
+          <div class="result-top">
+            <div>
+              <div class="r-zip-label" id="r-zip"></div>
+              <div class="r-title" id="r-title"></div>
+              <div class="r-system" id="r-system"></div>
+              <div id="r-pill"></div>
+            </div>
+            <div class="ppm-block">
+              <div class="ppm-num" id="r-ppm"></div>
+              <span class="ppm-unit">PPM</span>
+              <div class="gpg-label" id="r-gpg"></div>
+            </div>
+          </div>
+
+          <div class="scale-wrap">
+            <div class="scale-labels">
+              <span>Soft</span><span>Moderate</span><span>Hard</span
+              ><span>Very Hard</span>
+            </div>
+            <div class="scale-track">
+              <div class="scale-dot" id="scale-dot"></div>
+            </div>
+            <div class="scale-subs">
+              <div class="scale-sub">0–60</div>
+              <div class="scale-sub">61–120</div>
+              <div class="scale-sub">121–180</div>
+              <div class="scale-sub">180+</div>
+            </div>
+          </div>
+
+          <!-- Smart alerts based on actual chemistry -->
+          <div id="smart-alerts"></div>
+
+          <div class="src-note" id="r-source"></div>
+        </div>
+
+        <!-- Impact on hair -->
+        <div class="impact-grid" id="impact-grid"></div>
+
+        <!-- Smart Recommendations -->
+        <div class="recs-card" id="recs-card">
+          <div class="recs-title" id="recs-title"></div>
+          <div class="recs-subtitle" id="recs-subtitle"></div>
+          <div id="recs-body"></div>
+        </div>
+
+        <!-- Chart -->
+        <div class="chart-card" id="chart-card" style="display: none">
+          <div class="card-title">Water Composition Profile</div>
+          <div class="card-subtitle">
+            Your mineral levels compared to standard safety and aesthetic
+            guidelines (100% = recommended limit).
+          </div>
+          <div style="position: relative; height: 240px; width: 100%">
+            <canvas id="mineral-chart"></canvas>
+          </div>
+        </div>
+
+        <!-- Mineral breakdown -->
+        <div class="chart-card" id="minerals-card" style="display: none">
+          <div class="card-title">Detailed Mineral Breakdown</div>
+          <div class="card-subtitle">
+            Specific measurements and hair care implications for each chemical
+            element found in your water.
+          </div>
+          <div class="minerals-grid" id="minerals-grid"></div>
+        </div>
+
+        <!-- About -->
+        <div class="about-card">
+          <h2>About this tool</h2>
+          <p>
+            Water hardness and mineral data comes from laboratory analysis of
+            real water samples — not AI estimates. Coverage includes 1,200+ US
+            cities with verified PPM values sourced from utility Consumer
+            Confidence Reports and EPA water quality databases.
+          </p>
+          <p>
+            Results reflect municipal tap water delivered to residential
+            addresses. Private wells, whole-house softeners, and reverse osmosis
+            systems will change your actual hardness levels.
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <footer
+      style="
+        padding: 1.5rem 1.25rem 2rem;
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.82rem;
+        border-top: 1px solid var(--border);
+        margin-top: 2rem;
+      "
+    >
+      <p>
+        Water Hardness Checker — Oceanside Hair Salon &nbsp;|&nbsp; Data: EPA
+        Consumer Confidence Reports
+      </p>
+    </footer>
+
+    <script>
+      /* ════════════════════════════════════════
+   DATA LOADING
+════════════════════════════════════════ */
+      const DB_FILE = "./homewater_zip_database.json";
+      let DB = null;
+
+      async function loadDB() {
+        if (DB) return true;
+        try {
+          const res = await fetch(DB_FILE);
+          if (!res.ok) throw new Error("fetch failed");
+          DB = await res.json();
+          return true;
+        } catch (e) {
+          showErr(
+            "Could not load water data. Please make sure the database file is in the same folder as this page, and use a local server (e.g. python -m http.server).",
+          );
+          return false;
+        }
+      }
+
+      /* ════════════════════════════════════════
+   TIER & DISPLAY CONFIG
+════════════════════════════════════════ */
+      const TIERS = [
+        {
+          max: 60,
+          id: "soft",
+          label: "Soft Water",
+          cls: "pill-soft",
+          title: "Your Water is Soft",
+        },
+        {
+          max: 120,
+          id: "moderate",
+          label: "Moderately Hard",
+          cls: "pill-moderate",
+          title: "Your Water is Moderately Hard",
+        },
+        {
+          max: 170,
+          id: "hard",
+          label: "Hard Water",
+          cls: "pill-hard",
+          title: "Your Water is Hard",
+        },
+        {
+          max: 9999,
+          id: "vhard",
+          label: "Very Hard",
+          cls: "pill-vhard",
+          title: "Your Water is Very Hard",
+        },
+      ];
+
+      const IMPACTS = {
+        soft: [
+          {
+            icon: "✅",
+            title: "Hair Health",
+            body: "Soft water is gentle — no mineral buildup on hair shafts or follicles.",
+          },
+          {
+            icon: "🧴",
+            title: "Product Lather",
+            body: "Shampoo lathers richly. A small amount of product goes a long way.",
+          },
+          {
+            icon: "💆‍♀️",
+            title: "Scalp",
+            body: "No calcium deposits on the scalp — lower risk of mineral-induced flakiness.",
+          },
+        ],
+        moderate: [
+          {
+            icon: "⚠️",
+            title: "Hair Health",
+            body: "Mild mineral buildup may appear over time, causing slight dullness and reduced shine.",
+          },
+          {
+            icon: "🎨",
+            title: "Color Longevity",
+            body: "Hair color may fade slightly faster than in soft water areas.",
+          },
+          {
+            icon: "🚿",
+            title: "Fixtures",
+            body: "Mild scale deposits will form on showerheads and tiles over months.",
+          },
+        ],
+        hard: [
+          {
+            icon: "⚠️",
+            title: "Hair Health",
+            body: "Calcium and magnesium coat the hair shaft — causing dryness, tangles, and dullness after every wash.",
+          },
+          {
+            icon: "🔬",
+            title: "Color & Bleach",
+            body: "Minerals cause uneven color absorption and accelerate brassiness. Pre-color chelating is important.",
+          },
+          {
+            icon: "🚿",
+            title: "Fixtures",
+            body: "Visible scale buildup on showerheads within weeks. A shower filter is strongly recommended.",
+          },
+        ],
+        vhard: [
+          {
+            icon: "🚨",
+            title: "Hair Integrity",
+            body: "Heavy mineral deposits damage the cuticle — leading to breakage, severe dryness, and elasticity loss.",
+          },
+          {
+            icon: "🔬",
+            title: "Chemical Services",
+            body: "Perms, relaxers, and toners perform unpredictably. Chelating treatment before any chemical service is essential.",
+          },
+          {
+            icon: "🧪",
+            title: "Scalp",
+            body: "Mineral film on the scalp blocks follicles and mimics dandruff. Monthly scalp treatment recommended.",
+          },
+        ],
+      };
+
+      /* ════════════════════════════════════════
+   SMART RECOMMENDATION ENGINE
+   Uses actual chemical values when available,
+   falls back to PPM-only tiers when not.
+════════════════════════════════════════ */
+      function buildRecommendations(tierId, ppm, attrs) {
+        const ph = attrs?.ph?.value ?? null;
+        const iron = attrs?.iron?.value ?? null;
+        const lead = attrs?.lead?.value ?? null;
+        const tds = attrs?.tds?.value ?? null;
+
+        // Build alert strips for special chemistry
+        const alerts = [];
+
+        if (lead !== null && lead > 0.015) {
+          alerts.push({
+            cls: "alert-danger",
+            icon: "🚨",
+            text: `<strong>Lead detected above safe threshold (${lead.toFixed(4)} PPM).</strong> This is a health concern beyond hair care. Consider a certified NSF/ANSI 53 filter and contact your water utility.`,
+          });
+        } else if (lead !== null && lead > 0.005) {
+          alerts.push({
+            cls: "alert-warning",
+            icon: "⚠️",
+            text: `Lead levels are slightly elevated (${lead.toFixed(4)} PPM). While hair impact is minor, consider a certified filter for drinking water.`,
+          });
+        }
+
+        if (iron !== null && iron > 0.3) {
+          alerts.push({
+            cls: "alert-warning",
+            icon: "🟠",
+            text: `<strong>High iron detected (${iron.toFixed(2)} PPM).</strong> Iron causes orange/rust tones in light hair and accelerates chemical damage during bleaching. A metal detox shampoo is highly recommended.`,
+          });
+        }
+
+        if (ph !== null && ph > 8.5) {
+          alerts.push({
+            cls: "alert-warning",
+            icon: "📊",
+            text: `<strong>Water pH is alkaline (${ph.toFixed(1)}).</strong> Alkaline water forces the hair cuticle open, causing frizz and increased porosity. A pH-balancing leave-in treatment will help seal the cuticle after washing.`,
+          });
+        } else if (ph !== null && ph > 7.8) {
+          alerts.push({
+            cls: "alert-info",
+            icon: "📊",
+            text: `Water pH is slightly alkaline (${ph.toFixed(1)}). Adding a light ACV rinse after shampooing can help restore the hair's natural acidic pH balance.`,
+          });
+        }
+
+        if (tds !== null && tds > 500) {
+          alerts.push({
+            cls: "alert-warning",
+            icon: "⚗️",
+            text: `<strong>High Total Dissolved Solids (${Math.round(tds)} PPM TDS).</strong> Heavy mineral load — even a basic shower filter will significantly reduce the burden on your hair and skin.`,
+          });
+        }
+
+        // Build recommendation tiers
+        const priority = []; // Must-do immediately
+        const enhance = []; // Good to add
+        const optional = []; // If budget allows
+
+        if (tierId === "soft") {
+          priority.push({
+            type: "tip",
+            name: "Lightweight Conditioner",
+            desc: "Soft water can make fine hair limp. Use lightweight, protein-rich conditioners on ends only.",
+            why: "Soft water allows maximum product absorption — heavy conditioners will over-moisturize.",
+          });
+          enhance.push({
+            type: "routine",
+            name: "Monthly Clarifying Shampoo",
+            desc: "No chelating needed. A gentle clarifying shampoo once a month removes oil and product buildup.",
+            why: "Soft water has no mineral residue to remove.",
+          });
+          if (ph !== null && ph > 7.8) {
+            optional.push({
+              type: "tip",
+              name: "ACV Rinse (pH Correction)",
+              desc: "1 tbsp apple cider vinegar in a cup of water after shampooing. Restores natural hair pH.",
+              why: `Your pH is ${ph.toFixed(1)} — slightly above ideal for hair health.`,
+            });
+          }
+        } else if (tierId === "moderate") {
+          priority.push({
+            type: "shampoo",
+            name: "Bi-Weekly Clarifying Shampoo",
+            desc: "Use a clarifying shampoo every 2–3 weeks to prevent early mineral accumulation from dulling your hair.",
+            why: "Moderate hardness builds up gradually — clarifying prevents it from becoming a bigger problem.",
+          });
+          enhance.push({
+            type: "filter",
+            name: "Basic Shower Filter",
+            desc: "A standard carbon or KDF shower filter significantly reduces chlorine and partially neutralizes mineral content.",
+            why: "Affordable first step that extends color longevity and reduces dryness.",
+          });
+          if (ph !== null && ph > 7.8) {
+            enhance.push({
+              type: "tip",
+              name: "ACV or pH-Balancing Rinse",
+              desc: "Add a diluted ACV rinse once a week to close the cuticle after shampooing with moderately hard water.",
+              why: `Your pH reads ${ph.toFixed(1)} — worth addressing to reduce frizz.`,
+            });
+          }
+          if (iron !== null && iron > 0.3) {
+            priority.push({
+              type: "shampoo",
+              name: "Metal Detox Shampoo",
+              desc: "Use a chelating or metal-detox shampoo weekly to prevent iron from causing brassy tones and oxidation damage.",
+              why: `Iron at ${iron.toFixed(2)} PPM — above the cosmetic threshold for hair discoloration.`,
+            });
+          }
+        } else if (tierId === "hard") {
+          priority.push({
+            type: "shampoo",
+            name: "Weekly Chelating Shampoo",
+            desc: "A chelating shampoo (with EDTA or citric acid) removes calcium and magnesium that regular shampoos leave behind. Use once a week.",
+            why: "At this hardness level, standard shampoos cannot remove mineral buildup on their own.",
+          });
+          priority.push({
+            type: "filter",
+            name: "Vitamin C Shower Filter",
+            desc: "Reduces chlorine and partially neutralizes hard minerals before they reach your hair. Easy to install, no plumber needed.",
+            why: "Every wash without a filter deposits more minerals on already-stressed hair.",
+          });
+          enhance.push({
+            type: "routine",
+            name: "Weekly Deep Conditioning Mask",
+            desc: "Hard water strips moisture rapidly. A hydrating mask once a week restores elasticity and prevents breakage.",
+            why: "Minerals block moisture from entering the cuticle — a mask bypasses this barrier.",
+          });
+          enhance.push({
+            type: "tip",
+            name: "Pre-Wash Oil Barrier",
+            desc: "Apply a light coat of argan or jojoba oil to dry hair before washing to reduce direct mineral contact with the hair shaft.",
+            why: "Creates a physical barrier that reduces mineral adhesion during the wash.",
+          });
+          if (iron !== null && iron > 0.3) {
+            priority.push({
+              type: "shampoo",
+              name: "Metal Detox Shampoo",
+              desc: "Add a metal-detox shampoo to your rotation (alternate with chelating). Iron at this level causes visible brassy tones in blonde or color-treated hair.",
+              why: `Iron at ${iron.toFixed(2)} PPM — this will affect your hair color noticeably.`,
+            });
+          }
+          if (ph !== null && ph > 8.0) {
+            enhance.push({
+              type: "tip",
+              name: "Post-Wash pH Balancing Spray",
+              desc: "A pH-balancing leave-in (or diluted ACV rinse) after every wash helps close the cuticle that alkaline water forces open.",
+              why: `Your pH is ${ph.toFixed(1)} — this alkalinity compounds the damage from hard minerals.`,
+            });
+          }
+        } else {
+          // vhard
+          priority.push({
+            type: "urgent",
+            name: "Dedicated Shower Water Softener",
+            desc: "At this hardness level, filters are not sufficient. A true ion-exchange shower softener or whole-house softener is the most effective long-term solution.",
+            why: `At ${ppm} PPM, mineral load is too high for filters to adequately manage.`,
+          });
+          priority.push({
+            type: "shampoo",
+            name: "Malibu C or Professional Chelating Treatment",
+            desc: "High-potency chelating treatment designed for very hard water. Fully removes heavy mineral buildup in one session. Use before any color, bleach, or chemical service.",
+            why: "Standard chelating shampoos may not be strong enough at this hardness level.",
+          });
+          enhance.push({
+            type: "routine",
+            name: "Post-Wash pH Balancing — Every Wash",
+            desc: "Very hard water is highly alkaline (pH 8–9). A pH-balancing rinse or leave-in spray after every wash is not optional — it seals the cuticle that alkaline water forces open.",
+            why: "Without this step, your hair cuticle stays open and accumulates more minerals with each wash.",
+          });
+          enhance.push({
+            type: "routine",
+            name: "Monthly Scalp Detox Treatment",
+            desc: "Mineral calcification on the scalp blocks follicles and mimics heavy dandruff. A monthly scalp scrub or clarifying scalp mask addresses this directly.",
+            why: "At very high hardness, the scalp needs dedicated treatment — not just the hair shafts.",
+          });
+          if (iron !== null && iron > 0.3) {
+            priority.push({
+              type: "urgent",
+              name: "Metal Detox Before Every Color Service",
+              desc: "High iron combined with very hard water creates severe chemical reaction risks during bleaching. A professional metal detox is mandatory before any lightening service.",
+              why: `Iron at ${iron.toFixed(2)} PPM + very hard water = high bleach reaction risk.`,
+            });
+          }
+          optional.push({
+            type: "tip",
+            name: "Pre-Wash Oil Barrier",
+            desc: "Apply argan or jojoba oil to dry hair before washing. Creates a physical barrier that reduces mineral absorption during the wash cycle.",
+            why: "Additional protection layer at this extreme hardness level.",
+          });
+        }
+
+        return { alerts, priority, enhance, optional };
+      }
+
+      /* ════════════════════════════════════════
+   MINERAL CARD CONFIG
+════════════════════════════════════════ */
+      const MINERAL_CONFIG = [
+        {
+          key: "hardness_total",
+          name: "Total Hardness",
+          symbol: "CaCO₃",
+          icon: "droplets",
+          limits: [60, 120, 180],
+          unit: "PPM",
+          desc: "Total calcium and magnesium carbonate. Coats hair shafts, blocking moisture and causing brittleness.",
+        },
+        {
+          key: "ph",
+          name: "pH Level",
+          symbol: "pH",
+          icon: "activity",
+          limits: [6.5, 7.5, 8.5],
+          unit: "pH",
+          customPct: true,
+          desc: "High pH (alkaline) forces the hair cuticle open, causing frizz and increased mineral absorption.",
+        },
+        {
+          key: "tds",
+          name: "Total Dissolved Solids",
+          symbol: "TDS",
+          icon: "layers",
+          limits: [150, 300, 500],
+          unit: "PPM",
+          desc: "Total mineral concentration. High TDS leaves a film on hair that blocks light, causing dullness.",
+        },
+        {
+          key: "calcium",
+          name: "Calcium",
+          symbol: "Ca²⁺",
+          icon: "sparkles",
+          limits: [40, 70, 100],
+          unit: "PPM",
+          desc: "Creates a hard mineral crust on the hair shaft. Prevents conditioners from penetrating.",
+        },
+        {
+          key: "magnesium",
+          name: "Magnesium",
+          symbol: "Mg²⁺",
+          icon: "zap",
+          limits: [10, 25, 40],
+          unit: "PPM",
+          desc: "Strips color dyes and contributes to scale buildup on both hair and fixtures.",
+        },
+        {
+          key: "sodium",
+          name: "Sodium",
+          symbol: "Na⁺",
+          icon: "waves",
+          limits: [20, 60, 120],
+          unit: "PPM",
+          desc: "Dehydrates hair shafts and scalp. High sodium strips natural moisture and sebum.",
+        },
+        {
+          key: "iron",
+          name: "Iron",
+          symbol: "Fe",
+          icon: "cog",
+          limits: [0.1, 0.2, 0.3],
+          unit: "PPM",
+          desc: "Causes orange/rust tones in light hair. Catalyzes oxidation during bleaching.",
+        },
+        {
+          key: "lead",
+          name: "Lead",
+          symbol: "Pb²⁺",
+          icon: "alert-triangle",
+          limits: [0.005, 0.01, 0.015],
+          unit: "PPM",
+          desc: "A health concern beyond hair care. Elevated levels require a certified NSF/ANSI 53 filter.",
+        },
+        {
+          key: "alkalinity",
+          name: "Alkalinity",
+          symbol: "HCO₃⁻",
+          icon: "scale",
+          limits: [50, 100, 150],
+          unit: "PPM",
+          desc: "Buffering capacity. High alkalinity prevents hair products from correcting the pH.",
+        },
+      ];
+
+      function getMineralStatus(key, value, limits) {
+        const [low, mid, high] = limits;
+        let pct, status, color;
+
+        if (key === "ph") {
+          // pH: ideal is 6.5–7.5, below or above is problematic
+          if (value >= 6.5 && value <= 7.5) {
+            pct = 33 + ((value - 6.5) / 1.0) * 33;
+            status = "normal";
+            color = "#1d9e75";
+          } else if (value < 6.5) {
+            pct = (value / 6.5) * 33;
+            status = "medium";
+            color = "#ba7517";
+          } else {
+            pct = 66 + Math.min(34, ((value - 7.5) / 2.5) * 34);
+            status = value > 8.5 ? "high" : "medium";
+            color = value > 8.5 ? "#d85a30" : "#ba7517";
+          }
+        } else {
+          if (value <= low) {
+            pct = (value / low) * 30;
+            status = "low";
+            color = "#1d9e75";
+          } else if (value <= mid) {
+            pct = 30 + ((value - low) / (mid - low)) * 30;
+            status = "medium";
+            color = "#ba7517";
+          } else if (value <= high) {
+            pct = 60 + ((value - mid) / (high - mid)) * 25;
+            status = "high";
+            color = "#d85a30";
+          } else {
+            pct = Math.min(98, 85 + ((value - high) / high) * 13);
+            status = "critical";
+            color = "#e24b4a";
+          }
+        }
+        return { pct: Math.max(2, pct), status, color };
+      }
+
+      function getStatusLabel(status, key) {
+        if (key === "ph")
+          return (
+            {
+              normal: "Ideal",
+              low: "Acidic",
+              medium: "Slightly High",
+              high: "Alkaline",
+              critical: "Very Alkaline",
+            }[status] || status
+          );
+        if (key === "lead")
+          return (
+            { low: "Safe", medium: "Low", high: "Warning", critical: "Danger" }[
+              status
+            ] || status
+          );
+        return (
+          {
+            low: "Low",
+            medium: "Moderate",
+            high: "High",
+            critical: "Critical",
+            normal: "Normal",
+          }[status] || status
+        );
+      }
+
+      /* ════════════════════════════════════════
+   CHART
+════════════════════════════════════════ */
+      let chartInstance = null;
+
+      function renderChart(attrs) {
+        const canvas = document.getElementById("mineral-chart");
+        if (!canvas) return;
+
+        const cfg = [
+          { key: "hardness_total", name: "Total Hardness", limit: 180 },
+          { key: "tds", name: "TDS", limit: 500 },
+          { key: "calcium", name: "Calcium", limit: 100 },
+          { key: "magnesium", name: "Magnesium", limit: 40 },
+          { key: "sodium", name: "Sodium", limit: 120 },
+          { key: "alkalinity", name: "Alkalinity", limit: 150 },
+        ];
+
+        const labels = [],
+          data = [],
+          colors = [];
+        for (const c of cfg) {
+          const val = attrs?.[c.key]?.value;
+          if (val == null) continue;
+          const pct = Math.round((parseFloat(val) / c.limit) * 100);
+          labels.push(c.name);
+          data.push(pct);
+          colors.push(
+            pct > 100
+              ? "rgba(226,75,74,0.85)"
+              : pct > 70
+                ? "rgba(186,117,23,0.85)"
+                : "rgba(29,158,117,0.85)",
+          );
+        }
+
+        if (!labels.length) {
+          document.getElementById("chart-card").style.display = "none";
+          return;
+        }
+        document.getElementById("chart-card").style.display = "block";
+        if (chartInstance) chartInstance.destroy();
+
+        chartInstance = new Chart(canvas.getContext("2d"), {
+          type: "bar",
+          data: {
+            labels,
+            datasets: [
+              {
+                data,
+                backgroundColor: colors,
+                borderWidth: 0,
+                borderRadius: 6,
+                barThickness: 14,
+              },
+            ],
+          },
+          options: {
+            indexAxis: "y",
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: {
+                  label: (ctx) => ctx.raw + "% of recommended limit",
+                },
+              },
+            },
+            scales: {
+              x: {
+                grid: { display: false },
+                ticks: {
+                  callback: (v) => v + "%",
+                  color: "#4a6a72",
+                  font: { size: 10 },
+                },
+                max: Math.max(120, Math.max(...data) + 15),
+              },
+              y: {
+                grid: { display: false },
+                ticks: { color: "#1a2e33", font: { size: 11, weight: "600" } },
+              },
+            },
+          },
+        });
+      }
+
+      /* ════════════════════════════════════════
+   MAIN RENDER
+════════════════════════════════════════ */
+      function getTier(ppm) {
+        return TIERS.find((t) => ppm <= t.max);
+      }
+      function markerPct(ppm) {
+        if (ppm <= 0) return 1;
+        if (ppm <= 60) return (ppm / 60) * 19 + 1;
+        if (ppm <= 120) return 20 + ((ppm - 60) / 60) * 29;
+        if (ppm <= 170) return 49 + ((ppm - 120) / 50) * 25;
+        return Math.min(96, 74 + ((ppm - 170) / 230) * 22);
+      }
+
+      function render(zip, zipData) {
+        const attrs = zipData.waterAttributes || {};
+        const wd = zipData.waterData || {};
+
+        let ppm =
+          attrs.hardness_total?.value ?? attrs.hardness_camag?.value ?? null;
+        if (ppm == null) {
+          showErr("Water hardness data is not available for this ZIP code.");
+          return;
+        }
+        ppm = Math.round(parseFloat(ppm));
+
+        const tier = getTier(ppm);
+        const gpg = (ppm / 17.1).toFixed(1);
+        const systemName =
+          zipData.pws_name || wd.pws_name || "Local Water Utility";
+        const pwsid = zipData.pwsid || wd.pwsid || "";
+
+        // Main card
+        document.getElementById("r-zip").textContent = "ZIP Code " + zip;
+        document.getElementById("r-title").textContent = tier.title;
+        document.getElementById("r-system").textContent = systemName;
+        document.getElementById("r-ppm").textContent = ppm;
+        document.getElementById("r-gpg").textContent =
+          gpg + " grains per gallon";
+        document.getElementById("r-pill").innerHTML =
+          `<span class="tier-pill ${tier.cls}">${tier.label}</span>`;
+        document.getElementById("scale-dot").style.left = markerPct(ppm) + "%";
+
+        // Source note
+        document.getElementById("r-source").innerHTML =
+          `<span class="src-dot dot-lab"></span>
+     <span><strong>Lab-verified data</strong> from Consumer Confidence Reports (CCR) and EPA water quality analysis. PWSID: ${pwsid}.</span>`;
+
+        // Smart recommendations
+        const { alerts, priority, enhance, optional } = buildRecommendations(
+          tier.id,
+          ppm,
+          attrs,
+        );
+
+        // Alerts
+        document.getElementById("smart-alerts").innerHTML = alerts
+          .map(
+            (a) =>
+              `<div class="alert-strip ${a.cls}">
+       <span class="alert-icon">${a.icon}</span>
+       <div>${a.text}</div>
+     </div>`,
+          )
+          .join("");
+
+        // Impact grid
+        document.getElementById("impact-grid").innerHTML = IMPACTS[tier.id]
+          .map(
+            (i) =>
+              `<div class="impact-card">
+       <span class="impact-icon">${i.icon}</span>
+       <div class="impact-title">${i.title}</div>
+       <div class="impact-body">${i.body}</div>
+     </div>`,
+          )
+          .join("");
+
+        // Recommendations
+        document.getElementById("recs-title").textContent =
+          "Your Personalized Hair Care Plan";
+        document.getElementById("recs-subtitle").textContent = alerts.length
+          ? `Based on your water hardness (${ppm} PPM) and specific chemistry from your utility's lab reports.`
+          : `Based on your water hardness level of ${ppm} PPM (${gpg} GPG).`;
+
+        const recHTML = (sec) =>
+          sec
+            .map(
+              (r) =>
+                `<div class="rec-item">
+       <span class="rec-type-badge rt-${r.type}">${r.type}</span>
+       <div>
+         <div class="rec-name">${r.name}</div>
+         <div class="rec-desc">${r.desc}</div>
+         ${r.why ? `<span class="rec-why">↳ ${r.why}</span>` : ""}
+         ${r.link ? `<a href="${r.link}" class="rec-btn" rel="nofollow" target="_blank">View Product ↗</a>` : ""}
+       </div>
+     </div>`,
+            )
+            .join("");
+
+        let recsHTML = "";
+        if (priority.length)
+          recsHTML += `<div class="rec-tier"><div class="tier-label">Start Here — Priority Actions</div>${recHTML(priority)}</div>`;
+        if (enhance.length)
+          recsHTML += `<div class="rec-tier"><div class="tier-label">Enhance Your Routine</div>${recHTML(enhance)}</div>`;
+        if (optional.length)
+          recsHTML += `<div class="rec-tier"><div class="tier-label">Optional Upgrades</div>${recHTML(optional)}</div>`;
+        document.getElementById("recs-body").innerHTML = recsHTML;
+
+        // Chart
+        renderChart(attrs);
+
+        // Mineral cards
+        const grid = document.getElementById("minerals-grid");
+        let mineralsHTML = "";
+        let hasMinerals = false;
+
+        for (const cfg of MINERAL_CONFIG) {
+          const attr = attrs[cfg.key];
+          if (!attr || attr.value == null) continue;
+          hasMinerals = true;
+          const val = parseFloat(attr.value);
+          const { pct, status, color } = getMineralStatus(
+            cfg.key,
+            val,
+            cfg.limits,
+          );
+          const statusLabel = getStatusLabel(status, cfg.key);
+          let displayVal =
+            cfg.key === "lead"
+              ? val.toFixed(4)
+              : cfg.key === "ph"
+                ? val.toFixed(1)
+                : Math.round(val * 10) / 10;
+
+          mineralsHTML += `
+      <div class="mineral-card">
+        <div class="mc-header">
+          <div class="mc-icon"><i data-lucide="${cfg.icon}"></i></div>
+          <div>
+            <div class="mc-name">${cfg.name}</div>
+            <div class="mc-symbol">${cfg.symbol}</div>
+          </div>
+          <span class="mc-badge s-${status}">${statusLabel}</span>
+        </div>
+        <div>
+          <span class="mc-val">${displayVal}</span>
+          <span class="mc-unit">${cfg.unit}</span>
+        </div>
+        <div class="mc-bar-bg">
+          <div class="mc-bar-fill" style="width:${pct}%; background:${color};"></div>
+        </div>
+        <div class="mc-marks"><span>Low</span><span>Moderate</span><span>High</span></div>
+        <p class="mc-desc">${cfg.desc}</p>
+      </div>`;
+        }
+
+        if (hasMinerals) {
+          grid.innerHTML = mineralsHTML;
+          document.getElementById("minerals-card").style.display = "block";
+          if (window.lucide) lucide.createIcons();
+        } else {
+          document.getElementById("minerals-card").style.display = "none";
+        }
+
+        document.getElementById("results").style.display = "block";
+        document
+          .getElementById("results")
+          .scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      /* ════════════════════════════════════════
+   INPUT HANDLING
+════════════════════════════════════════ */
+      function showErr(msg) {
+        const el = document.getElementById("err");
+        el.textContent = msg;
+        el.style.display = "block";
+      }
+      function clearErr() {
+        document.getElementById("err").style.display = "none";
+      }
+
+      async function runCheck() {
+        const zip = document
+          .getElementById("zip")
+          .value.replace(/\D/g, "")
+          .slice(0, 5);
+        clearErr();
+        if (zip.length !== 5) {
+          showErr("Please enter a valid 5-digit US ZIP code.");
+          return;
+        }
+
+        const btn = document.getElementById("check-btn");
+        btn.disabled = true;
+        document.getElementById("loading").style.display = "block";
+        document.getElementById("results").style.display = "none";
+
+        const ok = await loadDB();
+        document.getElementById("loading").style.display = "none";
+        btn.disabled = false;
+        if (!ok) return;
+
+        const entry = DB[zip];
+        if (!entry) {
+          showErr(
+            "No water data found for ZIP code " +
+              zip +
+              ". Coverage currently includes 1,200+ US cities. Try a nearby ZIP code.",
+          );
+          return;
+        }
+        render(zip, entry);
+      }
+
+      const zipEl = document.getElementById("zip");
+      zipEl.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") runCheck();
+        if (!/[0-9]/.test(e.key)) e.preventDefault();
+      });
+      zipEl.addEventListener("input", function () {
+        this.value = this.value.replace(/\D/g, "").slice(0, 5);
+        clearErr();
+      });
+
+      window.addEventListener("load", () => {
+        if (window.lucide) lucide.createIcons();
+        setTimeout(loadDB, 600);
+      });
+    </script>
+  </body>
+</html>
