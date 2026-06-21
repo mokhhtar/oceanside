@@ -708,6 +708,14 @@
     <!-- Results Section -->
     <div class="results-wrap" id="results" aria-live="polite">
         
+        <!-- Fallback Alert -->
+        <div id="fallback-banner" style="display: none; margin-bottom: 1.5rem; padding: 12px 16px; background-color: #fff9e6; border-left: 4px solid #f59e0b; border-radius: 8px; color: #855c00; font-size: 0.9rem; line-height: 1.45; align-items: flex-start; gap: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); font-family: var(--font-body);">
+            <i class="fas fa-location-arrow" style="margin-top: 3px; color: #f59e0b;"></i>
+            <div>
+                <strong>Location Match:</strong> We don't have direct lab reports for <strong><span id="fallback-searched-zip"></span></strong>. Showing water profile for the nearest monitored area: <strong>ZIP code <span id="fallback-target-zip"></span></strong>.
+            </div>
+        </div>
+
         <!-- Main Score Card -->
         <div class="result-card" id="result-main">
             <div class="result-top">
@@ -1228,7 +1236,7 @@
     return Math.min(96, 74 + ((ppm - 170) / 230) * 22);
   }
 
-  function render(zip, zipData) {
+  function render(zip, zipData, fallbackZip = null) {
     const attrs = zipData.waterAttributes || {};
     const wd = zipData.waterData || {};
 
@@ -1252,8 +1260,16 @@
     const systemName = zipData.pws_name || wd.pws_name || "Local Water Utility";
     const pwsid = zipData.pwsid || wd.pwsid || "";
 
-    // Main card
-    document.getElementById("r-zip").textContent = "ZIP Code " + zip;
+    // Main card & Fallback Banner
+    if (fallbackZip) {
+      document.getElementById("r-zip").textContent = "ZIP Code " + zip + " (Nearest Area)";
+      document.getElementById("fallback-searched-zip").textContent = zip;
+      document.getElementById("fallback-target-zip").textContent = fallbackZip;
+      document.getElementById("fallback-banner").style.display = "flex";
+    } else {
+      document.getElementById("r-zip").textContent = "ZIP Code " + zip;
+      document.getElementById("fallback-banner").style.display = "none";
+    }
     document.getElementById("r-title").textContent = tier.title;
     document.getElementById("r-system").textContent = systemName;
     document.getElementById("r-ppm").textContent = ppm;
@@ -1688,12 +1704,31 @@
       return;
     }
 
-    const entry = loadedChunks[prefix][zip];
+    let entry = loadedChunks[prefix][zip];
     if (!entry) {
       showErr("No water data found for ZIP code " + zip + ". Coverage currently includes 1,200+ US cities. Try a nearby ZIP code.");
       return;
     }
-    render(zip, entry);
+
+    let fallbackZip = null;
+    if (typeof entry === "string") {
+      fallbackZip = entry;
+      const targetPrefix = fallbackZip.slice(0, 3);
+      if (!loadedChunks[targetPrefix]) {
+        const okTarget = await loadZipChunk(targetPrefix);
+        if (!okTarget) {
+          showErr("Could not load water data for nearby area. Please try a nearby ZIP code.");
+          return;
+        }
+      }
+      entry = loadedChunks[targetPrefix][fallbackZip];
+      if (!entry) {
+        showErr("No water data found for nearby ZIP code " + fallbackZip + ".");
+        return;
+      }
+    }
+
+    render(zip, entry, fallbackZip);
   }
 
   function resetSearch() {
