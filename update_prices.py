@@ -536,6 +536,108 @@ def update_timestamp(html_content: str) -> tuple[str, bool]:
 
 
 # ════════════════════════════════════════════════════════════════
+#  🔧  تحديث water_products.json
+# ════════════════════════════════════════════════════════════════
+
+def update_water_products(api: AmazonCreatorsApi, dry_run: bool = False) -> bool:
+    json_path = SITE_ROOT / "tools/water-hardness-checker/water_products.json"
+    print("─" * 60)
+    print(f"📄 Processing JSON: tools/water-hardness-checker/water_products.json")
+    
+    if not json_path.exists():
+        print(f"   ⚠️  الملف غير موجود: {json_path}")
+        return False
+
+    try:
+        with open(json_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except Exception as e:
+        print(f"   ❌ خطأ في قراءة ملف JSON: {e}")
+        return False
+
+    # Collect Amazon ASINs
+    asins_to_fetch = []
+    for cat_id, category in data.items():
+        items = category.get("items", [])
+        for item in items:
+            asin = item.get("asin", "")
+            if re.match(r"^[A-Z0-9]{10}$", asin):
+                asins_to_fetch.append(asin)
+
+    if not asins_to_fetch:
+        print("   ℹ️ No Amazon ASINs found in the JSON file.")
+        return False
+
+    print(f"   📦 Fetching {len(asins_to_fetch)} ASIN(s) metadata for JSON from Amazon API...")
+    details = fetch_product_details(api, asins_to_fetch)
+    
+    changed = False
+
+    for cat_id, category in data.items():
+        items = category.get("items", [])
+        for item in items:
+            asin = item.get("asin", "")
+            if asin in details:
+                prod_details = details[asin]
+                new_price = prod_details["price"]
+                new_stars_val = prod_details["rating_stars_val"]
+                new_count_val = prod_details["rating_count_val"]
+                new_image_url = prod_details["image_url"]
+
+                # 1. Update Price
+                current_price = str(item.get("price", "")).strip()
+                numeric_new_price = _price_to_numeric_str(new_price) if new_price != "Check Price" else new_price
+                if current_price != numeric_new_price:
+                    item["price"] = numeric_new_price
+                    print(f"      📝 JSON Price  [{asin}]: {current_price!r} → {numeric_new_price!r}")
+                    changed = True
+
+                # 2. Update Rating Stars
+                if new_stars_val is not None:
+                    old_stars = item.get("rating_stars")
+                    formatted_stars = _build_rating_stars(new_stars_val, old_stars)
+                    if old_stars != formatted_stars:
+                        item["rating_stars"] = formatted_stars
+                        print(f"      📝 JSON Stars  [{asin}]: {old_stars!r} → {formatted_stars!r}")
+                        changed = True
+
+                # 3. Update Rating Count
+                if new_count_val is not None:
+                    old_count = item.get("rating_count")
+                    formatted_count = _build_rating_count(new_count_val, old_count)
+                    if old_count != formatted_count:
+                        item["rating_count"] = formatted_count
+                        print(f"      📝 JSON Reviews [{asin}]: {old_count!r} → {formatted_count!r}")
+                        changed = True
+
+                # 4. Update Product Image
+                if new_image_url:
+                    old_image = item.get("image_url")
+                    if old_image != new_image_url:
+                        item["image_url"] = new_image_url
+                        print(f"      📝 JSON Image [{asin}]: {old_image!r} → {new_image_url!r}")
+                        changed = True
+
+    if changed:
+        if dry_run:
+            print(f"\n   🔍 [DRY-RUN] JSON تغييرات موجودة — لم يتم الحفظ.")
+            return True
+        else:
+            try:
+                with open(json_path, "w", encoding="utf-8") as f:
+                    json.dump(data, f, ensure_ascii=False, indent=2)
+                print(f"\n   💾 تم الحفظ: tools/water-hardness-checker/water_products.json")
+                return True
+            except Exception as e:
+                print(f"   ❌ خطأ في حفظ ملف JSON: {e}")
+                return False
+    else:
+        print(f"\n   ℹ️ لا تغييرات مطلوبة في ملف JSON.")
+        return False
+
+
+
+# ════════════════════════════════════════════════════════════════
 #  🚀  الدالة الرئيسية
 # ════════════════════════════════════════════════════════════════
 
@@ -727,6 +829,13 @@ def run(dry_run: bool = False, page_filter: str | None = None) -> None:
             total_updated += 1
         else:
             print(f"\n   ℹ️  لا تغييرات مطلوبة في هذه الصفحة.")
+
+    # ── Update water_products.json if no page filter is active, or if it matches the filter ────
+    json_rel_path = "tools/water-hardness-checker/water_products.json"
+    if not page_filter or any(kw in page_filter.lower() for kw in ["water", "json", "product"]):
+        json_updated = update_water_products(api, dry_run=dry_run)
+        if json_updated:
+            total_updated += 1
 
     print(f"\n{'═' * 60}")
     mode = "[DRY-RUN] " if dry_run else ""
