@@ -37,6 +37,47 @@
     }
     </script>
     
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How accurate is this water hardness by zip code tool?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our tool is highly accurate for municipal tap water. It pulls data directly from mandated Consumer Confidence Reports (CCR) and EPA laboratory analyses across 1,200+ US cities. However, if your home uses a private well, your actual water will differ."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What water hardness level (PPM) causes hair damage?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Water measuring above 120 PPM (7 GPG) is classified as hard water and will begin leaving noticeable mineral buildup on your hair. At this level, calcium and magnesium crystallize on the hair shaft, blocking moisture."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a shower head filter actually soften hard water?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Standard shower head filters remove chlorine and heavy metals, but they cannot remove calcium and magnesium. To truly soften hard water, you need an ion-exchange resin system or a whole-house water softener."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I convert water hardness from GPG to PPM?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Water hardness is measured in either Parts Per Million (PPM) or Grains Per Gallon (GPG). The conversion is simple: 1 GPG = 17.1 PPM. Multiply your GPG by 17.1 to get the PPM value."
+          }
+        }
+      ]
+    }
+    </script>
+    
     <link rel="stylesheet" href="/assets/css/main.css">
     <style>
         /* ================= INHERITED SITE STYLES ================= */
@@ -659,6 +700,78 @@
             .related-box { flex-direction: column; text-align: center; }
             .related-btn { width: 100%; display: block; text-align: center; }
         }
+
+        /* SEO Text & FAQ Styles */
+        .seo-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            color: var(--muted);
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+        .seo-intro strong {
+            color: var(--primary);
+        }
+        .faq-section {
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border);
+        }
+        .faq-section h2 {
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-family: var(--font-heading);
+            color: var(--primary-color);
+        }
+        .faq-item {
+            border-bottom: 1px solid #eee;
+            background: #fff;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            padding: 18px 20px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--primary);
+            font-family: var(--font-body);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease-out;
+            color: var(--muted);
+            font-size: 0.95rem;
+            padding: 0 20px;
+        }
+        .faq-answer p {
+            margin-bottom: 15px;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding-bottom: 5px;
+        }
+        .faq-item.active .faq-question {
+            color: var(--accent);
+        }
+        .faq-question span {
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+        .faq-item.active .faq-question span {
+            transform: rotate(45deg);
+        }
     </style>
 </head>
 <body>
@@ -687,6 +800,10 @@
 
 <main class="tool-container">
     
+    <div class="seo-intro" id="seo-intro">
+        <p>Your tap water chemistry directly impacts your hair's health, color longevity, and texture. Enter your zip code below to instantly check your local <strong>water hardness by zip code</strong> in PPM (Parts Per Million). We use verified municipal lab data to tell you exactly what's hiding in your shower and how to fix it.</p>
+    </div>
+
     <!-- Search Section -->
     <div class="search-card" id="search-section">
         <label class="field-label" for="zip">Enter US ZIP Code</label>
@@ -818,6 +935,50 @@
         </div>
     </div>
     
+    <div class="faq-section">
+        <h2>Frequently Asked Questions About Water Hardness</h2>
+        
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleToolFaq(this)">
+                How accurate is this water hardness by zip code tool?
+                <span>+</span>
+            </button>
+            <div class="faq-answer">
+                <p>Our tool is highly accurate for municipal tap water. It pulls data directly from mandated Consumer Confidence Reports (CCR) and EPA laboratory analyses across 1,200+ US cities. However, if your home uses a private well, or if you already have a whole-house water softener installed, your actual shower water will differ from the city's baseline data.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleToolFaq(this)">
+                What water hardness level (PPM) causes hair damage?
+                <span>+</span>
+            </button>
+            <div class="faq-answer">
+                <p>Water measuring above <strong>120 PPM (7 GPG)</strong> is classified as hard water and will begin leaving noticeable mineral buildup on your hair. At this level, calcium and magnesium crystallize on the hair shaft, blocking moisture, dulling color, and causing severe tangling. Water over 180 PPM is considered "very hard" and requires dedicated chelating shampoos.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleToolFaq(this)">
+                Does a shower head filter actually soften hard water?
+                <span>+</span>
+            </button>
+            <div class="faq-answer">
+                <p><strong>No.</strong> This is one of the most common misconceptions in hair care. Standard shower head filters (using carbon or KDF media) are excellent at removing chlorine, heavy metals, and odors, but they <em>cannot</em> remove dissolved calcium and magnesium. To truly "soften" hard water, you need an ion-exchange resin system (like a ShowerStick) or a whole-house water softener.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleToolFaq(this)">
+                How do I convert water hardness from GPG to PPM?
+                <span>+</span>
+            </button>
+            <div class="faq-answer">
+                <p>Water hardness is measured in either Parts Per Million (PPM) or Grains Per Gallon (GPG). The conversion is simple: <strong>1 GPG = 17.1 PPM</strong>. To convert your GPG to PPM, multiply the GPG by 17.1. Our tool automatically displays your local water hardness scale in both measurements for clarity.</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Related Content Link -->
     <div class="related-box">
         <div class="related-content">
@@ -1680,6 +1841,7 @@
       document.getElementById("minerals-card").style.display = "none";
     }
 
+    document.getElementById("seo-intro").style.display = "none";
     document.getElementById("search-section").style.display = "none";
     document.getElementById("results").style.display = "block";
     document.getElementById("results").scrollIntoView({ behavior: "smooth", block: "start" });
@@ -1814,8 +1976,14 @@
     render(zip, entry, fallbackZip);
   }
 
+  function toggleToolFaq(element) {
+    const item = element.parentElement;
+    item.classList.toggle('active');
+  }
+
   function resetSearch() {
     document.getElementById("results").style.display = "none";
+    document.getElementById("seo-intro").style.display = "block";
     document.getElementById("search-section").style.display = "block";
     document.getElementById("zip").value = "";
     document.getElementById("zip").focus();
