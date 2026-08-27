@@ -35,6 +35,7 @@ plugins:
   - jekyll-seo-tag        # optional; our custom head.html is more granular
   - jekyll-sitemap
   - jekyll-feed
+  - jekyll-redirect-from  # 301s for retired URLs (e.g. old /testimonials/ -> /about/)
 
 # --- Defaults: every post in _posts/ gets these front-matter values
 #     unless the post overrides them explicitly.

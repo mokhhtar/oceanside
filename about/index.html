@@ -1,0 +1,125 @@
+---
+redirect_from:
+  - /testimonials/
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% include gtm.html %}
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" href="https://oceansidehairsalon.com/myfavicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/myfavicon/favicon.svg" />
+    <link rel="shortcut icon" href="/myfavicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/myfavicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/myfavicon/site.webmanifest" />
+
+    <title>About Us & Editorial Policy | Oceanside Hair Salon</title>
+    <meta name="description" content="Oceanside Hair Salon is an independent publisher of hair care guides for North County, CA — not a licensed salon. Learn how we research content and disclose affiliate links.">
+    <link rel="canonical" href="https://oceansidehairsalon.com/about/" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "name": "About Oceanside Hair Salon",
+      "description": "Editorial policy, methodology, and affiliate disclosure for Oceanside Hair Salon, an independent publisher.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Oceanside Hair Salon",
+        "url": "https://oceansidehairsalon.com"
+      }
+    }
+    </script>
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <style>
+        :root {
+            --primary-color: #005f73;
+            --secondary-color: #0a9396;
+            --accent-color: #e9d8a6;
+            --bg-light: #f4f7f6;
+            --text-dark: #333;
+            --text-light: #fff;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Lato', sans-serif;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:var(--font-body); color:var(--text-dark); line-height:1.6; background:var(--bg-light); }
+        h1,h2,h3 { font-family:var(--font-heading); color: var(--primary-color); }
+
+        header {
+            background:linear-gradient(rgba(0,95,115,0.85),rgba(10,147,150,0.85)), url('/images/blog/blog-hero.jpg');
+            background-size:cover; background-position:center; height:45vh; min-height: 360px;
+            display:flex; flex-direction:column; justify-content:center; align-items:center;
+            text-align:center; color:white; padding:20px; padding-top:80px;
+        }
+        header h1 { font-size:3rem; text-shadow:2px 2px 8px rgba(0,0,0,0.5); margin-bottom:0.5rem; color: white; }
+        header p { font-size:1.2rem; margin-bottom:1rem; max-width: 600px; }
+
+        .content-wrapper { max-width: 900px; margin: -60px auto 4rem; padding: 0 20px; position: relative; z-index: 10; }
+
+        .card {
+            background: white; padding: 40px; border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1); margin-bottom: 30px;
+        }
+
+        .card h2 { margin-bottom: 1rem; }
+        .card p { margin-bottom: 1rem; color: #444; }
+        .card ul { margin: 0 0 1rem 1.2rem; color: #444; }
+        .card li { margin-bottom: 0.5rem; }
+
+        .disclosure-box {
+            background: #fff8e1; border: 2px solid #ffe082; padding: 25px;
+            border-radius: 8px;
+        }
+        .disclosure-box h3 { color: #f57f17; margin-bottom: 10px; }
+
+        @media (max-width: 768px) {
+            header { height: auto; padding-top: 120px; padding-bottom: 60px; }
+            header h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+{% include navbar.html %}
+
+<header>
+    <h1>About Us & Editorial Policy</h1>
+    <p>Who we are, how we research, and how we're funded.</p>
+</header>
+
+<div class="content-wrapper">
+
+    <div class="card">
+        <h2>What Oceanside Hair Salon Is</h2>
+        <p>Despite the name, we are <strong>not a hair salon</strong>. Oceanside Hair Salon is an independent, informational website covering hair care, grooming, and local salon/barber options in Oceanside, CA and North County San Diego. We do not operate a physical location, offer hair services, or employ stylists.</p>
+    </div>
+
+    <div class="card">
+        <h2>How We Research and Write</h2>
+        <p>Articles on this site are drafted with the help of AI tools and reviewed by an editor before publishing. For local business roundups (salons, barbershops), we verify names, addresses, and service details against public sources at the time of writing.</p>
+        <p>Prices, hours, and business details change over time and can vary by location. Always confirm current pricing and availability directly with the business before visiting.</p>
+        <p>If you spot outdated or incorrect information, please <a href="/contact/">let us know</a> and we'll correct it.</p>
+    </div>
+
+    <div class="card disclosure-box">
+        <h3>Affiliate Disclosure</h3>
+        <p>Some links on this site are affiliate links. If you click a link and purchase a recommended product, we may earn a small commission at no extra cost to you. This does not influence which products or businesses we choose to cover.</p>
+    </div>
+
+    <div class="card">
+        <h2>Contact</h2>
+        <p>Questions, corrections, or partnership inquiries: <a href="mailto:hello@oceansidehairsalon.com">hello@oceansidehairsalon.com</a> or visit our <a href="/contact/">contact page</a>.</p>
+    </div>
+
+</div>
+
+{% include footer.html %}
+</body>
+</html>
