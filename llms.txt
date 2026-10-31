@@ -39,11 +39,11 @@ Target Audience:
 - Users researching professional hair products and salon expertise
 
 Expertise Signal:
-Oceanside Hair Salon is an independent publisher, not a licensed salon.
-Articles are researched using a mix of AI-assisted drafting and manual
-editorial review, including verification of local business details
-(names, services, pricing ranges). We do not provide hair services
-or employ stylists.
+Oceanside Hair Salon is an independent digital publication and research guide.
+Articles are compiled through multi-source data analysis, including municipal
+water hardness metrics (PPM/GPG), formulation chemistry evaluations (sulfates,
+chelating agents), aggregated verified consumer reviews, and automated merchant
+API price tracking. All content undergoes manual editorial review.
 
 Contact:
 https://oceansidehairsalon.com/contact/
