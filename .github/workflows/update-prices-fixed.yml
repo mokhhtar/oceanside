@@ -11,9 +11,9 @@ on:
         required: true
         type: choice
         options:
-          - 'amazon'
           - 'apify'
-        default: 'amazon'
+          - 'amazon'
+        default: 'apify'
 
 # إضافة صلاحية إنشاء طلبات المراجعة للبوت
 permissions:
@@ -33,26 +33,28 @@ jobs:
         with:
           python-version: '3.10'
 
-      # 🟢 تعديل التثبيت: أضفنا مكتبة apify-client
+      # 🟢 تثبيت الاعتماديات
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install python-amazon-paapi apify-client
+          pip install python-amazon-paapi apify-client pyyaml
 
-      # 🟢 تشغيل سكريبت أمازون (إذا تم اختياره أو إذا كان التشغيل آلياً عبر cron)
+      # 🟢 تشغيل سكريبت Apify (الافتراضي أو إذا تم اختياره أو عبر cron)
+      - name: Run Apify Script
+        if: ${{ github.event.inputs.script_choice == 'apify' || (github.event_name == 'schedule' && github.event.inputs.script_choice != 'amazon') }}
+        env:
+          APIFY_TOKEN_1: ${{ secrets.APIFY_TOKEN_1 }}
+          APIFY_TOKEN_2: ${{ secrets.APIFY_TOKEN_2 }}
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        run: python update_prices_apify.py
+
+      # 🟢 تشغيل سكريبت أمازون (فقط إذا تم اختياره يدوياً)
       - name: Run Amazon Script
-        if: ${{ github.event.inputs.script_choice == 'amazon' || github.event_name == 'schedule' }}
+        if: ${{ github.event.inputs.script_choice == 'amazon' }}
         env:
           AMAZON_ACCESS_KEY: ${{ secrets.AMAZON_ACCESS_KEY }}
           AMAZON_SECRET_KEY: ${{ secrets.AMAZON_SECRET_KEY }}
         run: python update_prices.py
-
-      # 🟢 تشغيل سكريبت Apify (فقط إذا تم اختياره يدوياً)
-      - name: Run Apify Script
-        if: ${{ github.event.inputs.script_choice == 'apify' }}
-        env:
-          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
-        run: python update_prices_apify.py
 
       # إنشاء Pull Request
       - name: Create Pull Request
