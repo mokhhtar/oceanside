@@ -175,7 +175,7 @@ canonical: "https://oceansidehairsalon.com/blog/mens-hair-care/routine/"
 
         <!-- ═══ DIRECT ANSWER BOX (BING COPILOT SNIPPET) ═══ -->
         <div class="highlight-box tip" id="quick-verdict" style="border-left: 4px solid #0ea5e9; background: #f0f9ff; padding: 1.25rem 1.5rem; border-radius: 6px; margin: 2rem 0;">
-            <strong style="color: #0369a1; font-size: 1.1rem; display: block; margin-bottom: 0.5rem;">⚡ Quick Verdict: The Modern 3-Step Men's Hair Routine</strong>
+            <strong style="color: #0369a1; font-size: 1.1rem; display: block; margin-bottom: 0.5rem;">Quick Verdict: The Modern 3-Step Men's Hair Routine</strong>
             <p style="margin: 0; color: #0c4a6e; line-height: 1.6;">
                 The best hair care routine for men in 2026 is built on 3 rules: 
                 <strong>1) Cleanse 2–3 times a week</strong> with a sulfate-free shampoo (never daily), 
@@ -353,6 +353,15 @@ canonical: "https://oceansidehairsalon.com/blog/mens-hair-care/routine/"
             <li><strong>Avoid High-Alcohol Gels:</strong> Drugstore gels that harden like plastic contain denatured alcohol that parches the hair cuticle and flakes off as white "dandruff-like" specks throughout the day.</li>
         </ul>
 
+        <figure style="margin: 2rem 0; text-align: center;">
+            <img src="/images/blog/mens-hair-care/mens-hair-styling-technique.jpg"
+                alt="Man styling textured hair with matte clay in modern bathroom mirror with natural morning light"
+                loading="lazy" width="900" height="500" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+            <figcaption style="font-size: 0.9rem; color: #64748b; margin-top: 0.5rem; text-align: center;">
+                Quiet Grooming Technique: Apply a dime-sized amount of matte clay from back to front on 80% dry hair to build weightless texture and flexible all-day hold.
+            </figcaption>
+        </figure>
+
         <!-- ═══ SECTION 6: CLUSTER INTEGRATION ═══ -->
         <h2 id="cluster-links">Complete Scalp &amp; Grooming Ecosystem</h2>
         <p>Healthy hair is fundamentally connected to your broader grooming regimen:</p>
@@ -405,10 +414,16 @@ canonical: "https://oceansidehairsalon.com/blog/mens-hair-care/routine/"
 
     <script>
         function toggleFaq(button) {
-            const answer = button.nextElementSibling;
-            const isOpen = answer.style.display === 'block';
-            answer.style.display = isOpen ? 'none' : 'block';
-            button.querySelector('span').textContent = isOpen ? '+' : '−';
+            const item = button.closest('.faq-item');
+            item.classList.toggle('active');
+            const answer = item.querySelector('.faq-answer');
+            if (item.classList.contains('active')) {
+                answer.style.maxHeight = answer.scrollHeight + "px";
+                answer.style.paddingBottom = "20px";
+            } else {
+                answer.style.maxHeight = "0";
+                answer.style.paddingBottom = "0";
+            }
         }
     </script>
 </body>
