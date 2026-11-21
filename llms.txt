@@ -11,6 +11,7 @@ hair styling, and evidence-based hair care advice. The site specializes in solvi
 and styling issues caused by coastal and high-humidity climates.
 
 Primary Topics:
+- Water hardness by ZIP code (municipal EPA lab analysis in PPM and GPG)
 - Anti-frizz hair care
 - Coastal and humid weather hair solutions
 - Professional salon-tested hair products
@@ -18,12 +19,14 @@ Primary Topics:
 - Local beauty expertise (Oceanside, CA)
 
 Content Type:
+- Interactive water quality database and tools
 - Educational blog articles
 - Product roundups and comparisons
 - Local hair care guides
 - Salon service information and pricing
 
 Key Sections:
+- Water Hardness Checker Tool: https://oceansidehairsalon.com/tools/water-hardness-checker/
 - Blog: https://oceansidehairsalon.com/blog/
 - Services: https://oceansidehairsalon.com/services/
 - Pricing: https://oceansidehairsalon.com/prices/
