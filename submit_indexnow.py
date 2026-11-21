@@ -44,7 +44,10 @@ def submit_to_indexnow(urls):
         print("ℹ️ No URLs found to submit.")
         return
 
-    endpoint = "https://api.indexnow.org/indexnow"
+    endpoints = [
+        "https://api.indexnow.org/indexnow",
+        "https://yandex.com/indexnow"
+    ]
     payload = {
         "host": SITE_HOST,
         "key": KEY,
@@ -53,25 +56,35 @@ def submit_to_indexnow(urls):
     }
 
     data_json = json.dumps(payload).encode("utf-8")
-    req = urllib.request.Request(
-        endpoint,
-        data=data_json,
-        headers={"Content-Type": "application/json; charset=utf-8"}
-    )
+    
+    print(f"🚀 Submitting {len(urls)} URLs to IndexNow (Bing & Search Engines)...")
+    success = False
+    for endpoint in endpoints:
+        req = urllib.request.Request(
+            endpoint,
+            data=data_json,
+            headers={"Content-Type": "application/json; charset=utf-8"}
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=15) as response:
+                status = response.getcode()
+                if status in (200, 202):
+                    print(f"🎉 Success via {endpoint}! HTTP status {status}. Engines notified successfully!")
+                    success = True
+                    break
+                else:
+                    print(f"⚠️ {endpoint} returned HTTP status: {status}")
+        except urllib.error.HTTPError as e:
+            print(f"❌ HTTP Error via {endpoint}: {e.code} - {e.reason}")
+            try:
+                print(e.read().decode('utf-8', errors='ignore'))
+            except Exception:
+                pass
+        except Exception as exc:
+            print(f"❌ Connection Error via {endpoint}: {exc}")
 
-    print(f"🚀 Submitting {len(urls)} URLs to IndexNow (Bing / Yandex)...")
-    try:
-        with urllib.request.urlopen(req) as response:
-            status = response.getcode()
-            if status in (200, 202):
-                print(f"🎉 Success! IndexNow returned HTTP status {status}. Bing notified successfully!")
-            else:
-                print(f"⚠️ IndexNow returned HTTP status: {status}")
-    except urllib.error.HTTPError as e:
-        print(f"❌ HTTP Error submitting to IndexNow: {e.code} - {e.reason}")
-        print(e.read().decode('utf-8', errors='ignore'))
-    except Exception as exc:
-        print(f"❌ Unexpected Error: {exc}")
+    if not success:
+        sys.exit(1)
 
 if __name__ == "__main__":
     ensure_key_file()

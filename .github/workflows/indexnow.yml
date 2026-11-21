@@ -1,0 +1,41 @@
+name: Auto Submit to IndexNow
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'blog/**'
+      - '_posts/**'
+      - 'services/**'
+      - 'prices/**'
+      - 'tools/**'
+      - 'sitemap.xml'
+      - 'index.html'
+  workflow_dispatch:
+
+concurrency:
+  group: indexnow-submission
+  cancel-in-progress: false
+
+jobs:
+  submit-indexnow:
+    name: Submit Sitemap URLs to IndexNow
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Wait for GitHub Pages Deployment
+        run: |
+          echo "⏳ Waiting 35 seconds for GitHub Pages build & deploy to complete..."
+          sleep 35
+
+      - name: Run IndexNow Submission
+        run: python submit_indexnow.py
