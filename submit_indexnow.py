@@ -18,8 +18,8 @@ if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
 SITE_HOST = "oceansidehairsalon.com"
-KEY_FILE_NAME = "c7e481b29a304f5e8d9102c3b4a5f678.txt"
-KEY = "c7e481b29a304f5e8d9102c3b4a5f678"
+KEY_FILE_NAME = "4d872830848f4718b859bc1cd51c218d.txt"
+KEY = "4d872830848f4718b859bc1cd51c218d"
 SITE_ROOT = Path(".")
 
 def ensure_key_file():
