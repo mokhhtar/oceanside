@@ -80,23 +80,45 @@
     {% endif %}
 
     <!-- Price Area and Amazon Button -->
+    {% assign is_amazon_link = false %}
+    {% if include.product.affiliate_url contains "amazon" or include.product.affiliate_url contains "amzn" %}
+      {% assign is_amazon_link = true %}
+    {% endif %}
+    {% assign is_check_price = false %}
+    {% if include.product.price == "Check Price" and is_amazon_link %}
+      {% assign is_check_price = true %}
+      {% assign raw_title = include.product.title | split: "(" | first | replace: "—", " " | strip %}
+      {% assign raw_brand = include.product.brand | split: "/" | first | strip %}
+      {% if raw_brand == "" or raw_title contains raw_brand %}
+        {% assign clean_query = raw_title %}
+      {% else %}
+        {% assign clean_query = raw_brand | append: " " | append: raw_title %}
+      {% endif %}
+      {% assign encoded_query = clean_query | split: " " | join: " " | url_encode %}
+      {% assign smart_search_url = "https://www.amazon.com/s?k=" | append: encoded_query | append: "&tag=oceansidehair-20" %}
+    {% endif %}
+
     <div class="price-area">
       <div>
         <div class="price-tag">
           {% if include.product.price == "Check Price" %}
-            <span data-asin="{{ include.product.asin }}">{{ include.product.price }}</span>
+            <span class="price-check-badge" data-asin="{{ include.product.asin }}">Check Live Options</span>
           {% else %}
             <small>$</small><span data-asin="{{ include.product.asin }}">{{ include.product.price }}</span>
           {% endif %}
         </div>
-        {% if include.product.price_sub %}
+        {% if is_check_price %}
+          <div class="price-sub price-sub-availability">{{ include.product.stock_warning | default: "Multi-seller or updated listing" }}</div>
+        {% elsif include.product.price_sub %}
           <div class="price-sub">{{ include.product.price_sub }}</div>
         {% endif %}
       </div>
-      <div style="display:flex; flex-direction:column; align-items:center;">
-        <a href="{{ include.product.affiliate_url }}" target="_blank" rel="nofollow" class="amazon-btn"{% if include.product.highlight %} style="background: #005f73; color: white !important; border: none;"{% endif %}>
+      <div class="cta-stack">
+        <a href="{{ include.product.affiliate_url }}" target="_blank" rel="nofollow noopener noreferrer" class="amazon-btn"{% if include.product.highlight %} style="background: #005f73; color: white !important; border: none;"{% endif %}>
           {% if include.product.btn_text %}
             {{ include.product.btn_text }}
+          {% elsif is_check_price %}
+            Check Live Sellers on Amazon
           {% else %}
             Buy on Amazon
           {% endif %}
@@ -106,7 +128,11 @@
             <line x1="10" y1="14" x2="21" y2="3"></line>
           </svg>
         </a>
-        {% if include.product.stock_warning %}
+        {% if is_check_price %}
+          <a href="{{ smart_search_url }}" target="_blank" rel="nofollow noopener noreferrer" class="amazon-alt-btn">
+            Find Newer Version &amp; Alternatives &rarr;
+          </a>
+        {% elsif include.product.stock_warning %}
           <span class="stock-warning">{{ include.product.stock_warning }}</span>
         {% endif %}
       </div>

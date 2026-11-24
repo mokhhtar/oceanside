@@ -2200,13 +2200,27 @@
 
     function renderProductCard(item) {
       const isAmazon = item.asin && item.asin !== 'SHOWER_STICK' && item.asin !== 'SPRINGWELL_SS';
-      const btnText = isAmazon ? "Buy on Amazon" : "Buy from Official Site";
+      const isCheckPrice = isAmazon && item.price === "Check Price";
+      const btnText = !isAmazon ? "Buy from Official Site" : (isCheckPrice ? "Check Live Sellers on Amazon" : "Buy on Amazon");
       const brand = item.title.split(' ')[0];
       const imgSrc = item.image_url;
+
+      const cleanSearchTitle = item.title.split('(')[0].replace(/—/g, ' ').replace(/\s+/g, ' ').trim();
+      const smartSearchUrl = `https://www.amazon.com/s?k=${encodeURIComponent(cleanSearchTitle)}&tag=oceansidehair-20`;
       
-      const priceHTML = item.price === "Check Price" 
-        ? `<span data-asin="${item.asin || ''}">${item.price}</span>`
-        : `<small>$</small><span data-asin="${item.asin || ''}">${item.price}</span>`;
+      const priceHTML = isCheckPrice
+        ? `<span class="price-check-badge" data-asin="${item.asin || ''}">Check Live Options</span>`
+        : (item.price === "Check Price"
+            ? `<span data-asin="${item.asin || ''}">${item.price}</span>`
+            : `<small>$</small><span data-asin="${item.asin || ''}">${item.price}</span>`);
+
+      const priceSubHTML = isCheckPrice
+        ? `<div class="price-sub price-sub-availability">Low stock — check sellers or newer edition</div>`
+        : '';
+
+      const altBtnHTML = isCheckPrice
+        ? `<a href="${smartSearchUrl}" target="_blank" rel="nofollow noopener noreferrer" class="amazon-alt-btn">Find Newer Version &amp; Alternatives &rarr;</a>`
+        : '';
 
       const whyRec = getWhyRecommended(item.asin, ppm, ph, iron);
       const whyRecHTML = whyRec 
@@ -2254,8 +2268,9 @@
                 <div class="price-tag">
                   ${priceHTML}
                 </div>
+                ${priceSubHTML}
               </div>
-              <div>
+              <div class="cta-stack">
                 <a href="${item.affiliate_url}" target="_blank" rel="nofollow noopener noreferrer" class="amazon-btn">
                   ${btnText}
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 8px;">
@@ -2264,6 +2279,7 @@
                     <line x1="10" y1="14" x2="21" y2="3"></line>
                   </svg>
                 </a>
+                ${altBtnHTML}
               </div>
             </div>
           </div>

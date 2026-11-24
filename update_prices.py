@@ -731,9 +731,10 @@ def run(dry_run: bool = False, page_filter: str | None = None) -> None:
                             
                         # handle stock warnings automatically
                         if numeric_new_price == "Check Price":
-                            if "stock_warning" not in product:
-                                product["stock_warning"] = "Temporarily Out of Stock"
-                                print(f"      ⚠️  YAML Stock  [{asin}]: Product out of stock, added warning")
+                            target_warning = "Low Stock — Check Sellers or Newer Edition"
+                            if product.get("stock_warning") != target_warning:
+                                product["stock_warning"] = target_warning
+                                print(f"      ⚠️  YAML Stock  [{asin}]: Limited stock notice applied")
                                 page_changed = True
                         else:
                             if "stock_warning" in product:
