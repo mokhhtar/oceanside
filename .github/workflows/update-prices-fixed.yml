@@ -1,8 +1,8 @@
 name: Amazon Price Updater
 
 on:
-  # schedule:
-  #   - cron: '0 8 * * *'
+  schedule:
+    - cron: '0 8 * * *'
   workflow_dispatch:
     # 🟢 الإضافة الجديدة: إنشاء قائمة منسدلة للاختيار اليدوي
     inputs:
@@ -65,7 +65,7 @@ jobs:
           title: "📦 التحديث الآلي للأسعار"
           body: |
             قام البوت بتشغيل سكريبت تحديث الأسعار ووجد تغييرات جديدة.
-            السكريبت المستخدم في هذا التحديث: **${{ github.event.inputs.script_choice || 'amazon' }}**
+            السكريبت المستخدم في هذا التحديث: **${{ github.event.inputs.script_choice || 'apify' }}**
             
             يرجى مراجعة التغييرات (Files changed) للتأكد من صحتها قبل ضغط **Merge**.
           branch: "auto-price-update"
